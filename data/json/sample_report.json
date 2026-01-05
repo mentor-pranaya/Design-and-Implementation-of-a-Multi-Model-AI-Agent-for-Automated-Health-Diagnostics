@@ -1,0 +1,14 @@
+{
+  "Hemoglobin": {
+    "value": 11.2,
+    "unit": "g/dL"
+  },
+  "WBC": {
+    "value": 12000,
+    "unit": "/uL"
+  },
+  "Platelets": {
+    "value": 140000,
+    "unit": "/uL"
+  }
+}
