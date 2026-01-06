@@ -10,5 +10,9 @@
   "Platelets": {
     "value": 140000,
     "unit": "/uL"
+  },
+  "RBC":{
+    "value": 3.42,
+    "unit" : "mill/mm3"
   }
 }
