@@ -1,0 +1,9 @@
+streamlit
+easyocr
+pdfplumber
+pymupdf
+opencv-python-headless
+pillow
+numpy
+pandas
+plotly
