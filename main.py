@@ -3,7 +3,7 @@ from src.extraction.extractor import extract_parameter
 from src.config.parameters import REQUIRED_PARAMETERS
 from src.model_1.interpretation import interpret_value
 
-file_path = "data/pdf/Blood_report_pdf_1.pdf"
+file_path = "data/pdf/Blood_report_pdf_5.pdf"
 data = read_input(file_path)
 
 results = {}
