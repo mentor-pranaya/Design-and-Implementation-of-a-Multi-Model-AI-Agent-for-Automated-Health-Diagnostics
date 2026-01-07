@@ -43,27 +43,49 @@ MedAura follows a Streamlit-friendly MVC-inspired architecture.
 ## 📁 Project Structure
 
 medaura/
+
 │
+
 ├── app.py # Controller (application flow)
+
 │
+
 ├── models/ # Data & business logic
+
 │ ├── database
+
 │ ├── auth
+
 │ └── health
+
 │
+
 ├── services/ # OCR & report processing
+
 │ ├── ocr
+
 │ └── report_parser
+
 │
+
 ├── views/ # UI components
+
 │ ├── sidebar
+
 │ ├── dashboard
+
 │ └── history
+
 │
+
 ├── utils/ # Helpers & constants
+
 │ ├── security
+
 │ └── constants
+
 │
+
 └── requirements.txt
 
 
