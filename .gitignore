@@ -44,3 +44,11 @@ desktop.ini
 build/
 dist/
 *.egg-info/
+
+
+# Block real medical data
+data/images/*
+data/pdf/*
+
+# Allow test JSON files
+!data/json/*.json
