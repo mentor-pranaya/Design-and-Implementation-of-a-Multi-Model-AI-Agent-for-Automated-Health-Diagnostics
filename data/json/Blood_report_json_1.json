@@ -1,0 +1,47 @@
+{
+  "Hemoglobin": {
+    "value": 14.2,
+    "unit": "g/dl",
+    "reference_range": "13.0-16.5"
+  },
+  "RBC": {
+    "value": 4.8,
+    "unit": "10^6/uL",
+    "reference_range": "4.5-5.5"
+  },
+  "WBC": {
+    "value": 7.1,
+    "unit": "10^3/uL",
+    "reference_range": "4.5-11.0"
+  },
+  "Platelet": {
+    "value": 260,
+    "unit": "10^3/uL",
+    "reference_range": "150-450"
+  },
+  "HCT": {
+    "value": 42,
+    "unit": "%",
+    "reference_range": "37-50"
+  },
+  "MCV": {
+    "value": 90,
+    "unit": "fl",
+    "reference_range": "83-101"
+  },
+  "MCH": {
+    "value": 30,
+    "unit": "pg",
+    "reference_range": "27-32"
+  },
+  "MCHC": {
+    "value": 33,
+    "unit": "g/dl",
+    "reference_range": "32-36"
+  },
+  "RDW-CV": {
+    "value": 13,
+    "unit": "%",
+    "reference_range": "11.5-14.5"
+  }
+}

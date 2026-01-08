@@ -1,39 +1,28 @@
-# src/config/parameters.py
-
 REQUIRED_PARAMETERS = {
-    #  CBC (Complete Blood count)
-    "Hemoglobin": [
-        "Hemoglobin",
-        "Hb"
-    ],
-    "RBC": [
-        "RBC",
-        "R.B.C",
-        "Red Blood Cell",
-        "Red Blood Cell Count"
-    ],
-    "WBC": [
-        "WBC",
-        "W.B.C",
-        "Total Leukocyte Count",
-        "TLC"
-    ],
-    "Platelets": [
-        "Platelet",
-        "Platelets",
-        "Platelet Count"
-    ],
 
-    # ---- KFT  (Kidney Function Test) ----
+    # ---- CBC (Complete Blood Count) ----
+    "Hemoglobin": ["hemoglobin", "hb"],
+    "RBC": ["rbc"],
+    "WBC": ["wbc", "total wbc", "total leukocyte", "tlc"],
+    "Platelet": ["platelet", "platelets", "plt"],
+    "HCT": ["hct", "pcv", "packed cell volume"],
+    "MCV": ["mcv"],
+    "MCH": ["mch"],
+    "MCHC": ["mchc"],
+    "RDW-CV": ["rdw-cv", "rdw cv"],
+    "RDW-SD": ["rdw-sd", "rdw sd"],
+
+    # ---- KFT (Kidney Function Test) ----
     "Creatinine": [
-        "Creatinine",
-        "Serum Creatinine"
+        "creatinine",
+        "serum creatinine"
     ],
     "Urea": [
-        "Urea",
-        "Blood Urea"
+        "urea",
+        "blood urea"
     ],
     "Uric Acid": [
-        "Uric Acid"
+        "uric acid"
     ]
 }
+

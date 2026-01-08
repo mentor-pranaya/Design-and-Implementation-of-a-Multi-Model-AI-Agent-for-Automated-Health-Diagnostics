@@ -1,0 +1,17 @@
+{
+  "Creatinine": {
+    "value": 1.8,
+    "unit": "mg/dl",
+    "reference_range": "0.6-1.2"
+  },
+  "Urea": {
+    "value": 62,
+    "unit": "mg/dl",
+    "reference_range": "10-50"
+  },
+  "Uric Acid": {
+    "value": 4.6,
+    "unit": "mg/dl",
+    "reference_range": "3.5-7.5"
+  }
+}

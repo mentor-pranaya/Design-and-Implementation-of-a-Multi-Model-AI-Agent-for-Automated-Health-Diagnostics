@@ -2,3 +2,4 @@ pdfplumber
 pytesseract
 pillow
 pdf2image
+opencv-python

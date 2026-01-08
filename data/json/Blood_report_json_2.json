@@ -1,0 +1,27 @@
+{
+  "Hemoglobin": {
+    "value": 9.8,
+    "unit": "g/dl",
+    "reference_range": "11.5-15.0"
+  },
+  "RBC": {
+    "value": 3.4,
+    "unit": "10^6/uL",
+    "reference_range": "4.0-5.5"
+  },
+  "WBC": {
+    "value": 13.2,
+    "unit": "10^3/uL",
+    "reference_range": "4.5-11.0"
+  },
+  "Platelet": {
+    "value": 90,
+    "unit": "10^3/uL",
+    "reference_range": "150-450"
+  },
+  "MCV": {
+    "value": 72,
+    "unit": "fl",
+    "reference_range": "80-100"
+  }
+}
