@@ -1,1 +1,9 @@
-
+HealthAI/
+├── app.py                # Main Streamlit Interface
+├── src/
+│   ├── parser.py         # File routing and initial parsing
+│   ├── extractor.py      # OCR and Regex data extraction
+│   ├── validator.py      # Unit standardization and cleaning
+│   └── interpreter.py    # Reference range logic
+├── requirements.txt      # Dependencies
+└── README.md             # Project documentation
