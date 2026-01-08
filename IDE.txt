@@ -1,1 +1,1 @@
-Google Collab
+Google Colab
