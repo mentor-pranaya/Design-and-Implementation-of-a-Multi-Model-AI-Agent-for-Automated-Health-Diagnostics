@@ -1,0 +1,6 @@
+fastapi
+uvicorn
+pdfplumber
+pytesseract
+pillow
+reportlab
