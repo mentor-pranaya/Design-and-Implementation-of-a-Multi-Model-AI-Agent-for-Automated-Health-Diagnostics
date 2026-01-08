@@ -1,1 +1,3 @@
 Visual Studio Code(VS code)
+07.01.2026 : Trying to improve accuracy for images
+08.01.2026 : Improved OCR 
