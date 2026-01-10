@@ -1,5 +1,9 @@
+import pytesseract
+from PIL import Image
+import fitz
 import json
-import fitz  # PyMuPDF
+
+pytesseract.pytesseract.tesseract_cmd = r'D:\Program Files\Tesseract-OCR\tesseract.exe'
 
 def parse_input(uploaded_file):
     file_type = uploaded_file.type
@@ -14,6 +18,8 @@ def parse_input(uploaded_file):
             text += page.get_text()
         return text, "text"
     
-    else: # Images
-        return uploaded_file.read(), "image"
-      
+    else: # Images (JPG, PNG)
+        # Convert image to text using OCR
+        img = Image.open(uploaded_file)
+        text = pytesseract.image_to_string(img)
+        return text, "text" # Change this to "text" so app.py processes it
