@@ -1,0 +1,115 @@
+{
+  "report_id": "RPT00019",
+  "patient_id": "PAT25118",
+  "test_date": "2026-01-07",
+  "lab_name": "QuickDiagnostics",
+  "gender": "female",
+  "age": 36,
+  "parameters": [
+    {
+      "name": "Hemoglobin",
+      "value": 13.9,
+      "unit": "g/dL",
+      "reference_min": 12.0,
+      "reference_max": 15.5
+    },
+    {
+      "name": "WBC",
+      "value": 9.53,
+      "unit": "10^3/\u03bcL",
+      "reference_min": 4.0,
+      "reference_max": 11.0
+    },
+    {
+      "name": "RBC",
+      "value": 4.47,
+      "unit": "10^6/\u03bcL",
+      "reference_min": 4.2,
+      "reference_max": 5.4
+    },
+    {
+      "name": "Platelets",
+      "value": 289.49,
+      "unit": "10^3/\u03bcL",
+      "reference_min": 150,
+      "reference_max": 400
+    },
+    {
+      "name": "Glucose",
+      "value": 82.2,
+      "unit": "mg/dL",
+      "reference_min": 70,
+      "reference_max": 100
+    },
+    {
+      "name": "Total_Cholesterol",
+      "value": 249.3,
+      "unit": "mg/dL",
+      "reference_min": 0,
+      "reference_max": 200
+    },
+    {
+      "name": "HDL",
+      "value": 488.3,
+      "unit": "mg/dL",
+      "reference_min": 50,
+      "reference_max": 999
+    },
+    {
+      "name": "LDL",
+      "value": 129.6,
+      "unit": "mg/dL",
+      "reference_min": 0,
+      "reference_max": 100
+    },
+    {
+      "name": "Triglycerides",
+      "value": 161.8,
+      "unit": "mg/dL",
+      "reference_min": 0,
+      "reference_max": 150
+    },
+    {
+      "name": "Creatinine",
+      "value": 1.0,
+      "unit": "mg/dL",
+      "reference_min": 0.6,
+      "reference_max": 1.1
+    },
+    {
+      "name": "BUN",
+      "value": 11.1,
+      "unit": "mg/dL",
+      "reference_min": 7,
+      "reference_max": 20
+    },
+    {
+      "name": "ALT",
+      "value": 18.0,
+      "unit": "U/L",
+      "reference_min": 7,
+      "reference_max": 56
+    },
+    {
+      "name": "AST",
+      "value": 24.0,
+      "unit": "U/L",
+      "reference_min": 10,
+      "reference_max": 40
+    },
+    {
+      "name": "TSH",
+      "value": 2.2,
+      "unit": "mIU/L",
+      "reference_min": 0.4,
+      "reference_max": 4.0
+    },
+    {
+      "name": "HbA1c",
+      "value": 5.1,
+      "unit": "%",
+      "reference_min": 4.0,
+      "reference_max": 5.6
+    }
+  ]
+}
