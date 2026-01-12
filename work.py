@@ -57,18 +57,37 @@ def extract_data(file_path):
 # Function for Parameter
 def extract_parameters(text):
     params = {}
-    hb = re.search(r'Hemoglobin\s*[:\-]?\s*(\d+\.?\d*)', text, re.I)
-    glucose = re.search(r'Glucose\s*[:\-]?\s*(\d+\.?\d*)', text, re.I)
-    if hb:
-        params['Hemoglobin'] = float(hb.group(1))
-    if glucose:
-        params['Glucose'] = float(glucose.group(1))
+
+    patterns = {
+        "Hemoglobin": r"ha?emo?globin\s+(\d+\.?\d*)",
+        "WBC": r"total\s+leucocyte\s+count\s+(\d+)",
+        "Platelet": r"platelet\s+count\s+(\d+)",
+        "RBC": r"rbc\s+count\s+(\d+\.?\d*)",
+        "MCV": r"\bmcv\s+(\d+\.?\d*)",
+        "MCH": r"\bmch\s+(\d+\.?\d*)",
+        "MCHC": r"\bmchc\s+(\d+\.?\d*)",
+        "HCT": r"\bhet\s+(\d+\.?\d*)|\bhct\s+(\d+\.?\d*)"
+    }
+
+    for param, pattern in patterns.items():
+        match = re.search(pattern, text, re.I)
+        if match:
+            # handle alternate groups
+            value = next(v for v in match.groups() if v)
+            params[param] = float(value)
+
     return params
 
 # Defining Normal range
 NORMAL_RANGES = {
     "Hemoglobin": (13.0, 17.0),
-    "Glucose": (70, 100)
+    "WBC": (4000, 11000),
+    "Platelet": (150000, 450000),
+    "RBC": (4.5, 5.5),
+    "MCV": (81, 101),
+    "MCH": (27, 32),
+    "MCHC": (31.5, 34.5),
+    "HCT": (40, 50)
 }
 
 def interpret_parameters(params):
