@@ -38,8 +38,7 @@ def preprocess_image(image_path):
     img = cv2.resize(img, None, fx=3, fy=3, interpolation=cv2.INTER_CUBIC)
 
     h, w = img.shape[:2]
-    crop = img[int(h * 0.20):int(h * 0.90), int(w * 0.05):int(w * 0.95)]
-
+    crop = img[int(h * 0.10):int(h * 0.95), int(w * 0.01):int(w * 0.99)]
     gray = cv2.cvtColor(crop, cv2.COLOR_BGR2GRAY)
     denoised = cv2.fastNlMeansDenoising(gray, None, 10, 7, 21)
     bilateral = cv2.bilateralFilter(denoised, 9, 75, 75)
@@ -60,4 +59,7 @@ def preprocess_image(image_path):
 def read_image(image_path):
     processed = preprocess_image(image_path)
     text = pytesseract.image_to_string(processed, config="--oem 3 --psm 6")
+    # print("=== RAW OCR TEXT ===")
+    # print(text)
+    # print("=== END OCR TEXT ===")
     return normalize_ocr_text(text)
