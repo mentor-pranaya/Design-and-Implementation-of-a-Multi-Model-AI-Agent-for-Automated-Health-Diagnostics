@@ -51,7 +51,7 @@ const db = getFirestore(app);
 const appId = typeof __app_id !== 'undefined' ? __app_id : 'medaura-expert-system';
 
 const MODEL_NAME = "gemini-2.5-flash-preview-09-2025";
-const apiKey = "AIzaSyD2uq8AY_h3O98ysrWOGTECr0c6rWcP7-Q"; 
+const apiKey = "";                                                             
 
 const App = () => {
   // Navigation & Auth State
