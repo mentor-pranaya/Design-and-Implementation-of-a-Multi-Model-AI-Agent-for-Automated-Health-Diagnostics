@@ -1,7 +1,6 @@
 import re
 from typing import Dict
 
-# Define patterns for common blood parameters
 PARAMETER_PATTERNS = {
     "Hemoglobin": {
         "pattern": r"(hemoglobin|hb)[^\d]*([\d\.]+)\s*(g/dl|g\/dl)?",
@@ -15,33 +14,29 @@ PARAMETER_PATTERNS = {
         "pattern": r"(platelet)[^\d]*([\d\.]+)\s*(lakh|lakhs)?",
         "unit": "cells/mm3"
     }
-
 }
 
 def extract_parameters(text: str) -> Dict:
     extracted = {}
-
     text = text.lower()
 
     for param, config in PARAMETER_PATTERNS.items():
         match = re.search(config["pattern"], text, re.IGNORECASE)
-        if match:
-            value = match.group(2).replace(",", "")
-            extracted[param] = {
-                "value": float(value),
-                "unit": config["unit"]
-            }
-        if match:
-            value = float(match.group(2))
-            unit = match.group(3)
+        if not match:
+            continue
 
-            if param == "Platelet Count" and unit:
-                value = value * 100000  # convert lakh to absolute count
+        value = float(match.group(2).replace(",", ""))
+        unit_suffix = match.group(3) if match.lastindex and match.lastindex >= 3 else None
 
-            extracted[param] = {
-                "value": value,
-                "unit": config["unit"]
+        if param == "Platelet Count":
+            if unit_suffix:
+                value *= 100000
+            if value > 1_000_000:
+                value /= 10
+
+        extracted[param] = {
+            "value": value,
+            "unit": config["unit"]
         }
-
 
     return extracted
