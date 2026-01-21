@@ -3,14 +3,14 @@ from src.extraction.extractor import extract_parameter
 from src.config.parameters import REQUIRED_PARAMETERS
 from src.model_1.interpretation import interpret_value
 from src.model_2.pattern_detector import detect_all_patterns
-
+from src.model_2.risk_calculator import calculate_overall_risk
 
 # Read input (ALL formats)
 
 
 # file_path = "data/json/Blood_report_json_2.json"
-# file_path = "data/images/blood_report_img_2.jpg"
-file_path = "data/pdf/Blood_report_pdf_3.pdf"
+file_path = "data/images/blood_report_img_2.jpg"
+# file_path = "data/pdf/Blood_report_pdf_1.pdf"
 
 data = read_input(file_path)
 
@@ -43,7 +43,7 @@ for param_name, param_data in results.items():
 
 # model 2
 patterns = detect_all_patterns(results)
-
+risk_assessment = calculate_overall_risk(results)
 #final output
 
 print("FINAL EXTRACTED PARAMETERS (Model 1):")
@@ -76,6 +76,28 @@ else:
     print(" No concerning patterns detected. All values appear normal.")
 
 
+print("\nRISK ASSESSMENT (Model 2):")
+
+
+overall = risk_assessment["overall_score"]
+level = risk_assessment["risk_level"]
+
+print(f"\nOVERALL RISK SCORE: {overall}/100 ({level})")
+
+print(f"\nIndividual Risk Breakdown:")
+for risk in risk_assessment["individual_risks"]: 
+    category = risk["category"]
+    score = risk["score"]
+    print(f"    - {category}: {score}/100")
+    if risk["risk_factors"]:
+        for factor in risk["risk_factors"]: 
+            print(f"        > {factor}")
+
+print(f"\n  RECOMMENDATION:")
+print(f"    {risk_assessment['recommendation']}")
+
+
+print("              END OF REPORT")
 
 
 
