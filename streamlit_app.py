@@ -6,23 +6,31 @@ import numpy as np
 import os
 import json
 import sys
+
+from models.borderline_analysis import detect_borderline_parameters
+from extraction.parameter_extractor import extract_parameters
+from models.model1_parameter_interpretation import interpret_parameters
+from models.model2_pattern_recognition import detect_health_patterns
+
+# ---------------- DEBUG (OPTIONAL) ----------------
 st.write("Python executable:", sys.executable)
 
-from extraction.parameter_extractor import extract_parameters
-from models.model1_parameter_interpretation import classify_parameter
-
-# Tesseract setup
+# ---------------- TESSERACT SETUP ----------------
 pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
 os.environ["TESSDATA_PREFIX"] = r"C:\Program Files\Tesseract-OCR\tessdata"
 
-st.title("🩺 AI Health Diagnostic – OCR, Extraction & Model-1")
+# ---------------- UI TITLE ----------------
+st.title("🩺 AI Health Diagnostic – OCR, Model-1 & Model-2")
 
-
+# ---------------- FILE UPLOADER ----------------
 uploaded_file = st.file_uploader(
     "Upload a blood report (Image / PDF / JSON)",
     type=["png", "jpg", "jpeg", "pdf", "json"]
 )
 
+# =================================================
+# MAIN PIPELINE
+# =================================================
 if uploaded_file is not None:
     st.success("File uploaded successfully")
 
@@ -34,40 +42,66 @@ if uploaded_file is not None:
 
     # ---------------- PDF ----------------
     elif file_type == "application/pdf":
-        from pdf2image import convert_from_bytes
-        images = convert_from_bytes(uploaded_file.read())
-        image = images[0]  # first page only
+        try:
+            from pdf2image import convert_from_bytes
+            images = convert_from_bytes(uploaded_file.read())
+            image = images[0]  # first page only
+        except ImportError:
+            st.error("pdf2image is not installed in this Python environment.")
+            st.stop()
 
     # ---------------- JSON (NO OCR) ----------------
     elif file_type == "application/json":
         data = json.load(uploaded_file)
 
-        st.subheader("🧪 Extracted Blood Parameters & Diagnosis (Model-1)")
-        for key, value in data.items():
-            try:
-                status = classify_parameter(key, float(value))
-                st.write(
-                    f"**{key.replace('_', ' ').upper()}** : {value} → {status}"
+        # -------- MODEL-1 --------
+        st.subheader("🧪 Parameter Interpretation (Model-1)")
+        model1_results = interpret_parameters(data)
+
+        for param, result in model1_results.items():
+            st.write(
+                f"**{param.replace('_', ' ').upper()}** : "
+                f"{result['value']} → {result['status']}"
+            )
+
+        # -------- MODEL-2 --------
+        st.subheader("🧠 Health Pattern Analysis (Model-2)")
+        patterns = detect_health_patterns(model1_results)
+
+        if patterns:
+            for p in patterns:
+                st.markdown(
+                    f"""
+                    **{p['pattern']}**
+                    - Risk Level: {p['risk_level']}
+                    - Reason: {p['reason']}
+                    """
                 )
-            except:
-                st.write(
-                    f"**{key.replace('_', ' ').upper()}** : {value} (No reference range)"
-                )
+        else:
+            st.write("No significant health risk patterns detected.")
+
+        # -------- BORDERLINE --------
+        st.subheader("🟡 Borderline Observations (Optional)")
+        borderline_notes = detect_borderline_parameters(model1_results)
+
+        if borderline_notes:
+            for note in borderline_notes:
+                st.write(f"• {note}")
+        else:
+            st.write("No borderline observations detected.")
+
         st.stop()
 
-    # ---------------- COMMON OCR PIPELINE ----------------
+    # ---------------- OCR PIPELINE (IMAGE / PDF) ----------------
     st.image(image, caption="Uploaded Image", width=600)
 
-    # Convert to OpenCV format
     img_cv = cv2.cvtColor(np.array(image), cv2.COLOR_RGB2BGR)
 
-    # Preprocessing
     gray = cv2.cvtColor(img_cv, cv2.COLOR_BGR2GRAY)
     gray = cv2.threshold(
         gray, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU
     )[1]
 
-    # OCR
     text = pytesseract.image_to_string(
         gray,
         lang="eng",
@@ -77,21 +111,45 @@ if uploaded_file is not None:
     st.subheader("📝 Extracted Text (OCR Output)")
     st.text_area("Raw OCR Text (Debug)", text, height=300)
 
-    # Parameter extraction
+    # ---------------- PARAMETER EXTRACTION ----------------
     params = extract_parameters(text)
 
-    st.subheader("🧪 Extracted Blood Parameters & Diagnosis (Model-1)")
-
-    if params:
-        for key, value in params.items():
-            try:
-                status = classify_parameter(key, value)
-                st.write(
-                    f"**{key.replace('_', ' ').upper()}** : {value} → {status}"
-                )
-            except:
-                st.write(
-                    f"**{key.replace('_', ' ').upper()}** : {value} (No reference range)"
-                )
-    else:
+    if not params:
         st.warning("No blood parameters detected from OCR text.")
+        st.stop()
+
+    # ---------------- MODEL-1 ----------------
+    st.subheader("🧪 Parameter Interpretation (Model-1)")
+    model1_results = interpret_parameters(params)
+
+    for param, result in model1_results.items():
+        st.write(
+            f"**{param.replace('_', ' ').upper()}** : "
+            f"{result['value']} → {result['status']}"
+        )
+
+    # ---------------- MODEL-2 ----------------
+    st.subheader("🧠 Health Pattern Analysis (Model-2)")
+    patterns = detect_health_patterns(model1_results)
+
+    if patterns:
+        for p in patterns:
+            st.markdown(
+                f"""
+                **{p['pattern']}**
+                - Risk Level: {p['risk_level']}
+                - Reason: {p['reason']}
+                """
+            )
+    else:
+        st.write("No significant health risk patterns detected.")
+
+    # ---------------- BORDERLINE ----------------
+    st.subheader("🟡 Borderline Observations (Optional)")
+    borderline_notes = detect_borderline_parameters(model1_results)
+
+    if borderline_notes:
+        for note in borderline_notes:
+            st.write(f"• {note}")
+    else:
+        st.write("No borderline observations detected.")
