@@ -52,10 +52,11 @@ CLINICAL_NORMAL_RANGES = {
 
 def validate_parameters(extracted_data: dict) -> dict:
     """
-    Validate extracted parameters for plausibility and unit correctness.
+    Validate extracted parameters using lab-specific reference ranges (GOLD STANDARD).
+    Falls back to hardcoded ranges only if lab ranges are not available.
 
     Args:
-        extracted_data (dict): Output from extraction stage
+        extracted_data (dict): Output from extraction stage with optional reference_range
 
     Returns:
         dict: Validated parameters with flags, warnings, and severity
@@ -65,6 +66,7 @@ def validate_parameters(extracted_data: dict) -> dict:
     for parameter, details in extracted_data.items():
         value = details.get("value")
         unit = details.get("unit")
+        lab_range = details.get("reference_range")  # Lab-specific range (GOLD STANDARD)
 
         param_result = {
             "value": value,
@@ -72,6 +74,7 @@ def validate_parameters(extracted_data: dict) -> dict:
             "valid": True,
             "severity": "Normal",
             "warnings": [],
+            "range_source": "external" if not lab_range else "lab_report"
         }
 
         # Missing value
@@ -86,7 +89,7 @@ def validate_parameters(extracted_data: dict) -> dict:
             param_result["severity"] = "Critical"
             param_result["warnings"].append("Negative value detected")
 
-        # Medical plausibility range check
+        # Medical plausibility range check (always check for critical errors)
         elif parameter in REFERENCE_RANGES:
             low, high = REFERENCE_RANGES[parameter]
 
@@ -95,9 +98,33 @@ def validate_parameters(extracted_data: dict) -> dict:
                 param_result["severity"] = "Critical"
                 param_result["warnings"].append("Value outside plausible range")
         
-        # Clinical normal range classification
-        if parameter in CLINICAL_NORMAL_RANGES and value is not None and value >= 0:
+        # GOLD STANDARD: Use lab-specific reference range if available
+        if lab_range and lab_range.get('source') == 'lab_report' and value is not None and value >= 0:
+            lab_min = lab_range.get('min')
+            lab_max = lab_range.get('max')
+            
+            if lab_min is not None and lab_max is not None:
+                param_result["reference_range"] = {
+                    "min": lab_min,
+                    "max": lab_max,
+                    "unit": lab_range.get('unit')
+                }
+                
+                # Use lab range for classification (GROUND TRUTH)
+                if value < lab_min:
+                    param_result["severity"] = "Low"
+                    param_result["warnings"].append(f"Below lab reference range ({lab_min}-{lab_max})")
+                elif value > lab_max:
+                    param_result["severity"] = "High"
+                    param_result["warnings"].append(f"Above lab reference range ({lab_min}-{lab_max})")
+                elif param_result["severity"] not in ["Critical", "Unknown"]:
+                    param_result["severity"] = "Normal"
+        
+        # FALLBACK: Use static clinical ranges only if lab range not found
+        elif parameter in CLINICAL_NORMAL_RANGES and value is not None and value >= 0:
             clin_low, clin_high = CLINICAL_NORMAL_RANGES[parameter]
+            
+            param_result["warnings"].append("Using external reference ranges (lab range not found)")
             
             if value < clin_low:
                 param_result["severity"] = "Low"
