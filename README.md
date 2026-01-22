@@ -87,15 +87,23 @@ This document records the day-by-day technical progress made during Phase 1 and 
 - Reviewed code for modularity and maintainability  
 - Ensured reproducibility of results  
 
-### January 19 – Phase 2 Final Review and Phase 3 Readiness
-
+### January 19 – Phase 2 Model Expansion and Review
 - Performed final verification of structured extraction accuracy  
-- Cross-checked deliverables against evaluation criteria  
-- Prepared consolidated technical summary for internship review  
+- Cross-checked deliverables against evaluation criteria    
 - Finalised Phase 1 and Phase 2 documentation  
-- Confirmed readiness to proceed to Phase 3 (Medical Reasoning)  
+
+### January 20 – Phase 2 Pattern Recognition Completion
+- Completed metabolic, kidney, thyroid, anemia assessments
+- Improved output formatting
+- Ensured evaluator-friendly outputs
+
+### January 21 – Phase 2 Debugging and Stability Improvements
+- Fixed regex edge cases
+- Improved platelet and unit handling
+- Verified extraction accuracy across reports
 
 ---
+
 
 ## Current Status
 
