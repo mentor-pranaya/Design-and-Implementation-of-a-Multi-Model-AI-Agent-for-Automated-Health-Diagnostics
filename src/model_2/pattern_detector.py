@@ -117,7 +117,7 @@ def detect_kidney_disease_risk(results):  #detect kidney isease based on Creatin
         findings["indicators"].append(f"High Uric Acid: {uric} mg/dl")
 
     if high_count >= 1:
-            findings["pattern"] = "Kidney Function Concren"
+            findings["pattern"] = "Kidney Function Concern"
             findings["confidence"] = round(high_count/3*100,1)
 
             if high_count >= 2:

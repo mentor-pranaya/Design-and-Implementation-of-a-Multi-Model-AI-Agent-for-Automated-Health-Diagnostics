@@ -1,9 +1,3 @@
-"""
-Model 2: Risk Calculator
-Calculates overall health risk score based on detected patterns and parameter values
-"""
-
-
 def calculate_anemia_risk(results): # Calculate anemia risk score (0-100) based on Hemoglobin, RBC, HCT
   
     risk_score = 0
