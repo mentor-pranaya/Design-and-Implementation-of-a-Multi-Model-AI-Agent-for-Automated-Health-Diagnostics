@@ -1,7 +1,7 @@
 import os
 from groq import Groq
 
-client = Groq(api_key="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")
+client = Groq(api_key="groq api")
 
 def contextual_analysis_agent(interpreted_data, patterns, user_context):
     """
