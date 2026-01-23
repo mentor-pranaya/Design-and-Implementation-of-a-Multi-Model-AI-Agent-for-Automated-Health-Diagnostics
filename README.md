@@ -24,15 +24,7 @@ This project implements a Multi-Model AI Agent Architecture for automated health
 
 
 __System Architecture__
-User → GUI → OCR → Data Extraction → Multi-Model AI
-                                 ├─ Model 1: Parameter Interpretation
-                                 ├─ Model 2: Risk + Pattern Recognition
-                                 ├─ Model 3: Contextual Analysis
-                                 ↓
-                           LLM Reasoning Engine
-                                 ↓
-                       Visual Charts + PDF Report
-
+<img width="1398" height="466" alt="image" src="https://github.com/user-attachments/assets/6b6e4b24-a3bc-4cad-ac8c-9e6b81218abd" />
 
 
 <img width="1076" height="1246" alt="image" src="https://github.com/user-attachments/assets/d898c46b-51b9-498d-abea-5b9fd74924bb" />
