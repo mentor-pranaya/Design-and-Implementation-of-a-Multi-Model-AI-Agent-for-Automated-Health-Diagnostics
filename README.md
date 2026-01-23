@@ -26,7 +26,7 @@ This project implements a Multi-Model AI Agent Architecture for automated health
 __System Architecture__
 <img width="1398" height="466" alt="image" src="https://github.com/user-attachments/assets/6b6e4b24-a3bc-4cad-ac8c-9e6b81218abd" />
 
-
+__📁 Folder Structure__
 <img width="1076" height="1246" alt="image" src="https://github.com/user-attachments/assets/d898c46b-51b9-498d-abea-5b9fd74924bb" />
 <img width="816" height="304" alt="image" src="https://github.com/user-attachments/assets/e5f85592-5a67-4cbf-949c-c8f7a4d309e2" />
 
