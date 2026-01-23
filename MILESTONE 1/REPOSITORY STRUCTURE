@@ -1,6 +1,10 @@
 HealthAI/
 ├── app.py                # Main Streamlit Interface
 ├── src/
+│   ├── ... (Extraction files)
+│   └── agents/
+│       ├── pattern_agent.py   # Model 2 (Logic-based)
+│       └── context_agent.py   # Model 3 (LLM-based)
 │   ├── parser.py         # File routing and initial parsing
 │   ├── extractor.py      # OCR and Regex data extraction
 │   ├── validator.py      # Unit standardization and cleaning
