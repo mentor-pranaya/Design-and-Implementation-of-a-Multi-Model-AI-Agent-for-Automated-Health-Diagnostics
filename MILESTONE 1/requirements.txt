@@ -1,3 +1,6 @@
 streamlit
 pymupdf
 pandas
+pdfplumber
+pytesseract
+Pillow
