@@ -1,37 +1,60 @@
 def pattern_recognition_agent(interpreted_data):
     insights = []
+    # Convert list to a searchable dictionary for easy access
+    d = {item['parameter'].lower(): item for item in interpreted_data}
     
-    # Extract values for calculation
-    data_map = {item['parameter']: item['value'] for item in interpreted_data}
-    
-    # 1. Lipid Panel Pattern: TG/HDL Ratio (Metabolic Risk)
-    if 'Triglycerides' in data_map and 'HDL Cholesterol' in data_map:
-        tg_hdl_ratio = round(data_map['Triglycerides'] / data_map['HDL Cholesterol'], 2)
-        if tg_hdl_ratio > 3.0:
+    # --- PATTERN 1: ANEMIA TYPING ---
+    hb = d.get('hemoglobin')
+    mcv = d.get('mcv')
+    if hb and mcv:
+        if hb['status'] == "Low" and mcv['value'] < 80:
             insights.append({
-                "pattern": "Metabolic Syndrome Indicator",
-                "finding": f"High TG/HDL ratio ({tg_hdl_ratio}) suggests increased insulin resistance risk.",
+                "pattern": "Microcytic Anemia",
+                "finding": "Low Hemoglobin combined with low MCV strongly suggests Iron Deficiency.",
+                "severity": "High"
+            })
+        elif hb['status'] == "Low" and mcv['value'] > 100:
+            insights.append({
+                "pattern": "Macrocytic Anemia",
+                "finding": "Low Hemoglobin with high MCV suggests Vitamin B12 or Folate deficiency.",
                 "severity": "High"
             })
 
-    # 2. Kidney Function Pattern: BUN/Creatinine Ratio
-    if 'BUN' in data_map and 'Creatinine' in data_map:
-        ratio = round(data_map['BUN'] / data_map['Creatinine'], 2)
-        if ratio > 20:
+    # --- PATTERN 2: LIVER HEALTH (De Ritis Ratio) ---
+    ast = d.get('ast')
+    alt = d.get('alt')
+    if ast and alt:
+        ratio = ast['value'] / alt['value']
+        if ratio > 2.0 and ast['status'] == "High":
             insights.append({
-                "pattern": "Prerenal Azotemia Pattern",
-                "finding": f"BUN/Creatinine ratio of {ratio} may indicate dehydration or decreased blood flow to kidneys.",
+                "pattern": "Liver Stress Pattern",
+                "finding": f"AST/ALT Ratio is {ratio:.2f}. Values > 2.0 may indicate specific liver stress.",
+                "severity": "Critical"
+            })
+
+    # --- PATTERN 3: KIDNEY & HYDRATION ---
+    bun = d.get('bun')
+    creatinine = d.get('creatinine')
+    albumin = d.get('albumin')
+    if bun and creatinine and albumin:
+        ratio = bun['value'] / creatinine['value']
+        if ratio > 20 and albumin['status'] == "High":
+            insights.append({
+                "pattern": "Dehydration Marker",
+                "finding": "Elevated BUN/Creatinine ratio and High Albumin suggest significant dehydration.",
                 "severity": "Moderate"
             })
 
-    # 3. Cardiovascular Risk (Simplified ASCVD approach)
-    ldl = data_map.get('LDL Cholesterol', 0)
-    hdl = data_map.get('HDL Cholesterol', 0)
-    if ldl > 160 and hdl < 40:
-        insights.append({
-            "pattern": "High Cardiovascular Risk",
-            "finding": "Combined high LDL and low HDL significantly increases plaque buildup risk.",
-            "severity": "Critical"
-        })
-        
+    # --- PATTERN 4: LIPID RATIO (Cardio Risk) ---
+    tg = d.get('triglycerides')
+    hdl = d.get('hdl cholesterol')
+    if tg and hdl:
+        risk_ratio = tg['value'] / hdl['value']
+        if risk_ratio > 3.0:
+            insights.append({
+                "pattern": "Atherogenic Index",
+                "finding": f"TG/HDL ratio is {risk_ratio:.2f}. High ratios correlate with small dense LDL particles.",
+                "severity": "High"
+            })
+
     return insights
