@@ -1,5 +1,8 @@
 REQUIRED_PARAMETERS = {
-
+    # Patient Demographics
+    "Age": ["age"],
+    "Gender": ["sex", "gender"],
+    
     # ---- CBC (Complete Blood Count) ----
     "Hemoglobin": ["hemoglobin", "hb"],
     "RBC": ["rbc", "rec"],
