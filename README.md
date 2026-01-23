@@ -33,44 +33,10 @@ User → GUI → OCR → Data Extraction → Multi-Model AI
                                  ↓
                        Visual Charts + PDF Report
 
-__📁 Folder Structure__
-AI_MULTIMODEL_HEALTH_DIAGNOSTIC_AGENT/
-│
-├── app.py                     # Main GUI application
-├── orchestrator.py            # Coordinates all AI models
-├── llm_engine.py              # LLM reasoning & explanation engine
-├── requirements.txt
-│
-├── assets/                    # GUI images, icons, backgrounds
-│
-├── data/
-│   └── reference_ranges_age_gender.csv
-│
-├── models/
-│   ├── __init__.py
-│   ├── model1_parameter_interpreter.py
-│   ├── model2_risk_pattern.py
-│   └── model3_contextual_analysis.py
-│
-├── ocr/
-│   ├── __init__.py
-│   ├── ocr_reader.py
-│   └── pdf_reader.py
-│
-├── processing/
-│   ├── __init__.py
-│   └── extractor.py
-│
-├── report/
-│   ├── __init__.py
-│   ├── visual_charts.py
-│   └── pdf_report_generator.py
-│
-└── sample_reports/
-    ├── csv/
-    ├── json/
-    └── pdf/
 
+
+<img width="1076" height="1246" alt="image" src="https://github.com/user-attachments/assets/d898c46b-51b9-498d-abea-5b9fd74924bb" />
+<img width="816" height="304" alt="image" src="https://github.com/user-attachments/assets/e5f85592-5a67-4cbf-949c-c8f7a4d309e2" />
 
 
 __AI Models Description__
