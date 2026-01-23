@@ -1,26 +1,26 @@
 29th December 2025 - Introduction to all the members of team.
-30th December 2025 - Introduce about the project we have to worked on.
+30th December 2025 - Introduce about the project we have to worked on, and assigning the MILESTONE 1
 31th December 2025 & 1st January 2026 - Off due to New Year celebration.
 2nd January 2026 - collect the blood reports from different sources in different formats like(.jpg, .jpeg, .pdf, .json, .csv)
-3rd January 2026 & 4th January 2026 - week off
+3rd January 2026 & 4th January 2026 - off
 5th January 2026 - Start working on data extraction process 
-6th January 2026 - created two python program 
-7th January 2026 - 
-8th January 2026 - 
-9th January 2026 - 
-10th January 2026 - 
-11th January 2026 - 
-12th January 2026 - 
-13th January 2026 - 
-14th January 2026 - 
-15th January 2026 - 
-16th January 2026 - 
-17th January 2026 - 
-18th January 2026 - 
-19th January 2026 - 
-20th January 2026 - 
-21th January 2026 - 
-22th January 2026 - 
+6th January 2026 - created parser.py python program 
+7th January 2026 - created extractor.py python program 
+8th January 2026 - created validator.py python program 
+9th January 2026 -  off
+10th January 2026 - created interpreter.py python program
+11th January 2026 - off
+12th January 2026 - uploded all the programs on github marks as completed MILESTONE 1 
+13th January 2026 - off
+14th January 2026 - MILESTONE 2 discussion
+15th January 2026 - Moving on the next milestone in which we have to create pattern recognision system and contextual analysis agent
+16th January 2026 - start working on pattern recognision system
+17th January 2026 - finds some medical ratios from different sources
+18th January 2026 - off
+19th January 2026 - adding these ratios in python program 
+20th January 2026 - starts working on contextual analysis system 
+21th January 2026 - add groq to the contextual analysis system
+22th January 2026 - update the main file app.py interface 
 23th January 2026 - 
 24th January 2026 - 
 25th January 2026 - 
