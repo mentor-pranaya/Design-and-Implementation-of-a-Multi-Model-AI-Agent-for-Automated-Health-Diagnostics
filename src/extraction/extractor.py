@@ -132,11 +132,10 @@ def extract_age(text):
     return None
 
 def extract_gender(text):
-  
+    
     text_lower = text.lower()
     
     # Pattern 1: "age/gender : 54 y 6 m 27 d/f" or "age/gender : 24 y 0 m 0 d /m"
-    # Gender is at the end after "d/"
     pattern1 = r'age\s*/\s*gender\s*:?\s*\d+\s*y.*?d\s*/?\s*([mf])\b'
     match = re.search(pattern1, text_lower)
     if match:
@@ -162,37 +161,36 @@ def extract_gender(text):
         gender_char = match.group(1)
         return "male" if gender_char == "m" else "female"
     
-    # Pattern 5: "age/sex 25/female" or "age/sex: 30/male"
-    pattern5 = r'age\s*/\s*sex\s*:?\s*\d+\s*/?\s*(male|female)'
+    # Pattern 5: "sex female" or "sex male" (NO colon - FIXED!)
+    pattern5 = r'\bsex\s+(male|female)\b'
     match = re.search(pattern5, text_lower)
     if match:
         return match.group(1)
     
-    # Pattern 6: "age/sex 25/f" (short form)
-    pattern6 = r'age\s*/\s*sex\s*:?\s*\d+\s*/?\s*([mf])\b'
+    # Pattern 6: "sex: female" or "sex : male" (WITH colon)
+    pattern6 = r'\bsex\s*:\s*(male|female)\b'
     match = re.search(pattern6, text_lower)
     if match:
-        gender_char = match.group(1)
-        return "male" if gender_char == "m" else "female"
+        return match.group(1)
     
-    # Pattern 7: "sex female" or "sex: female" or "sex : male"
-    pattern7 = r'\bsex\s*:\s*(male|female)\b'
+    # Pattern 7: "gender female" or "gender: male"
+    pattern7 = r'gender\s*:?\s*(male|female)'
     match = re.search(pattern7, text_lower)
     if match:
         return match.group(1)
     
-    # Pattern 8: "gender female" or "gender: male"
-    pattern8 = r'gender\s*:?\s*(male|female)'
+    # Pattern 8: "sex m" or "sex f" or "sex: m" (short form)
+    pattern8 = r'\bsex\s*:?\s*([mf])\b'
     match = re.search(pattern8, text_lower)
-    if match:
-        return match.group(1)
-    
-    # Pattern 9: "sex m" or "sex: f" (short form)
-    pattern9 = r'\bsex\s*:?\s*([mf])\b'
-    match = re.search(pattern9, text_lower)
     if match:
         gender_char = match.group(1)
         return "male" if gender_char == "m" else "female"
+    
+    # Pattern 9: Standalone "male" or "female" near age info
+    pattern9 = r'age\s*.*?\d+.*?(male|female)'
+    match = re.search(pattern9, text_lower)
+    if match:
+        return match.group(1)
     
     return None
 

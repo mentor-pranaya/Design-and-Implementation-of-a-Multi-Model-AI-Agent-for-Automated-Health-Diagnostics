@@ -1,0 +1,1094 @@
+{
+    "metadata": {
+        "version": "2.0",
+        "last_updated": "2024-01-27",
+        "source": "WHO, ICSH, and Standard Medical Laboratory References",
+        "notes": "Age groups: neonate (0-1mo), infant (1mo-1yr), child (1-12yr), teenager (13-17yr), adult (18-60yr), senior (60+yr)"
+    },
+
+    "parameters": {
+        "Hemoglobin": {
+            "unit": "g/dl",
+            "description": "Oxygen-carrying protein in red blood cells",
+            "general": {"min": 12.0, "max": 17.0},
+            "male": {
+                "neonate": {"min": 14.0, "max": 24.0},
+                "infant": {"min": 10.0, "max": 15.0},
+                "child": {"min": 11.5, "max": 14.5},
+                "teenager": {"min": 13.0, "max": 16.0},
+                "adult": {"min": 13.5, "max": 17.5},
+                "senior": {"min": 12.5, "max": 17.0}
+            },
+            "female": {
+                "neonate": {"min": 14.0, "max": 24.0},
+                "infant": {"min": 10.0, "max": 15.0},
+                "child": {"min": 11.5, "max": 14.5},
+                "teenager": {"min": 12.0, "max": 15.0},
+                "adult": {"min": 12.0, "max": 15.5},
+                "senior": {"min": 11.5, "max": 15.0},
+                "pregnant": {"min": 11.0, "max": 14.0}
+            }
+        },
+
+        "RBC": {
+            "unit": "10^6/uL",
+            "description": "Red Blood Cell count",
+            "general": {"min": 4.0, "max": 5.5},
+            "male": {
+                "neonate": {"min": 4.0, "max": 6.6},
+                "infant": {"min": 3.8, "max": 5.4},
+                "child": {"min": 4.0, "max": 5.2},
+                "teenager": {"min": 4.5, "max": 5.5},
+                "adult": {"min": 4.5, "max": 5.5},
+                "senior": {"min": 4.2, "max": 5.4}
+            },
+            "female": {
+                "neonate": {"min": 4.0, "max": 6.6},
+                "infant": {"min": 3.8, "max": 5.4},
+                "child": {"min": 4.0, "max": 5.2},
+                "teenager": {"min": 4.0, "max": 5.0},
+                "adult": {"min": 4.0, "max": 5.0},
+                "senior": {"min": 3.8, "max": 5.0},
+                "pregnant": {"min": 3.5, "max": 5.0}
+            }
+        },
+
+        "WBC": {
+            "unit": "10^3/uL",
+            "description": "White Blood Cell count - immune cells",
+            "general": {"min": 4.5, "max": 11.0},
+            "male": {
+                "neonate": {"min": 9.0, "max": 30.0},
+                "infant": {"min": 6.0, "max": 17.5},
+                "child": {"min": 5.0, "max": 14.5},
+                "teenager": {"min": 4.5, "max": 13.0},
+                "adult": {"min": 4.5, "max": 11.0},
+                "senior": {"min": 4.0, "max": 10.5}
+            },
+            "female": {
+                "neonate": {"min": 9.0, "max": 30.0},
+                "infant": {"min": 6.0, "max": 17.5},
+                "child": {"min": 5.0, "max": 14.5},
+                "teenager": {"min": 4.5, "max": 13.0},
+                "adult": {"min": 4.5, "max": 11.0},
+                "senior": {"min": 4.0, "max": 10.5},
+                "pregnant": {"min": 6.0, "max": 16.0}
+            }
+        },
+
+        "Platelet": {
+            "unit": "10^3/uL",
+            "description": "Platelets - blood clotting cells",
+            "general": {"min": 150.0, "max": 450.0},
+            "male": {
+                "neonate": {"min": 150.0, "max": 450.0},
+                "infant": {"min": 200.0, "max": 550.0},
+                "child": {"min": 150.0, "max": 450.0},
+                "teenager": {"min": 150.0, "max": 400.0},
+                "adult": {"min": 150.0, "max": 400.0},
+                "senior": {"min": 140.0, "max": 400.0}
+            },
+            "female": {
+                "neonate": {"min": 150.0, "max": 450.0},
+                "infant": {"min": 200.0, "max": 550.0},
+                "child": {"min": 150.0, "max": 450.0},
+                "teenager": {"min": 150.0, "max": 450.0},
+                "adult": {"min": 150.0, "max": 450.0},
+                "senior": {"min": 140.0, "max": 400.0},
+                "pregnant": {"min": 150.0, "max": 400.0}
+            }
+        },
+
+        "HCT": {
+            "unit": "%",
+            "description": "Hematocrit - percentage of blood volume occupied by RBCs",
+            "general": {"min": 36.0, "max": 50.0},
+            "male": {
+                "neonate": {"min": 45.0, "max": 67.0},
+                "infant": {"min": 30.0, "max": 40.0},
+                "child": {"min": 35.0, "max": 45.0},
+                "teenager": {"min": 38.0, "max": 50.0},
+                "adult": {"min": 40.0, "max": 54.0},
+                "senior": {"min": 38.0, "max": 52.0}
+            },
+            "female": {
+                "neonate": {"min": 45.0, "max": 67.0},
+                "infant": {"min": 30.0, "max": 40.0},
+                "child": {"min": 35.0, "max": 45.0},
+                "teenager": {"min": 36.0, "max": 44.0},
+                "adult": {"min": 36.0, "max": 48.0},
+                "senior": {"min": 35.0, "max": 46.0},
+                "pregnant": {"min": 33.0, "max": 44.0}
+            }
+        },
+
+        "MCV": {
+            "unit": "fl",
+            "description": "Mean Corpuscular Volume - average RBC size",
+            "general": {"min": 80.0, "max": 100.0},
+            "male": {
+                "neonate": {"min": 95.0, "max": 121.0},
+                "infant": {"min": 70.0, "max": 86.0},
+                "child": {"min": 75.0, "max": 87.0},
+                "teenager": {"min": 78.0, "max": 95.0},
+                "adult": {"min": 80.0, "max": 100.0},
+                "senior": {"min": 80.0, "max": 100.0}
+            },
+            "female": {
+                "neonate": {"min": 95.0, "max": 121.0},
+                "infant": {"min": 70.0, "max": 86.0},
+                "child": {"min": 75.0, "max": 87.0},
+                "teenager": {"min": 78.0, "max": 95.0},
+                "adult": {"min": 80.0, "max": 100.0},
+                "senior": {"min": 80.0, "max": 100.0},
+                "pregnant": {"min": 80.0, "max": 100.0}
+            }
+        },
+
+        "MCH": {
+            "unit": "pg",
+            "description": "Mean Corpuscular Hemoglobin - average hemoglobin per RBC",
+            "general": {"min": 27.0, "max": 32.0},
+            "male": {
+                "neonate": {"min": 31.0, "max": 37.0},
+                "infant": {"min": 24.0, "max": 30.0},
+                "child": {"min": 25.0, "max": 31.0},
+                "teenager": {"min": 26.0, "max": 32.0},
+                "adult": {"min": 27.0, "max": 32.0},
+                "senior": {"min": 27.0, "max": 33.0}
+            },
+            "female": {
+                "neonate": {"min": 31.0, "max": 37.0},
+                "infant": {"min": 24.0, "max": 30.0},
+                "child": {"min": 25.0, "max": 31.0},
+                "teenager": {"min": 26.0, "max": 32.0},
+                "adult": {"min": 27.0, "max": 32.0},
+                "senior": {"min": 27.0, "max": 33.0},
+                "pregnant": {"min": 27.0, "max": 32.0}
+            }
+        },
+
+        "MCHC": {
+            "unit": "g/dl",
+            "description": "Mean Corpuscular Hemoglobin Concentration",
+            "general": {"min": 32.0, "max": 36.0},
+            "male": {
+                "neonate": {"min": 30.0, "max": 36.0},
+                "infant": {"min": 30.0, "max": 36.0},
+                "child": {"min": 32.0, "max": 36.0},
+                "teenager": {"min": 32.0, "max": 36.0},
+                "adult": {"min": 32.0, "max": 36.0},
+                "senior": {"min": 32.0, "max": 36.0}
+            },
+            "female": {
+                "neonate": {"min": 30.0, "max": 36.0},
+                "infant": {"min": 30.0, "max": 36.0},
+                "child": {"min": 32.0, "max": 36.0},
+                "teenager": {"min": 32.0, "max": 36.0},
+                "adult": {"min": 32.0, "max": 36.0},
+                "senior": {"min": 32.0, "max": 36.0},
+                "pregnant": {"min": 32.0, "max": 36.0}
+            }
+        },
+
+        "RDW-CV": {
+            "unit": "%",
+            "description": "Red Cell Distribution Width - Coefficient of Variation",
+            "general": {"min": 11.5, "max": 14.5},
+            "male": {
+                "child": {"min": 11.5, "max": 14.5},
+                "teenager": {"min": 11.5, "max": 14.5},
+                "adult": {"min": 11.5, "max": 14.5},
+                "senior": {"min": 11.5, "max": 15.5}
+            },
+            "female": {
+                "child": {"min": 11.5, "max": 14.5},
+                "teenager": {"min": 11.5, "max": 14.5},
+                "adult": {"min": 11.5, "max": 14.5},
+                "senior": {"min": 11.5, "max": 15.5},
+                "pregnant": {"min": 11.5, "max": 16.0}
+            }
+        },
+
+        "RDW-SD": {
+            "unit": "fl",
+            "description": "Red Cell Distribution Width - Standard Deviation",
+            "general": {"min": 35.0, "max": 56.0},
+            "male": {
+                "child": {"min": 35.0, "max": 47.0},
+                "teenager": {"min": 35.0, "max": 52.0},
+                "adult": {"min": 35.0, "max": 56.0},
+                "senior": {"min": 35.0, "max": 58.0}
+            },
+            "female": {
+                "child": {"min": 35.0, "max": 47.0},
+                "teenager": {"min": 35.0, "max": 52.0},
+                "adult": {"min": 35.0, "max": 56.0},
+                "senior": {"min": 35.0, "max": 58.0},
+                "pregnant": {"min": 35.0, "max": 60.0}
+            }
+        },
+
+        "Creatinine": {
+            "unit": "mg/dl",
+            "description": "Kidney function marker - waste product from muscle metabolism",
+            "general": {"min": 0.7, "max": 1.3},
+            "male": {
+                "neonate": {"min": 0.2, "max": 0.9},
+                "infant": {"min": 0.2, "max": 0.4},
+                "child": {"min": 0.3, "max": 0.7},
+                "teenager": {"min": 0.5, "max": 1.0},
+                "adult": {"min": 0.7, "max": 1.3},
+                "senior": {"min": 0.7, "max": 1.4}
+            },
+            "female": {
+                "neonate": {"min": 0.2, "max": 0.9},
+                "infant": {"min": 0.2, "max": 0.4},
+                "child": {"min": 0.3, "max": 0.7},
+                "teenager": {"min": 0.5, "max": 1.0},
+                "adult": {"min": 0.6, "max": 1.1},
+                "senior": {"min": 0.6, "max": 1.2},
+                "pregnant": {"min": 0.4, "max": 0.9}
+            }
+        },
+
+        "Urea": {
+            "unit": "mg/dl",
+            "description": "Kidney function marker - waste product from protein metabolism",
+            "general": {"min": 13.0, "max": 43.0},
+            "male": {
+                "neonate": {"min": 3.0, "max": 25.0},
+                "infant": {"min": 5.0, "max": 18.0},
+                "child": {"min": 7.0, "max": 20.0},
+                "teenager": {"min": 8.0, "max": 23.0},
+                "adult": {"min": 13.0, "max": 43.0},
+                "senior": {"min": 15.0, "max": 45.0}
+            },
+            "female": {
+                "neonate": {"min": 3.0, "max": 25.0},
+                "infant": {"min": 5.0, "max": 18.0},
+                "child": {"min": 7.0, "max": 20.0},
+                "teenager": {"min": 8.0, "max": 23.0},
+                "adult": {"min": 10.0, "max": 40.0},
+                "senior": {"min": 12.0, "max": 42.0},
+                "pregnant": {"min": 7.0, "max": 35.0}
+            }
+        },
+
+        "Uric Acid": {
+            "unit": "mg/dl",
+            "description": "Waste product from purine metabolism - gout indicator",
+            "general": {"min": 3.5, "max": 7.2},
+            "male": {
+                "child": {"min": 2.0, "max": 5.5},
+                "teenager": {"min": 3.0, "max": 6.5},
+                "adult": {"min": 3.5, "max": 7.2},
+                "senior": {"min": 3.5, "max": 8.0}
+            },
+            "female": {
+                "child": {"min": 2.0, "max": 5.5},
+                "teenager": {"min": 2.5, "max": 6.0},
+                "adult": {"min": 2.5, "max": 6.2},
+                "senior": {"min": 3.0, "max": 7.0},
+                "pregnant": {"min": 2.5, "max": 5.5}
+            }
+        },
+
+        "ESR": {
+            "unit": "mm/hr",
+            "description": "Erythrocyte Sedimentation Rate - inflammation marker",
+            "general": {"min": 0, "max": 20},
+            "male": {
+                "child": {"min": 0, "max": 10},
+                "teenager": {"min": 0, "max": 10},
+                "adult": {"min": 0, "max": 15},
+                "senior": {"min": 0, "max": 20}
+            },
+            "female": {
+                "child": {"min": 0, "max": 10},
+                "teenager": {"min": 0, "max": 10},
+                "adult": {"min": 0, "max": 20},
+                "senior": {"min": 0, "max": 30},
+                "pregnant": {"min": 0, "max": 70}
+            }
+        },
+
+        "Neutrophils": {
+            "unit": "%",
+            "description": "Type of WBC - fights bacterial infections",
+            "general": {"min": 40.0, "max": 70.0},
+            "male": {
+                "neonate": {"min": 30.0, "max": 70.0},
+                "infant": {"min": 20.0, "max": 50.0},
+                "child": {"min": 35.0, "max": 65.0},
+                "teenager": {"min": 40.0, "max": 70.0},
+                "adult": {"min": 40.0, "max": 70.0},
+                "senior": {"min": 40.0, "max": 70.0}
+            },
+            "female": {
+                "neonate": {"min": 30.0, "max": 70.0},
+                "infant": {"min": 20.0, "max": 50.0},
+                "child": {"min": 35.0, "max": 65.0},
+                "teenager": {"min": 40.0, "max": 70.0},
+                "adult": {"min": 40.0, "max": 70.0},
+                "senior": {"min": 40.0, "max": 70.0},
+                "pregnant": {"min": 40.0, "max": 75.0}
+            }
+        },
+
+        "Lymphocytes": {
+            "unit": "%",
+            "description": "Type of WBC - fights viral infections",
+            "general": {"min": 20.0, "max": 45.0},
+            "male": {
+                "neonate": {"min": 20.0, "max": 50.0},
+                "infant": {"min": 40.0, "max": 70.0},
+                "child": {"min": 30.0, "max": 55.0},
+                "teenager": {"min": 20.0, "max": 45.0},
+                "adult": {"min": 20.0, "max": 45.0},
+                "senior": {"min": 20.0, "max": 45.0}
+            },
+            "female": {
+                "neonate": {"min": 20.0, "max": 50.0},
+                "infant": {"min": 40.0, "max": 70.0},
+                "child": {"min": 30.0, "max": 55.0},
+                "teenager": {"min": 20.0, "max": 45.0},
+                "adult": {"min": 20.0, "max": 45.0},
+                "senior": {"min": 20.0, "max": 45.0},
+                "pregnant": {"min": 15.0, "max": 40.0}
+            }
+        },
+
+        "Monocytes": {
+            "unit": "%",
+            "description": "Type of WBC - cleans up dead cells",
+            "general": {"min": 2.0, "max": 10.0},
+            "male": {
+                "child": {"min": 2.0, "max": 10.0},
+                "teenager": {"min": 2.0, "max": 10.0},
+                "adult": {"min": 2.0, "max": 10.0},
+                "senior": {"min": 2.0, "max": 10.0}
+            },
+            "female": {
+                "child": {"min": 2.0, "max": 10.0},
+                "teenager": {"min": 2.0, "max": 10.0},
+                "adult": {"min": 2.0, "max": 10.0},
+                "senior": {"min": 2.0, "max": 10.0},
+                "pregnant": {"min": 2.0, "max": 10.0}
+            }
+        },
+
+        "Eosinophils": {
+            "unit": "%",
+            "description": "Type of WBC - fights parasites and allergies",
+            "general": {"min": 1.0, "max": 6.0},
+            "male": {
+                "child": {"min": 1.0, "max": 6.0},
+                "teenager": {"min": 1.0, "max": 6.0},
+                "adult": {"min": 1.0, "max": 6.0},
+                "senior": {"min": 1.0, "max": 6.0}
+            },
+            "female": {
+                "child": {"min": 1.0, "max": 6.0},
+                "teenager": {"min": 1.0, "max": 6.0},
+                "adult": {"min": 1.0, "max": 6.0},
+                "senior": {"min": 1.0, "max": 6.0},
+                "pregnant": {"min": 1.0, "max": 6.0}
+            }
+        },
+
+        "Basophils": {
+            "unit": "%",
+            "description": "Type of WBC - involved in allergic reactions",
+            "general": {"min": 0.0, "max": 2.0},
+            "male": {
+                "child": {"min": 0.0, "max": 2.0},
+                "teenager": {"min": 0.0, "max": 2.0},
+                "adult": {"min": 0.0, "max": 2.0},
+                "senior": {"min": 0.0, "max": 2.0}
+            },
+            "female": {
+                "child": {"min": 0.0, "max": 2.0},
+                "teenager": {"min": 0.0, "max": 2.0},
+                "adult": {"min": 0.0, "max": 2.0},
+                "senior": {"min": 0.0, "max": 2.0},
+                "pregnant": {"min": 0.0, "max": 2.0}
+            }
+        },
+
+        "Glucose Fasting": {
+            "unit": "mg/dl",
+            "description": "Blood sugar level after fasting - diabetes indicator",
+            "general": {"min": 70.0, "max": 100.0},
+            "male": {
+                "child": {"min": 60.0, "max": 100.0},
+                "teenager": {"min": 70.0, "max": 100.0},
+                "adult": {"min": 70.0, "max": 100.0},
+                "senior": {"min": 70.0, "max": 110.0}
+            },
+            "female": {
+                "child": {"min": 60.0, "max": 100.0},
+                "teenager": {"min": 70.0, "max": 100.0},
+                "adult": {"min": 70.0, "max": 100.0},
+                "senior": {"min": 70.0, "max": 110.0},
+                "pregnant": {"min": 70.0, "max": 95.0}
+            }
+        },
+
+        "Glucose PP": {
+            "unit": "mg/dl",
+            "description": "Blood sugar 2 hours after meal",
+            "general": {"min": 70.0, "max": 140.0},
+            "male": {
+                "child": {"min": 70.0, "max": 140.0},
+                "teenager": {"min": 70.0, "max": 140.0},
+                "adult": {"min": 70.0, "max": 140.0},
+                "senior": {"min": 70.0, "max": 160.0}
+            },
+            "female": {
+                "child": {"min": 70.0, "max": 140.0},
+                "teenager": {"min": 70.0, "max": 140.0},
+                "adult": {"min": 70.0, "max": 140.0},
+                "senior": {"min": 70.0, "max": 160.0},
+                "pregnant": {"min": 70.0, "max": 120.0}
+            }
+        },
+
+        "HbA1c": {
+            "unit": "%",
+            "description": "Glycated hemoglobin - 3-month average blood sugar",
+            "general": {"min": 4.0, "max": 5.6},
+            "male": {
+                "adult": {"min": 4.0, "max": 5.6},
+                "senior": {"min": 4.0, "max": 6.0}
+            },
+            "female": {
+                "adult": {"min": 4.0, "max": 5.6},
+                "senior": {"min": 4.0, "max": 6.0},
+                "pregnant": {"min": 4.0, "max": 5.5}
+            }
+        },
+
+        "Total Cholesterol": {
+            "unit": "mg/dl",
+            "description": "Total cholesterol in blood",
+            "general": {"min": 0.0, "max": 200.0},
+            "male": {
+                "child": {"min": 0.0, "max": 170.0},
+                "teenager": {"min": 0.0, "max": 170.0},
+                "adult": {"min": 0.0, "max": 200.0},
+                "senior": {"min": 0.0, "max": 200.0}
+            },
+            "female": {
+                "child": {"min": 0.0, "max": 170.0},
+                "teenager": {"min": 0.0, "max": 170.0},
+                "adult": {"min": 0.0, "max": 200.0},
+                "senior": {"min": 0.0, "max": 200.0},
+                "pregnant": {"min": 0.0, "max": 250.0}
+            }
+        },
+
+        "HDL": {
+            "unit": "mg/dl",
+            "description": "High-Density Lipoprotein - good cholesterol",
+            "general": {"min": 40.0, "max": 100.0},
+            "male": {
+                "child": {"min": 45.0, "max": 75.0},
+                "teenager": {"min": 40.0, "max": 75.0},
+                "adult": {"min": 40.0, "max": 60.0},
+                "senior": {"min": 40.0, "max": 60.0}
+            },
+            "female": {
+                "child": {"min": 45.0, "max": 75.0},
+                "teenager": {"min": 40.0, "max": 75.0},
+                "adult": {"min": 50.0, "max": 80.0},
+                "senior": {"min": 50.0, "max": 80.0},
+                "pregnant": {"min": 40.0, "max": 90.0}
+            }
+        },
+
+        "LDL": {
+            "unit": "mg/dl",
+            "description": "Low-Density Lipoprotein - bad cholesterol",
+            "general": {"min": 0.0, "max": 100.0},
+            "male": {
+                "child": {"min": 0.0, "max": 110.0},
+                "teenager": {"min": 0.0, "max": 110.0},
+                "adult": {"min": 0.0, "max": 100.0},
+                "senior": {"min": 0.0, "max": 100.0}
+            },
+            "female": {
+                "child": {"min": 0.0, "max": 110.0},
+                "teenager": {"min": 0.0, "max": 110.0},
+                "adult": {"min": 0.0, "max": 100.0},
+                "senior": {"min": 0.0, "max": 100.0},
+                "pregnant": {"min": 0.0, "max": 150.0}
+            }
+        },
+
+        "Triglycerides": {
+            "unit": "mg/dl",
+            "description": "Type of fat in blood",
+            "general": {"min": 0.0, "max": 150.0},
+            "male": {
+                "child": {"min": 0.0, "max": 100.0},
+                "teenager": {"min": 0.0, "max": 130.0},
+                "adult": {"min": 0.0, "max": 150.0},
+                "senior": {"min": 0.0, "max": 150.0}
+            },
+            "female": {
+                "child": {"min": 0.0, "max": 100.0},
+                "teenager": {"min": 0.0, "max": 130.0},
+                "adult": {"min": 0.0, "max": 150.0},
+                "senior": {"min": 0.0, "max": 150.0},
+                "pregnant": {"min": 0.0, "max": 250.0}
+            }
+        },
+
+        "VLDL": {
+            "unit": "mg/dl",
+            "description": "Very Low-Density Lipoprotein",
+            "general": {"min": 5.0, "max": 40.0},
+            "male": {
+                "adult": {"min": 5.0, "max": 40.0},
+                "senior": {"min": 5.0, "max": 40.0}
+            },
+            "female": {
+                "adult": {"min": 5.0, "max": 40.0},
+                "senior": {"min": 5.0, "max": 40.0}
+            }
+        },
+
+        "Total Bilirubin": {
+            "unit": "mg/dl",
+            "description": "Liver function marker",
+            "general": {"min": 0.1, "max": 1.2},
+            "male": {
+                "neonate": {"min": 1.0, "max": 12.0},
+                "infant": {"min": 0.1, "max": 1.0},
+                "child": {"min": 0.1, "max": 1.0},
+                "teenager": {"min": 0.1, "max": 1.2},
+                "adult": {"min": 0.1, "max": 1.2},
+                "senior": {"min": 0.1, "max": 1.2}
+            },
+            "female": {
+                "neonate": {"min": 1.0, "max": 12.0},
+                "infant": {"min": 0.1, "max": 1.0},
+                "child": {"min": 0.1, "max": 1.0},
+                "teenager": {"min": 0.1, "max": 1.2},
+                "adult": {"min": 0.1, "max": 1.2},
+                "senior": {"min": 0.1, "max": 1.2},
+                "pregnant": {"min": 0.1, "max": 1.0}
+            }
+        },
+
+        "Direct Bilirubin": {
+            "unit": "mg/dl",
+            "description": "Conjugated bilirubin",
+            "general": {"min": 0.0, "max": 0.3},
+            "male": {
+                "adult": {"min": 0.0, "max": 0.3},
+                "senior": {"min": 0.0, "max": 0.3}
+            },
+            "female": {
+                "adult": {"min": 0.0, "max": 0.3},
+                "senior": {"min": 0.0, "max": 0.3}
+            }
+        },
+
+        "SGOT": {
+            "unit": "U/L",
+            "description": "Liver enzyme AST",
+            "general": {"min": 0.0, "max": 40.0},
+            "male": {
+                "child": {"min": 0.0, "max": 50.0},
+                "teenager": {"min": 0.0, "max": 45.0},
+                "adult": {"min": 0.0, "max": 40.0},
+                "senior": {"min": 0.0, "max": 45.0}
+            },
+            "female": {
+                "child": {"min": 0.0, "max": 50.0},
+                "teenager": {"min": 0.0, "max": 35.0},
+                "adult": {"min": 0.0, "max": 32.0},
+                "senior": {"min": 0.0, "max": 35.0},
+                "pregnant": {"min": 0.0, "max": 30.0}
+            }
+        },
+
+        "SGPT": {
+            "unit": "U/L",
+            "description": "Liver enzyme ALT",
+            "general": {"min": 0.0, "max": 40.0},
+            "male": {
+                "child": {"min": 0.0, "max": 45.0},
+                "teenager": {"min": 0.0, "max": 45.0},
+                "adult": {"min": 0.0, "max": 41.0},
+                "senior": {"min": 0.0, "max": 45.0}
+            },
+            "female": {
+                "child": {"min": 0.0, "max": 45.0},
+                "teenager": {"min": 0.0, "max": 35.0},
+                "adult": {"min": 0.0, "max": 33.0},
+                "senior": {"min": 0.0, "max": 35.0},
+                "pregnant": {"min": 0.0, "max": 30.0}
+            }
+        },
+
+        "Alkaline Phosphatase": {
+            "unit": "U/L",
+            "description": "Enzyme found in liver and bones",
+            "general": {"min": 30.0, "max": 120.0},
+            "male": {
+                "child": {"min": 100.0, "max": 400.0},
+                "teenager": {"min": 50.0, "max": 400.0},
+                "adult": {"min": 30.0, "max": 120.0},
+                "senior": {"min": 30.0, "max": 120.0}
+            },
+            "female": {
+                "child": {"min": 100.0, "max": 400.0},
+                "teenager": {"min": 50.0, "max": 300.0},
+                "adult": {"min": 30.0, "max": 120.0},
+                "senior": {"min": 30.0, "max": 120.0},
+                "pregnant": {"min": 30.0, "max": 200.0}
+            }
+        },
+
+        "Total Protein": {
+            "unit": "g/dl",
+            "description": "Total protein in blood",
+            "general": {"min": 6.0, "max": 8.3},
+            "male": {
+                "child": {"min": 5.5, "max": 8.0},
+                "teenager": {"min": 6.0, "max": 8.0},
+                "adult": {"min": 6.0, "max": 8.3},
+                "senior": {"min": 6.0, "max": 8.0}
+            },
+            "female": {
+                "child": {"min": 5.5, "max": 8.0},
+                "teenager": {"min": 6.0, "max": 8.0},
+                "adult": {"min": 6.0, "max": 8.3},
+                "senior": {"min": 6.0, "max": 8.0},
+                "pregnant": {"min": 5.5, "max": 8.0}
+            }
+        },
+
+        "Albumin": {
+            "unit": "g/dl",
+            "description": "Main protein in blood plasma",
+            "general": {"min": 3.5, "max": 5.0},
+            "male": {
+                "child": {"min": 3.5, "max": 5.5},
+                "teenager": {"min": 3.5, "max": 5.0},
+                "adult": {"min": 3.5, "max": 5.0},
+                "senior": {"min": 3.2, "max": 4.8}
+            },
+            "female": {
+                "child": {"min": 3.5, "max": 5.5},
+                "teenager": {"min": 3.5, "max": 5.0},
+                "adult": {"min": 3.5, "max": 5.0},
+                "senior": {"min": 3.2, "max": 4.8},
+                "pregnant": {"min": 3.0, "max": 4.5}
+            }
+        },
+
+        "Globulin": {
+            "unit": "g/dl",
+            "description": "Group of proteins in blood",
+            "general": {"min": 2.0, "max": 3.5},
+            "male": {
+                "adult": {"min": 2.0, "max": 3.5},
+                "senior": {"min": 2.0, "max": 3.5}
+            },
+            "female": {
+                "adult": {"min": 2.0, "max": 3.5},
+                "senior": {"min": 2.0, "max": 3.5}
+            }
+        },
+
+        "Sodium": {
+            "unit": "mEq/L",
+            "description": "Electrolyte - fluid balance",
+            "general": {"min": 136.0, "max": 145.0},
+            "male": {
+                "neonate": {"min": 134.0, "max": 144.0},
+                "infant": {"min": 134.0, "max": 144.0},
+                "child": {"min": 136.0, "max": 145.0},
+                "teenager": {"min": 136.0, "max": 145.0},
+                "adult": {"min": 136.0, "max": 145.0},
+                "senior": {"min": 136.0, "max": 145.0}
+            },
+            "female": {
+                "neonate": {"min": 134.0, "max": 144.0},
+                "infant": {"min": 134.0, "max": 144.0},
+                "child": {"min": 136.0, "max": 145.0},
+                "teenager": {"min": 136.0, "max": 145.0},
+                "adult": {"min": 136.0, "max": 145.0},
+                "senior": {"min": 136.0, "max": 145.0},
+                "pregnant": {"min": 130.0, "max": 142.0}
+            }
+        },
+
+        "Potassium": {
+            "unit": "mEq/L",
+            "description": "Electrolyte - heart and muscle function",
+            "general": {"min": 3.5, "max": 5.1},
+            "male": {
+                "neonate": {"min": 3.7, "max": 5.9},
+                "infant": {"min": 3.5, "max": 6.0},
+                "child": {"min": 3.5, "max": 5.5},
+                "teenager": {"min": 3.5, "max": 5.0},
+                "adult": {"min": 3.5, "max": 5.1},
+                "senior": {"min": 3.5, "max": 5.3}
+            },
+            "female": {
+                "neonate": {"min": 3.7, "max": 5.9},
+                "infant": {"min": 3.5, "max": 6.0},
+                "child": {"min": 3.5, "max": 5.5},
+                "teenager": {"min": 3.5, "max": 5.0},
+                "adult": {"min": 3.5, "max": 5.1},
+                "senior": {"min": 3.5, "max": 5.3},
+                "pregnant": {"min": 3.3, "max": 5.0}
+            }
+        },
+
+        "Chloride": {
+            "unit": "mEq/L",
+            "description": "Electrolyte - fluid balance",
+            "general": {"min": 98.0, "max": 107.0},
+            "male": {
+                "child": {"min": 98.0, "max": 106.0},
+                "teenager": {"min": 98.0, "max": 106.0},
+                "adult": {"min": 98.0, "max": 107.0},
+                "senior": {"min": 98.0, "max": 107.0}
+            },
+            "female": {
+                "child": {"min": 98.0, "max": 106.0},
+                "teenager": {"min": 98.0, "max": 106.0},
+                "adult": {"min": 98.0, "max": 107.0},
+                "senior": {"min": 98.0, "max": 107.0},
+                "pregnant": {"min": 98.0, "max": 107.0}
+            }
+        },
+
+        "Calcium": {
+            "unit": "mg/dl",
+            "description": "Essential for bones, muscles, nerves",
+            "general": {"min": 8.5, "max": 10.5},
+            "male": {
+                "neonate": {"min": 7.0, "max": 12.0},
+                "infant": {"min": 8.5, "max": 11.0},
+                "child": {"min": 8.5, "max": 10.5},
+                "teenager": {"min": 8.5, "max": 10.5},
+                "adult": {"min": 8.5, "max": 10.5},
+                "senior": {"min": 8.5, "max": 10.5}
+            },
+            "female": {
+                "neonate": {"min": 7.0, "max": 12.0},
+                "infant": {"min": 8.5, "max": 11.0},
+                "child": {"min": 8.5, "max": 10.5},
+                "teenager": {"min": 8.5, "max": 10.5},
+                "adult": {"min": 8.5, "max": 10.5},
+                "senior": {"min": 8.5, "max": 10.5},
+                "pregnant": {"min": 8.0, "max": 10.0}
+            }
+        },
+
+        "Phosphorus": {
+            "unit": "mg/dl",
+            "description": "Essential for bones and energy",
+            "general": {"min": 2.5, "max": 4.5},
+            "male": {
+                "neonate": {"min": 4.0, "max": 7.0},
+                "infant": {"min": 4.5, "max": 6.5},
+                "child": {"min": 4.0, "max": 6.0},
+                "teenager": {"min": 3.5, "max": 5.5},
+                "adult": {"min": 2.5, "max": 4.5},
+                "senior": {"min": 2.5, "max": 4.5}
+            },
+            "female": {
+                "neonate": {"min": 4.0, "max": 7.0},
+                "infant": {"min": 4.5, "max": 6.5},
+                "child": {"min": 4.0, "max": 6.0},
+                "teenager": {"min": 3.5, "max": 5.5},
+                "adult": {"min": 2.5, "max": 4.5},
+                "senior": {"min": 2.5, "max": 4.5},
+                "pregnant": {"min": 2.5, "max": 4.5}
+            }
+        },
+
+        "Iron": {
+            "unit": "mcg/dl",
+            "description": "Essential for hemoglobin production",
+            "general": {"min": 60.0, "max": 170.0},
+            "male": {
+                "child": {"min": 50.0, "max": 120.0},
+                "teenager": {"min": 60.0, "max": 160.0},
+                "adult": {"min": 65.0, "max": 175.0},
+                "senior": {"min": 60.0, "max": 165.0}
+            },
+            "female": {
+                "child": {"min": 50.0, "max": 120.0},
+                "teenager": {"min": 50.0, "max": 150.0},
+                "adult": {"min": 50.0, "max": 170.0},
+                "senior": {"min": 50.0, "max": 160.0},
+                "pregnant": {"min": 40.0, "max": 150.0}
+            }
+        },
+
+        "TIBC": {
+            "unit": "mcg/dl",
+            "description": "Total Iron Binding Capacity",
+            "general": {"min": 250.0, "max": 400.0},
+            "male": {
+                "adult": {"min": 250.0, "max": 400.0},
+                "senior": {"min": 250.0, "max": 400.0}
+            },
+            "female": {
+                "adult": {"min": 250.0, "max": 400.0},
+                "senior": {"min": 250.0, "max": 400.0},
+                "pregnant": {"min": 300.0, "max": 500.0}
+            }
+        },
+
+        "Ferritin": {
+            "unit": "ng/ml",
+            "description": "Iron storage protein",
+            "general": {"min": 12.0, "max": 300.0},
+            "male": {
+                "child": {"min": 7.0, "max": 140.0},
+                "teenager": {"min": 20.0, "max": 200.0},
+                "adult": {"min": 30.0, "max": 400.0},
+                "senior": {"min": 30.0, "max": 400.0}
+            },
+            "female": {
+                "child": {"min": 7.0, "max": 140.0},
+                "teenager": {"min": 10.0, "max": 120.0},
+                "adult": {"min": 12.0, "max": 150.0},
+                "senior": {"min": 12.0, "max": 200.0},
+                "pregnant": {"min": 10.0, "max": 150.0}
+            }
+        },
+
+        "Vitamin B12": {
+            "unit": "pg/ml",
+            "description": "Essential for nerve function and RBC production",
+            "general": {"min": 200.0, "max": 900.0},
+            "male": {
+                "adult": {"min": 200.0, "max": 900.0},
+                "senior": {"min": 200.0, "max": 900.0}
+            },
+            "female": {
+                "adult": {"min": 200.0, "max": 900.0},
+                "senior": {"min": 200.0, "max": 900.0},
+                "pregnant": {"min": 200.0, "max": 900.0}
+            }
+        },
+
+        "Vitamin D": {
+            "unit": "ng/ml",
+            "description": "Essential for bone health",
+            "general": {"min": 30.0, "max": 100.0},
+            "male": {
+                "child": {"min": 30.0, "max": 100.0},
+                "teenager": {"min": 30.0, "max": 100.0},
+                "adult": {"min": 30.0, "max": 100.0},
+                "senior": {"min": 30.0, "max": 100.0}
+            },
+            "female": {
+                "child": {"min": 30.0, "max": 100.0},
+                "teenager": {"min": 30.0, "max": 100.0},
+                "adult": {"min": 30.0, "max": 100.0},
+                "senior": {"min": 30.0, "max": 100.0},
+                "pregnant": {"min": 40.0, "max": 100.0}
+            }
+        },
+
+        "TSH": {
+            "unit": "mIU/L",
+            "description": "Thyroid Stimulating Hormone",
+            "general": {"min": 0.4, "max": 4.0},
+            "male": {
+                "neonate": {"min": 1.0, "max": 39.0},
+                "infant": {"min": 0.7, "max": 6.4},
+                "child": {"min": 0.6, "max": 5.5},
+                "teenager": {"min": 0.5, "max": 4.5},
+                "adult": {"min": 0.4, "max": 4.0},
+                "senior": {"min": 0.4, "max": 5.0}
+            },
+            "female": {
+                "neonate": {"min": 1.0, "max": 39.0},
+                "infant": {"min": 0.7, "max": 6.4},
+                "child": {"min": 0.6, "max": 5.5},
+                "teenager": {"min": 0.5, "max": 4.5},
+                "adult": {"min": 0.4, "max": 4.0},
+                "senior": {"min": 0.4, "max": 5.0},
+                "pregnant": {"min": 0.1, "max": 2.5}
+            }
+        },
+
+        "T3": {
+            "unit": "ng/dl",
+            "description": "Triiodothyronine - thyroid hormone",
+            "general": {"min": 80.0, "max": 200.0},
+            "male": {
+                "child": {"min": 100.0, "max": 260.0},
+                "teenager": {"min": 80.0, "max": 210.0},
+                "adult": {"min": 80.0, "max": 200.0},
+                "senior": {"min": 70.0, "max": 180.0}
+            },
+            "female": {
+                "child": {"min": 100.0, "max": 260.0},
+                "teenager": {"min": 80.0, "max": 210.0},
+                "adult": {"min": 80.0, "max": 200.0},
+                "senior": {"min": 70.0, "max": 180.0},
+                "pregnant": {"min": 100.0, "max": 250.0}
+            }
+        },
+
+        "T4": {
+            "unit": "mcg/dl",
+            "description": "Thyroxine - thyroid hormone",
+            "general": {"min": 5.0, "max": 12.0},
+            "male": {
+                "neonate": {"min": 6.0, "max": 22.0},
+                "infant": {"min": 6.0, "max": 14.0},
+                "child": {"min": 5.5, "max": 13.5},
+                "teenager": {"min": 5.0, "max": 12.0},
+                "adult": {"min": 5.0, "max": 12.0},
+                "senior": {"min": 5.0, "max": 11.0}
+            },
+            "female": {
+                "neonate": {"min": 6.0, "max": 22.0},
+                "infant": {"min": 6.0, "max": 14.0},
+                "child": {"min": 5.5, "max": 13.5},
+                "teenager": {"min": 5.0, "max": 12.0},
+                "adult": {"min": 5.0, "max": 12.0},
+                "senior": {"min": 5.0, "max": 11.0},
+                "pregnant": {"min": 6.0, "max": 16.0}
+            }
+        }
+    },
+
+    "risk_thresholds": {
+        "anemia": {
+            "hemoglobin_severe": 8.0,
+            "hemoglobin_moderate": 10.0,
+            "hemoglobin_mild": 12.0,
+            "rbc_low": 3.5,
+            "rbc_slightly_low": 4.5,
+            "hct_low": 30.0,
+            "hct_slightly_low": 37.0
+        },
+        "kidney": {
+            "creatinine_high": 2.0,
+            "creatinine_elevated": 1.5,
+            "creatinine_slightly_elevated": 1.3,
+            "urea_high": 60.0,
+            "urea_elevated": 43.0,
+            "uric_acid_high": 9.0,
+            "uric_acid_elevated": 7.2
+        },
+        "infection": {
+            "wbc_high": 15.0,
+            "wbc_elevated": 11.0,
+            "wbc_low": 4.0
+        },
+        "diabetes": {
+            "glucose_fasting_diabetic": 126.0,
+            "glucose_fasting_prediabetic": 100.0,
+            "glucose_pp_diabetic": 200.0,
+            "glucose_pp_prediabetic": 140.0,
+            "hba1c_diabetic": 6.5,
+            "hba1c_prediabetic": 5.7
+        },
+        "liver": {
+            "sgot_high": 80.0,
+            "sgot_elevated": 40.0,
+            "sgpt_high": 80.0,
+            "sgpt_elevated": 40.0,
+            "bilirubin_high": 2.0,
+            "bilirubin_elevated": 1.2
+        },
+        "cholesterol": {
+            "total_high": 240.0,
+            "total_borderline": 200.0,
+            "ldl_high": 160.0,
+            "ldl_borderline": 130.0,
+            "hdl_low_male": 40.0,
+            "hdl_low_female": 50.0,
+            "triglycerides_high": 200.0,
+            "triglycerides_borderline": 150.0
+        },
+        "thyroid": {
+            "tsh_hyper_low": 0.4,
+            "tsh_hypo_high": 4.0,
+            "tsh_severe_hypo": 10.0
+        }
+    },
+
+    "patterns": {
+        "anemia": {
+            "name": "Anemia Indicators",
+            "parameters": ["Hemoglobin", "RBC", "HCT"],
+            "min_indicators": 2,
+            "severity_levels": {
+                "severe": {"hemoglobin_below": 8.0, "description": "Severe Anemia - Urgent medical attention recommended"},
+                "moderate": {"hemoglobin_below": 10.0, "description": "Moderate Anemia - Medical consultation recommended"},
+                "mild": {"hemoglobin_below": 12.0, "description": "Mild Anemia - Monitor and consider dietary changes"}
+            }
+        },
+        "iron_deficiency": {
+            "name": "Iron Deficiency Anemia Indicators",
+            "parameters": ["MCV", "MCH", "MCHC"],
+            "min_indicators": 2,
+            "description": "Microcytic hypochromic pattern - Consider iron studies"
+        },
+        "kidney_disease": {
+            "name": "Kidney Function Concern",
+            "parameters": ["Creatinine", "Urea", "Uric Acid"],
+            "min_indicators": 1,
+            "severity_levels": {
+                "high": {"indicators": 2, "description": "Multiple kidney markers elevated - Medical consultation strongly recommended"},
+                "moderate": {"indicators": 1, "description": "Single kidney marker elevated - Monitor and retest recommended"}
+            }
+        },
+        "infection": {
+            "name": "Possible Infection/Inflammation",
+            "parameters": ["WBC"],
+            "conditions": {
+                "high_wbc": {"above": 11.0, "description": "High WBC may indicate infection or inflammation"},
+                "low_wbc": {"below": 4.0, "name": "Low WBC (Leukopenia)", "description": "Low WBC may indicate immune system issues"}
+            }
+        },
+        "diabetes": {
+            "name": "Diabetes Indicators",
+            "parameters": ["Glucose Fasting", "Glucose PP", "HbA1c"],
+            "min_indicators": 1,
+            "severity_levels": {
+                "diabetic": {"description": "Diabetic range values detected - Medical consultation required"},
+                "prediabetic": {"description": "Prediabetic range values - Lifestyle modifications recommended"}
+            }
+        },
+        "liver_disease": {
+            "name": "Liver Function Concern",
+            "parameters": ["SGOT", "SGPT", "Total Bilirubin", "Alkaline Phosphatase"],
+            "min_indicators": 2,
+            "description": "Liver enzymes elevated - Further evaluation recommended"
+        },
+        "dyslipidemia": {
+            "name": "Lipid Profile Abnormality",
+            "parameters": ["Total Cholesterol", "LDL", "HDL", "Triglycerides"],
+            "min_indicators": 2,
+            "description": "Cardiovascular risk factors detected - Lifestyle changes recommended"
+        },
+        "thyroid_disorder": {
+            "name": "Thyroid Function Abnormality",
+            "parameters": ["TSH", "T3", "T4"],
+            "min_indicators": 1,
+            "conditions": {
+                "hypothyroid": {"tsh_above": 4.0, "description": "Possible hypothyroidism - Further evaluation needed"},
+                "hyperthyroid": {"tsh_below": 0.4, "description": "Possible hyperthyroidism - Further evaluation needed"}
+            }
+        }
+    }
+}
