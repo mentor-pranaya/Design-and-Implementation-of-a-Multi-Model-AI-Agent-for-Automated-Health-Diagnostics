@@ -1,13 +1,14 @@
 HealthAI/
-├── app.py                # Main Streamlit Interface
-├── src/
-│   ├── ... (Extraction files)
-│   └── agents/
-│       ├── pattern_agent.py   # Model 2 (Logic-based)
-│       └── context_agent.py   # Model 3 (LLM-based)
-│   ├── parser.py         # File routing and initial parsing
-│   ├── extractor.py      # OCR and Regex data extraction
-│   ├── validator.py      # Unit standardization and cleaning
-│   └── interpreter.py    # Reference range logic
-├── requirements.txt      # Dependencies
-└── README.md             # Project documentation
+├── app.py                # Main Orchestrator & UI
+├── requirements.txt      # Project Dependencies
+├── README.md             # Project Documentation
+├── .env                  # API Keys
+└── src/
+    ├── parser.py         # Milestone 1
+    ├── extractor.py      # Milestone 1
+    ├── validator.py      # Milestone 1
+    ├── interpreter.py    # Milestone 1 (Model 1)
+    ├── agents/
+        ├── pattern_agent.py   # Milestone 2 (Model 2)
+        ├── context_agent.py   # Milestone 2 (Model 3)
+        └── recommendation_engine.py  # Milestone 3
