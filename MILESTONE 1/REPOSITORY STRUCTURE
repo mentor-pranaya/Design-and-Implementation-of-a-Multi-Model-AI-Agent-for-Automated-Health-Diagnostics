@@ -9,6 +9,8 @@ HealthAI/
     ├── validator.py      # Milestone 1
     ├── interpreter.py    # Milestone 1 (Model 1)
     ├── agents/
-        ├── pattern_agent.py   # Milestone 2 (Model 2)
-        ├── context_agent.py   # Milestone 2 (Model 3)
-        └── recommendation_engine.py  # Milestone 3
+    │   ├── pattern_agent.py   # Milestone 2 (Model 2)
+    │   ├── context_agent.py   # Milestone 2 (Model 3)
+    │   └── recommendation_engine.py  # Milestone 3
+    └── utils/
+        ├── guardrails.py      # Milestone 3
