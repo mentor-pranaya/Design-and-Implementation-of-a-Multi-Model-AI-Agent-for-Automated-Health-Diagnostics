@@ -1,0 +1,290 @@
+{
+    "metadata": {
+        "version": "1.0",
+        "last_updated": "2024-01-27",
+        "source": "General Medical Guidelines"
+    },
+
+    "conditions": {
+        "anemia": {
+            "name": "Anemia",
+            "description": "Low red blood cell count or hemoglobin levels",
+            "indicators": ["Hemoglobin", "RBC", "HCT"],
+            "diet": [
+                "Increase iron-rich foods: spinach, lentils, red meat, beans, fortified cereals",
+                "Add Vitamin C sources with meals: oranges, tomatoes, bell peppers (improves iron absorption)",
+                "Include Vitamin B12 sources: eggs, dairy, fish, fortified foods",
+                "Add folate-rich foods: leafy greens, legumes, asparagus",
+                "Consider iron-fortified bread and cereals"
+            ],
+            "lifestyle": [
+                "Avoid tea or coffee with meals (tannins block iron absorption)",
+                "Cook in cast iron pots (adds dietary iron)",
+                "Space calcium supplements away from iron-rich meals",
+                "Get adequate sleep (7-8 hours) for blood cell production",
+                "Moderate exercise to stimulate red blood cell production"
+            ],
+            "followup": [
+                "Retest CBC (Complete Blood Count) in 4-6 weeks",
+                "Consider iron studies (serum ferritin, TIBC) if anemia persists",
+                "Consult doctor if symptoms like fatigue, weakness, or dizziness occur",
+                "Check for underlying causes if anemia doesn't improve with diet"
+            ],
+            "warnings": [
+                "Do not take iron supplements without medical advice",
+                "Excessive iron can be harmful - follow prescribed dosage only"
+            ],
+            "severity_specific": {
+                "mild": {
+                    "priority": "LOW",
+                    "timeline": "4-6 weeks follow-up"
+                },
+                "moderate": {
+                    "priority": "MEDIUM",
+                    "timeline": "2-4 weeks follow-up, consider medical consultation"
+                },
+                "severe": {
+                    "priority": "HIGH",
+                    "timeline": "Immediate medical consultation required"
+                }
+            }
+        },
+
+        "iron_deficiency": {
+            "name": "Iron Deficiency Anemia",
+            "description": "Anemia caused by insufficient iron levels",
+            "indicators": ["MCV", "MCH", "MCHC", "RDW-CV"],
+            "diet": [
+                "Prioritize heme iron sources: red meat, organ meats, shellfish (better absorbed)",
+                "Non-heme iron sources: beans, lentils, tofu, spinach, fortified cereals",
+                "Pair iron-rich foods with Vitamin C for better absorption",
+                "Avoid calcium-rich foods during iron-rich meals",
+                "Include dried fruits: raisins, apricots, prunes"
+            ],
+            "lifestyle": [
+                "Avoid antacids around mealtimes (reduce iron absorption)",
+                "Limit coffee and tea consumption, especially with meals",
+                "Consider cooking in cast iron cookware",
+                "Address any sources of blood loss (heavy menstruation, GI issues)"
+            ],
+            "followup": [
+                "Get iron studies: serum iron, ferritin, TIBC, transferrin saturation",
+                "Retest CBC in 4-6 weeks after dietary changes",
+                "If female with heavy periods, discuss with gynecologist",
+                "Rule out GI blood loss if iron deficiency persists"
+            ],
+            "warnings": [
+                "Iron supplements can cause constipation and stomach upset",
+                "Take iron supplements as prescribed, not on empty stomach"
+            ]
+        },
+
+        "kidney_concern": {
+            "name": "Kidney Function Concern",
+            "description": "Elevated kidney function markers",
+            "indicators": ["Creatinine", "Urea", "Uric Acid"],
+            "diet": [
+                "Stay well hydrated: 8-10 glasses of water daily",
+                "Reduce sodium/salt intake: avoid processed foods, pickles, papad",
+                "Moderate protein intake: don't exceed daily requirements",
+                "Limit high-purine foods if uric acid elevated: organ meats, shellfish, beer",
+                "Increase fruits and vegetables for antioxidants",
+                "Reduce phosphorus if advised: limit dairy, nuts, seeds"
+            ],
+            "lifestyle": [
+                "Monitor blood pressure regularly (high BP damages kidneys)",
+                "Control blood sugar if diabetic",
+                "Avoid NSAIDs (ibuprofen, aspirin) without medical advice",
+                "Quit smoking (damages blood vessels including kidney vessels)",
+                "Maintain healthy weight",
+                "Exercise regularly but avoid excessive protein supplements"
+            ],
+            "followup": [
+                "Retest kidney function (KFT) in 2-4 weeks",
+                "Get urine routine and microscopy test",
+                "Check for protein in urine (microalbuminuria)",
+                "Monitor blood pressure",
+                "Consult nephrologist if values remain elevated"
+            ],
+            "warnings": [
+                "Avoid self-medicating with painkillers",
+                "Certain herbal supplements can harm kidneys - consult doctor first",
+                "Report any changes in urination pattern to doctor"
+            ],
+            "severity_specific": {
+                "mild": {
+                    "priority": "LOW",
+                    "timeline": "4-6 weeks retest"
+                },
+                "moderate": {
+                    "priority": "MEDIUM",
+                    "timeline": "2-4 weeks retest, medical consultation advised"
+                },
+                "high": {
+                    "priority": "HIGH",
+                    "timeline": "Immediate nephrology consultation"
+                }
+            }
+        },
+
+        "infection": {
+            "name": "Possible Infection/Inflammation",
+            "description": "Elevated white blood cell count suggesting infection",
+            "indicators": ["WBC"],
+            "diet": [
+                "Stay hydrated: water, clear soups, herbal teas",
+                "Vitamin C rich foods: citrus fruits, berries, bell peppers",
+                "Zinc sources: nuts, seeds, legumes, whole grains",
+                "Probiotic foods: yogurt, kefir (support immune system)",
+                "Anti-inflammatory foods: turmeric, ginger, garlic",
+                "Avoid sugar and processed foods (suppress immune function)"
+            ],
+            "lifestyle": [
+                "Get adequate rest and sleep",
+                "Practice good hygiene: frequent handwashing",
+                "Avoid contact with sick individuals",
+                "Manage stress (chronic stress weakens immunity)",
+                "Stay home if you have fever or infection symptoms"
+            ],
+            "followup": [
+                "If symptomatic (fever, pain), consult doctor immediately",
+                "Retest CBC in 1-2 weeks if asymptomatic",
+                "Get CRP or ESR if inflammation suspected",
+                "Complete any prescribed antibiotic course fully"
+            ],
+            "warnings": [
+                "Don't ignore persistent fever",
+                "Complete full course of antibiotics if prescribed",
+                "Seek immediate care for high fever (>103°F) or severe symptoms"
+            ]
+        },
+
+        "leukopenia": {
+            "name": "Low WBC (Leukopenia)",
+            "description": "Low white blood cell count affecting immunity",
+            "indicators": ["WBC"],
+            "diet": [
+                "Protein-rich foods: lean meats, fish, eggs, legumes",
+                "Vitamin B12 and folate: leafy greens, fortified cereals, eggs",
+                "Zinc-rich foods: pumpkin seeds, chickpeas, cashews",
+                "Copper sources: shellfish, nuts, seeds, whole grains",
+                "Avoid raw or undercooked foods (infection risk)"
+            ],
+            "lifestyle": [
+                "Practice strict hygiene to prevent infections",
+                "Avoid crowded places during flu season",
+                "Wear mask in high-risk environments",
+                "Avoid contact with sick individuals",
+                "Get adequate sleep for immune recovery",
+                "Avoid smoking and alcohol"
+            ],
+            "followup": [
+                "Retest CBC in 2-4 weeks",
+                "Check Vitamin B12 and folate levels",
+                "Consider bone marrow evaluation if WBC remains low",
+                "Review medications that may cause low WBC",
+                "Consult hematologist if persistent"
+            ],
+            "warnings": [
+                "Report any fever immediately to doctor",
+                "Low WBC increases infection risk - take precautions",
+                "Some medications can cause low WBC - review with doctor"
+            ]
+        },
+
+        "low_rbc_only": {
+            "name": "Low RBC Count",
+            "description": "Isolated low red blood cell count",
+            "indicators": ["RBC"],
+            "diet": [
+                "Iron-rich foods: red meat, spinach, lentils, beans",
+                "Vitamin B12 sources: eggs, dairy, fish, fortified cereals",
+                "Folate sources: leafy greens, legumes, citrus fruits",
+                "Vitamin C to enhance iron absorption",
+                "Adequate protein for blood cell production"
+            ],
+            "lifestyle": [
+                "Ensure adequate sleep for blood cell production",
+                "Moderate regular exercise",
+                "Stay hydrated",
+                "Avoid excessive alcohol consumption"
+            ],
+            "followup": [
+                "Retest CBC in 4-6 weeks",
+                "Check reticulocyte count to assess bone marrow response",
+                "Consider iron studies and vitamin levels",
+                "Rule out chronic blood loss if RBC remains low"
+            ],
+            "warnings": [
+                "Monitor for symptoms: fatigue, weakness, shortness of breath",
+                "Consult doctor if symptoms worsen"
+            ]
+        },
+
+        "normal": {
+            "name": "Normal Results",
+            "description": "All parameters within normal range",
+            "indicators": [],
+            "diet": [
+                "Maintain balanced diet with all food groups",
+                "Include fruits and vegetables daily",
+                "Stay hydrated with adequate water intake",
+                "Limit processed foods and excess sugar",
+                "Include lean proteins and whole grains"
+            ],
+            "lifestyle": [
+                "Continue regular physical activity (150 min/week)",
+                "Maintain healthy sleep schedule (7-8 hours)",
+                "Manage stress through relaxation techniques",
+                "Avoid smoking and limit alcohol",
+                "Regular health checkups annually"
+            ],
+            "followup": [
+                "Annual health checkup recommended",
+                "Continue monitoring if any chronic conditions",
+                "Update vaccinations as recommended"
+            ],
+            "warnings": []
+        }
+    },
+
+    "general_advice": {
+        "hydration": "Drink 8-10 glasses of water daily",
+        "sleep": "Aim for 7-8 hours of quality sleep",
+        "exercise": "At least 150 minutes of moderate exercise per week",
+        "stress": "Practice stress management: meditation, deep breathing, hobbies",
+        "checkups": "Regular annual health checkups are important"
+    },
+
+    "age_specific": {
+        "child": {
+            "notes": "Children's reference ranges differ from adults. Consult pediatrician for interpretation.",
+            "diet_modifier": "Focus on growth-supporting nutrients. Ensure adequate calcium and vitamin D."
+        },
+        "teenager": {
+            "notes": "Teenage years have fluctuating values. Iron needs increase, especially for menstruating females.",
+            "diet_modifier": "Increased iron needs. Avoid junk food. Ensure calcium for bone development."
+        },
+        "adult": {
+            "notes": "Standard adult ranges apply. Focus on prevention and maintenance.",
+            "diet_modifier": "Balanced diet. Limit processed foods. Maintain healthy weight."
+        },
+        "senior": {
+            "notes": "Some values naturally change with age. More frequent monitoring recommended.",
+            "diet_modifier": "May need B12 supplementation. Ensure adequate protein. Watch kidney function."
+        },
+        "pregnant": {
+            "notes": "Pregnancy alters many blood values. Anemia is common. Close monitoring needed.",
+            "diet_modifier": "Increased iron and folate needs. Prenatal vitamins essential."
+        }
+    },
+
+    "gender_specific": {
+        "male": {
+            "notes": "Higher hemoglobin and RBC ranges. Watch for polycythemia if values too high."
+        },
+        "female": {
+            "notes": "Lower hemoglobin ranges. Iron deficiency more common due to menstruation. Monitor during pregnancy."
+        }
+    }
+}
