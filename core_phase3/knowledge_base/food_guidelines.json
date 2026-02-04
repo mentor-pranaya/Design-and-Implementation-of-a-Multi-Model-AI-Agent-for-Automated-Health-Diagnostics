@@ -1,0 +1,244 @@
+{
+  "iron_rich_foods": {
+    "high_iron": [
+      "Red meat (beef, lamb)",
+      "Organ meats (liver, kidney)",
+      "Dark leafy greens (spinach, kale)",
+      "Legumes (lentils, chickpeas, beans)",
+      "Fortified cereals",
+      "Oysters and clams",
+      "Pumpkin seeds",
+      "Quinoa"
+    ],
+    "absorption_enhancers": [
+      "Citrus fruits (orange, lemon, lime)",
+      "Tomatoes",
+      "Berries",
+      "Bell peppers",
+      "Broccoli",
+      "Kiwi fruit"
+    ],
+    "absorption_inhibitors": [
+      "Tea",
+      "Coffee",
+      "Dairy products (when consumed with iron-rich meals)",
+      "Calcium supplements",
+      "Whole grains (taken with iron-rich meals)"
+    ]
+  },
+  "cholesterol_reducing_foods": {
+    "soluble_fiber": [
+      "Oats",
+      "Barley",
+      "Beans (kidney, black, garbanzo)",
+      "Lentils",
+      "Apples",
+      "Pears",
+      "Carrots",
+      "Psyllium seeds"
+    ],
+    "plant_sterols": [
+      "Nuts (almonds, walnuts, pistachios)",
+      "Seeds (sunflower, pumpkin)",
+      "Vegetable oils (canola, sunflower)",
+      "Fortified foods (some margarines, yogurts)",
+      "Avocado"
+    ],
+    "lean_proteins": [
+      "Skinless chicken breast",
+      "Fish (salmon, mackerel, sardines)",
+      "Turkey",
+      "Legumes",
+      "Tofu",
+      "Low-fat dairy products"
+    ],
+    "avoid": [
+      "Red meat high in saturated fat",
+      "Fried foods",
+      "Processed meats",
+      "Full-fat dairy",
+      "Pastries and cakes",
+      "Coconut oil, palm oil"
+    ]
+  },
+  "heart_healthy_foods": {
+    "omega3_rich": [
+      "Salmon",
+      "Mackerel",
+      "Sardines",
+      "Trout",
+      "Walnuts",
+      "Flax seeds",
+      "Chia seeds",
+      "Canola oil"
+    ],
+    "antioxidant_rich": [
+      "Berries (blueberries, strawberries, raspberries)",
+      "Dark chocolate (70% cocoa or higher)",
+      "Green tea",
+      "Colorful vegetables (red peppers, carrots, tomatoes)",
+      "Nuts and seeds",
+      "Olive oil"
+    ],
+    "blood_pressure_lowering": [
+      "Bananas (potassium)",
+      "Spinach (potassium and magnesium)",
+      "Sweet potato (potassium)",
+      "Garlic",
+      "Dark leafy greens",
+      "Beets"
+    ]
+  },
+  "blood_sugar_regulation": {
+    "low_glycemic_index": [
+      "Whole wheat bread",
+      "Brown rice",
+      "Quinoa",
+      "Sweet potato",
+      "Non-starchy vegetables",
+      "Legumes",
+      "Oats",
+      "Steel-cut oats"
+    ],
+    "high_fiber": [
+      "Vegetables",
+      "Whole grains",
+      "Legumes",
+      "Nuts and seeds",
+      "Berries",
+      "Pears",
+      "Avocado"
+    ],
+    "avoid": [
+      "White bread",
+      "Sugary beverages",
+      "Candy and desserts",
+      "Processed foods",
+      "Fruit juices",
+      "Refined carbohydrates"
+    ]
+  },
+  "thyroid_health": {
+    "iodine_rich": [
+      "Iodized salt",
+      "Seafood (fish, seaweed)",
+      "Dairy products",
+      "Eggs",
+      "Shrimp",
+      "Cod"
+    ],
+    "selenium_rich": [
+      "Brazil nuts (2-3 per day)",
+      "Fish",
+      "Eggs",
+      "Chicken",
+      "Mushrooms"
+    ],
+    "zinc_rich": [
+      "Oysters",
+      "Beef",
+      "Pumpkin seeds",
+      "Chickpeas",
+      "Cashews",
+      "Whole wheat"
+    ],
+    "goitrogenic_foods_to_limit_raw": [
+      "Broccoli",
+      "Cabbage",
+      "Cauliflower",
+      "Kale",
+      "Brussels sprouts",
+      "Soy products"
+    ],
+    "note": "Cook cruciferous vegetables to reduce goitrogenic effects"
+  },
+  "liver_health": {
+    "antioxidant_rich": [
+      "Berries (blueberries, cranberries)",
+      "Leafy greens (spinach, kale)",
+      "Nuts and seeds",
+      "Green tea",
+      "Turmeric",
+      "Garlic"
+    ],
+    "sulfur_rich": [
+      "Cruciferous vegetables (broccoli, cauliflower)",
+      "Garlic",
+      "Onions",
+      "Eggs",
+      "Asparagus"
+    ],
+    "healthy_fats": [
+      "Olive oil",
+      "Avocado",
+      "Nuts",
+      "Fish",
+      "Seeds"
+    ],
+    "avoid": [
+      "Alcohol",
+      "Fatty fried foods",
+      "Processed foods",
+      "High-fructose corn syrup",
+      "Refined carbohydrates"
+    ]
+  },
+  "kidney_health": {
+    "low_sodium": [
+      "Fresh fruits",
+      "Fresh vegetables",
+      "Lean meats (unseasoned)",
+      "Rice",
+      "Pasta",
+      "Bread (low sodium)"
+    ],
+    "moderate_protein": [
+      "Egg whites",
+      "Fish",
+      "Chicken (skinless)",
+      "Tofu",
+      "Limited legumes (consult nephrologist)"
+    ],
+    "note": "Specific dietary needs depend on GFR and stage of kidney disease. Consult nephrologist for personalized recommendations."
+  },
+  "general_healthy_eating": {
+    "vegetables": [
+      "Dark leafy greens",
+      "Colorful peppers",
+      "Broccoli",
+      "Carrots",
+      "Tomatoes",
+      "Zucchini",
+      "Mushrooms",
+      "Brussels sprouts"
+    ],
+    "fruits": [
+      "Berries",
+      "Apples",
+      "Oranges",
+      "Bananas",
+      "Pears",
+      "Grapes",
+      "Watermelon",
+      "Kiwi"
+    ],
+    "whole_grains": [
+      "Brown rice",
+      "Whole wheat bread",
+      "Oats",
+      "Quinoa",
+      "Barley",
+      "Millet",
+      "Whole wheat pasta"
+    ],
+    "lean_proteins": [
+      "Chicken breast",
+      "Fish",
+      "Turkey",
+      "Beans",
+      "Lentils",
+      "Tofu",
+      "Eggs"
+    ]
+  }
+}

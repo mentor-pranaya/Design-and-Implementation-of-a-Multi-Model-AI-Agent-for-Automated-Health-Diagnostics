@@ -1,0 +1,190 @@
+{
+  "Anemia Indicator": {
+    "diet": [
+      "Increase iron-rich foods such as spinach, lentils, red meat, and fortified cereals",
+      "Include vitamin C rich foods (citrus fruits, tomatoes, berries) to improve iron absorption",
+      "Limit tea and coffee consumption as they inhibit iron absorption",
+      "Consider lean meat, poultry, and fish for better iron bioavailability"
+    ],
+    "exercise": [
+      "Avoid high-intensity workouts until hemoglobin improves",
+      "Prefer light walking (20-30 minutes daily) or gentle yoga",
+      "Rest adequately between exercise sessions",
+      "Gradually increase intensity as energy levels improve"
+    ],
+    "follow_up": "Consult physician for complete iron studies (serum iron, ferritin, TIBC). Recheck hemoglobin after 6-8 weeks."
+  },
+  "Diabetes Risk": {
+    "diet": [
+      "Choose low glycemic index foods",
+      "Include high-fiber foods: whole grains, vegetables, legumes",
+      "Reduce simple carbohydrates and sugary beverages",
+      "Eat balanced meals with protein, fat, and carbohydrates",
+      "Practice portion control and regular meal timing",
+      "Limit fruit juice; prefer whole fruits"
+    ],
+    "exercise": [
+      "150 minutes of moderate aerobic activity weekly",
+      "Add resistance training 2-3 times per week",
+      "Exercise after meals for better glucose management",
+      "Avoid prolonged sitting; take movement breaks every hour",
+      "Consistency is more important than intensity"
+    ],
+    "follow_up": "HbA1c recheck in 3 months. Fasting and post-meal glucose monitoring. Early intervention prevents diabetes progression. Consult endocrinologist for comprehensive diabetes risk assessment."
+  },
+  "High Cholesterol": {
+    "diet": [
+      "Reduce saturated fat intake (limit to <7% of daily calories)",
+      "Increase soluble fiber-rich foods like oats, barley, beans, and apples",
+      "Include plant sterols from nuts, seeds, and vegetable oils",
+      "Choose lean proteins and reduce red meat consumption",
+      "Avoid trans fats found in processed foods and fried items"
+    ],
+    "exercise": [
+      "At least 150 minutes of moderate-intensity aerobic activity weekly",
+      "Include brisk walking, jogging, cycling, or swimming",
+      "Add resistance training 2 days per week",
+      "Avoid sedentary behavior; take regular movement breaks"
+    ],
+    "follow_up": "Lipid panel recheck in 3 months. Continue monitoring LDL, HDL, and triglycerides."
+  },
+  "Low Cholesterol": {
+    "diet": [
+      "Ensure adequate dietary fat intake from healthy sources",
+      "Include omega-3 rich foods: fatty fish (salmon, mackerel), flax seeds, walnuts",
+      "Consume nutrient-dense whole foods with healthy fats",
+      "Avoid excessive refined carbohydrate intake",
+      "Consult nutritionist to rule out malabsorption issues"
+    ],
+    "exercise": [
+      "Moderate exercise with adequate caloric intake",
+      "Include strength training to maintain muscle mass",
+      "Avoid excessive cardio without proper nutrition support",
+      "Focus on overall fitness rather than weight loss"
+    ],
+    "follow_up": "Investigate underlying causes (malabsorption, hyperthyroidism, malnutrition). Lipid panel recheck in 3 months."
+  },
+  "Thyroid Disorder": {
+    "diet": [
+      "Ensure adequate iodine intake from iodized salt, seafood, and dairy",
+      "Include selenium-rich foods: Brazil nuts, fish, eggs",
+      "Consume zinc from meat, legumes, seeds, and nuts",
+      "Avoid goitrogenic foods (raw cruciferous vegetables) in excess, cook them well",
+      "Maintain consistent meal timing for medication absorption"
+    ],
+    "exercise": [
+      "Regular moderate-intensity exercise (30-45 minutes, 3-4 times weekly)",
+      "Avoid excessive intense exercise which can stress the system",
+      "Gentle yoga or swimming are ideal options",
+      "Monitor energy levels and adjust intensity accordingly"
+    ],
+    "follow_up": "TSH level recheck in 6-8 weeks after medication adjustment. Annual thyroid function tests recommended."
+  },
+  "Metabolic Syndrome Indicator": {
+    "diet": [
+      "Reduce refined carbohydrates and added sugars",
+      "Increase whole grains, vegetables, and legumes",
+      "Limit sodium intake to <2300 mg per day",
+      "Include lean proteins and healthy fats",
+      "Maintain consistent meal portions and timing",
+      "Reduce processed food consumption"
+    ],
+    "exercise": [
+      "At least 150 minutes of moderate-intensity aerobic activity weekly",
+      "Add 2-3 sessions of resistance training per week",
+      "Include daily activity breaks and movement",
+      "Progressive increase in exercise duration and intensity",
+      "Weight management target: 5-10% reduction if overweight"
+    ],
+    "follow_up": "Metabolic panel, fasting glucose, and blood pressure monitoring every 3 months. Consultation with endocrinologist recommended."
+  },
+  "Elevated Blood Sugar": {
+    "diet": [
+      "Choose low glycemic index foods",
+      "Include high-fiber foods: whole grains, vegetables, legumes",
+      "Reduce simple carbohydrates and sugary beverages",
+      "Eat balanced meals with protein, fat, and carbohydrates",
+      "Practice portion control and regular meal timing",
+      "Limit fruit juice; prefer whole fruits"
+    ],
+    "exercise": [
+      "150 minutes of moderate aerobic activity weekly",
+      "Add resistance training 2-3 times per week",
+      "Exercise after meals for better glucose management",
+      "Avoid prolonged sitting; take movement breaks every hour",
+      "Consistency is more important than intensity"
+    ],
+    "follow_up": "HbA1c recheck in 3 months. Fasting and post-meal glucose monitoring. Early intervention prevents diabetes progression."
+  },
+  "Low Blood Pressure": {
+    "diet": [
+      "Increase salt intake moderately (unless contraindicated)",
+      "Stay well-hydrated; drink at least 8-10 glasses of water daily",
+      "Include iron-rich foods to prevent anemia-related hypotension",
+      "Eat frequent small meals to maintain stable blood sugar",
+      "Avoid skipping meals, especially breakfast"
+    ],
+    "exercise": [
+      "Avoid sudden position changes and prolonged standing",
+      "Gradual increase in physical activity intensity",
+      "Compression stockings may help during exercise",
+      "Ensure adequate hydration during and after exercise",
+      "Consult physician before strenuous exercise"
+    ],
+    "follow_up": "Blood pressure monitoring in different positions (lying, sitting, standing). Investigate underlying causes if severe."
+  },
+  "High Blood Pressure": {
+    "diet": [
+      "Follow DASH diet: fruits, vegetables, whole grains, lean proteins",
+      "Limit sodium to <2300 mg daily (ideally <1500 mg)",
+      "Reduce processed foods and cured meats",
+      "Include potassium-rich foods: bananas, spinach, sweet potato",
+      "Limit alcohol consumption",
+      "Reduce caffeine intake"
+    ],
+    "exercise": [
+      "150 minutes of moderate-intensity aerobic activity weekly",
+      "Include resistance training 2 days per week",
+      "Avoid isometric exercises (holding heavy weights)",
+      "Regular physical activity can reduce BP by 5-8 mmHg",
+      "Consistency is crucial; make it a daily habit"
+    ],
+    "follow_up": "Blood pressure monitoring at home daily. Medication adjustment may be needed. Recheck after 4-8 weeks of lifestyle changes."
+  },
+  "Elevated Liver Enzymes": {
+    "diet": [
+      "Reduce alcohol consumption or abstain completely",
+      "Avoid fatty foods; choose lean proteins and grains",
+      "Include antioxidant-rich foods: berries, leafy greens, nuts",
+      "Limit processed foods and added sugars",
+      "Stay hydrated with water and herbal teas",
+      "Consider Mediterranean or plant-based diet patterns"
+    ],
+    "exercise": [
+      "Regular aerobic exercise to improve liver function",
+      "Weight management if overweight (10% reduction beneficial)",
+      "Moderate-intensity exercise 30-45 minutes, 5 days weekly",
+      "Avoid strenuous exercise during acute episodes",
+      "Consistency over intensity"
+    ],
+    "follow_up": "Liver function tests recheck in 4-6 weeks. Investigate causes: hepatitis, fatty liver disease, medication side effects, or alcohol use."
+  },
+  "Elevated Kidney Parameters": {
+    "diet": [
+      "Reduce protein intake (consult nephrologist for targets)",
+      "Limit sodium to <2000 mg daily",
+      "Monitor potassium intake based on GFR levels",
+      "Limit phosphorus from processed foods",
+      "Stay appropriately hydrated; follow physician's recommendations",
+      "Choose plant-based proteins when possible"
+    ],
+    "exercise": [
+      "Moderate-intensity aerobic exercise 3-4 days weekly",
+      "Avoid overexertion that could stress kidneys",
+      "Stay well-hydrated during exercise",
+      "Resistance training with lighter weights and higher reps",
+      "Regular monitoring of blood pressure and kidney function"
+    ],
+    "follow_up": "Renal panel (creatinine, BUN, GFR) recheck in 4-6 weeks. Nephrology referral recommended. Prevent progression to chronic kidney disease."
+  }
+}

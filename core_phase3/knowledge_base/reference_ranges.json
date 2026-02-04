@@ -1,0 +1,358 @@
+{
+  "_metadata": {
+    "source": "American Board of Internal Medicine - Laboratory Tests Reference Ranges",
+    "extraction_date": "2026-01-30",
+    "extraction_method": "OCR from laboratory-reference-ranges.pdf",
+    "purpose": "Evidence-based evaluation for automated health diagnostics",
+    "disclaimer": "Reference ranges are for educational purposes. Clinical interpretation requires healthcare professional consultation."
+  },
+  
+  "Hemoglobin": {
+    "unit": "g/dL",
+    "female": {
+      "min": 12.0,
+      "max": 16.0
+    },
+    "male": {
+      "min": 14.0,
+      "max": 18.0
+    },
+    "critical_low": 7.0,
+    "critical_high": 20.0,
+    "clinical_significance": "Oxygen-carrying capacity of blood. Low values indicate anemia; high values may indicate polycythemia."
+  },
+  
+  "Hematocrit": {
+    "unit": "%",
+    "female": {
+      "min": 36.0,
+      "max": 46.0
+    },
+    "male": {
+      "min": 41.0,
+      "max": 53.0
+    },
+    "clinical_significance": "Percentage of blood volume occupied by red blood cells. Related to hemoglobin levels."
+  },
+  
+  "WBC": {
+    "full_name": "White Blood Cell Count",
+    "unit": "cells/µL",
+    "min": 4000,
+    "max": 11000,
+    "critical_low": 2000,
+    "critical_high": 30000,
+    "clinical_significance": "Indicates immune system function. Elevated in infections/inflammation; low in immunosuppression."
+  },
+  
+  "Platelet Count": {
+    "unit": "cells/µL",
+    "min": 150000,
+    "max": 450000,
+    "critical_low": 50000,
+    "critical_high": 1000000,
+    "clinical_significance": "Essential for blood clotting. Low values increase bleeding risk; high values may increase clotting risk."
+  },
+  
+  "RBC": {
+    "full_name": "Red Blood Cell Count",
+    "unit": "million/µL",
+    "female": {
+      "min": 4.2,
+      "max": 5.4
+    },
+    "male": {
+      "min": 4.7,
+      "max": 6.1
+    },
+    "clinical_significance": "Number of red blood cells. Related to oxygen transport capacity."
+  },
+  
+  "Glucose": {
+    "full_name": "Fasting Blood Glucose",
+    "unit": "mg/dL",
+    "fasting": {
+      "normal": {
+        "min": 70,
+        "max": 99
+      },
+      "prediabetes": {
+        "min": 100,
+        "max": 125
+      },
+      "diabetes": {
+        "min": 126
+      }
+    },
+    "critical_low": 50,
+    "critical_high": 400,
+    "clinical_significance": "Blood sugar level. Elevated values indicate diabetes risk or diabetes."
+  },
+  
+  "HbA1c": {
+    "full_name": "Hemoglobin A1c (Glycated Hemoglobin)",
+    "unit": "%",
+    "normal": {
+      "max": 5.6
+    },
+    "prediabetes": {
+      "min": 5.7,
+      "max": 6.4
+    },
+    "diabetes": {
+      "min": 6.5
+    },
+    "clinical_significance": "Average blood glucose over 2-3 months. Primary diabetes diagnostic and monitoring marker."
+  },
+  
+  "Cholesterol Total": {
+    "unit": "mg/dL",
+    "desirable": {
+      "max": 199
+    },
+    "borderline_high": {
+      "min": 200,
+      "max": 239
+    },
+    "high": {
+      "min": 240
+    },
+    "clinical_significance": "Total cholesterol level. Elevated values increase cardiovascular disease risk."
+  },
+  
+  "LDL": {
+    "full_name": "Low-Density Lipoprotein",
+    "unit": "mg/dL",
+    "optimal": {
+      "max": 99
+    },
+    "near_optimal": {
+      "min": 100,
+      "max": 129
+    },
+    "borderline_high": {
+      "min": 130,
+      "max": 159
+    },
+    "high": {
+      "min": 160,
+      "max": 189
+    },
+    "very_high": {
+      "min": 190
+    },
+    "clinical_significance": "Bad cholesterol. Primary target for cardiovascular risk reduction."
+  },
+  
+  "HDL": {
+    "full_name": "High-Density Lipoprotein",
+    "unit": "mg/dL",
+    "female": {
+      "low": {
+        "max": 49
+      },
+      "optimal": {
+        "min": 50
+      }
+    },
+    "male": {
+      "low": {
+        "max": 39
+      },
+      "optimal": {
+        "min": 40
+      }
+    },
+    "clinical_significance": "Good cholesterol. Higher values are protective against cardiovascular disease."
+  },
+  
+  "Triglycerides": {
+    "unit": "mg/dL",
+    "optimal": {
+      "max": 99
+    },
+    "normal": {
+      "min": 100,
+      "max": 149
+    },
+    "borderline_high": {
+      "min": 150,
+      "max": 199
+    },
+    "high": {
+      "min": 200,
+      "max": 499
+    },
+    "very_high": {
+      "min": 500
+    },
+    "clinical_significance": "Type of fat in blood. Elevated levels increase cardiovascular disease risk."
+  },
+  
+  "Creatinine": {
+    "unit": "mg/dL",
+    "female": {
+      "min": 0.6,
+      "max": 1.2
+    },
+    "male": {
+      "min": 0.7,
+      "max": 1.3
+    },
+    "clinical_significance": "Kidney function marker. Elevated values indicate impaired kidney function."
+  },
+  
+  "BUN": {
+    "full_name": "Blood Urea Nitrogen",
+    "unit": "mg/dL",
+    "min": 8,
+    "max": 20,
+    "clinical_significance": "Kidney function and protein metabolism marker. Elevated in kidney disease or dehydration."
+  },
+  
+  "ALT": {
+    "full_name": "Alanine Aminotransferase",
+    "unit": "U/L",
+    "female": {
+      "min": 7,
+      "max": 35
+    },
+    "male": {
+      "min": 10,
+      "max": 40
+    },
+    "clinical_significance": "Liver enzyme. Elevated in liver damage or disease."
+  },
+  
+  "AST": {
+    "full_name": "Aspartate Aminotransferase",
+    "unit": "U/L",
+    "min": 10,
+    "max": 40,
+    "clinical_significance": "Liver and heart enzyme. Elevated in liver damage, heart attack, or muscle injury."
+  },
+  
+  "Bilirubin Total": {
+    "unit": "mg/dL",
+    "normal": {
+      "max": 1.2
+    },
+    "clinical_significance": "Liver function and red blood cell breakdown marker. Elevated in liver disease or hemolysis."
+  },
+  
+  "Alkaline Phosphatase": {
+    "unit": "U/L",
+    "min": 30,
+    "max": 120,
+    "clinical_significance": "Liver and bone enzyme. Elevated in liver disease, bone disorders, or bile duct obstruction."
+  },
+  
+  "TSH": {
+    "full_name": "Thyroid-Stimulating Hormone",
+    "unit": "mU/L",
+    "min": 0.5,
+    "max": 4.0,
+    "clinical_significance": "Thyroid function regulator. Elevated in hypothyroidism; low in hyperthyroidism."
+  },
+  
+  "Vitamin D": {
+    "full_name": "25-Hydroxyvitamin D",
+    "unit": "ng/mL",
+    "deficiency": {
+      "max": 19
+    },
+    "insufficiency": {
+      "min": 20,
+      "max": 29
+    },
+    "sufficiency": {
+      "min": 30,
+      "max": 60
+    },
+    "clinical_significance": "Bone health, immune function. Low levels associated with bone disease and various health conditions."
+  },
+  
+  "Calcium": {
+    "unit": "mg/dL",
+    "min": 8.5,
+    "max": 10.5,
+    "clinical_significance": "Bone health, nerve and muscle function. Imbalances affect multiple body systems."
+  },
+  
+  "Sodium": {
+    "unit": "mEq/L",
+    "min": 136,
+    "max": 145,
+    "clinical_significance": "Electrolyte balance, fluid regulation. Abnormal levels can be life-threatening."
+  },
+  
+  "Potassium": {
+    "unit": "mEq/L",
+    "min": 3.5,
+    "max": 5.0,
+    "critical_low": 2.5,
+    "critical_high": 6.5,
+    "clinical_significance": "Heart rhythm, muscle function. Severe abnormalities can cause cardiac arrest."
+  },
+  
+  "Chloride": {
+    "unit": "mEq/L",
+    "min": 98,
+    "max": 106,
+    "clinical_significance": "Electrolyte balance, acid-base status."
+  },
+  
+  "Iron": {
+    "unit": "µg/dL",
+    "min": 50,
+    "max": 150,
+    "clinical_significance": "Essential for hemoglobin production. Low levels cause anemia; high levels may indicate overload."
+  },
+  
+  "Ferritin": {
+    "unit": "ng/mL",
+    "female": {
+      "min": 12,
+      "max": 150
+    },
+    "male": {
+      "min": 12,
+      "max": 300
+    },
+    "clinical_significance": "Iron storage marker. Better indicator of iron deficiency than serum iron alone."
+  },
+  
+  "Uric Acid": {
+    "unit": "mg/dL",
+    "female": {
+      "min": 2.4,
+      "max": 6.0
+    },
+    "male": {
+      "min": 3.4,
+      "max": 7.0
+    },
+    "clinical_significance": "Purine metabolism marker. Elevated in gout and kidney disease."
+  },
+  
+  "CRP": {
+    "full_name": "C-Reactive Protein",
+    "unit": "mg/dL",
+    "normal": {
+      "max": 0.8
+    },
+    "clinical_significance": "Inflammation marker. Elevated in infections, inflammatory diseases, tissue damage."
+  },
+  
+  "ESR": {
+    "full_name": "Erythrocyte Sedimentation Rate",
+    "unit": "mm/hr",
+    "female": {
+      "max": 20
+    },
+    "male": {
+      "max": 15
+    },
+    "clinical_significance": "Non-specific inflammation marker. Elevated in many inflammatory and infectious conditions."
+  }
+}

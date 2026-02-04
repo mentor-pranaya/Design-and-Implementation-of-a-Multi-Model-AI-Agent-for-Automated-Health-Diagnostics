@@ -87,3 +87,47 @@ else:
 
 print("\n" + "="*60)
 
+# ============================================================================
+# PHASE 3: RECOMMENDATION ENGINE
+# ============================================================================
+# Import Phase 3 recommendation engine
+try:
+    import sys
+    from pathlib import Path
+    
+    # Add core_phase3 to path
+    project_root = Path(__file__).parent.parent
+    sys.path.insert(0, str(project_root))
+    
+    from core_phase3.main import Phase3RecommendationPipeline
+    
+    # Initialize recommendation pipeline
+    recommendation_pipeline = Phase3RecommendationPipeline()
+    
+    # Convert patterns to Phase 3 format
+    phase3_patterns = []
+    for p in patterns:
+        pattern_entry = {
+            "pattern": p.get('pattern', p.get('metric', 'Unknown')),
+            "severity": p.get('severity', p.get('risk_level', p.get('risk', 'Moderate')))
+        }
+        phase3_patterns.append(pattern_entry)
+    
+    # Generate recommendations
+    recommendations_report = recommendation_pipeline.process_patterns(phase3_patterns)
+    
+    # Display formatted recommendations
+    print(recommendations_report["formatted_output"])
+    
+except ImportError as e:
+    print("\n⚠️  Phase 3 (Recommendation Engine) not available.")
+    print(f"   Error: {e}")
+    print("   Skipping recommendation generation.")
+except Exception as e:
+    print("\n⚠️  Error generating recommendations:")
+    print(f"   {e}")
+
+print("\n" + "="*60)
+print("END OF PIPELINE")
+print("="*60)
+

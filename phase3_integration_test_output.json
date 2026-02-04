@@ -1,0 +1,1331 @@
+{
+  "phase": "Phase 3: Complete Evaluation & Recommendation Pipeline",
+  "timestamp": "2026-01-30T18:38:10.836013",
+  "patient_info": {
+    "sex": "male",
+    "age": 52,
+    "name": "Sample Patient"
+  },
+  "phase_3a_evaluation": {
+    "phase": "Phase 3A: Reference-Based Evaluation",
+    "status": "success",
+    "patient_info": {
+      "sex": "male",
+      "age": 52,
+      "name": "Sample Patient"
+    },
+    "total_parameters_evaluated": 12,
+    "parameters_with_reference": 12,
+    "parameters_without_reference": 0,
+    "evaluations": [
+      {
+        "parameter": "Hemoglobin",
+        "value": 10.2,
+        "unit": "g/dL",
+        "status": "Low",
+        "severity": "Moderate",
+        "reference_range": "14.0-18.0 g/dL",
+        "deviation_percent": -27.142857142857146,
+        "clinical_significance": "Oxygen-carrying capacity of blood. Low values indicate anemia; high values may indicate polycythemia.",
+        "reference_available": true,
+        "extracted_unit": "g/dL"
+      },
+      {
+        "parameter": "WBC",
+        "value": 12800,
+        "unit": "cells/\u00b5L",
+        "status": "High",
+        "severity": "Moderate",
+        "reference_range": "4000-11000 cells/\u00b5L",
+        "deviation_percent": 16.363636363636363,
+        "clinical_significance": "Indicates immune system function. Elevated in infections/inflammation; low in immunosuppression.",
+        "reference_available": true,
+        "extracted_unit": "cells/\u00b5L"
+      },
+      {
+        "parameter": "Platelet Count",
+        "value": 175000,
+        "unit": "cells/\u00b5L",
+        "status": "Normal",
+        "severity": null,
+        "reference_range": "150000-450000 cells/\u00b5L",
+        "deviation_percent": 0.0,
+        "clinical_significance": "Essential for blood clotting. Low values increase bleeding risk; high values may increase clotting risk.",
+        "reference_available": true,
+        "extracted_unit": "cells/\u00b5L"
+      },
+      {
+        "parameter": "Glucose",
+        "value": 132,
+        "unit": "mg/dL",
+        "status": "Unknown",
+        "severity": null,
+        "reference_range": "Range varies by category",
+        "deviation_percent": null,
+        "clinical_significance": "Blood sugar level. Elevated values indicate diabetes risk or diabetes.",
+        "reference_available": true,
+        "extracted_unit": "mg/dL"
+      },
+      {
+        "parameter": "HbA1c",
+        "value": 6.4,
+        "unit": "%",
+        "status": "Borderline High",
+        "severity": "Mild",
+        "reference_range": "<5.6 %",
+        "deviation_percent": null,
+        "clinical_significance": "Average blood glucose over 2-3 months. Primary diabetes diagnostic and monitoring marker.",
+        "reference_available": true,
+        "extracted_unit": "%"
+      },
+      {
+        "parameter": "Cholesterol Total",
+        "value": 245,
+        "unit": "mg/dL",
+        "status": "Unknown",
+        "severity": null,
+        "reference_range": "Range varies by category",
+        "deviation_percent": null,
+        "clinical_significance": "Total cholesterol level. Elevated values increase cardiovascular disease risk.",
+        "reference_available": true,
+        "extracted_unit": "mg/dL"
+      },
+      {
+        "parameter": "LDL",
+        "value": 172,
+        "unit": "mg/dL",
+        "status": "Unknown",
+        "severity": null,
+        "reference_range": "<99 mg/dL (optimal)",
+        "deviation_percent": null,
+        "clinical_significance": "Bad cholesterol. Primary target for cardiovascular risk reduction.",
+        "reference_available": true,
+        "extracted_unit": "mg/dL"
+      },
+      {
+        "parameter": "HDL",
+        "value": 36,
+        "unit": "mg/dL",
+        "status": "Unknown",
+        "severity": null,
+        "reference_range": "Range varies by category",
+        "deviation_percent": null,
+        "clinical_significance": "Good cholesterol. Higher values are protective against cardiovascular disease.",
+        "reference_available": true,
+        "extracted_unit": "mg/dL"
+      },
+      {
+        "parameter": "Triglycerides",
+        "value": 225,
+        "unit": "mg/dL",
+        "status": "Unknown",
+        "severity": null,
+        "reference_range": "100-149 mg/dL",
+        "deviation_percent": null,
+        "clinical_significance": "Type of fat in blood. Elevated levels increase cardiovascular disease risk.",
+        "reference_available": true,
+        "extracted_unit": "mg/dL"
+      },
+      {
+        "parameter": "Creatinine",
+        "value": 1.4,
+        "unit": "mg/dL",
+        "status": "High",
+        "severity": "Mild",
+        "reference_range": "0.7-1.3 mg/dL",
+        "deviation_percent": 7.692307692307682,
+        "clinical_significance": "Kidney function marker. Elevated values indicate impaired kidney function.",
+        "reference_available": true,
+        "extracted_unit": "mg/dL"
+      },
+      {
+        "parameter": "ALT",
+        "value": 48,
+        "unit": "U/L",
+        "status": "High",
+        "severity": "Moderate",
+        "reference_range": "10-40 U/L",
+        "deviation_percent": 20.0,
+        "clinical_significance": "Liver enzyme. Elevated in liver damage or disease.",
+        "reference_available": true,
+        "extracted_unit": "U/L"
+      },
+      {
+        "parameter": "TSH",
+        "value": 5.2,
+        "unit": "mU/L",
+        "status": "High",
+        "severity": "Severe",
+        "reference_range": "0.5-4.0 mU/L",
+        "deviation_percent": 30.000000000000004,
+        "clinical_significance": "Thyroid function regulator. Elevated in hypothyroidism; low in hyperthyroidism.",
+        "reference_available": true,
+        "extracted_unit": "mU/L"
+      }
+    ],
+    "abnormal_findings": [
+      {
+        "parameter": "Hemoglobin",
+        "status": "Low",
+        "severity": "Moderate",
+        "value": 10.2
+      },
+      {
+        "parameter": "WBC",
+        "status": "High",
+        "severity": "Moderate",
+        "value": 12800
+      },
+      {
+        "parameter": "HbA1c",
+        "status": "Borderline High",
+        "severity": "Mild",
+        "value": 6.4
+      },
+      {
+        "parameter": "Creatinine",
+        "status": "High",
+        "severity": "Mild",
+        "value": 1.4
+      },
+      {
+        "parameter": "ALT",
+        "status": "High",
+        "severity": "Moderate",
+        "value": 48
+      },
+      {
+        "parameter": "TSH",
+        "status": "High",
+        "severity": "Severe",
+        "value": 5.2
+      }
+    ],
+    "critical_findings": [],
+    "summary": {
+      "status_counts": {
+        "normal": 1,
+        "low": 1,
+        "high": 5,
+        "borderline": 0,
+        "critical": 0,
+        "unknown": 5
+      },
+      "severity_counts": {
+        "mild": 2,
+        "moderate": 3,
+        "severe": 1
+      },
+      "abnormal_count": 6,
+      "critical_count": 0,
+      "interpretation": "6 parameter(s) outside normal range. Follow-up with healthcare provider recommended."
+    },
+    "flags_for_pattern_recognition": [
+      {
+        "pattern_type": "Anemia Indicator",
+        "triggered_by": [
+          "Hemoglobin"
+        ],
+        "severity": "Moderate",
+        "confidence": "high"
+      },
+      {
+        "pattern_type": "Diabetes Risk",
+        "triggered_by": [
+          "HbA1c"
+        ],
+        "confidence": "high"
+      },
+      {
+        "pattern_type": "Kidney Function Alert",
+        "triggered_by": [
+          "Creatinine"
+        ],
+        "confidence": "moderate"
+      },
+      {
+        "pattern_type": "Liver Function Alert",
+        "triggered_by": [
+          "ALT"
+        ],
+        "confidence": "low"
+      }
+    ]
+  },
+  "phase_3b_patterns": [
+    {
+      "pattern": "Anemia Indicator",
+      "severity": "Moderate",
+      "confidence": "high",
+      "triggered_by": [
+        "Hemoglobin"
+      ]
+    },
+    {
+      "pattern": "Diabetes Risk",
+      "severity": "Moderate",
+      "confidence": "high",
+      "triggered_by": [
+        "HbA1c"
+      ]
+    },
+    {
+      "pattern": "Kidney Function Alert",
+      "severity": "Moderate",
+      "confidence": "moderate",
+      "triggered_by": [
+        "Creatinine"
+      ]
+    },
+    {
+      "pattern": "Liver Function Alert",
+      "severity": "Moderate",
+      "confidence": "low",
+      "triggered_by": [
+        "ALT"
+      ]
+    }
+  ],
+  "phase_3c_recommendations": {
+    "status": "success",
+    "detected_patterns_count": 4,
+    "detected_conditions": [
+      "Anemia Indicator",
+      "Diabetes Risk",
+      "Kidney Function Alert",
+      "Liver Function Alert"
+    ],
+    "recommendations": [
+      {
+        "condition": "Anemia Indicator",
+        "severity": "Moderate",
+        "diet": [
+          "Increase iron-rich foods such as spinach, lentils, red meat, and fortified cereals",
+          "Include vitamin C rich foods (citrus fruits, tomatoes, berries) to improve iron absorption",
+          "Limit tea and coffee consumption as they inhibit iron absorption",
+          "Consider lean meat, poultry, and fish for better iron bioavailability"
+        ],
+        "exercise": [
+          "Avoid high-intensity workouts until hemoglobin improves",
+          "Prefer light walking (20-30 minutes daily) or gentle yoga",
+          "Rest adequately between exercise sessions",
+          "Gradually increase intensity as energy levels improve"
+        ],
+        "follow_up": "Consult physician for complete iron studies (serum iron, ferritin, TIBC). Recheck hemoglobin after 6-8 weeks.",
+        "status": "\u2713 Guidelines available",
+        "evidence_source": "pattern + evaluation",
+        "evaluation_context": "Reference-based evaluation: Hemoglobin: Low (Moderate)"
+      },
+      {
+        "condition": "Diabetes Risk",
+        "severity": "Moderate",
+        "diet": [
+          "Choose low glycemic index foods",
+          "Include high-fiber foods: whole grains, vegetables, legumes",
+          "Reduce simple carbohydrates and sugary beverages",
+          "Eat balanced meals with protein, fat, and carbohydrates",
+          "Practice portion control and regular meal timing",
+          "Limit fruit juice; prefer whole fruits"
+        ],
+        "exercise": [
+          "150 minutes of moderate aerobic activity weekly",
+          "Add resistance training 2-3 times per week",
+          "Exercise after meals for better glucose management",
+          "Avoid prolonged sitting; take movement breaks every hour",
+          "Consistency is more important than intensity"
+        ],
+        "follow_up": "HbA1c recheck in 3 months. Fasting and post-meal glucose monitoring. Early intervention prevents diabetes progression. Consult endocrinologist for comprehensive diabetes risk assessment.",
+        "status": "\u2713 Guidelines available",
+        "evidence_source": "pattern + evaluation",
+        "evaluation_context": "Reference-based evaluation: HbA1c: Borderline High (Mild)"
+      },
+      {
+        "condition": "Kidney Function Alert",
+        "severity": "Moderate",
+        "diet": [
+          "Maintain balanced, nutritious diet with whole foods"
+        ],
+        "exercise": [
+          "Maintain regular moderate physical activity"
+        ],
+        "follow_up": "Consult healthcare provider for condition-specific guidance",
+        "status": "\u26a0 Generic recommendations provided",
+        "evidence_source": "pattern-based"
+      },
+      {
+        "condition": "Liver Function Alert",
+        "severity": "Moderate",
+        "diet": [
+          "Maintain balanced, nutritious diet with whole foods"
+        ],
+        "exercise": [
+          "Maintain regular moderate physical activity"
+        ],
+        "follow_up": "Consult healthcare provider for condition-specific guidance",
+        "status": "\u26a0 Generic recommendations provided",
+        "evidence_source": "pattern-based"
+      },
+      {
+        "condition": "WBC - High",
+        "severity": "Moderate",
+        "diet": [
+          "Focus on anti-inflammatory foods (berries, fatty fish, leafy greens)",
+          "Avoid processed foods and excessive sugar",
+          "Stay well-hydrated"
+        ],
+        "exercise": [
+          "Consult healthcare provider before starting new exercise program",
+          "Start with light to moderate activity as tolerated",
+          "Gradually increase intensity under medical supervision",
+          "Monitor symptoms and adjust activity accordingly"
+        ],
+        "follow_up": "Discuss WBC levels with healthcare provider. Monitor and retest as recommended.",
+        "status": "\u2713 Evidence-based (reference ranges)",
+        "evidence_source": "evaluation-only"
+      },
+      {
+        "condition": "TSH - High",
+        "severity": "Severe",
+        "diet": [
+          "Maintain balanced, nutritious diet",
+          "Consult healthcare provider for parameter-specific dietary guidance",
+          "Consider referral to registered dietitian"
+        ],
+        "exercise": [
+          "Consult healthcare provider before starting new exercise program",
+          "Start with light to moderate activity as tolerated",
+          "Gradually increase intensity under medical supervision",
+          "Monitor symptoms and adjust activity accordingly"
+        ],
+        "follow_up": "Discuss TSH levels with healthcare provider. Monitor and retest as recommended.",
+        "status": "\u2713 Evidence-based (reference ranges)",
+        "evidence_source": "evaluation-only"
+      }
+    ],
+    "general_lifestyle": {
+      "sleep": [
+        "Aim for 7-9 hours of quality sleep nightly",
+        "Maintain consistent sleep schedule",
+        "Create a cool, dark, quiet sleep environment",
+        "Avoid screens 30 minutes before bedtime"
+      ],
+      "stress_management": [
+        "Practice meditation or mindfulness (10-15 minutes daily)",
+        "Engage in relaxation techniques (deep breathing, progressive muscle relaxation)",
+        "Maintain social connections and support networks",
+        "Seek professional help if experiencing chronic stress or anxiety"
+      ],
+      "preventive_care": [
+        "Annual health checkups and screening tests based on age and risk factors",
+        "Maintain vaccinations as recommended",
+        "Avoid smoking and limit alcohol consumption",
+        "Regular monitoring of vital signs (blood pressure, weight)"
+      ]
+    },
+    "disclaimer": "DISCLAIMER: This recommendation engine provides general lifestyle guidance based on clinical patterns and guidelines. It does NOT replace professional medical advice. Always consult with qualified healthcare providers for personalized medical recommendations, diagnosis, and treatment. The user assumes full responsibility for any decisions made based on this information.",
+    "evaluation_summary": {
+      "total_parameters": 12,
+      "abnormal_count": 6,
+      "critical_count": 0,
+      "interpretation": "6 parameter(s) outside normal range. Follow-up with healthcare provider recommended."
+    },
+    "detailed_guidance": {
+      "Anemia Indicator": {
+        "diet_details": {
+          "high_iron": [
+            "Red meat (beef, lamb)",
+            "Organ meats (liver, kidney)",
+            "Dark leafy greens (spinach, kale)",
+            "Legumes (lentils, chickpeas, beans)",
+            "Fortified cereals",
+            "Oysters and clams",
+            "Pumpkin seeds",
+            "Quinoa"
+          ],
+          "absorption_enhancers": [
+            "Citrus fruits (orange, lemon, lime)",
+            "Tomatoes",
+            "Berries",
+            "Bell peppers",
+            "Broccoli",
+            "Kiwi fruit"
+          ],
+          "absorption_inhibitors": [
+            "Tea",
+            "Coffee",
+            "Dairy products (when consumed with iron-rich meals)",
+            "Calcium supplements",
+            "Whole grains (taken with iron-rich meals)"
+          ]
+        },
+        "diet_tips": {
+          "meal_timing": [
+            "Eat at regular times to maintain stable metabolism",
+            "Space meals 3-4 hours apart",
+            "Don't skip breakfast",
+            "Eat smaller portions more frequently if needed"
+          ],
+          "portion_control": [
+            "Use smaller plates to control portions",
+            "Fill half plate with vegetables",
+            "Include palm-sized protein portion",
+            "Add carbohydrate portion (fist-sized or smaller for blood sugar concerns)"
+          ],
+          "food_preparation": [
+            "Prepare meals at home to control ingredients",
+            "Use cooking methods: boil, bake, grill, steam (avoid frying)",
+            "Season with herbs and spices instead of salt",
+            "Batch cook for consistency throughout the week"
+          ],
+          "shopping_tips": [
+            "Shop the perimeter of grocery store (fresh foods)",
+            "Read nutrition labels carefully",
+            "Choose whole grain products",
+            "Buy fresh seasonal produce when possible",
+            "Limit processed and packaged foods"
+          ]
+        },
+        "exercise_plan": {
+          "intensity_level": "Able to talk but not sing during activity",
+          "frequency": {
+            "recommended": "3-4 days/week",
+            "rest_days": "At least 1-2 days per week for recovery",
+            "consistency": "More important than intensity"
+          },
+          "duration": {
+            "recommended": "20-30 min",
+            "note": "Can be split into 10-15 min sessions if needed",
+            "warm_up": "5-10 minutes at start",
+            "cool_down": "5-10 minutes at end"
+          },
+          "types": [
+            "Light walking",
+            "Gentle yoga",
+            "Swimming",
+            "Tai Chi",
+            "Light cycling (stationary preferred)"
+          ],
+          "precautions": [
+            "Avoid sudden movements or position changes",
+            "Stop if dizziness or shortness of breath occurs",
+            "Stay well-hydrated",
+            "Exercise in well-ventilated areas",
+            "Avoid exercising when feeling particularly fatigued"
+          ],
+          "progression": {
+            "week_1_to_2": [
+              "Establish consistent schedule",
+              "Focus on comfort and sustainability",
+              "Build baseline fitness level",
+              "Monitor how body responds"
+            ],
+            "week_3_to_4": [
+              "Gradually increase duration by 5-10 minutes",
+              "Introduce variety in activities",
+              "Maintain consistency",
+              "Assess energy and recovery"
+            ],
+            "week_5_to_8": [
+              "Increase intensity slightly if tolerated",
+              "Add strength training if appropriate",
+              "Maintain progress with variety",
+              "Re-evaluate after 8 weeks with healthcare provider"
+            ],
+            "month_3_plus": [
+              "Maintain achieved fitness level",
+              "Continue progressive overload if tolerated",
+              "Incorporate new activities to prevent boredom",
+              "Regular health monitoring and provider consultation"
+            ]
+          }
+        },
+        "lifestyle_guidance": {
+          "sleep": {
+            "duration": "8-9 hours nightly",
+            "tips": [
+              "Sleep is crucial for red blood cell production",
+              "Maintain consistent sleep schedule (even on weekends)",
+              "Rest adequately between activities",
+              "Create dark, cool, quiet sleep environment",
+              "Avoid caffeine 4-6 hours before bedtime"
+            ]
+          },
+          "stress_management": {
+            "daily_practices": [
+              "Meditation or mindfulness: 10-15 minutes daily",
+              "Deep breathing exercises: 5 minutes, 2-3 times daily",
+              "Progressive muscle relaxation: 15-20 minutes",
+              "Journaling: 10 minutes to process emotions",
+              "Gratitude practice: identify 3 things daily"
+            ],
+            "condition_specific": [
+              "Regular stress management supports overall health",
+              "Identify personal stress triggers",
+              "Develop coping strategies and support network"
+            ],
+            "activities": [
+              "Nature walks or time in parks",
+              "Creative pursuits (art, music, writing)",
+              "Social connection with friends/family",
+              "Pet companionship and care",
+              "Hobbies and leisure activities"
+            ],
+            "warning_signs": [
+              "Increased anxiety or depression",
+              "Sleep disruption or insomnia",
+              "Appetite changes",
+              "Difficulty concentrating",
+              "Increased symptom severity with stress"
+            ]
+          },
+          "habits": {
+            "habits_to_adopt": [
+              "Regular health monitoring (check vital signs)",
+              "Consistent meal times and portion control",
+              "Daily physical activity or movement",
+              "Regular hydration throughout the day",
+              "Medication adherence if prescribed",
+              "Regular health checkups and screenings"
+            ],
+            "habits_to_avoid": [
+              "Smoking and tobacco use",
+              "Excessive alcohol consumption",
+              "Prolonged sedentary behavior",
+              "Skipping meals",
+              "Emotional eating or stress eating",
+              "Irregular sleep schedule",
+              "Self-medication or over-the-counter medication misuse"
+            ],
+            "habit_change_tips": [
+              "Start with one habit at a time",
+              "Set specific, measurable goals",
+              "Track progress daily or weekly",
+              "Identify triggers and prepare alternatives",
+              "Build habits gradually (gradual change is sustainable)",
+              "Use positive reinforcement, not punishment",
+              "Involve family for accountability and support",
+              "Expect setbacks; get back on track immediately"
+            ]
+          },
+          "environmental": {
+            "home_environment": [
+              "Keep healthy foods visible and accessible",
+              "Remove tempting unhealthy foods from home",
+              "Create a dedicated exercise space",
+              "Maintain comfortable temperature for sleep",
+              "Minimize noise and light disruptions",
+              "Stock kitchen with cooking supplies for healthy meals"
+            ],
+            "work_environment": [
+              "Take movement breaks every hour",
+              "Use stairs instead of elevators",
+              "Bring healthy snacks to work",
+              "Stay hydrated with water throughout the day",
+              "Set reminders for medication if needed",
+              "Manage workplace stress through boundaries"
+            ],
+            "social_support": [
+              "Inform family and friends about health goals",
+              "Find accountability partner or health buddy",
+              "Join support groups (online or in-person)",
+              "Consider working with nutritionist or health coach",
+              "Communicate needs to healthcare team",
+              "Avoid peer pressure regarding unhealthy behaviors"
+            ]
+          },
+          "monitoring": {
+            "metrics": [
+              "Hemoglobin levels",
+              "Energy levels",
+              "Shortness of breath"
+            ],
+            "frequency": "Check hemoglobin every 6-8 weeks"
+          }
+        }
+      },
+      "Diabetes Risk": {
+        "diet_details": {
+          "vegetables": [
+            "Dark leafy greens",
+            "Colorful peppers",
+            "Broccoli",
+            "Carrots",
+            "Tomatoes",
+            "Zucchini",
+            "Mushrooms",
+            "Brussels sprouts"
+          ],
+          "fruits": [
+            "Berries",
+            "Apples",
+            "Oranges",
+            "Bananas",
+            "Pears",
+            "Grapes",
+            "Watermelon",
+            "Kiwi"
+          ],
+          "whole_grains": [
+            "Brown rice",
+            "Whole wheat bread",
+            "Oats",
+            "Quinoa",
+            "Barley",
+            "Millet",
+            "Whole wheat pasta"
+          ],
+          "lean_proteins": [
+            "Chicken breast",
+            "Fish",
+            "Turkey",
+            "Beans",
+            "Lentils",
+            "Tofu",
+            "Eggs"
+          ]
+        },
+        "diet_tips": {
+          "meal_timing": [
+            "Eat at regular times to maintain stable metabolism",
+            "Space meals 3-4 hours apart",
+            "Don't skip breakfast",
+            "Eat smaller portions more frequently if needed"
+          ],
+          "portion_control": [
+            "Use smaller plates to control portions",
+            "Fill half plate with vegetables",
+            "Include palm-sized protein portion",
+            "Add carbohydrate portion (fist-sized or smaller for blood sugar concerns)"
+          ],
+          "food_preparation": [
+            "Prepare meals at home to control ingredients",
+            "Use cooking methods: boil, bake, grill, steam (avoid frying)",
+            "Season with herbs and spices instead of salt",
+            "Batch cook for consistency throughout the week"
+          ],
+          "shopping_tips": [
+            "Shop the perimeter of grocery store (fresh foods)",
+            "Read nutrition labels carefully",
+            "Choose whole grain products",
+            "Buy fresh seasonal produce when possible",
+            "Limit processed and packaged foods"
+          ]
+        },
+        "exercise_plan": {
+          "intensity_level": "Able to talk but not sing during activity",
+          "frequency": {
+            "recommended": "3-4 days/week",
+            "rest_days": "At least 1-2 days per week for recovery",
+            "consistency": "More important than intensity"
+          },
+          "duration": {
+            "recommended": "30 min",
+            "note": "Can be split into 10-15 min sessions if needed",
+            "warm_up": "5-10 minutes at start",
+            "cool_down": "5-10 minutes at end"
+          },
+          "types": [
+            "Walking",
+            "Swimming",
+            "Cycling",
+            "Yoga",
+            "Tai Chi"
+          ],
+          "precautions": [
+            "Warm up before exercise",
+            "Cool down after exercise",
+            "Stay well-hydrated",
+            "Listen to your body"
+          ],
+          "progression": {
+            "week_1_to_2": [
+              "Establish consistent schedule",
+              "Focus on comfort and sustainability",
+              "Build baseline fitness level",
+              "Monitor how body responds"
+            ],
+            "week_3_to_4": [
+              "Gradually increase duration by 5-10 minutes",
+              "Introduce variety in activities",
+              "Maintain consistency",
+              "Assess energy and recovery"
+            ],
+            "week_5_to_8": [
+              "Increase intensity slightly if tolerated",
+              "Add strength training if appropriate",
+              "Maintain progress with variety",
+              "Re-evaluate after 8 weeks with healthcare provider"
+            ],
+            "month_3_plus": [
+              "Maintain achieved fitness level",
+              "Continue progressive overload if tolerated",
+              "Incorporate new activities to prevent boredom",
+              "Regular health monitoring and provider consultation"
+            ]
+          }
+        },
+        "lifestyle_guidance": {
+          "sleep": {
+            "duration": "7-8 hours nightly",
+            "tips": [
+              "Maintain consistent sleep schedule",
+              "Create dark, cool, quiet sleep environment",
+              "Avoid screens 30-60 minutes before bed",
+              "Limit caffeine, especially afternoon/evening",
+              "Avoid large meals before bedtime"
+            ]
+          },
+          "stress_management": {
+            "daily_practices": [
+              "Meditation or mindfulness: 10-15 minutes daily",
+              "Deep breathing exercises: 5 minutes, 2-3 times daily",
+              "Progressive muscle relaxation: 15-20 minutes",
+              "Journaling: 10 minutes to process emotions",
+              "Gratitude practice: identify 3 things daily"
+            ],
+            "condition_specific": [
+              "Regular stress management supports overall health",
+              "Identify personal stress triggers",
+              "Develop coping strategies and support network"
+            ],
+            "activities": [
+              "Nature walks or time in parks",
+              "Creative pursuits (art, music, writing)",
+              "Social connection with friends/family",
+              "Pet companionship and care",
+              "Hobbies and leisure activities"
+            ],
+            "warning_signs": [
+              "Increased anxiety or depression",
+              "Sleep disruption or insomnia",
+              "Appetite changes",
+              "Difficulty concentrating",
+              "Increased symptom severity with stress"
+            ]
+          },
+          "habits": {
+            "habits_to_adopt": [
+              "Regular health monitoring (check vital signs)",
+              "Consistent meal times and portion control",
+              "Daily physical activity or movement",
+              "Regular hydration throughout the day",
+              "Medication adherence if prescribed",
+              "Regular health checkups and screenings"
+            ],
+            "habits_to_avoid": [
+              "Smoking and tobacco use",
+              "Excessive alcohol consumption",
+              "Prolonged sedentary behavior",
+              "Skipping meals",
+              "Emotional eating or stress eating",
+              "Irregular sleep schedule",
+              "Self-medication or over-the-counter medication misuse"
+            ],
+            "habit_change_tips": [
+              "Start with one habit at a time",
+              "Set specific, measurable goals",
+              "Track progress daily or weekly",
+              "Identify triggers and prepare alternatives",
+              "Build habits gradually (gradual change is sustainable)",
+              "Use positive reinforcement, not punishment",
+              "Involve family for accountability and support",
+              "Expect setbacks; get back on track immediately"
+            ]
+          },
+          "environmental": {
+            "home_environment": [
+              "Keep healthy foods visible and accessible",
+              "Remove tempting unhealthy foods from home",
+              "Create a dedicated exercise space",
+              "Maintain comfortable temperature for sleep",
+              "Minimize noise and light disruptions",
+              "Stock kitchen with cooking supplies for healthy meals"
+            ],
+            "work_environment": [
+              "Take movement breaks every hour",
+              "Use stairs instead of elevators",
+              "Bring healthy snacks to work",
+              "Stay hydrated with water throughout the day",
+              "Set reminders for medication if needed",
+              "Manage workplace stress through boundaries"
+            ],
+            "social_support": [
+              "Inform family and friends about health goals",
+              "Find accountability partner or health buddy",
+              "Join support groups (online or in-person)",
+              "Consider working with nutritionist or health coach",
+              "Communicate needs to healthcare team",
+              "Avoid peer pressure regarding unhealthy behaviors"
+            ]
+          },
+          "monitoring": {
+            "metrics": [
+              "Overall well-being",
+              "Energy levels",
+              "Symptom presence"
+            ],
+            "frequency": "Regular self-assessment and annual health checkups"
+          }
+        }
+      },
+      "Kidney Function Alert": {
+        "diet_details": {
+          "vegetables": [
+            "Dark leafy greens",
+            "Colorful peppers",
+            "Broccoli",
+            "Carrots",
+            "Tomatoes",
+            "Zucchini",
+            "Mushrooms",
+            "Brussels sprouts"
+          ],
+          "fruits": [
+            "Berries",
+            "Apples",
+            "Oranges",
+            "Bananas",
+            "Pears",
+            "Grapes",
+            "Watermelon",
+            "Kiwi"
+          ],
+          "whole_grains": [
+            "Brown rice",
+            "Whole wheat bread",
+            "Oats",
+            "Quinoa",
+            "Barley",
+            "Millet",
+            "Whole wheat pasta"
+          ],
+          "lean_proteins": [
+            "Chicken breast",
+            "Fish",
+            "Turkey",
+            "Beans",
+            "Lentils",
+            "Tofu",
+            "Eggs"
+          ]
+        },
+        "diet_tips": {
+          "meal_timing": [
+            "Eat at regular times to maintain stable metabolism",
+            "Space meals 3-4 hours apart",
+            "Don't skip breakfast",
+            "Eat smaller portions more frequently if needed"
+          ],
+          "portion_control": [
+            "Use smaller plates to control portions",
+            "Fill half plate with vegetables",
+            "Include palm-sized protein portion",
+            "Add carbohydrate portion (fist-sized or smaller for blood sugar concerns)"
+          ],
+          "food_preparation": [
+            "Prepare meals at home to control ingredients",
+            "Use cooking methods: boil, bake, grill, steam (avoid frying)",
+            "Season with herbs and spices instead of salt",
+            "Batch cook for consistency throughout the week"
+          ],
+          "shopping_tips": [
+            "Shop the perimeter of grocery store (fresh foods)",
+            "Read nutrition labels carefully",
+            "Choose whole grain products",
+            "Buy fresh seasonal produce when possible",
+            "Limit processed and packaged foods"
+          ]
+        },
+        "exercise_plan": {
+          "intensity_level": "Able to talk but not sing during activity",
+          "frequency": {
+            "recommended": "3-4 days/week",
+            "rest_days": "At least 1-2 days per week for recovery",
+            "consistency": "More important than intensity"
+          },
+          "duration": {
+            "recommended": "30 min",
+            "note": "Can be split into 10-15 min sessions if needed",
+            "warm_up": "5-10 minutes at start",
+            "cool_down": "5-10 minutes at end"
+          },
+          "types": [
+            "Walking",
+            "Swimming",
+            "Cycling",
+            "Yoga",
+            "Tai Chi"
+          ],
+          "precautions": [
+            "Warm up before exercise",
+            "Cool down after exercise",
+            "Stay well-hydrated",
+            "Listen to your body"
+          ],
+          "progression": {
+            "week_1_to_2": [
+              "Establish consistent schedule",
+              "Focus on comfort and sustainability",
+              "Build baseline fitness level",
+              "Monitor how body responds"
+            ],
+            "week_3_to_4": [
+              "Gradually increase duration by 5-10 minutes",
+              "Introduce variety in activities",
+              "Maintain consistency",
+              "Assess energy and recovery"
+            ],
+            "week_5_to_8": [
+              "Increase intensity slightly if tolerated",
+              "Add strength training if appropriate",
+              "Maintain progress with variety",
+              "Re-evaluate after 8 weeks with healthcare provider"
+            ],
+            "month_3_plus": [
+              "Maintain achieved fitness level",
+              "Continue progressive overload if tolerated",
+              "Incorporate new activities to prevent boredom",
+              "Regular health monitoring and provider consultation"
+            ]
+          }
+        },
+        "lifestyle_guidance": {
+          "sleep": {
+            "duration": "7-8 hours nightly",
+            "tips": [
+              "Maintain consistent sleep schedule",
+              "Create dark, cool, quiet sleep environment",
+              "Avoid screens 30-60 minutes before bed",
+              "Limit caffeine, especially afternoon/evening",
+              "Avoid large meals before bedtime"
+            ]
+          },
+          "stress_management": {
+            "daily_practices": [
+              "Meditation or mindfulness: 10-15 minutes daily",
+              "Deep breathing exercises: 5 minutes, 2-3 times daily",
+              "Progressive muscle relaxation: 15-20 minutes",
+              "Journaling: 10 minutes to process emotions",
+              "Gratitude practice: identify 3 things daily"
+            ],
+            "condition_specific": [
+              "Regular stress management supports overall health",
+              "Identify personal stress triggers",
+              "Develop coping strategies and support network"
+            ],
+            "activities": [
+              "Nature walks or time in parks",
+              "Creative pursuits (art, music, writing)",
+              "Social connection with friends/family",
+              "Pet companionship and care",
+              "Hobbies and leisure activities"
+            ],
+            "warning_signs": [
+              "Increased anxiety or depression",
+              "Sleep disruption or insomnia",
+              "Appetite changes",
+              "Difficulty concentrating",
+              "Increased symptom severity with stress"
+            ]
+          },
+          "habits": {
+            "habits_to_adopt": [
+              "Regular health monitoring (check vital signs)",
+              "Consistent meal times and portion control",
+              "Daily physical activity or movement",
+              "Regular hydration throughout the day",
+              "Medication adherence if prescribed",
+              "Regular health checkups and screenings"
+            ],
+            "habits_to_avoid": [
+              "Smoking and tobacco use",
+              "Excessive alcohol consumption",
+              "Prolonged sedentary behavior",
+              "Skipping meals",
+              "Emotional eating or stress eating",
+              "Irregular sleep schedule",
+              "Self-medication or over-the-counter medication misuse"
+            ],
+            "habit_change_tips": [
+              "Start with one habit at a time",
+              "Set specific, measurable goals",
+              "Track progress daily or weekly",
+              "Identify triggers and prepare alternatives",
+              "Build habits gradually (gradual change is sustainable)",
+              "Use positive reinforcement, not punishment",
+              "Involve family for accountability and support",
+              "Expect setbacks; get back on track immediately"
+            ]
+          },
+          "environmental": {
+            "home_environment": [
+              "Keep healthy foods visible and accessible",
+              "Remove tempting unhealthy foods from home",
+              "Create a dedicated exercise space",
+              "Maintain comfortable temperature for sleep",
+              "Minimize noise and light disruptions",
+              "Stock kitchen with cooking supplies for healthy meals"
+            ],
+            "work_environment": [
+              "Take movement breaks every hour",
+              "Use stairs instead of elevators",
+              "Bring healthy snacks to work",
+              "Stay hydrated with water throughout the day",
+              "Set reminders for medication if needed",
+              "Manage workplace stress through boundaries"
+            ],
+            "social_support": [
+              "Inform family and friends about health goals",
+              "Find accountability partner or health buddy",
+              "Join support groups (online or in-person)",
+              "Consider working with nutritionist or health coach",
+              "Communicate needs to healthcare team",
+              "Avoid peer pressure regarding unhealthy behaviors"
+            ]
+          },
+          "monitoring": {
+            "metrics": [
+              "Overall well-being",
+              "Energy levels",
+              "Symptom presence"
+            ],
+            "frequency": "Regular self-assessment and annual health checkups"
+          }
+        }
+      },
+      "Liver Function Alert": {
+        "diet_details": {
+          "vegetables": [
+            "Dark leafy greens",
+            "Colorful peppers",
+            "Broccoli",
+            "Carrots",
+            "Tomatoes",
+            "Zucchini",
+            "Mushrooms",
+            "Brussels sprouts"
+          ],
+          "fruits": [
+            "Berries",
+            "Apples",
+            "Oranges",
+            "Bananas",
+            "Pears",
+            "Grapes",
+            "Watermelon",
+            "Kiwi"
+          ],
+          "whole_grains": [
+            "Brown rice",
+            "Whole wheat bread",
+            "Oats",
+            "Quinoa",
+            "Barley",
+            "Millet",
+            "Whole wheat pasta"
+          ],
+          "lean_proteins": [
+            "Chicken breast",
+            "Fish",
+            "Turkey",
+            "Beans",
+            "Lentils",
+            "Tofu",
+            "Eggs"
+          ]
+        },
+        "diet_tips": {
+          "meal_timing": [
+            "Eat at regular times to maintain stable metabolism",
+            "Space meals 3-4 hours apart",
+            "Don't skip breakfast",
+            "Eat smaller portions more frequently if needed"
+          ],
+          "portion_control": [
+            "Use smaller plates to control portions",
+            "Fill half plate with vegetables",
+            "Include palm-sized protein portion",
+            "Add carbohydrate portion (fist-sized or smaller for blood sugar concerns)"
+          ],
+          "food_preparation": [
+            "Prepare meals at home to control ingredients",
+            "Use cooking methods: boil, bake, grill, steam (avoid frying)",
+            "Season with herbs and spices instead of salt",
+            "Batch cook for consistency throughout the week"
+          ],
+          "shopping_tips": [
+            "Shop the perimeter of grocery store (fresh foods)",
+            "Read nutrition labels carefully",
+            "Choose whole grain products",
+            "Buy fresh seasonal produce when possible",
+            "Limit processed and packaged foods"
+          ]
+        },
+        "exercise_plan": {
+          "intensity_level": "Able to talk but not sing during activity",
+          "frequency": {
+            "recommended": "3-4 days/week",
+            "rest_days": "At least 1-2 days per week for recovery",
+            "consistency": "More important than intensity"
+          },
+          "duration": {
+            "recommended": "30 min",
+            "note": "Can be split into 10-15 min sessions if needed",
+            "warm_up": "5-10 minutes at start",
+            "cool_down": "5-10 minutes at end"
+          },
+          "types": [
+            "Walking",
+            "Swimming",
+            "Cycling",
+            "Yoga",
+            "Tai Chi"
+          ],
+          "precautions": [
+            "Warm up before exercise",
+            "Cool down after exercise",
+            "Stay well-hydrated",
+            "Listen to your body"
+          ],
+          "progression": {
+            "week_1_to_2": [
+              "Establish consistent schedule",
+              "Focus on comfort and sustainability",
+              "Build baseline fitness level",
+              "Monitor how body responds"
+            ],
+            "week_3_to_4": [
+              "Gradually increase duration by 5-10 minutes",
+              "Introduce variety in activities",
+              "Maintain consistency",
+              "Assess energy and recovery"
+            ],
+            "week_5_to_8": [
+              "Increase intensity slightly if tolerated",
+              "Add strength training if appropriate",
+              "Maintain progress with variety",
+              "Re-evaluate after 8 weeks with healthcare provider"
+            ],
+            "month_3_plus": [
+              "Maintain achieved fitness level",
+              "Continue progressive overload if tolerated",
+              "Incorporate new activities to prevent boredom",
+              "Regular health monitoring and provider consultation"
+            ]
+          }
+        },
+        "lifestyle_guidance": {
+          "sleep": {
+            "duration": "7-8 hours nightly",
+            "tips": [
+              "Maintain consistent sleep schedule",
+              "Create dark, cool, quiet sleep environment",
+              "Avoid screens 30-60 minutes before bed",
+              "Limit caffeine, especially afternoon/evening",
+              "Avoid large meals before bedtime"
+            ]
+          },
+          "stress_management": {
+            "daily_practices": [
+              "Meditation or mindfulness: 10-15 minutes daily",
+              "Deep breathing exercises: 5 minutes, 2-3 times daily",
+              "Progressive muscle relaxation: 15-20 minutes",
+              "Journaling: 10 minutes to process emotions",
+              "Gratitude practice: identify 3 things daily"
+            ],
+            "condition_specific": [
+              "Regular stress management supports overall health",
+              "Identify personal stress triggers",
+              "Develop coping strategies and support network"
+            ],
+            "activities": [
+              "Nature walks or time in parks",
+              "Creative pursuits (art, music, writing)",
+              "Social connection with friends/family",
+              "Pet companionship and care",
+              "Hobbies and leisure activities"
+            ],
+            "warning_signs": [
+              "Increased anxiety or depression",
+              "Sleep disruption or insomnia",
+              "Appetite changes",
+              "Difficulty concentrating",
+              "Increased symptom severity with stress"
+            ]
+          },
+          "habits": {
+            "habits_to_adopt": [
+              "Regular health monitoring (check vital signs)",
+              "Consistent meal times and portion control",
+              "Daily physical activity or movement",
+              "Regular hydration throughout the day",
+              "Medication adherence if prescribed",
+              "Regular health checkups and screenings"
+            ],
+            "habits_to_avoid": [
+              "Smoking and tobacco use",
+              "Excessive alcohol consumption",
+              "Prolonged sedentary behavior",
+              "Skipping meals",
+              "Emotional eating or stress eating",
+              "Irregular sleep schedule",
+              "Self-medication or over-the-counter medication misuse"
+            ],
+            "habit_change_tips": [
+              "Start with one habit at a time",
+              "Set specific, measurable goals",
+              "Track progress daily or weekly",
+              "Identify triggers and prepare alternatives",
+              "Build habits gradually (gradual change is sustainable)",
+              "Use positive reinforcement, not punishment",
+              "Involve family for accountability and support",
+              "Expect setbacks; get back on track immediately"
+            ]
+          },
+          "environmental": {
+            "home_environment": [
+              "Keep healthy foods visible and accessible",
+              "Remove tempting unhealthy foods from home",
+              "Create a dedicated exercise space",
+              "Maintain comfortable temperature for sleep",
+              "Minimize noise and light disruptions",
+              "Stock kitchen with cooking supplies for healthy meals"
+            ],
+            "work_environment": [
+              "Take movement breaks every hour",
+              "Use stairs instead of elevators",
+              "Bring healthy snacks to work",
+              "Stay hydrated with water throughout the day",
+              "Set reminders for medication if needed",
+              "Manage workplace stress through boundaries"
+            ],
+            "social_support": [
+              "Inform family and friends about health goals",
+              "Find accountability partner or health buddy",
+              "Join support groups (online or in-person)",
+              "Consider working with nutritionist or health coach",
+              "Communicate needs to healthcare team",
+              "Avoid peer pressure regarding unhealthy behaviors"
+            ]
+          },
+          "monitoring": {
+            "metrics": [
+              "Overall well-being",
+              "Energy levels",
+              "Symptom presence"
+            ],
+            "frequency": "Regular self-assessment and annual health checkups"
+          }
+        }
+      }
+    }
+  },
+  "safety_validation": {
+    "is_safe": true,
+    "warnings": [],
+    "info": [
+      "These recommendations are based on detected patterns and general medical guidelines. Individual response may vary based on personal medical history, medications, and other factors."
+    ]
+  },
+  "formatted_output": "\n======================================================================\nMEDICAL RISK ANALYSIS & LIFESTYLE RECOMMENDATIONS\n======================================================================\n\n\ud83d\udccb DETECTED CONDITIONS:\n  1. Anemia Indicator\n  2. Diabetes Risk\n  3. Kidney Function Alert\n  4. Liver Function Alert\n\n----------------------------------------------------------------------\nPERSONALIZED LIFESTYLE RECOMMENDATIONS:\n----------------------------------------------------------------------\n\n1. Anemia Indicator\n   Severity: Moderate\n\n   \ud83e\udd57 DIET:\n      \u2022 Increase iron-rich foods such as spinach, lentils, red meat, and fortified cereals\n      \u2022 Include vitamin C rich foods (citrus fruits, tomatoes, berries) to improve iron absorption\n      \u2022 Limit tea and coffee consumption as they inhibit iron absorption\n      \u2022 Consider lean meat, poultry, and fish for better iron bioavailability\n\n   \ud83d\udcaa EXERCISE:\n      \u2022 Avoid high-intensity workouts until hemoglobin improves\n      \u2022 Prefer light walking (20-30 minutes daily) or gentle yoga\n      \u2022 Rest adequately between exercise sessions\n      \u2022 Gradually increase intensity as energy levels improve\n\n   \ud83d\udcc5 FOLLOW-UP: Consult physician for complete iron studies (serum iron, ferritin, TIBC). Recheck hemoglobin after 6-8 weeks.\n\n2. Diabetes Risk\n   Severity: Moderate\n\n   \ud83e\udd57 DIET:\n      \u2022 Choose low glycemic index foods\n      \u2022 Include high-fiber foods: whole grains, vegetables, legumes\n      \u2022 Reduce simple carbohydrates and sugary beverages\n      \u2022 Eat balanced meals with protein, fat, and carbohydrates\n      \u2022 Practice portion control and regular meal timing\n      \u2022 Limit fruit juice; prefer whole fruits\n\n   \ud83d\udcaa EXERCISE:\n      \u2022 150 minutes of moderate aerobic activity weekly\n      \u2022 Add resistance training 2-3 times per week\n      \u2022 Exercise after meals for better glucose management\n      \u2022 Avoid prolonged sitting; take movement breaks every hour\n      \u2022 Consistency is more important than intensity\n\n   \ud83d\udcc5 FOLLOW-UP: HbA1c recheck in 3 months. Fasting and post-meal glucose monitoring. Early intervention prevents diabetes progression. Consult endocrinologist for comprehensive diabetes risk assessment.\n\n3. Kidney Function Alert\n   Severity: Moderate\n\n   \ud83e\udd57 DIET:\n      \u2022 Maintain balanced, nutritious diet with whole foods\n\n   \ud83d\udcaa EXERCISE:\n      \u2022 Maintain regular moderate physical activity\n\n   \ud83d\udcc5 FOLLOW-UP: Consult healthcare provider for condition-specific guidance\n\n4. Liver Function Alert\n   Severity: Moderate\n\n   \ud83e\udd57 DIET:\n      \u2022 Maintain balanced, nutritious diet with whole foods\n\n   \ud83d\udcaa EXERCISE:\n      \u2022 Maintain regular moderate physical activity\n\n   \ud83d\udcc5 FOLLOW-UP: Consult healthcare provider for condition-specific guidance\n\n5. WBC - High\n   Severity: Moderate\n\n   \ud83e\udd57 DIET:\n      \u2022 Focus on anti-inflammatory foods (berries, fatty fish, leafy greens)\n      \u2022 Avoid processed foods and excessive sugar\n      \u2022 Stay well-hydrated\n\n   \ud83d\udcaa EXERCISE:\n      \u2022 Consult healthcare provider before starting new exercise program\n      \u2022 Start with light to moderate activity as tolerated\n      \u2022 Gradually increase intensity under medical supervision\n      \u2022 Monitor symptoms and adjust activity accordingly\n\n   \ud83d\udcc5 FOLLOW-UP: Discuss WBC levels with healthcare provider. Monitor and retest as recommended.\n\n6. TSH - High\n   Severity: Severe\n\n   \ud83e\udd57 DIET:\n      \u2022 Maintain balanced, nutritious diet\n      \u2022 Consult healthcare provider for parameter-specific dietary guidance\n      \u2022 Consider referral to registered dietitian\n\n   \ud83d\udcaa EXERCISE:\n      \u2022 Consult healthcare provider before starting new exercise program\n      \u2022 Start with light to moderate activity as tolerated\n      \u2022 Gradually increase intensity under medical supervision\n      \u2022 Monitor symptoms and adjust activity accordingly\n\n   \ud83d\udcc5 FOLLOW-UP: Discuss TSH levels with healthcare provider. Monitor and retest as recommended.\n\n----------------------------------------------------------------------\nGENERAL LIFESTYLE RECOMMENDATIONS:\n----------------------------------------------------------------------\n\nSleep:\n   \u2022 Aim for 7-9 hours of quality sleep nightly\n   \u2022 Maintain consistent sleep schedule\n   \u2022 Create a cool, dark, quiet sleep environment\n   \u2022 Avoid screens 30 minutes before bedtime\n\nStress Management:\n   \u2022 Practice meditation or mindfulness (10-15 minutes daily)\n   \u2022 Engage in relaxation techniques (deep breathing, progressive muscle relaxation)\n   \u2022 Maintain social connections and support networks\n   \u2022 Seek professional help if experiencing chronic stress or anxiety\n\nPreventive Care:\n   \u2022 Annual health checkups and screening tests based on age and risk factors\n   \u2022 Maintain vaccinations as recommended\n   \u2022 Avoid smoking and limit alcohol consumption\n   \u2022 Regular monitoring of vital signs (blood pressure, weight)\n\n======================================================================\n\u26a0\ufe0f  MEDICAL DISCLAIMER:\n======================================================================\nDISCLAIMER: This recommendation engine provides general lifestyle guidance based on clinical patterns and guidelines. It does NOT replace professional medical advice. Always consult with qualified healthcare providers for personalized medical recommendations, diagnosis, and treatment. The user assumes full responsibility for any decisions made based on this information.\n======================================================================\n"
+}
