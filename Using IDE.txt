@@ -1,1 +1,3 @@
 Using Google Colab
+
+To acces my ui please visit https://huggingface.co/spaces/TheShivamKumarSingh/BloodAnalysis
