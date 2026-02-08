@@ -443,8 +443,8 @@ This project is for educational purposes. Not licensed for commercial use.
 ## 📧 Contact
 
 For questions or feedback about this project:
-- **Email**: your.email@example.com
-- **GitHub**: github.com/your-username
+- **Email**: pj.prashant95@gmail.com
+- **GitHub**: github.com/PROGRAMMER-1008
 
 ---
 
