@@ -432,8 +432,7 @@ This project is for educational purposes. Not licensed for commercial use.
 ## 👨‍💻 Project Information
 
 **Course**: AI/ML for Healthcare  
-**Institution**: [Your Institution]  
-**Semester**: [Your Semester]  
+**Institution**: Infosys Springboard Internship 
 **Date**: February 2026
 
 **Technologies**: Python, Machine Learning, Healthcare AI, Natural Language Processing
