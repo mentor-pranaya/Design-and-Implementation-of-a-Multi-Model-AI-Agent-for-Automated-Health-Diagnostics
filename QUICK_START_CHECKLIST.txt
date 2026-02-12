@@ -1,0 +1,127 @@
+==================================================================
+                    QUICK START CHECKLIST
+==================================================================
+
+YOUR SERVER CAN'T BE REACHED BECAUSE:
+  ❌ Python is NOT installed on your computer
+
+
+THE FIX (5 Minutes):
+
+[1] INSTALL PYTHON ...................... (2-3 minutes)
+    Go to: https://www.python.org/downloads/
+    Download: Python 3.11 (big yellow button)
+    Run installer
+    ⭐ CHECK: "Add Python to PATH" checkbox ⭐
+    Complete installation
+
+[2] RESTART COMPUTER ..................... (REQUIRED!)
+    Close everything
+    Restart your computer
+    Wait for boot
+
+[3] RUN SERVER SETUP ..................... (1 minute)
+    Open project folder:
+    C:\Users\gurus\OneDrive\文档\Desktop\blood_report_ai
+    
+    Double-click: setup_and_start.bat
+    
+    Wait for message: "Uvicorn running on http://0.0.0.0:10000"
+
+[4] TEST IN BROWSER ...................... (Instant!)
+    Open: http://localhost:10000
+    
+    Should see your website ✅
+
+
+==================================================================
+                    VERIFICATION COMMANDS
+==================================================================
+
+After Python installed, verify in PowerShell:
+
+  python --version
+  → Should show: Python 3.x.x
+
+  pip --version
+  → Should show: pip x.x.x
+
+
+==================================================================
+                    QUICK TEST URLS
+==================================================================
+
+Once server running:
+
+  🏠 Website          http://localhost:10000
+  📊 Health Check     http://localhost:10000/health
+  📈 Performance      http://localhost:10000/api/status
+  📚 API Docs         http://localhost:10000/docs
+
+
+==================================================================
+                    TROUBLESHOOTING
+==================================================================
+
+❓ "Python not found" error?
+  → You didn't restart computer after install
+  → Or "Add Python to PATH" wasn't checked
+  → Fix: Restart, or reinstall Python with checkbox checked
+
+❓ "Address already in use"?
+  → Server already running
+  → Or port 10000 in use
+  → Fix: Kill other processes, or use different port
+
+❓ Server won't start?
+  → Run: diagnose.bat
+  → It will tell you what's wrong
+
+❓ Still can't reach website?
+  → Wait 30 seconds - server may be starting
+  → Check in Windows Firewall - allow Python
+  → Try: http://127.0.0.1:10000 instead
+
+
+==================================================================
+                    FILES TO USE
+==================================================================
+
+INSTALL_PYTHON_FIRST.bat
+  → Click to get help installing Python
+
+setup_and_start.bat
+  → Installs dependencies and starts server
+  → Use AFTER Python installed
+
+diagnose.bat
+  → Run this to check what's wrong
+
+test_performance.bat
+  → Test how fast your server is
+
+
+==================================================================
+                    IMPORTANT NOTES
+==================================================================
+
+⭐ MUST RESTART AFTER PYTHON INSTALL! ⭐
+   Python needs to be added to your system PATH
+   This only works after a complete restart
+
+✅ "Add Python to PATH" checkbox is CRITICAL
+   If you miss this, Python won't work!
+
+💡 Once it works you get:
+   • 10-100x faster results (instant for repeated requests)
+   • AI-powered analysis
+   • Real-time performance monitoring
+   • Full blood report analysis
+
+🔄 Server runs on port 10000
+   Can change in setup_and_start.bat if needed
+
+
+==================================================================
+COPY THIS TO A STICKY NOTE FOR QUICK REFERENCE!
+==================================================================

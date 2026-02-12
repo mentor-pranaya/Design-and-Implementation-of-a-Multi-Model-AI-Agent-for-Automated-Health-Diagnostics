@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - InBloodo AI</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #667eea;
+            --secondary: #764ba2;
+            --bg-dark: #1a1a2e;
+            --bg-card: rgba(255, 255, 255, 0.05);
+            --text-light: #e8e8e8;
+            --success: #28a745;
+            --warning: #ffc107;
+            --danger: #dc3545;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: var(--text-light);
+            min-height: 100vh;
+            display: flex;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 250px;
+            background: rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            color: var(--primary);
+        }
+
+        .nav-item {
+            padding: 12px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .nav-item:hover,
+        .nav-item.active {
+            background: rgba(102, 126, 234, 0.2);
+            color: white;
+        }
+
+        .nav-item.active {
+            border-left: 3px solid var(--primary);
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            padding: 30px;
+            overflow-y: auto;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        /* Data Tables */
+        .data-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+
+        .card-header {
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        th,
+        td {
+            text-align: left;
+            padding: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        th {
+            color: rgba(255, 255, 255, 0.5);
+            font-weight: 500;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+        }
+
+        tr:hover {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .status-badge {
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .status-active {
+            background: rgba(40, 167, 69, 0.2);
+            color: #28a745;
+        }
+
+        .status-inactive {
+            background: rgba(220, 53, 69, 0.2);
+            color: #dc3545;
+        }
+
+        .role-badge {
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            background: rgba(102, 126, 234, 0.2);
+            color: var(--primary);
+            text-transform: uppercase;
+        }
+
+        /* Section Visibility */
+        .section {
+            display: none;
+        }
+
+        .section.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Loading Overlay */
+        #loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: var(--primary);
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="logo">
+            <i class="fas fa-dna"></i> InBloodo Admin
+        </div>
+        <div class="nav-item active" onclick="showSection('users')">
+            <i class="fas fa-users"></i> Users
+        </div>
+        <div class="nav-item" onclick="showSection('reports')">
+            <i class="fas fa-file-medical-alt"></i> Reports
+        </div>
+        <div class="nav-item" onclick="showSection('system')">
+            <i class="fas fa-server"></i> System Health
+        </div>
+        <div style="flex-grow:1"></div>
+        <div class="nav-item" onclick="window.location.href='/'">
+            <i class="fas fa-sign-out-alt"></i> Back to App
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="header">
+            <h1 id="page-title">User Management</h1>
+            <div class="user-profile">
+                <div class="user-avatar">A</div>
+                <span>Admin User</span>
+            </div>
+        </div>
+
+        <!-- Users Section -->
+        <div id="users" class="section active">
+            <div class="data-card">
+                <div class="card-header">
+                    <h3>Registered Users</h3>
+                    <button class="status-badge status-active" style="border:none; cursor:pointer;"
+                        onclick="loadUsers()">Refresh</button>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Username</th>
+                            <th>Email</th>
+                            <th>Role</th>
+                            <th>Status</th>
+                            <th>Last Login</th>
+                        </tr>
+                    </thead>
+                    <tbody id="users-table-body">
+                        <!-- Populated via JS -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Reports Section -->
+        <div id="reports" class="section">
+            <div class="data-card">
+                <div class="card-header">
+                    <h3>All Blood Reports</h3>
+                    <button class="status-badge status-active" style="border:none; cursor:pointer;"
+                        onclick="loadReports()">Refresh</button>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Filename</th>
+                            <th>User ID</th>
+                            <th>Created At</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody id="reports-table-body">
+                        <!-- Populated via JS -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- System Section -->
+        <div id="system" class="section">
+            <div class="data-card">
+                <div class="card-header">
+                    <h3>System Telemetry</h3>
+                    <button class="status-badge status-active" style="border:none; cursor:pointer;"
+                        onclick="loadSystemStats()">Refresh</button>
+                </div>
+                <pre id="system-stats"
+                    style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 8px; font-family: 'JetBrains Mono';"></pre>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Loading -->
+    <div id="loading">
+        <div class="spinner"></div>
+    </div>
+
+    <script>
+        const API_KEY = localStorage.getItem("inbloodo_session");
+
+        async function fetchAuth(url) {
+            if (!API_KEY) {
+                alert("Please login first");
+                window.location.href = "/login";
+                return;
+            }
+            const res = await fetch(url, {
+                headers: { "x-api-key": API_KEY }
+            });
+            if (res.status === 401) {
+                alert("Session expired");
+                window.location.href = "/login";
+                return;
+            }
+            return res.json();
+        }
+
+        function showSection(id) {
+            document.querySelectorAll('.section').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+
+            document.getElementById(id).classList.add('active');
+
+            // Highlight nav
+            const navs = document.querySelectorAll('.nav-item');
+            if (id === 'users') navs[0].classList.add('active');
+            if (id === 'reports') navs[1].classList.add('active');
+            if (id === 'system') navs[2].classList.add('active');
+
+            // Update title
+            const titles = { 'users': 'User Management', 'reports': 'Report Database', 'system': 'System Diagnostics' };
+            document.getElementById('page-title').innerText = titles[id];
+
+            // Load data
+            if (id === 'users') loadUsers();
+            if (id === 'reports') loadReports();
+            if (id === 'system') loadSystemStats();
+        }
+
+        async function loadUsers() {
+            document.getElementById('loading').style.display = 'flex';
+            try {
+                const users = await fetchAuth('/api/admin/users');
+                const tbody = document.getElementById('users-table-body');
+                tbody.innerHTML = '';
+                users.forEach(user => {
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `
+                        <td>#${user.id}</td>
+                        <td>
+                            <div style="font-weight:600">${user.username}</div>
+                        </td>
+                        <td>${user.email}</td>
+                        <td><span class="role-badge">${user.role}</span></td>
+                        <td><span class="status-badge ${user.is_active ? 'status-active' : 'status-inactive'}">${user.is_active ? 'Active' : 'Inactive'}</span></td>
+                        <td style="font-family:monospace; font-size:0.85rem">${user.last_login ? new Date(user.last_login).toLocaleString() : 'Never'}</td>
+                    `;
+                    tbody.appendChild(tr);
+                });
+            } catch (e) {
+                console.error(e);
+            } finally {
+                document.getElementById('loading').style.display = 'none';
+            }
+        }
+
+        async function loadReports() {
+            document.getElementById('loading').style.display = 'flex';
+            try {
+                const reports = await fetchAuth('/api/admin/reports');
+                const tbody = document.getElementById('reports-table-body');
+                tbody.innerHTML = '';
+                reports.forEach(report => {
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `
+                        <td>#${report.id}</td>
+                        <td>${report.filename}</td>
+                        <td>User #${report.user_id || 'Anon'}</td>
+                        <td style="font-family:monospace; font-size:0.85rem">${new Date(report.created_at).toLocaleString()}</td>
+                        <td style="color:rgba(255,255,255,0.7); font-size:0.9rem">${report.description.substring(0, 50)}...</td>
+                    `;
+                    tbody.appendChild(tr);
+                });
+            } catch (e) {
+                console.error(e);
+            } finally {
+                document.getElementById('loading').style.display = 'none';
+            }
+        }
+
+        async function loadSystemStats() {
+            document.getElementById('loading').style.display = 'flex';
+            try {
+                const stats = await fetchAuth('/api/telemetry');
+                document.getElementById('system-stats').innerText = JSON.stringify(stats, null, 2);
+            } catch (e) { console.error(e); }
+            finally { document.getElementById('loading').style.display = 'none'; }
+        }
+
+        // Init
+        loadUsers();
+    </script>
+</body>
+
+</html>

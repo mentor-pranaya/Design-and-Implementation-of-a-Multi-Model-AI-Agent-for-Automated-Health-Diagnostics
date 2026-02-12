@@ -1,0 +1,47 @@
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                    🚀 JUST DO THIS 🚀
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Why your site can't be reached:
+  Python is NOT installed
+
+
+Fix it NOW (5 minutes):
+
+1️⃣  Click this link:
+    https://www.python.org/downloads/
+
+2️⃣  Download and run installer
+    (Find the big yellow "Download Python 3.11" button)
+
+3️⃣  IMPORTANT: In installer, CHECK this box:
+    ☑️ Add Python to PATH
+
+4️⃣  Restart your entire computer
+    (Very important! Don't skip this!)
+
+5️⃣  After restart, go to this folder:
+    C:\Users\gurus\OneDrive\文档\Desktop\blood_report_ai
+
+6️⃣  Double-click:
+    setup_and_start.bat
+
+7️⃣  Wait for message:
+    "Uvicorn running on http://0.0.0.0:10000"
+
+8️⃣  Open in browser:
+    http://localhost:10000
+
+✅ Done! Your site now works!
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Need more details? Read:
+  - COMPLETE_SERVER_FIX_GUIDE.md (full explanations)
+  - FIX_SERVER_STEP_BY_STEP.txt (step by step)
+  - QUICK_START_CHECKLIST.txt (checklist)
+
+Something wrong? Run:
+  diagnose.bat
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

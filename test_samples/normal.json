@@ -1,0 +1,10 @@
+{
+  "patient_id": "P001",
+  "hemoglobin": 14.5,
+  "wbc": 7000,
+  "platelets": 250000,
+  "glucose": 95,
+  "cholesterol": 180,
+  "blood_pressure": 120,
+  "description": "Normal healthy patient"
+}

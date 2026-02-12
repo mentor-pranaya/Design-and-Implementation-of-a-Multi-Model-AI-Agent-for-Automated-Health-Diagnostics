@@ -1,0 +1,32 @@
+﻿Found 5 sample files to test.
+========================================
+
+Testing: anemic_high_cholesterol.csv
+   [SUCCESS] 200 OK
+   Extracted: 1 parameters
+   Risk: Low
+   Summary: Multi-Agent AI Analysis: 1 parameters analyzed. Key findings: . AI Risk Assessment: low (0.4%)....
+
+Testing: critical_image.png
+   [SUCCESS] 200 OK
+   Extracted: 2 parameters
+   Risk: High
+   Summary: Multi-Agent AI Analysis: 2 parameters analyzed. Key findings: Low Hemoglobin. AI Risk Assessment: ve...
+
+Testing: diabetic.txt
+   [SUCCESS] 200 OK
+   Extracted: 4 parameters
+   Risk: High
+   Summary: Multi-Agent AI Analysis: 4 parameters analyzed. Key findings: High Blood Glucose (Diabetes risk), Hi...
+
+Testing: normal.json
+   [SUCCESS] 200 OK
+   Extracted: 5 parameters
+   Risk: Low
+   Summary: Multi-Agent AI Analysis: 5 parameters analyzed. Key findings: . AI Risk Assessment: low (0.2%)....
+
+Testing: standard_report.pdf
+   [SUCCESS] 200 OK
+   Extracted: 4 parameters
+   Risk: Low
+   Summary: Multi-Agent AI Analysis: 4 parameters analyzed. Key findings: . AI Risk Assessment: low (0.4%)....

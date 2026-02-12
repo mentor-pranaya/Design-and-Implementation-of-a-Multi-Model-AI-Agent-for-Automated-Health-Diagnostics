@@ -1,0 +1,40 @@
+fastapi
+uvicorn[standard]
+gunicorn
+python-multipart
+opencv-python-headless
+pandas
+pillow
+pymupdf
+sqlalchemy
+scikit-learn
+joblib
+pytest
+jinja2
+python-dotenv
+psutil
+aiofiles
+easyocr
+requests
+fpdf
+
+# Database Drivers
+psycopg2-binary
+
+# Multi-LLM Providers
+google-generativeai
+openai
+anthropic
+
+# OpenAI Agents SDK - Advanced Multi-Agent Framework
+openai-agents
+
+# Authentication & Security
+passlib[bcrypt]
+pyjwt
+email-validator
+
+# OAuth2 Social Login
+authlib
+httpx
+itsdangerous

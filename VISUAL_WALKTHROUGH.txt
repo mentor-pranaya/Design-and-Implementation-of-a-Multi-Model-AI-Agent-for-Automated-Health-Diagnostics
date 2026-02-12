@@ -1,0 +1,259 @@
+════════════════════════════════════════════════════════════════
+           VISUAL WALKTHROUGH - What You'll See
+════════════════════════════════════════════════════════════════
+
+STEP 1: DOWNLOAD PYTHON
+────────────────────────────────────────────────────────────────
+
+When you go to https://www.python.org/downloads/
+
+You'll see this:
+
+    ┌─────────────────────────────────────────────┐
+    │  Python.org                                 │
+    │                                             │
+    │     [Download Python 3.11.7]  ← Click this │
+    │     (big yellow button)                     │
+    │                                             │
+    └─────────────────────────────────────────────┘
+
+
+STEP 2: PYTHON INSTALLER
+────────────────────────────────────────────────────────────────
+
+Installer window opens:
+
+    ┌─────────────────────────────────────────────┐
+    │ Python 3.11.7 (64-bit) Setup                │
+    │                                             │
+    │ ☑ Install launcher                         │
+    │ ☑ Add Python 3.11 to PATH ← IMPORTANT!    │
+    │                                             │
+    │    [  Install Now  ]  [  Customize  ]     │
+    │                                             │
+    └─────────────────────────────────────────────┘
+
+MAKE SURE ☑ "Add Python to PATH" IS CHECKED!
+
+
+STEP 3: INSTALLATION PROGRESS
+────────────────────────────────────────────────────────────────
+
+After clicking "Install Now":
+
+    ┌─────────────────────────────────────────────┐
+    │ Installing Python 3.11.7                    │
+    │                                             │
+    │ [████████████████░░░░░░░░░░░░░░░░░░░░] 60% │
+    │                                             │
+    │ Setting up Python...                        │
+    │                                             │
+    └─────────────────────────────────────────────┘
+
+Wait 1-2 minutes...
+
+
+STEP 4: SUCCESS SCREEN
+────────────────────────────────────────────────────────────────
+
+When installation completes:
+
+    ┌─────────────────────────────────────────────┐
+    │ Setup was successful!                       │
+    │                                             │
+    │ Python 3.11.7 (64-bit) has been            │
+    │ installed on your computer                 │
+    │                                             │
+    │         [  Close  ]                        │
+    │                                             │
+    └─────────────────────────────────────────────┘
+
+Close this window.
+
+
+STEP 5: RESTART COMPUTER
+────────────────────────────────────────────────────────────────
+
+This is CRITICAL!
+
+When Python is installed, it needs to be added to PATH.
+PATH changes only take effect after a restart.
+
+Do this:
+  1. Close all programs
+  2. Click Windows Start button
+  3. Click "Restart"
+  4. Wait for computer to boot back up
+
+
+STEP 6: RUN SETUP SCRIPT (After Restart!)
+────────────────────────────────────────────────────────────────
+
+Open your project folder:
+  C:\Users\gurus\OneDrive\文档\Desktop\blood_report_ai
+
+You'll see these files:
+    ├── setup_and_start.bat ← Double-click this
+    ├── main.py
+    ├── requirements.txt
+    └── (other files)
+
+Double-click setup_and_start.bat
+
+A black terminal window opens...
+
+
+STEP 7: SETUP RUNNING
+────────────────────────────────────────────────────────────────
+
+The terminal shows:
+
+    C:\Users\gurus...blood_report_ai>
+    ✅ Python found at: C:\Python311\python.exe
+    ✅ Python version: Python 3.11.7
+    Creating virtual environment...
+    ✅ Virtual environment created
+    Installing dependencies...
+    
+    Collecting fastapi
+    Requirement already satisfied: uvicorn
+    ... (lots of dependency downloads) ...
+    
+    Successfully installed 25 packages
+    
+    Starting server...
+
+
+STEP 8: SERVER RUNNING (Success!)
+────────────────────────────────────────────────────────────────
+
+Terminal shows:
+
+    ✅ Server starting...
+    2024-01-15 10:30:45 INFO: Application startup complete
+    ✅ Uvicorn running on http://0.0.0.0:10000
+    
+    Press CTRL+C to stop server
+
+
+SEE THIS MESSAGE? SUCCESS! ✅
+
+
+STEP 9: VERIFY IN BROWSER
+────────────────────────────────────────────────────────────────
+
+Terminal still shows "Uvicorn running..."
+
+Open web browser and go to:
+    http://localhost:10000
+
+You should see:
+
+    ┌─────────────────────────────────────────────┐
+    │ INBLOODO AGENT                              │
+    │                                             │
+    │ AI Health Diagnostics System                │
+    │                                             │
+    │ Upload Blood Report Report:                 │
+    │                                             │
+    │ [  Choose File  ]  [  Upload  ]            │
+    │                                             │
+    ├─────────────────────────────────────────────┤
+    │ Recent Reports | Status | Performance       │
+    │                                             │
+    └─────────────────────────────────────────────┘
+
+✅ Site is working now!
+
+
+STEP 10: CREATE AN ACCOUNT / LOGIN
+────────────────────────────────────────────────────────────────
+
+On the website, you can now:
+  • Create account
+  • Upload blood reports
+  • Get AI analysis
+  • View recommendations
+
+
+════════════════════════════════════════════════════════════════
+                    TROUBLESHOOTING
+════════════════════════════════════════════════════════════════
+
+❌ ERROR: "Python not found"
+   In terminal:
+       'python' is not recognized...
+
+   Fix:
+       → You didn't restart computer after installing Python
+       → Or "Add Python to PATH" wasn't checked
+       → Solution: Restart computer, try again
+
+
+❌ ERROR: "Address already in use"
+   In terminal:
+       Address already in use...
+       
+   Means:
+       → Port 10000 already has a server on it
+       → Or setup script ran multiple times
+       
+   Fix:
+       → Close any other terminal windows
+       → Kill any Python processes in Task Manager
+       → Try again
+
+
+❌ ERROR: "No module named 'fastapi'"
+   In terminal:
+       ModuleNotFoundError: No module named 'fastapi'
+       
+   Means:
+       → Dependencies weren't installed properly
+       
+   Fix:
+       → Make sure setup_and_start.bat completed fully
+       → Try running it again
+       → Run: diagnose.bat
+
+
+❌ BROWSER: "Cannot reach localhost"
+   In browser address bar:
+       refused to connect
+       
+   Means:
+       → Server not running
+       → Or browser using wrong address
+       
+   Fix:
+       → Check terminal window - see "Uvicorn running" message?
+       → If yes, wait 5-10 more seconds
+       → If no, restart: double-click setup_and_start.bat again
+       → Try address: http://127.0.0.1:10000
+
+
+════════════════════════════════════════════════════════════════
+                    QUICK REFERENCE
+════════════════════════════════════════════════════════════════
+
+What each message means:
+
+✅  Success - proceeding normally
+❌  Error - something wrong
+⚠️  Warning - might have issue
+ℹ️  Information - FYI only
+
+Command line symbols:
+C:\Users\...> = Ready for input
+...running... = Process in progress
+[Ctrl+C] = Stop running process
+
+
+════════════════════════════════════════════════════════════════
+
+Having issues? Run this:
+  diagnose.bat
+
+It will tell you exactly what's wrong!
+
+════════════════════════════════════════════════════════════════

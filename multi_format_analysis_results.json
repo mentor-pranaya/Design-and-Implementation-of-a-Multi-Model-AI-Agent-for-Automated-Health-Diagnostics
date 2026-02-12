@@ -1,0 +1,176 @@
+[
+  {
+    "file_format": "PDF Document",
+    "filename": "standard_report.pdf",
+    "extraction_success": false,
+    "error": "read of closed file"
+  },
+  {
+    "file_format": "CSV Spreadsheet",
+    "filename": "anemic_high_cholesterol.csv",
+    "extraction_success": false,
+    "error": "I/O operation on closed file"
+  },
+  {
+    "file_format": "JSON Data",
+    "filename": "normal.json",
+    "extraction_success": true,
+    "parameters_extracted": 6,
+    "parameters": {
+      "hemoglobin": 14.5,
+      "wbc": 7000,
+      "platelets": 250000,
+      "glucose": 95,
+      "cholesterol": 180,
+      "blood_pressure": 120
+    },
+    "interpretations": [],
+    "risks": [],
+    "ai_prediction": {
+      "risk_score": 0.0024,
+      "risk_label": "low",
+      "confidence": "high"
+    },
+    "recommendations": [
+      "Maintain healthy lifestyle: balanced diet, exercise, stress management",
+      "Inform healthcare providers about all medications and supplements",
+      "Keep medical records organized",
+      "Schedule regular health check-ups"
+    ],
+    "prescriptions": [
+      "\ud83c\udf3f Natural Remedies by INBLOODO AGENT: These are AI-suggested natural remedies. Always consult with a qualified healthcare professional before starting any treatment.",
+      "\u26a0\ufe0f IMPORTANT: The prescription suggestions below are for informational purposes only and must be prescribed by a licensed healthcare professional after proper diagnosis.",
+      "\ud83e\udeda Warm lemon water: Morning detox drink",
+      "\ud83c\udf31 Green tea: Antioxidant-rich daily drink",
+      "\ud83c\udf6f Honey and cinnamon: Natural health tonic",
+      "\ud83e\udd65 Virgin coconut oil: Healthy fat source",
+      "\ud83e\uded2 Extra virgin olive oil: Anti-inflammatory oil"
+    ],
+    "synthesis": "",
+    "overall_risk": "Moderate",
+    "llm_provider": null,
+    "agent_performance": {
+      "total_agents": 7,
+      "successful": 6,
+      "execution_times": {
+        "Parameter Extraction Agent": 0.0001361370086669922,
+        "Parameter Interpretation Agent": 0.00011372566223144531,
+        "Risk Analysis Agent": 0.00010943412780761719,
+        "AI Prediction Agent": 0.039423227310180664,
+        "LLM Recommendation Agent": 0.0,
+        "Prescription Generation Agent": 0.00011134147644042969,
+        "Findings Synthesis Agent": 0.0
+      }
+    }
+  },
+  {
+    "file_format": "Text File",
+    "filename": "diabetic.txt",
+    "extraction_success": true,
+    "parameters_extracted": 4,
+    "parameters": {
+      "glucose": 250.0,
+      "cholesterol": 210.0,
+      "hba1c": 8.5,
+      "triglycerides": 180.0
+    },
+    "interpretations": [
+      "High Blood Glucose (Diabetes risk)",
+      "High HbA1c (Poor diabetes control)",
+      "High Cholesterol",
+      "High Triglycerides"
+    ],
+    "risks": [
+      "Poor diabetes control",
+      "High overall health risk - immediate medical attention recommended"
+    ],
+    "ai_prediction": {
+      "risk_score": 0.99,
+      "risk_label": "very_high",
+      "confidence": "high"
+    },
+    "recommendations": [
+      "Maintain healthy lifestyle: balanced diet, exercise, stress management",
+      "Regular cardiovascular exercise",
+      "Reduce saturated fats and trans fats",
+      "Consult cardiologist for heart health assessment",
+      "Schedule regular health check-ups",
+      "Monitor blood sugar levels regularly",
+      "Follow low glycemic index diet",
+      "Heart-healthy diet: Mediterranean diet recommended",
+      "Quit smoking if applicable",
+      "Stay hydrated and maintain healthy weight",
+      "Weight management if BMI > 25",
+      "Inform healthcare providers about all medications and supplements",
+      "Regular physical exercise (30 minutes daily)",
+      "Follow liver-friendly diet: avoid fried foods, processed meats",
+      "Keep medical records organized",
+      "Consult endocrinologist for diabetes management",
+      "Consult hepatologist for liver function evaluation",
+      "Increase omega-3 rich foods: fish, nuts, seeds",
+      "Avoid alcohol consumption"
+    ],
+    "prescriptions": [
+      "\ud83c\udf3f Natural Remedies by INBLOODO AGENT: These are AI-suggested natural remedies. Always consult with a qualified healthcare professional before starting any treatment.",
+      "\u26a0\ufe0f IMPORTANT: The prescription suggestions below are for informational purposes only and must be prescribed by a licensed healthcare professional after proper diagnosis.",
+      "\ud83c\udf3f Ceylon cinnamon: 1/2 teaspoon daily (2023 studies show 10-15% glucose reduction)",
+      "\ud83e\udd6c Bitter melon: 50-100g daily (clinical trials show HbA1c reduction)",
+      "\ud83e\uded8 Fenugreek seeds: 5-10g soaked overnight (meta-analysis shows blood sugar benefits)",
+      "\ud83c\udf43 Gymnema sylvestre: 300-400mg daily (traditional + modern research validated)",
+      "\ud83e\udeda Ginger tea: 2g daily (recent studies show improved insulin sensitivity)",
+      "\ud83e\uddc4 Garlic: 600-1200mg daily (research shows blood sugar regulation benefits)",
+      "\ud83e\uded2 Olive oil: Cold-pressed for liver health",
+      "\ud83c\udf31 Milk thistle: Traditional liver support herb",
+      "\ud83c\udf4b Lemon water: Natural detoxifier for liver",
+      "\ud83e\udeda Turmeric: Anti-inflammatory for liver health",
+      "\ud83e\udd55 Beetroot juice: Natural liver cleanser",
+      "\ud83e\uded2 Mediterranean diet: 2024 studies show 30% reduced heart disease risk",
+      "\ud83e\uddc4 Aged garlic extract: 600-1200mg daily (meta-analysis shows LDL reduction)",
+      "\ud83e\udeda Ginger: 2g daily (research shows improved circulation and blood pressure)",
+      "\ud83c\udf30 Almonds: 30g daily (clinical trials show LDL cholesterol reduction)",
+      "\ud83c\udf4e Apples: 1-2 daily (pectin fiber reduces cholesterol absorption)",
+      "\ud83e\uded0 Berries: Rich in anthocyanins for heart protection (blueberries, strawberries)",
+      "\ud83e\udeda Warm lemon water: Morning detox drink",
+      "\ud83c\udf31 Green tea: Antioxidant-rich daily drink",
+      "\ud83c\udf6f Honey and cinnamon: Natural health tonic",
+      "\ud83e\udd65 Virgin coconut oil: Healthy fat source",
+      "\ud83e\uded2 Extra virgin olive oil: Anti-inflammatory oil",
+      "",
+      "\ud83d\udc8a PRESCRIPTION SUGGESTIONS (For Healthcare Professional Review Only):",
+      "\ud83d\udc8a Metformin 500mg twice daily (first-line treatment for type 2 diabetes)",
+      "\ud83d\udc8a Glipizide 5mg daily (sulfonylurea for blood sugar control)",
+      "\ud83d\udc8a Sitagliptin 100mg daily (DPP-4 inhibitor for glycemic control)",
+      "\ud83d\udc8a Insulin glargine (long-acting insulin for type 1 or advanced type 2 diabetes)",
+      "\ud83d\udc8a Atorvastatin 20mg daily (statin for LDL cholesterol reduction)",
+      "\ud83d\udc8a Rosuvastatin 10mg daily (potent statin for high cholesterol)",
+      "\ud83d\udc8a Ezetimibe 10mg daily (cholesterol absorption inhibitor)",
+      "\ud83d\udc8a Aspirin 81mg daily (antiplatelet therapy for cardiovascular protection)",
+      "\ud83d\udc8a Ursodeoxycholic acid 300mg twice daily (for cholestasis and liver protection)",
+      "\ud83d\udc8a Silymarin 150mg twice daily (milk thistle extract for liver support)",
+      "\ud83d\udc8a Vitamin E 400 IU daily (antioxidant for liver protection)",
+      "\ud83d\udc8a N-acetylcysteine 600mg twice daily (for acetaminophen overdose or liver support)"
+    ],
+    "synthesis": "",
+    "overall_risk": "High",
+    "llm_provider": null,
+    "agent_performance": {
+      "total_agents": 7,
+      "successful": 6,
+      "execution_times": {
+        "Parameter Extraction Agent": 0.00011587142944335938,
+        "Parameter Interpretation Agent": 0.0001361370086669922,
+        "Risk Analysis Agent": 0.00014853477478027344,
+        "AI Prediction Agent": 0.03373003005981445,
+        "LLM Recommendation Agent": 0.0,
+        "Prescription Generation Agent": 0.00012993812561035156,
+        "Findings Synthesis Agent": 0.0
+      }
+    }
+  },
+  {
+    "file_format": "Medical Image",
+    "filename": "critical_image.png",
+    "extraction_success": false,
+    "error": "seek of closed file"
+  }
+]

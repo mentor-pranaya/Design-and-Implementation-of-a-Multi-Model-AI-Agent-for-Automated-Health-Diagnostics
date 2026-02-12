@@ -1,0 +1,13 @@
+
+    BLOOD TEST REPORT
+    -----------------
+    Patient Name: John Doe
+    Date: 2024-02-12
+    
+    Glucose: 250 mg/dL  (High)
+    HbA1c: 8.5 %        (High)
+    Cholesterol: 210 mg/dL
+    Triglycerides: 180 mg/dL
+    
+    Notes: Patient shows signs of diabetes.
+    

@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  inbloodo-agent:
+    build: .
+    ports:
+      - "10000:10000"
+    environment:
+      - ENVIRONMENT=production
+      - HOST=0.0.0.0
+      - PORT=10000
+      - API_KEY=${API_KEY:-secret}
+      - DATABASE_URL=sqlite:///data/health_reports.db
+    volumes:
+      - ./data:/app/data
+      - ./src/data:/app/src/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:10000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
