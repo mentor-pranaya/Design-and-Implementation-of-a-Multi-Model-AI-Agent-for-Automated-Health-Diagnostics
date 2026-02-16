@@ -18,15 +18,15 @@ Path("data/uploads").mkdir(parents=True, exist_ok=True)
 Path("logs").mkdir(parents=True, exist_ok=True)
 
 try:
-    from src.api_simple import app
-    logger.info("API loaded successfully")
+    from src.api_optimized import app
+    logger.info("Optimized API with LLM loaded successfully")
 except ImportError as e:
-    logger.error(f"Failed to load API: {e}")
+    logger.error(f"Failed to load optimized API: {e}")
     sys.exit(1)
 
 if __name__ == "__main__":
     host = os.getenv("HOST", "0.0.0.0")
-    port = int(os.getenv("PORT", "8000"))
+    port = int(os.getenv("PORT", "10000"))
     
     print("\n" + "="*70)
     print("BLOOD REPORT AI - SERVER STARTING")

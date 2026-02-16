@@ -248,6 +248,18 @@
                 </div>
             </div>
 
+            <div class="input-group">
+                <label>Access Level</label>
+                <div class="input-wrapper">
+                    <select id="role" required style="width: 100%; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); padding: 15px 15px 15px 55px; border-radius: 15px; color: white; font-size: 1rem; outline: none;">
+                        <option value="" disabled selected>Select Access Level</option>
+                        <option value="patient" style="background: rgba(0,0,0,0.8); color: white;">Patient Access</option>
+                        <option value="admin" style="background: rgba(0,0,0,0.8); color: white;">Admin Access</option>
+                    </select>
+                    <i class="fas fa-shield-alt" style="left: 20px;"></i>
+                </div>
+            </div>
+
             <button type="submit" class="login-btn" id="loginBtn">
                 Initialize Secure Session
             </button>
@@ -273,20 +285,25 @@
 
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
+            const role = document.getElementById('role').value;
 
             try {
                 const response = await fetch('/api/login/', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ username, password })
+                    body: JSON.stringify({ username, password, role })
                 });
 
                 if (response.ok) {
                     const data = await response.json();
                     localStorage.setItem('inbloodo_session', data.access_token);
                     localStorage.setItem('inbloodo_username', username);
+                    localStorage.setItem('inbloodo_password', password);
+                    localStorage.setItem('inbloodo_role', data.role);
                     window.location.href = '/';
                 } else {
+                    const errorData = await response.json();
+                    errorMessage.textContent = errorData.detail || 'Invalid credentials. Please try again.';
                     errorMessage.style.display = 'block';
                     loginBtn.textContent = 'Initialize Secure Session';
                     loginBtn.style.opacity = '1';

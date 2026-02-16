@@ -1,8 +1,12 @@
 import os
 import logging
-import google.generativeai as genai
+from dotenv import load_dotenv
+import google.genai as genai
 from typing import List, Dict, Any
 import json
+
+# Load environment variables
+load_dotenv()
 
 logger = logging.getLogger(__name__)
 
@@ -15,9 +19,8 @@ class LLMService:
             logger.warning("GEMINI_API_KEY not found in environment variables")
             self.client = None
         else:
-            genai.configure(api_key=api_key)
-            self.model = genai.GenerativeModel('gemini-flash-latest')
-            self.client = True
+            self.client = genai.Client(api_key=api_key)
+            self.model = 'gemini-1.5-flash'
             logger.info("Gemini LLM service initialized")
 
     def generate_medical_recommendations(
@@ -50,7 +53,10 @@ class LLMService:
             )
 
             # Generate response from Gemini
-            response = self.model.generate_content(prompt)
+            response = self.client.models.generate_content(
+                model=self.model,
+                contents=prompt
+            )
 
             if response and response.text:
                 # Parse the response into a list of recommendations

@@ -4,9 +4,12 @@ Advanced AI-powered analysis of blood reports with instant recommendations and n
 
 ## ✨ Features
 
+- **🤖 Intent Inference AI**: Natural language understanding that infers user intent even with vague requests
+- **💬 Conversational Interface**: Chat naturally about health concerns with context-aware responses
 - **Multi-format Support**: PDF, CSV, JSON, and image files
 - **AI-Powered Analysis**: Advanced machine learning models for health risk assessment
 - **Instant Recommendations**: Personalized health advice and natural remedies
+- **Ambiguity Handling**: Automatically asks clarifying questions when needed
 - **Beautiful Web Interface**: Modern, responsive design with real-time animations
 - **Secure API**: Protected endpoints with API key authentication
 - **Production Ready**: Optimized for deployment on cloud platforms
@@ -145,6 +148,38 @@ LOG_LEVEL=INFO
 - **JSON**: Key-value pairs of medical parameters
 - **Images**: PNG/JPG scanned reports (OCR processed)
 
+## 💬 Conversational Examples
+
+### Natural Language Queries
+The AI can understand and respond to natural language queries:
+
+- *"I'm feeling really tired lately, what could be wrong?"*
+- *"Can you help me understand my cholesterol levels?"*
+- *"I have high blood pressure, what should I do?"*
+- *"Tell me about diabetes symptoms"*
+- *"Upload my test results please"*
+
+### Intent Inference Categories
+The system automatically detects user intent:
+- **analyze_blood_report**: Upload/analyze blood test results
+- **ask_health_question**: General health inquiries
+- **request_recommendations**: Seeking health advice
+- **follow_up_previous_analysis**: Referring to previous results
+- **clarify_previous_response**: Need clarification
+- **general_health_inquiry**: Broad health information
+- **emergency_concern**: Urgent health issues
+- **lifestyle_advice**: Diet, exercise, wellness tips
+
+### Clarification Handling
+When the AI needs more information, it automatically asks relevant questions:
+```
+User: "My cholesterol is high"
+AI: "I'd like to help better. Could you please clarify:
+• What was your specific cholesterol reading?
+• Do you have your full lipid panel results?
+• Are you experiencing any symptoms?"
+```
+
 ## 📊 Sample Data Format
 
 ### JSON Input Example
@@ -204,14 +239,36 @@ pytest
 # Run specific test file
 pytest tests/test_api.py
 
+# Run intent inference tests
+python test_intent_inference.py
+
 # Run with coverage
 pytest --cov=src tests/
 ```
+
+### Intent Inference Testing
+Test the natural language understanding capabilities:
+```bash
+python test_intent_inference.py
+```
+
+This will test various user inputs and show:
+- Inferred intent categories
+- Confidence scores
+- Clarifying questions generated
+- Context awareness
 
 ### Manual Testing
 Use the included test files in the `data/sample_report/` directory:
 - `report.pdf` - Sample blood test report
 - `test_report.png` - Sample image report
+
+### Conversational Testing Examples
+Try these natural language queries in the chat interface:
+- *"I'm worried about my cholesterol levels"*
+- *"Can you explain what high glucose means?"*
+- *"I feel fatigued, could it be anemia?"*
+- *"Upload and analyze my blood work"*
 
 ## 📈 Performance Optimization
 

@@ -24,6 +24,7 @@ from src.analysis.predictor import predict_risk
 from src.llm.multi_llm_service import get_multi_llm_service
 from src.recommendation.recommendation_generator import generate_recommendations, generate_prescriptions
 from src.synthesis.findings_synthesizer import synthesize_findings
+from src.agent.intent_inference_agent import IntentInferenceAgent, ConversationContext, IntentResult
 
 logger = logging.getLogger(__name__)
 
@@ -51,6 +52,8 @@ class AnalysisReport:
     synthesis: str
     agent_results: List[AgentResult]
     timestamp: str
+    intent_result: Optional[IntentResult] = None
+    conversation_context: Optional[ConversationContext] = None
 
 
 class ParameterExtractionAgent:
@@ -366,6 +369,7 @@ class MultiAgentOrchestrator:
     
     def __init__(self):
         self.logger = logging.getLogger("MultiAgentOrchestrator")
+        self.intent_inference_agent = IntentInferenceAgent()
         self.extraction_agent = ParameterExtractionAgent()
         self.interpretation_agent = InterpretationAgent()
         self.risk_analysis_agent = RiskAnalysisAgent()
@@ -381,31 +385,81 @@ class MultiAgentOrchestrator:
         patient_context: Optional[Dict[str, Any]] = None
     ) -> AnalysisReport:
         """
-        Execute the multi-agent workflow to analyze health data.
-        
+        Execute the multi-agent workflow to analyze health data (legacy method).
+
         Args:
-            raw_params: Raw medical parameters from input
-            patient_context: Optional patient context (age, gender, etc.)
-        
+            raw_params: Raw medical parameters to analyze
+            patient_context: Optional patient information
+
         Returns:
-            AnalysisReport with results from all agents
+            AnalysisReport with analysis results
+        """
+        # Create dummy conversation context for backward compatibility
+        dummy_context = ConversationContext()
+        return await self.execute_with_intent(
+            user_input="Analyze blood report",  # Default intent
+            raw_params=raw_params,
+            conversation_context=dummy_context,
+            patient_context=patient_context
+        )
+
+    async def execute_with_intent(
+        self,
+        user_input: str,
+        raw_params: Optional[Dict[str, Any]] = None,
+        conversation_context: Optional[ConversationContext] = None,
+        patient_context: Optional[Dict[str, Any]] = None
+    ) -> AnalysisReport:
+        """
+        Execute the multi-agent workflow with intent inference for natural user interaction.
+
+        Args:
+            user_input: Natural language user input
+            raw_params: Optional raw medical parameters from input
+            conversation_context: Optional conversation history and user state
+            patient_context: Optional patient context (age, gender, etc.)
+
+        Returns:
+            AnalysisReport with results from all agents including intent analysis
         """
         import time
         overall_start = time.time()
         self.agent_results = []
-        
-        self.logger.info("Starting multi-agent health analysis workflow")
-        self.logger.info(f"Input parameters: {len(raw_params)}")
-        
+
+        self.logger.info("Starting intent-aware multi-agent health analysis workflow")
+        self.logger.info(f"User input: '{user_input[:100]}...'")
+
+        # Stage 0: Infer user intent (async, I/O bound)
+        intent_result = await self.intent_inference_agent.analyze_intent(user_input, conversation_context)
+        self.logger.info(f"Inferred intent: {intent_result.inferred_intent} (confidence: {intent_result.confidence_score:.2f})")
+
+        # Update conversation context
+        if conversation_context:
+            conversation_context = self.intent_inference_agent.update_conversation_context(
+                conversation_context, user_input, intent_result
+            )
+
+        # Determine if we need parameters for this intent
+        intent_requires_params = intent_result.inferred_intent in [
+            'analyze_blood_report', 'follow_up_previous_analysis'
+        ]
+
+        params_to_use = raw_params if intent_requires_params else None
+
         # Stage 1: Extract and clean parameters (CPU bound, fast)
-        extraction_result = self.extraction_agent.execute(raw_params)
-        self.agent_results.append(extraction_result)
-        
-        if not extraction_result.success:
-            self.logger.error("Parameter extraction failed, cannot continue")
-            return self._create_failed_report(extraction_result)
-        
-        cleaned_params = extraction_result.data or {}
+        if params_to_use:
+            extraction_result = self.extraction_agent.execute(params_to_use)
+            self.agent_results.append(extraction_result)
+
+            if not extraction_result.success:
+                self.logger.error("Parameter extraction failed, cannot continue")
+                return self._create_failed_report(extraction_result, intent_result, conversation_context)
+
+            cleaned_params = extraction_result.data or {}
+        else:
+            # No parameters to extract, proceed with intent-based analysis
+            cleaned_params = {}
+            self.logger.info("Skipping parameter extraction - intent doesn't require parameters")
         
         # Stage 2: Interpret parameters
         interpretation_result = self.interpretation_agent.execute(cleaned_params)
@@ -459,6 +513,8 @@ class MultiAgentOrchestrator:
             prescriptions=prescriptions,
             synthesis=synthesis,
             agent_results=self.agent_results,
+            intent_result=intent_result,
+            conversation_context=conversation_context,
             timestamp=datetime.now().isoformat()
         )
         
@@ -467,7 +523,12 @@ class MultiAgentOrchestrator:
         
         return report
     
-    def _create_failed_report(self, initial_error: AgentResult) -> AnalysisReport:
+    def _create_failed_report(
+        self,
+        initial_error: AgentResult,
+        intent_result: Optional[IntentResult] = None,
+        conversation_context: Optional[ConversationContext] = None
+    ) -> AnalysisReport:
         """Create a failed analysis report."""
         return AnalysisReport(
             status="failed",
@@ -479,6 +540,8 @@ class MultiAgentOrchestrator:
             prescriptions=[],
             synthesis="",
             agent_results=self.agent_results,
+            intent_result=intent_result,
+            conversation_context=conversation_context,
             timestamp=datetime.now().isoformat()
         )
     

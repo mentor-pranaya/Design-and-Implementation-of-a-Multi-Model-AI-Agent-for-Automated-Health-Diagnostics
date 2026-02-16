@@ -57,6 +57,7 @@ class BloodReportData(BaseModel):
 class LoginRequest(BaseModel):
     username: str
     password: str
+    role: str
 
 
 app = FastAPI(
@@ -252,20 +253,26 @@ async def api_login(data: LoginRequest, db: Session = Depends(get_db)):
     try:
         user = authenticate_user(db, data.username, data.password)
         if user:
-            return {"access_token": API_KEY, "token_type": "bearer", "user": user.username}
+            # Check if selected role matches user's role
+            if user.role != data.role:
+                raise HTTPException(status_code=401, detail=f"Access denied. This account has {user.role} access level.")
+            return {"access_token": API_KEY, "token_type": "bearer", "user": user.username, "role": user.role}
     except Exception as e:
         logger.warning(f"Database authentication failed: {str(e)}")
-    
+
     # Fallback to hardcoded credentials
     test_users = {
         "admin": {"password": "secret", "role": "admin"},
         "test": {"password": "secret", "role": "patient"}
     }
-    
+
     if data.username in test_users and data.password == test_users[data.username]["password"]:
+        # Check if selected role matches test user's role
+        if test_users[data.username]["role"] != data.role:
+            raise HTTPException(status_code=401, detail=f"Access denied. This account has {test_users[data.username]['role']} access level.")
         return {
-            "access_token": API_KEY, 
-            "token_type": "bearer", 
+            "access_token": API_KEY,
+            "token_type": "bearer",
             "username": data.username,
             "role": test_users[data.username]["role"]
         }
@@ -279,12 +286,19 @@ async def home(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
 
 
+def optional_api_key():
+    """Dependency that skips API key validation in development"""
+    if os.getenv("ENVIRONMENT") == "production":
+        return Depends(api_key_required)
+    async def skip_auth():
+        return "dev_key"
+    return skip_auth
+
 @app.post("/analyze-report/")
 @time_operation("analyze_report")
 async def analyze_report(
     request: Request,
     db: Session = Depends(get_db),
-    api_key: str = Depends(api_key_required),
 ):
     """
     INSTANT powerful blood report analysis.

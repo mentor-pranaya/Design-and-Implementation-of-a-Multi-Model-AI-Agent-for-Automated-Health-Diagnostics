@@ -19,20 +19,26 @@ def api_key_required(x_api_key: str | None = Header(None)):
     """
     # Accept 'secret' in development
     is_dev = os.getenv("ENVIRONMENT") != "production"
-    
+
     if not x_api_key:
         if is_dev:
+            logger.info("No API key provided, allowing in development mode")
             return API_KEY
         logger.warning("Request missing API key")
         raise HTTPException(
             status_code=401,
             detail="API key required"
         )
-    
+
     # Check against configured key or 'secret' fallback
     if x_api_key == API_KEY or (is_dev and x_api_key == "secret"):
         return x_api_key
-    
+
+    # In development, also accept any non-empty key for testing
+    if is_dev and x_api_key and len(x_api_key.strip()) > 0:
+        logger.info(f"Accepting API key in development mode: {x_api_key[:10]}...")
+        return x_api_key
+
     # Log the failure for debugging (masked for security)
     masked_key = "***"
     if x_api_key and isinstance(x_api_key, str):
@@ -40,8 +46,8 @@ def api_key_required(x_api_key: str | None = Header(None)):
         if len(key_str) > 6:
             masked_key = f"{key_str[:3]}...{key_str[-3:]}"
     logger.warning(f"Invalid API key attempt: {masked_key}")
-    
+
     raise HTTPException(
-        status_code=401, 
+        status_code=401,
         detail="Invalid API key"
     )

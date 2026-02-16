@@ -168,6 +168,64 @@ class MultiLLMService:
 
         return recommendations[:8]  # Limit to 8 recommendations
 
+    def generate_intent_analysis(
+        self,
+        user_input: str,
+        context_summary: str,
+        preferred_provider: Optional[str] = None
+    ) -> str:
+        """
+        Generate intent analysis using LLM with specialized prompt.
+
+        Args:
+            user_input: The user's natural language input
+            context_summary: Summary of conversation context
+            preferred_provider: Optional provider name to use
+
+        Returns:
+            JSON response with intent analysis
+        """
+        prompt = f"""
+You are an expert intent inference agent for a health diagnostics AI system. Your task is to analyze the user's input and determine their true intent, even if the request is vague, implicit, or incomplete.
+
+CONTEXT INFORMATION:
+{context_summary}
+
+USER INPUT: "{user_input}"
+
+INTENT CATEGORIES (choose the most appropriate):
+- analyze_blood_report: User wants to analyze/upload blood test results
+- ask_health_question: General health-related question
+- request_recommendations: Seeking health advice or recommendations
+- follow_up_previous_analysis: Referring to previous blood report analysis
+- clarify_previous_response: Needs clarification on previous AI response
+- general_health_inquiry: Broad health information request
+- emergency_concern: Urgent health concern that needs immediate attention
+- lifestyle_advice: Questions about diet, exercise, lifestyle changes
+
+ANALYSIS REQUIREMENTS:
+1. Infer the most likely intent from the categories above
+2. Provide a confidence score (0.0-1.0) for your inference
+3. Determine if clarification is needed (yes/no)
+4. If clarification needed, list 1-3 specific questions to ask
+5. List any reasonable assumptions you're making
+6. Provide a brief summary of the context you considered
+
+RESPONSE FORMAT (JSON):
+{{
+    "inferred_intent": "category_name",
+    "confidence_score": 0.85,
+    "requires_clarification": false,
+    "clarifying_questions": [],
+    "assumptions_made": ["Assumption 1", "Assumption 2"],
+    "context_summary": "Brief summary of context analysis"
+}}
+
+Be thorough but concise. If the intent is unclear, prefer to ask for clarification rather than guessing.
+"""
+
+        return self.generate_text(prompt, max_tokens=1024, preferred_provider=preferred_provider)
+
     def generate_text(
         self,
         prompt: str,

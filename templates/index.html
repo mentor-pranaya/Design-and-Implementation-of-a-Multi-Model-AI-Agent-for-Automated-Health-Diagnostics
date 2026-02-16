@@ -1357,7 +1357,7 @@
             <i class="fas fa-book-medical"></i>
             <span>API Docs</span>
         </div>
-        <div class="sidebar-item" onclick="window.location.href='/admin'">
+        <div class="sidebar-item" id="adminLink" onclick="window.location.href='/admin'" style="display: none;">
             <i class="fas fa-user-shield"></i>
             <span>Admin</span>
         </div>
@@ -1707,17 +1707,56 @@
             const resultsSection = document.getElementById('resultsSection');
             const progressFill = document.getElementById('progressFill');
 
-            // Session check
-            function checkSession() {
-                const session = localStorage.getItem('inbloodo_session');
-                if (!session) {
-                    window.location.href = '/login';
-                    return null;
-                }
-                return session;
+            // Get API key from session - must be logged in
+            let API_KEY = localStorage.getItem('inbloodo_session');
+            if (!API_KEY) {
+                // Redirect to login if no session
+                window.location.href = '/login';
+                return;
             }
-
-            const API_KEY = checkSession();
+            
+            // Validate session by checking if it works
+            async function validateSession() {
+                try {
+                    const response = await fetch('/api/cache/clear', {
+                        headers: { 'x-api-key': API_KEY }
+                    });
+                    return response.ok;
+                } catch (e) {
+                    return false;
+                }
+            }
+            
+            // If session is invalid, try to re-login with stored credentials
+            async function ensureValidSession() {
+                const isValid = await validateSession();
+                if (!isValid) {
+                    // Try to re-login with stored credentials
+                    const username = localStorage.getItem('inbloodo_username');
+                    const password = localStorage.getItem('inbloodo_password');
+                    if (username && password) {
+                        try {
+                            const loginResponse = await fetch('/api/login/', {
+                                method: 'POST',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify({ username, password })
+                            });
+                            if (loginResponse.ok) {
+                                const data = await loginResponse.json();
+                                localStorage.setItem('inbloodo_session', data.access_token);
+                                API_KEY = data.access_token;
+                                return true;
+                            }
+                        } catch (e) {
+                            console.error('Re-login failed:', e);
+                        }
+                    }
+                    // If re-login fails, redirect to login
+                    logout();
+                    return false;
+                }
+                return true;
+            }
 
             function logout() {
                 localStorage.removeItem('inbloodo_session');
@@ -1955,33 +1994,86 @@
                 return `${hours}:${minutes.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
             }
 
-            uploadArea.addEventListener('click', () => fileInput.click());
+            uploadArea.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                fileInput.click();
+            });
+
+            // Prevent default drag behaviors on window
+            ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+                document.body.addEventListener(eventName, (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                }, false);
+            });
+
+            // Highlight drop area when dragging over it
+            uploadArea.addEventListener('dragenter', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                uploadArea.classList.add('dragover');
+                uploadArea.style.borderColor = '#28a745';
+                uploadArea.style.background = 'rgba(40, 167, 69, 0.1)';
+            });
 
             uploadArea.addEventListener('dragover', (e) => {
                 e.preventDefault();
+                e.stopPropagation();
                 uploadArea.classList.add('dragover');
+                uploadArea.style.borderColor = '#28a745';
+                uploadArea.style.background = 'rgba(40, 167, 69, 0.1)';
             });
 
-            uploadArea.addEventListener('dragleave', () => {
-                uploadArea.classList.remove('dragover');
+            uploadArea.addEventListener('dragleave', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                // Only remove if we're leaving the upload area entirely
+                if (!uploadArea.contains(e.relatedTarget)) {
+                    uploadArea.classList.remove('dragover');
+                    uploadArea.style.borderColor = '#667eea';
+                    uploadArea.style.background = 'rgba(102, 126, 234, 0.05)';
+                }
             });
 
             uploadArea.addEventListener('drop', (e) => {
                 e.preventDefault();
+                e.stopPropagation();
                 uploadArea.classList.remove('dragover');
+                uploadArea.style.borderColor = '#667eea';
+                uploadArea.style.background = 'rgba(102, 126, 234, 0.05)';
+
                 const files = e.dataTransfer.files;
-                if (files.length > 0) {
-                    handleFileUpload(files[0]);
+                if (files && files.length > 0) {
+                    // Check if it's a valid file type
+                    const file = files[0];
+                    const allowedTypes = ['application/pdf', 'text/csv', 'application/json', 'image/png', 'image/jpeg', 'image/jpg', 'image/webp'];
+                    const fileExtension = file.name.toLowerCase().split('.').pop();
+                    const allowedExtensions = ['pdf', 'csv', 'json', 'png', 'jpg', 'jpeg', 'webp'];
+
+                    if (allowedTypes.includes(file.type) || allowedExtensions.includes(fileExtension)) {
+                        console.log('Valid file dropped:', file.name);
+                        handleFileUpload(file);
+                    } else {
+                        displayError('Unsupported file type: ' + fileExtension + '. Please upload PDF, CSV, JSON, or image files (PNG/JPG/WEBP).');
+                    }
+                } else {
+                    displayError('No file detected. Please drop a file onto the upload area.');
                 }
             });
 
             fileInput.addEventListener('change', (e) => {
                 if (e.target.files.length > 0) {
-                    handleFileUpload(e.target.files[0]);
+                    // Handle multiple files if selected
+                    for (let i = 0; i < e.target.files.length; i++) {
+                        handleFileUpload(e.target.files[i]);
+                    }
                 }
             });
 
             async function handleFileUpload(file) {
+                console.log('Starting file upload for:', file.name, 'Size:', file.size, 'Type:', file.type);
+
                 loading.classList.add('show');
                 resultsSection.classList.remove('show');
                 resultsSection.innerHTML = '';
@@ -1994,9 +2086,13 @@
                 }, 200);
 
                 try {
+                    console.log('API_KEY available:', !!API_KEY);
+
                     const formData = new FormData();
                     formData.append('file', file);
+                    console.log('FormData created with file');
 
+                    console.log('Sending request to /analyze-report/');
                     const response = await fetch('/analyze-report/', {
                         method: 'POST',
                         body: formData,
@@ -2005,19 +2101,32 @@
                         }
                     });
 
+                    console.log('Response status:', response.status, response.statusText);
+                    console.log('Response headers:', Object.fromEntries(response.headers.entries()));
+
                     clearInterval(progressInterval);
                     progressFill.style.width = '100%';
 
                     if (response.ok) {
+                        console.log('Response OK, parsing JSON');
                         const result = await response.json();
+                        console.log('Analysis result:', result);
                         displayResults(result);
                     } else {
-                        const error = await response.json();
-                        displayError(error.detail || 'Analysis failed');
+                        console.log('Response not OK, trying to parse error');
+                        try {
+                            const error = await response.json();
+                            console.log('Error response:', error);
+                            displayError(error.detail || 'Analysis failed');
+                        } catch (e) {
+                            console.log('Could not parse error response');
+                            displayError('Analysis failed - server error');
+                        }
                     }
                 } catch (error) {
+                    console.log('Network or processing error:', error);
                     clearInterval(progressInterval);
-                    displayError('Network error occurred');
+                    displayError('Network error occurred: ' + error.message);
                 }
 
                 setTimeout(() => {
@@ -2195,6 +2304,15 @@
                 formatItems.forEach((item, index) => {
                     item.style.animation = `fadeInUp 0.6s ease-out ${0.1 * index}s both`;
                 });
+
+                // Show admin link if user is admin
+                const userRole = localStorage.getItem('inbloodo_role');
+                if (userRole === 'admin') {
+                    const adminLink = document.getElementById('adminLink');
+                    if (adminLink) {
+                        adminLink.style.display = 'flex';
+                    }
+                }
             });
         </script>
 </body>
