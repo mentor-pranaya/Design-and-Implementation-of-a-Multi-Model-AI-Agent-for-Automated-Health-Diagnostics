@@ -19,12 +19,15 @@ from datetime import datetime
 
 from src.data_cleaning.data_cleaner import clean_and_structure_data
 from src.models.model_1_parameter_interpretation import interpret_parameters
-from src.models.model_2_pattern_analysis import analyze_risks
 from src.analysis.predictor import predict_risk
 from src.llm.multi_llm_service import get_multi_llm_service
-from src.recommendation.recommendation_generator import generate_recommendations, generate_prescriptions
-from src.synthesis.findings_synthesizer import synthesize_findings
 from src.agent.intent_inference_agent import IntentInferenceAgent, ConversationContext, IntentResult
+
+# Integrated Models
+from src.analysis.model_2 import Model2
+from src.analysis.model_3 import Model3
+from src.synthesis.findings_synthesizer import synthesize_findings
+from src.recommendation.recommendation_generator import RecommendationGenerator, generate_prescriptions
 
 logger = logging.getLogger(__name__)
 
@@ -44,16 +47,20 @@ class AnalysisReport:
     """Final analysis report from the multi-agent system."""
     status: str
     extracted_parameters: Dict[str, Any]
+    derived_metrics: Dict[str, Any]
     interpretations: List[str]
     risks: List[str]
     ai_prediction: Dict[str, Any]
-    recommendations: List[str]
+    recommendations: List[str]  # Plain text for backward compatibility
+    linked_recommendations: List[Dict[str, str]]
     prescriptions: List[str]
     synthesis: str
+    summary: str # Short description
     agent_results: List[AgentResult]
     timestamp: str
     intent_result: Optional[IntentResult] = None
     conversation_context: Optional[ConversationContext] = None
+    context_adjustments: List[str] = None
 
 
 class ParameterExtractionAgent:
@@ -63,14 +70,25 @@ class ParameterExtractionAgent:
         self.name = "Parameter Extraction Agent"
         self.logger = logging.getLogger(self.name)
     
-    def execute(self, raw_params: Dict[str, Any]) -> AgentResult:
-        """Extract and clean medical parameters."""
+    def execute(self, raw_params: Dict[str, Any], raw_text: Optional[str] = None) -> AgentResult:
+        """Extract and clean medical parameters, with LLM fallback."""
         import time
         start_time = time.time()
         
         try:
             self.logger.info(f"Processing {len(raw_params)} raw parameters")
             cleaned_params = clean_and_structure_data(raw_params)
+            
+            # Fallback to LLM if cleaning failed or yielded nothing
+            if not cleaned_params and raw_text:
+                self.logger.info("Regex extraction yielded no results. Attempting LLM extraction...")
+                llm_service = get_multi_llm_service()
+                llm_params = llm_service.extract_parameters_from_llm(raw_text)
+                
+                if llm_params:
+                    self.logger.info(f"LLM extraction found {len(llm_params)} parameters")
+                    # Clean the LLM output as well
+                    cleaned_params = clean_and_structure_data(llm_params)
             
             if not cleaned_params:
                 raise ValueError("No valid medical parameters found after cleaning")
@@ -132,25 +150,27 @@ class RiskAnalysisAgent:
     """Agent responsible for analyzing health risks (Model 2)."""
     
     def __init__(self):
-        self.name = "Risk Analysis Agent"
+        self.name = "Risk Analysis Agent (Model 2)"
         self.logger = logging.getLogger(self.name)
+        self.model_2 = Model2()
     
-    def execute(self, cleaned_params: Dict[str, Any], interpretations: List[str]) -> AgentResult:
-        """Analyze risks using Model 2."""
+    def execute(self, cleaned_params: Dict[str, Any], patient_context: Dict[str, Any]) -> AgentResult:
+        """Analyze risks and compute derived metrics using Model 2."""
         import time
         start_time = time.time()
         
         try:
-            self.logger.info("Starting risk analysis")
-            risks = analyze_risks(cleaned_params, interpretations)
+            self.logger.info("Starting risk analysis with Model 2")
+            # Model 2 returns { "derived_metrics": {}, "risk_indicators": [] }
+            results = self.model_2.analyze(cleaned_params, patient_context)
             
             execution_time = time.time() - start_time
-            self.logger.info(f"Identified {len(risks)} risks in {execution_time:.2f}s")
+            self.logger.info(f"Identified {len(results.get('risk_indicators', []))} risks in {execution_time:.2f}s")
             
             return AgentResult(
                 agent_name=self.name,
                 success=True,
-                data=risks,
+                data=results,
                 execution_time=execution_time
             )
         except Exception as e:
@@ -158,7 +178,44 @@ class RiskAnalysisAgent:
             return AgentResult(
                 agent_name=self.name,
                 success=False,
-                data=[],
+                data={"derived_metrics": {}, "risk_indicators": []},
+                error=str(e)
+            )
+
+
+class ContextAnalysisAgent:
+    """Agent responsible for contextual analysis (Model 3)."""
+    
+    def __init__(self):
+        self.name = "Context Analysis Agent (Model 3)"
+        self.logger = logging.getLogger(self.name)
+        self.model_3 = Model3()
+    
+    def execute(self, cleaned_params: Dict[str, Any], patient_context: Dict[str, Any]) -> AgentResult:
+        """Analyze context using Model 3."""
+        import time
+        start_time = time.time()
+        
+        try:
+            self.logger.info("Starting contextual analysis with Model 3")
+            # Model 3 returns { "context_adjustments": [] }
+            results = self.model_3.analyze(cleaned_params, patient_context)
+            
+            execution_time = time.time() - start_time
+            self.logger.info(f"Generated {len(results.get('context_adjustments', []))} context adjustments in {execution_time:.2f}s")
+            
+            return AgentResult(
+                agent_name=self.name,
+                success=True,
+                data=results,
+                execution_time=execution_time
+            )
+        except Exception as e:
+            self.logger.error(f"Context analysis failed: {str(e)}")
+            return AgentResult(
+                agent_name=self.name,
+                success=False,
+                data={"context_adjustments": []},
                 error=str(e)
             )
 
@@ -198,14 +255,58 @@ class PredictionAgent:
             )
 
 
-class LLMRecommendationAgent:
-    """Agent responsible for generating LLM-based recommendations using multiple LLM providers."""
+class RecommendationAgent:
+    """Agent responsible for generating Linked Recommendations."""
     
     def __init__(self):
-        self.name = "LLM Recommendation Agent"
+        self.name = "Recommendation Agent"
+        self.logger = logging.getLogger(self.name)
+        self.generator = RecommendationGenerator()
+    
+    def execute(
+        self,
+        interpretations: List[str],
+        risks: List[str],
+        cleaned_params: Dict[str, Any],
+        derived_metrics: Dict[str, Any]
+    ) -> AgentResult:
+        """Generate linked recommendations."""
+        import time
+        start_time = time.time()
+        
+        try:
+            self.logger.info("Starting recommendation generation")
+            recommendations = self.generator.generate(interpretations, risks, cleaned_params, derived_metrics)
+            
+            execution_time = time.time() - start_time
+            self.logger.info(f"Generated {len(recommendations)} recommendations in {execution_time:.2f}s")
+            
+            return AgentResult(
+                agent_name=self.name,
+                success=True,
+                data=recommendations, # List[Dict]
+                execution_time=execution_time
+            )
+        except Exception as e:
+            self.logger.error(f"Recommendation generation failed: {str(e)}")
+            return AgentResult(
+                agent_name=self.name,
+                success=False,
+                data=[],
+                error=str(e)
+            )
+
+
+class LLMEnrichmentAgent:
+    """
+    Optional Agent: Uses LLM to enrich recommendations or provide a second opinion.
+    Integrated into the main workflow but can be toggled.
+    """
+    def __init__(self):
+        self.name = "LLM Enrichment Agent"
         self.logger = logging.getLogger(self.name)
         self.multi_llm_service = get_multi_llm_service()
-    
+
     async def execute(
         self,
         interpretations: List[str],
@@ -213,65 +314,10 @@ class LLMRecommendationAgent:
         cleaned_params: Dict[str, Any],
         patient_context: Optional[Dict[str, Any]] = None
     ) -> AgentResult:
-        """Generate recommendations using multiple LLM providers with fallback (Async)."""
-        import time
-        start_time = time.time()
-        
-        try:
-            # Check availability first (fast, no I/O usually)
-            if not self.multi_llm_service.is_any_available():
-                self.logger.warning("No LLM providers available, using fallback recommendations")
-                return self._fallback_recommendations(interpretations, risks)
-            
-            available_providers = self.multi_llm_service.get_available_providers()
-            self.logger.info(f"Requesting recommendations from available LLMs: {', '.join(available_providers)}")
-            
-            # Run blocking LLM call in a thread
-            recommendations = await asyncio.to_thread(
-                self.multi_llm_service.generate_medical_recommendations,
-                interpretations=interpretations,
-                risks=risks,
-                parameters=cleaned_params,
-                patient_context=patient_context
-            )
-            
-            execution_time = time.time() - start_time
-            
-            if recommendations:
-                provider_info = self.multi_llm_service.get_provider_info()
-                self.logger.info(f"Generated {len(recommendations)} LLM recommendations in {execution_time:.2f}s using {provider_info['primary']}")
-                return AgentResult(
-                    agent_name=self.name,
-                    success=True,
-                    data=recommendations,
-                    execution_time=execution_time
-                )
-            else:
-                self.logger.warning("Empty response from all LLMs, using fallback")
-                return self._fallback_recommendations(interpretations, risks)
-        
-        except Exception as e:
-            self.logger.error(f"LLM recommendation generation failed: {str(e)}")
-            return self._fallback_recommendations(interpretations, risks)
-    
-    def _fallback_recommendations(self, interpretations: List[str], risks: List[str]) -> AgentResult:
-        """Fallback to rule-based recommendations."""
-        try:
-            recommendations = generate_recommendations(interpretations, risks)
-            return AgentResult(
-                agent_name=self.name,
-                success=True,
-                data=recommendations,
-                error="LLM unavailable, using fallback recommendations"
-            )
-        except Exception as e:
-            self.logger.error(f"Fallback recommendations failed: {str(e)}")
-            return AgentResult(
-                agent_name=self.name,
-                success=False,
-                data=["Consult healthcare provider for personalized advice"],
-                error=str(e)
-            )
+         # Placeholder for advanced LLM features if needed, 
+         # currently RecommendationAgent covers the core "linked" requirement.
+         # We can keep this if we want to add an "Ask AI" feature later.
+         return AgentResult(self.name, True, [], 0.0)
 
 
 class PrescriptionAgent:
@@ -323,10 +369,12 @@ class SynthesisAgent:
     
     def execute(
         self,
-        extracted_parameters: Dict[str, Any],
+        cleaned_params: Dict[str, Any],
         interpretations: List[str],
         risks: List[str],
-        recommendations: List[str]
+        recommendations: List[str], # Plain text recommendations
+        derived_metrics: Dict[str, Any],
+        context_adjustments: List[str]
     ) -> AgentResult:
         """Synthesize all findings into a summary."""
         import time
@@ -334,7 +382,9 @@ class SynthesisAgent:
         
         try:
             self.logger.info("Starting findings synthesis")
-            synthesis = synthesize_findings(extracted_parameters, interpretations, risks, recommendations)
+            synthesis = synthesize_findings(
+                cleaned_params, interpretations, risks, recommendations, derived_metrics, context_adjustments
+            )
             
             execution_time = time.time() - start_time
             self.logger.info(f"Generated synthesis in {execution_time:.2f}s")
@@ -362,11 +412,12 @@ class MultiAgentOrchestrator:
     Workflow:
     1. Parameter Extraction Agent -> clean and normalize data
     2. Interpretation Agent -> interpret parameters (Model 1)
-    3. Risk Analysis Agent -> analyze risks (Model 2)
-    4. Prediction Agent -> AI risk prediction
-    5. LLM Recommendation Agent -> generate recommendations via Gemini API
-    6. Prescription Agent -> generate prescriptions
-    7. Synthesis Agent -> synthesize all findings
+    3. Risk Analysis Agent -> analyze risks & ratios (Model 2)
+    4. Context Analysis Agent -> adjust for context (Model 3)
+    5. Prediction Agent -> AI risk prediction
+    6. Recommendation Agent -> generate linked recommendations
+    7. Prescription Agent -> generate prescriptions
+    8. Synthesis Agent -> synthesize all findings
     """
     
     def __init__(self):
@@ -375,8 +426,9 @@ class MultiAgentOrchestrator:
         self.extraction_agent = ParameterExtractionAgent()
         self.interpretation_agent = InterpretationAgent()
         self.risk_analysis_agent = RiskAnalysisAgent()
+        self.context_analysis_agent = ContextAnalysisAgent()
         self.prediction_agent = PredictionAgent()
-        self.llm_recommendation_agent = LLMRecommendationAgent()
+        self.recommendation_agent = RecommendationAgent()
         self.prescription_agent = PrescriptionAgent()
         self.synthesis_agent = SynthesisAgent()
         self.agent_results: List[AgentResult] = []
@@ -384,23 +436,18 @@ class MultiAgentOrchestrator:
     async def execute(
         self,
         raw_params: Dict[str, Any],
+        raw_text: Optional[str] = None,
         patient_context: Optional[Dict[str, Any]] = None
     ) -> AnalysisReport:
         """
-        Execute the multi-agent workflow to analyze health data (legacy method).
-
-        Args:
-            raw_params: Raw medical parameters to analyze
-            patient_context: Optional patient information
-
-        Returns:
-            AnalysisReport with analysis results
+        Execute the multi-agent workflow to analyze health data.
         """
         # Create dummy conversation context for backward compatibility
         dummy_context = ConversationContext()
         return await self.execute_with_intent(
             user_input="Analyze blood report",  # Default intent
             raw_params=raw_params,
+            raw_text=raw_text,
             conversation_context=dummy_context,
             patient_context=patient_context
         )
@@ -409,32 +456,25 @@ class MultiAgentOrchestrator:
         self,
         user_input: str,
         raw_params: Optional[Dict[str, Any]] = None,
+        raw_text: Optional[str] = None,
         conversation_context: Optional[ConversationContext] = None,
         patient_context: Optional[Dict[str, Any]] = None
     ) -> AnalysisReport:
         """
-        Execute the multi-agent workflow with intent inference for natural user interaction.
-
-        Args:
-            user_input: Natural language user input
-            raw_params: Optional raw medical parameters from input
-            conversation_context: Optional conversation history and user state
-            patient_context: Optional patient context (age, gender, etc.)
-
-        Returns:
-            AnalysisReport with results from all agents including intent analysis
+        Execute the multi-agent workflow with intent inference.
         """
         import time
         overall_start = time.time()
         self.agent_results = []
+        
+        if patient_context is None:
+            patient_context = {"gender": "unknown", "age": 30}
 
         self.logger.info("Starting intent-aware multi-agent health analysis workflow")
-        self.logger.info(f"User input: '{user_input[:100]}...'")
-
+        
         # Stage 0: Infer user intent (async, I/O bound)
         intent_result = await self.intent_inference_agent.analyze_intent(user_input, conversation_context)
-        self.logger.info(f"Inferred intent: {intent_result.inferred_intent} (confidence: {intent_result.confidence_score:.2f})")
-
+        
         # Update conversation context
         if conversation_context:
             conversation_context = self.intent_inference_agent.update_conversation_context(
@@ -446,77 +486,93 @@ class MultiAgentOrchestrator:
             'analyze_blood_report', 'follow_up_previous_analysis'
         ]
 
-        params_to_use = raw_params if intent_requires_params else None
-
-        # Stage 1: Extract and clean parameters (CPU bound, fast)
-        if params_to_use:
-            extraction_result = self.extraction_agent.execute(params_to_use)
+        # Stage 1: Extract and clean parameters
+        cleaned_params = {}
+        if intent_requires_params:
+            # Pass both structured params and raw text for fallback
+            extraction_result = self.extraction_agent.execute(raw_params or {}, raw_text)
             self.agent_results.append(extraction_result)
 
             if not extraction_result.success:
-                self.logger.error("Parameter extraction failed, cannot continue")
                 return self._create_failed_report(extraction_result, intent_result, conversation_context)
 
             cleaned_params = extraction_result.data or {}
-        else:
-            # No parameters to extract, proceed with intent-based analysis
-            cleaned_params = {}
-            self.logger.info("Skipping parameter extraction - intent doesn't require parameters")
         
-        # Stage 2: Interpret parameters
-        interpretation_result = self.interpretation_agent.execute(cleaned_params)
-        self.agent_results.append(interpretation_result)
+        # PARALLEL EXECUTION: Stages 2, 3, 4, 5 (Independent)
+        # These agents depend on cleaned_params but not on each other
+        
+        async def run_agent(agent, *args):
+            return await asyncio.to_thread(agent.execute, *args)
+
+        self.logger.info("Executing analysis models in parallel...")
+        results = await asyncio.gather(
+            run_agent(self.interpretation_agent, cleaned_params),
+            run_agent(self.risk_analysis_agent, cleaned_params, patient_context),
+            run_agent(self.context_analysis_agent, cleaned_params, patient_context),
+            run_agent(self.prediction_agent, cleaned_params)
+        )
+        
+        interpretation_result, risk_result, context_result, prediction_result = results
+        
+        self.agent_results.extend([interpretation_result, risk_result, context_result, prediction_result])
+        
+        # Unpack results
         interpretations = interpretation_result.data or []
         
-        # Stage 3: Analyze risks
-        risk_result = self.risk_analysis_agent.execute(cleaned_params, interpretations)
-        self.agent_results.append(risk_result)
-        risks = risk_result.data or []
+        m2_data = risk_result.data or {}
+        derived_metrics = m2_data.get("derived_metrics", {})
+        risks = m2_data.get("risk_indicators", [])
         
-        # Stage 4: Generate AI prediction
-        prediction_result = self.prediction_agent.execute(cleaned_params)
-        self.agent_results.append(prediction_result)
+        m3_data = context_result.data or {}
+        context_adjustments = m3_data.get("context_adjustments", [])
+        
+        if context_adjustments:
+             interpretations.extend([f"[Context] {adj}" for adj in context_adjustments])
+
         ai_prediction = prediction_result.data or {}
         
-        # Stage 5: Generate recommendations via LLM (I/O bound -> await)
-        llm_result = await self.llm_recommendation_agent.execute(
-            interpretations,
-            risks,
-            cleaned_params,
-            patient_context
+        # Stage 6 & 7: Recommendations and Prescriptions (Can be parallel)
+        rec_pres_results = await asyncio.gather(
+            run_agent(self.recommendation_agent, interpretations, risks, cleaned_params, derived_metrics),
+            run_agent(self.prescription_agent, interpretations, risks, cleaned_params)
         )
-        self.agent_results.append(llm_result)
-        recommendations = llm_result.data or []
         
-        # Stage 6: Generate prescriptions
-        prescription_result = self.prescription_agent.execute(
-            interpretations,
-            risks,
-            cleaned_params
-        )
-        self.agent_results.append(prescription_result)
+        rec_result, prescription_result = rec_pres_results
+        self.agent_results.extend([rec_result, prescription_result])
+        
+        linked_recommendations = rec_result.data or []
+        plain_recommendations = [r["recommendation"] for r in linked_recommendations]
         prescriptions = prescription_result.data or []
         
-        # Stage 7: Synthesize findings
-        synthesis_result = self.synthesis_agent.execute(cleaned_params, interpretations, risks, recommendations)
+        # Stage 8: Synthesize findings (Depends on everything)
+        synthesis_result = self.synthesis_agent.execute(
+            cleaned_params, interpretations, risks, plain_recommendations, derived_metrics, context_adjustments
+        )
         self.agent_results.append(synthesis_result)
         synthesis = synthesis_result.data or ""
         
         overall_time = time.time() - overall_start
         
+        # Build description/summary
+        summary = synthesis
+        
         # Build final report
         report = AnalysisReport(
             status="success",
             extracted_parameters=cleaned_params,
+            derived_metrics=derived_metrics,
             interpretations=interpretations,
             risks=risks,
             ai_prediction=ai_prediction,
-            recommendations=recommendations,
+            recommendations=plain_recommendations,
+            linked_recommendations=linked_recommendations,
             prescriptions=prescriptions,
             synthesis=synthesis,
+            summary=summary,
             agent_results=self.agent_results,
             intent_result=intent_result,
             conversation_context=conversation_context,
+            context_adjustments=context_adjustments,
             timestamp=datetime.now().isoformat()
         )
         
@@ -535,12 +591,15 @@ class MultiAgentOrchestrator:
         return AnalysisReport(
             status="failed",
             extracted_parameters={},
+            derived_metrics={},
             interpretations=[],
             risks=[],
             ai_prediction={},
             recommendations=["Consult healthcare provider for personalized advice"],
+            linked_recommendations=[],
             prescriptions=[],
             synthesis="",
+            summary="Analysis failed.",
             agent_results=self.agent_results,
             intent_result=intent_result,
             conversation_context=conversation_context,
@@ -564,5 +623,4 @@ class MultiAgentOrchestrator:
         self.logger.info(f"Interpretations: {len(report.interpretations)}")
         self.logger.info(f"Identified Risks: {len(report.risks)}")
         self.logger.info(f"Recommendations: {len(report.recommendations)}")
-        self.logger.info(f"Prescriptions: {len(report.prescriptions)}")
         self.logger.info("=" * 60)

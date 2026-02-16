@@ -1,0 +1,28 @@
+﻿--- Testing Validation Pipeline ---
+Input Text:
+
+    Hemoglobin 13.5 gdl
+    WBC 6500
+    Platelets 250000
+    Glucose 105 mg/dl
+    Cholesterol 200 mgdl
+    Creatinine 1.1
+    Sodium 140 mmol/L
+    TestInvalid -5
+    
+
+1. Extracted:
+{'glucose': {'value': 105.0, 'unit': 'mg/dl', 'original_text': 'glucose 105 mg/dl'}, 'cholesterol': {'value': 200.0, 'unit': 'mgdl', 'original_text': 'cholesterol 200 mgdl'}, 'hemoglobin': {'value': 13.5, 'unit': 'gdl', 'original_text': 'hemoglobin 13.5 gdl'}, 'wbc': {'value': 650.0, 'unit': None, 'original_text': 'wbc 650'}, 'platelets': {'value': 250.0, 'unit': None, 'original_text': 'platelets 250'}, 'sodium': {'value': 140.0, 'unit': 'mmol/l', 'original_text': 'sodium 140 mmol/l'}, 'creatinine': {'value': 1.1, 'unit': None, 'original_text': 'creatinine 1.1'}}
+
+2. Cleaned:
+{'glucose': {'value': 105.0, 'unit': 'mg/dl', 'original_text': 'glucose 105 mg/dl'}, 'cholesterol': {'value': 200.0, 'unit': 'mgdl', 'original_text': 'cholesterol 200 mgdl'}, 'hemoglobin': {'value': 13.5, 'unit': 'gdl', 'original_text': 'hemoglobin 13.5 gdl'}, 'wbc': {'value': 650.0, 'unit': None, 'original_text': 'wbc 650'}, 'platelets': {'value': 250.0, 'unit': None, 'original_text': 'platelets 250'}, 'sodium': {'value': 140.0, 'unit': 'mmol/l', 'original_text': 'sodium 140 mmol/l'}, 'creatinine': {'value': 1.1, 'unit': None, 'original_text': 'creatinine 1.1'}}
+
+3. Standardized:
+{'glucose': {'value': 105.0, 'unit': 'mg/dl', 'original_text': 'glucose 105 mg/dl'}, 'cholesterol': {'value': 200.0, 'unit': 'mg/dl', 'original_text': 'cholesterol 200 mgdl'}, 'hemoglobin': {'value': 13.5, 'unit': 'g/dl', 'original_text': 'hemoglobin 13.5 gdl'}, 'wbc': {'value': 650.0, 'unit': None, 'original_text': 'wbc 650'}, 'platelets': {'value': 250.0, 'unit': None, 'original_text': 'platelets 250'}, 'sodium': {'value': 140.0, 'unit': 'mmol/l', 'original_text': 'sodium 140 mmol/l'}, 'creatinine': {'value': 1.1, 'unit': None, 'original_text': 'creatinine 1.1'}}
+
+4. Validated:
+{'glucose': {'value': 105.0, 'unit': 'mg/dl', 'original_text': 'glucose 105 mg/dl'}, 'cholesterol': {'value': 200.0, 'unit': 'mg/dl', 'original_text': 'cholesterol 200 mgdl'}, 'hemoglobin': {'value': 13.5, 'unit': 'g/dl', 'original_text': 'hemoglobin 13.5 gdl'}, 'wbc': {'value': 650.0, 'unit': None, 'original_text': 'wbc 650'}, 'platelets': {'value': 250.0, 'unit': None, 'original_text': 'platelets 250'}, 'sodium': {'value': 140.0, 'unit': 'mmol/l', 'original_text': 'sodium 140 mmol/l'}, 'creatinine': {'value': 1.1, 'unit': None, 'original_text': 'creatinine 1.1'}}
+
+Issues Found:
+[]
+

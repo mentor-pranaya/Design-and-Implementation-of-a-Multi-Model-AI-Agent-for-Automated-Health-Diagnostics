@@ -1,0 +1,60 @@
+--- Testing LLM Extraction Fallback ---
+Importing service...
+Getting service instance...
+INFO:src.llm.multi_llm_service:Initializing Multi-LLM Service...
+INFO:src.llm.gemini_provider:Google Gemini LLM provider initialized successfully with model gemini-flash-latest
+WARNING:src.llm.openai_provider:OPENAI_API_KEY not found in environment variables
+WARNING:src.llm.claude_provider:ANTHROPIC_API_KEY not found in environment variables
+INFO:src.llm.multi_llm_service:\u2713 Google Gemini is available
+WARNING:src.llm.multi_llm_service:\u2717 OpenAI GPT is not available
+WARNING:src.llm.multi_llm_service:\u2717 Anthropic Claude is not available
+INFO:src.llm.multi_llm_service:Multi-LLM Service initialized with 1 providers
+INFO:src.llm.multi_llm_service:Primary LLM Provider: Google Gemini
+Service initialized. Available providers: ['gemini']
+Input Text length: 314
+Attempting extraction via LLM...
+INFO:src.llm.multi_llm_service:Using Google Gemini for parameter extraction
+Extraction call returned.
+[OK] Extraction successful! Found 5 parameters.
+{
+  "Hemoglobin": {
+    "value": 12.5,
+    "unit": "g/dL"
+  },
+  "White Blood Cell Count": {
+    "value": 6.5,
+    "unit": "thousand/\u00b5L"
+  },
+  "Platelet Count": {
+    "value": 250000,
+    "unit": "/\u00b5L"
+  },
+  "Random Glucose": {
+    "value": 110,
+    "unit": "mg/dL"
+  },
+  "Total Cholesterol": {
+    "value": 185,
+    "unit": "mg/dL"
+  }
+}
+Traceback (most recent call last):
+  File "C:\Users\rakes\AppData\Local\Programs\Python\Python313\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\rakes\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 725, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\rakes\Downloads\blood report ai\test_extraction_llm.py", line 62, in <module>
+  File "C:\Users\rakes\AppData\Local\Programs\Python\Python313\Lib\asyncio\runners.py", line 195, in run
+    return runner.run(main)
+           ~~~~~~~~~~^^^^^^
+  File "C:\Users\rakes\AppData\Local\Programs\Python\Python313\Lib\asyncio\runners.py", line 123, in run
+    raise KeyboardInterrupt()
+KeyboardInterrupt
+^C

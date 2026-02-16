@@ -1,0 +1,240 @@
+<!-- REPORT HISTORY SECTION - Add this to index.html -->
+
+<div class="report-history-section" id="history-section" style="display:none;">
+    <div class="section-header">
+        <h2><i class="fas fa-history"></i> Report History</h2>
+        <button onclick="refreshHistory()" class="refresh-btn">
+            <i class="fas fa-sync-alt"></i> Refresh
+        </button>
+    </div>
+
+    <div class="history-container" id="history-container">
+        <div class="loading">Loading reports...</div>
+    </div>
+</div>
+
+<style>
+    .report-history-section {
+        margin-top: 40px;
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.03);
+        backdrop-filter: blur(15px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 20px;
+    }
+
+    .section-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        padding-bottom: 15px;
+        border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .section-header h2 {
+        color: #667eea;
+        font-size: 1.5rem;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .refresh-btn {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 10px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        transition: transform 0.3s ease;
+    }
+
+    .refresh-btn:hover {
+        transform: translateY(-2px);
+    }
+
+    .history-container {
+        max-height: 600px;
+        overflow-y: auto;
+    }
+
+    .history-table {
+        width: 100%;
+        border-collapse: collapse;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    .history-table th {
+        background: rgba(102, 126, 234, 0.2);
+        color: white;
+        padding: 15px;
+        text-align: left;
+        font-weight: 600;
+        border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .history-table td {
+        padding: 12px 15px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        color: rgba(255, 255, 255, 0.8);
+    }
+
+    .history-table tr:hover {
+        background: rgba(255, 255, 255, 0.05);
+    }
+
+    .status-badge {
+        padding: 5px 12px;
+        border-radius: 15px;
+        font-size: 0.85rem;
+        font-weight: 500;
+    }
+
+    .status-success {
+        background: rgba(40, 167, 69, 0.2);
+        color: #28a745;
+        border: 1px solid #28a745;
+    }
+
+    .status-failed {
+        background: rgba(220, 53, 69, 0.2);
+        color: #dc3545;
+        border: 1px solid #dc3545;
+    }
+
+    .risk-badge {
+        padding: 4px 10px;
+        border-radius: 12px;
+        font-size: 0.8rem;
+    }
+
+    .risk-low {
+        background: #d4edda;
+        color: #155724;
+    }
+
+    .risk-moderate {
+        background: #fff3cd;
+        color: #856404;
+    }
+
+    .risk-high {
+        background: #f8d7da;
+        color: #721c24;
+    }
+
+    .action-btn {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border: none;
+        padding: 6px 12px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 0.85rem;
+        transition: all 0.3s ease;
+    }
+
+    .action-btn:hover {
+        transform: scale(1.05);
+        box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+    }
+
+    .loading {
+        text-align: center;
+        padding: 40px;
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 1.1rem;
+    }
+</style>
+
+<script>
+    // Load report history
+    async function loadReportHistory() {
+        const container = document.getElementById('history-container');
+        container.innerHTML = '<div class="loading"><i class="fas fa-spinner fa-spin"></i> Loading reports...</div>';
+
+        try {
+            const response = await fetch('/api/reports/history?limit=50');
+            const reports = await response.json();
+
+            if (reports.length === 0) {
+                container.innerHTML = '<div class="loading">No reports found. Upload a report to get started!</div>';
+                return;
+            }
+
+            let tableHTML = `
+            <table class="history-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Filename</th>
+                        <th>Date</th>
+                        <th>Status</th>
+                        <th>Parameters</th>
+                        <th>Risk Level</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+        `;
+
+            reports.forEach(report => {
+                const date = report.created_at ? new Date(report.created_at).toLocaleString() : 'N/A';
+                const statusClass = report.status === 'Success' ? 'status-success' : 'status-failed';
+                const riskClass = report.risk_level ? `risk-${report.risk_level.toLowerCase()}` : '';
+
+                tableHTML += `
+                <tr>
+                    <td><strong>#${report.id}</strong></td>
+                    <td>${report.filename}</td>
+                    <td>${date}</td>
+                    <td><span class="status-badge ${statusClass}">${report.status}</span></td>
+                    <td>${report.parameter_count} params</td>
+                    <td><span class="risk-badge ${riskClass}">${report.risk_level}</span></td>
+                    <td>
+                        <button onclick="downloadReport(${report.id})" class="action-btn">
+                            <i class="fas fa-download"></i> PDF
+                        </button>
+                    </td>
+                </tr>
+            `;
+            });
+
+            tableHTML += '</tbody></table>';
+            container.innerHTML = tableHTML;
+
+        } catch (error) {
+            console.error('Error loading history:', error);
+            container.innerHTML = '<div class="loading" style="color: #dc3545;">Error loading reports. Please try again.</div>';
+        }
+    }
+
+    // Download report PDF
+    function downloadReport(reportId) {
+        window.location.href = `/report/${reportId}/download`;
+    }
+
+    // Refresh history
+    function refreshHistory() {
+        loadReportHistory();
+    }
+
+    // Show history section
+    function showHistory() {
+        document.getElementById('history-section').style.display = 'block';
+        loadReportHistory();
+    }
+
+    // Auto-load history on page load
+    document.addEventListener('DOMContentLoaded', function () {
+        // Add a "View History" button to sidebar or main area
+        // Or auto-show history section
+        showHistory();
+    });
+</script>

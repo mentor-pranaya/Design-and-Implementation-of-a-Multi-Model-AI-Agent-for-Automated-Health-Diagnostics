@@ -1,0 +1,16 @@
+﻿
+--- Testing JSON Parser ---
+Parsed JSON Data: {'patient_id': 'P001', 'hemoglobin': 14.5, 'wbc': 7000, 'platelets': 250000, 'glucose': 95, 'cholesterol': 180, 'blood_pressure': 120, 'description': 'Normal healthy patient'}
+Extracted Parameters: {'hemoglobin': {'value': 14.5, 'unit': None}, 'wbc': {'value': 7000.0, 'unit': None}, 'platelets': {'value': 250000.0, 'unit': None}, 'glucose': {'value': 95.0, 'unit': None}, 'cholesterol': {'value': 180.0, 'unit': None}, 'blood_pressure': {'value': 120.0, 'unit': None}}
+
+--- Testing PDF Parser ---
+Parsed PDF Text (first 100 chars): LABORATORY REPORT
+-----------------
+Parameter       Value   Unit
+Hemoglobin      13.0    g/dL
+RBC   ...
+Extracted Parameters: {'hemoglobin': {'value': 13.0, 'unit': 'g/dl', 'original_text': 'hemoglobin      13.0    g/dl'}, 'wbc': {'value': 650.0, 'unit': None, 'original_text': 'wbc             650'}, 'platelets': {'value': 280.0, 'unit': None, 'original_text': 'platelets       280'}, 'sodium': {'value': 140.0, 'unit': 'mmol/l', 'original_text': 'sodium          140     mmol/l'}, 'potassium': {'value': 4.2, 'unit': 'mmol/l', 'original_text': 'potassium       4.2     mmol/l'}}
+
+--- Testing Image Parser ---
+Parsed Image Text (first 100 chars): URGENTCARE LABS Gluccoz. 80 mgdL Cholesterol: 150 mgdL Hemoglobin: 9.0 gdL Status Critical Hypoglyce...
+Extracted Parameters: {'cholesterol': {'value': 150.0, 'unit': 'mgdl', 'original_text': 'cholesterol: 150 mgdl'}, 'hemoglobin': {'value': 9.0, 'unit': 'gdl', 'original_text': 'hemoglobin: 9.0 gdl'}}

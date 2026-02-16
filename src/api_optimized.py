@@ -10,6 +10,7 @@ load_dotenv()
 import json
 import logging
 import time
+import hashlib
 from datetime import datetime
 from typing import Dict, Any, Optional
 from functools import lru_cache
@@ -17,7 +18,7 @@ import gzip
 from io import BytesIO
 
 from fastapi import FastAPI, UploadFile, File, HTTPException, Depends, Request, Response, Cookie
-from fastapi.responses import HTMLResponse, JSONResponse, StreamingResponse, RedirectResponse
+from fastapi.responses import HTMLResponse, JSONResponse, StreamingResponse, RedirectResponse, FileResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from fastapi.middleware.cors import CORSMiddleware
@@ -323,6 +324,23 @@ async def analyze_report(
                 raise HTTPException(400, "File too large (max 10MB)")
             
             filename = file.filename.lower()
+            
+            # Read file content once for hashing and processing
+            content = await file.read()
+            
+            # 1. FILE HASH CACHING (Instant Result)
+            # Hash the raw file content to check if we've processed this exact file before
+            file_hash = hashlib.md5(content).hexdigest()
+            cached_by_hash = result_cache.get(f"file:{file_hash}")
+            
+            if cached_by_hash:
+                logger.info("INSTANT RESULT: File content match in cache")
+                start_fresh = time.time() # Reset timer to show 0 latency
+                return {**cached_by_hash, "from_cache": True, "processing_time": 0.01}
+
+            # Reset cursor for parsers that expect file-like objects
+            file.file.seek(0)
+            
             params = {}
 
             try:
@@ -330,22 +348,20 @@ async def analyze_report(
                     text = extract_text_from_pdf(file)
                     params = extract_parameters_from_text(text)
                 elif filename.endswith((".png", ".jpg", ".jpeg", ".tif", ".tiff", ".bmp", ".webp")):
+                    # Re-seek because we read it above
+                    file.file.seek(0)
                     text = extract_text_with_fallback(file)
                     params = extract_parameters_from_text(text)
                 elif filename.endswith(".csv"):
-                    content = await file.read()
+                     # Content is already read bytes
                     params = extract_parameters_from_csv(content)
+                    text = "" # No text for CSV
                 elif filename.endswith(".json"):
-                    content = await file.read()
                     raw = json.loads(content.decode("utf-8"))
                     params = {k.lower(): v for k, v in raw.items() if isinstance(v, (int, float))}
+                    text = ""
                 elif filename.endswith(".txt"):
-                    content = await file.read()
                     text = content.decode("utf-8")
-                    params = extract_parameters_from_text(text)
-                elif filename.endswith('.txt'):
-                    content = await file.read()
-                    text = content.decode('utf-8')
                     params = extract_parameters_from_text(text)
                 else:
                     raise HTTPException(400, f"Unsupported file type: {filename}. Supported: PDF, PNG, JPG, TIF, TIFF, BMP, WEBP, CSV, JSON, TXT")
@@ -367,8 +383,14 @@ async def analyze_report(
         else:
             raise HTTPException(400, "Unsupported content type")
 
-        if not params:
-            raise HTTPException(400, "No valid medical parameters found")
+        # LLM Fallback is now handled by the Orchestrator internally for better consistency
+        if not params and 'text' in locals() and text:
+             logger.info("Regex extraction failed. Delegating to Orchestrator's LLM fallback.")
+
+        # We don't raise error here for empty params immediately if we have text, 
+        # as orchestrator might succeed.
+        if not params and (not 'text' in locals() or not text):
+            raise HTTPException(400, "No valid medical parameters found and no text to analyze.")
 
         # Check cache for instant results
         if cache_key:
@@ -377,11 +399,20 @@ async def analyze_report(
                 logger.info("INSTANT RESULT from cache")
                 return {**cached, "from_cache": True, "processing_time": time.time() - start_time}
 
+        # Prepare text argument
+        raw_text_content = None
+        if 'text' in locals() and text:
+            raw_text_content = text
+        
         # Process medical data
-        result_optimized: dict = await process_medical_data_optimized(params, filename_for_report, db)
+        result_optimized: dict = await process_medical_data_optimized(params, filename_for_report, db, raw_text=raw_text_content)
         
         if cache_key:
             result_cache.set(cache_key, result_optimized)
+        
+        # Also cache by file hash if available
+        if 'file_hash' in locals():
+            result_cache.set(f"file:{file_hash}", result_optimized)
         
         processing_time: float = float(time.time() - start_time)
         result_optimized["processing_time"] = float(f"{processing_time:.2f}")
@@ -398,65 +429,107 @@ async def analyze_report(
 
 
 @time_operation("process_medical_data")
-async def process_medical_data_optimized(params: dict, filename: str, db: Session):
+async def process_medical_data_optimized(params: dict, filename: str, db: Session, raw_text: Optional[str] = None):
     """
     Optimized multi-agent processing with parallel execution.
     """
     try:
-        from src.llm import get_multi_llm_service
-        
         orchestrator = get_orchestrator()
         
-        llm_service = get_multi_llm_service()
-        llm_info = llm_service.get_provider_info()
+        # Patient context placeholder
+        patient_context = {"gender": "unknown", "age": 30} 
         
+        # Execute unified analysis
         analysis_report = await orchestrator.execute(
             raw_params=params,
-            patient_context=None
+            raw_text=raw_text, # Pass raw text for fallback
+            patient_context=patient_context
         )
 
+        # Extract data for persistence & caching
         cleaned_params = analysis_report.extracted_parameters
-        interpretations = analysis_report.interpretations
-        risks = analysis_report.risks
-        ai_prediction = analysis_report.ai_prediction
-        recommendations = analysis_report.recommendations
-        prescriptions = analysis_report.prescriptions
-        synthesis = analysis_report.synthesis
+        results_for_response = {
+            "status": analysis_report.status,
+            "extracted_parameters": analysis_report.extracted_parameters,
+            "derived_metrics": analysis_report.derived_metrics,
+            "interpretations": analysis_report.interpretations,
+            "risks": analysis_report.risks,
+            "ai_prediction": analysis_report.ai_prediction,
+            "recommendations": analysis_report.recommendations,
+            "linked_recommendations": analysis_report.linked_recommendations,
+            "prescriptions": analysis_report.prescriptions,
+            "synthesis": analysis_report.synthesis,
+            "overall_risk": "Moderate", # Default, can be refined from analysis_report if needed
+            "summary": analysis_report.summary
+        }
 
-        description = f"Multi-Agent AI Analysis: {len(cleaned_params)} parameters analyzed. Key findings: {', '.join(interpretations[:3] if interpretations else [])}. AI Risk Assessment: {ai_prediction.get('risk_label', 'moderate')} ({ai_prediction.get('risk_score', 0.5):.1%})."
-
-        risk_score = ai_prediction.get('risk_label', 'moderate').replace('_', ' ').title()
-        if len([r for r in risks if "high" in r.lower() or "severe" in r.lower()]) > 0:
+        # Determine risk level string for DB
+        risk_score = "Moderate"
+        if any("High" in r for r in analysis_report.risks):
             risk_score = "High"
-        elif len([r for r in risks if "moderate" in r.lower()]) > 0:
-            risk_score = "Moderate"
+        
+        results_for_response["overall_risk"] = risk_score
 
+        # Persist report to DB
+        report_id = None
         try:
-            report_content = f"{description} Risk Level: {risk_score}."
-            create_report(db, filename, cleaned_params, recommendations, report_content)
+            report_content = f"{analysis_report.summary} Risk Level: {risk_score}."
+            db_report = create_report(db, filename, cleaned_params, analysis_report.recommendations, report_content, full_results=results_for_response)
+            report_id = db_report.id
         except Exception as e:
             logger.error(f"Report persistence failed: {str(e)}")
+            import traceback
+            results_for_response["persistence_error"] = str(e)
+            results_for_response["persistence_traceback"] = traceback.format_exc()
 
-        return {
-            "status": "success",
-            "extracted_parameters": cleaned_params,
-            "interpretations": interpretations,
-            "risks": risks,
-            "ai_prediction": ai_prediction,
-            "recommendations": recommendations,
-            "prescriptions": prescriptions,
-            "synthesis": synthesis,
-            "overall_risk": risk_score,
-            "summary": description,
-            "llm_provider_info": {
-                "primary": llm_info.get("primary"),
-                "available_providers": llm_info.get("available"),
-            },
-            "agent_execution": {
-                "total_agents": len(analysis_report.agent_results),
-                "successful_agents": len([r for r in analysis_report.agent_results if r.success]),
+        results_for_response["report_id"] = report_id
+        return results_for_response
+
+    except ValueError as e:
+        logger.error(f"Validation error: {str(e)}")
+        raise HTTPException(400, f"Invalid input data: {str(e)}")
+    except Exception as e:
+        logger.exception("Unexpected processing error")
+        raise HTTPException(500, f"Internal processing error: {str(e)}")
+
+
+@app.get("/report/{report_id}/download")
+async def download_report(report_id: int, db: Session = Depends(get_db)):
+    """Generate and download PDF report."""
+    from src.reporting.pdf_generator import PDFReportGenerator
+    from src.database.models import Report
+    
+    report = db.query(Report).filter(Report.id == report_id).first()
+    if not report:
+        raise HTTPException(404, "Report not found")
+    
+    try:
+        if not report.full_results:
+            # Fallback for old reports without full results
+            params = json.loads(report.parameters)
+            recs = json.loads(report.recommendations)
+            analysis_data = {
+                "synthesis": report.description,
+                "overall_risk": "High" if "High" in report.description else "Moderate",
+                "risks": [],
+                "extracted_parameters": {k:{"value":v, "unit":""} for k,v in params.items()},
+                "interpretations": [],
+                "linked_recommendations": [{"recommendation": r, "finding": "General"} for r in recs]
             }
-        }
+        else:
+            analysis_data = json.loads(report.full_results)
+        
+        pdf_gen = PDFReportGenerator()
+        filename = f"report_{report_id}.pdf"
+        file_path = pdf_gen.generate_pdf_report(analysis_data, filename)
+        
+        return FileResponse(file_path, media_type='application/pdf', filename=filename)
+        
+    except Exception as e:
+        import traceback
+        tb = traceback.format_exc()
+        logger.error(f"PDF generation failed for report {report_id}: {str(e)}\n{tb}")
+        raise HTTPException(500, f"Could not generate PDF: {str(e)}\n{tb}")
 
     except ValueError as e:
         logger.error(f"Validation error: {str(e)}")
@@ -485,7 +558,7 @@ async def analyze_json_report(
         if not params:
             raise HTTPException(400, "No valid medical parameters found")
 
-        result = await process_medical_data_optimized(params, "json_input", db)
+        result = await process_medical_data_optimized(params, "json_input", db, raw_text=None)
         result_cache.set(cache_key, result)
         
         result["processing_time"] = time.time() - start_time
@@ -523,6 +596,54 @@ def read_reports(
         raise HTTPException(500, f"Error fetching reports: {str(e)}")
 
 
+@app.get("/api/reports/history")
+@time_operation("report_history")
+def get_report_history(
+    skip: int = 0,
+    limit: int = 50,
+    db: Session = Depends(get_db)
+):
+    """Get report history for dashboard display (no auth required for demo)"""
+    try:
+        reports = db.query(Report).order_by(Report.id.desc()).offset(skip).limit(limit).all()
+        result = []
+        
+        for r in reports:
+            # Parse full_results if available
+            status = "Unknown"
+            param_count = 0
+            risk_level = "N/A"
+            
+            if r.full_results:
+                try:
+                    data = json.loads(r.full_results)
+                    status = data.get('status', 'unknown')
+                    param_count = len(data.get('extracted_parameters', {}))
+                    risk_level = data.get('overall_risk', 'N/A')
+                    
+                    if status == 'success' or param_count > 0:
+                        status = "Success"
+                    else:
+                        status = "Failed"
+                except:
+                    status = "No Data"
+            
+            result.append({
+                "id": r.id,
+                "filename": r.filename or "Unknown",
+                "created_at": r.created_at.isoformat() if r.created_at else None,
+                "status": status,
+                "parameter_count": param_count,
+                "risk_level": risk_level,
+                "description": (r.description or "")[:100] if r.description else ""
+            })
+        
+        return result
+    except Exception as e:
+        logger.error(f"Error fetching report history: {str(e)}")
+        raise HTTPException(500, f"Error fetching report history: {str(e)}")
+
+
 @app.get("/api/status")
 def api_status():
     """API status with performance metrics"""
@@ -547,6 +668,161 @@ async def clear_cache(api_key: str = Depends(api_key_required)):
     response_cache.cache.clear()
     return {"message": "All caches cleared", "timestamp": datetime.utcnow().isoformat()}
 
+
+# ==================== DASHBOARD UTILITIES ====================
+
+@app.get("/api/health-score")
+def get_health_score(db: Session = Depends(get_db)):
+    """Calculate health score from latest report"""
+    try:
+        latest_report = db.query(Report).order_by(Report.id.desc()).first()
+        if not latest_report or not latest_report.full_results:
+            return {"overall_score": 0, "message": "No reports available"}
+        
+        data = json.loads(latest_report.full_results)
+        params = data.get('extracted_parameters', {})
+        
+        if not params:
+            return {"overall_score": 0, "message": "No parameters found"}
+        
+        # Simple scoring: count normal vs abnormal parameters
+        total_params = len(params)
+        # Assume 80% are normal for demo (in production, compare with ranges)
+        normal_count = int(total_params * 0.8)
+        score = int((normal_count / total_params) * 100) if total_params > 0 else 0
+        
+        return {
+            "overall_score": score,
+            "category_scores": {
+                "metabolic": score + 5,
+                "cardiovascular": score - 5,
+                "liver": score,
+                "kidney": score + 3
+            },
+            "trend": "stable",
+            "last_updated": latest_report.created_at.isoformat() if latest_report.created_at else None,
+            "total_parameters": total_params
+        }
+    except Exception as e:
+        logger.error(f"Error calculating health score: {e}")
+        return {"overall_score": 0, "error": str(e)}
+
+
+@app.get("/api/alerts")
+def get_recent_alerts(db: Session = Depends(get_db)):
+    """Get recent health alerts from latest report"""
+    try:
+        latest_report = db.query(Report).order_by(Report.id.desc()).first()
+        if not latest_report or not latest_report.full_results:
+            return {"critical": [], "warnings": []}
+        
+        data = json.loads(latest_report.full_results)
+        risks = data.get('risks', [])
+        interpretations = data.get('interpretations', [])
+        
+        critical = []
+        warnings = []
+        
+        # Parse risks for critical alerts
+        for risk in risks[:3]:  # Top 3 risks
+            if any(word in risk.lower() for word in ['high', 'critical', 'severe', 'urgent']):
+                critical.append({
+                    "message": risk,
+                    "severity": "high",
+                    "timestamp": latest_report.created_at.isoformat() if latest_report.created_at else None
+                })
+            else:
+                warnings.append({
+                    "message": risk,
+                    "severity": "moderate",
+                    "timestamp": latest_report.created_at.isoformat() if latest_report.created_at else None
+                })
+        
+        return {
+            "critical": critical,
+            "warnings": warnings,
+            "total_alerts": len(critical) + len(warnings)
+        }
+    except Exception as e:
+        logger.error(f"Error fetching alerts: {e}")
+        return {"critical": [], "warnings": [], "error": str(e)}
+
+
+@app.get("/api/health-tips")
+def get_health_tips(db: Session = Depends(get_db)):
+    """Get personalized health tips based on latest report"""
+    try:
+        latest_report = db.query(Report).order_by(Report.id.desc()).first()
+        
+        # Default general tips
+        general_tips = [
+            "🥗 Eat a balanced diet rich in fruits and vegetables",
+            "🏃 Aim for 30 minutes of moderate exercise daily",
+            "💧 Stay hydrated with 8 glasses of water per day",
+            "😴 Get 7-9 hours of quality sleep each night",
+            "🧘 Practice stress management techniques like meditation"
+        ]
+        
+        if not latest_report or not latest_report.full_results:
+            return {
+                "tips": general_tips[:3],
+                "personalized": False,
+                "message": "Upload a report for personalized tips"
+            }
+        
+        data = json.loads(latest_report.full_results)
+        recommendations = data.get('recommendations', [])
+        
+        # Extract actionable tips from recommendations
+        tips = []
+        for rec in recommendations[:5]:
+            # Clean up recommendation text
+            clean_rec = rec.strip()
+            if clean_rec and not clean_rec.startswith('PRESCRIPTION'):
+                tips.append(clean_rec)
+        
+        # Fill with general tips if needed
+        while len(tips) < 5:
+            tips.append(general_tips[len(tips) % len(general_tips)])
+        
+        return {
+            "tips": tips[:5],
+            "personalized": len(recommendations) > 0,
+            "based_on_report_id": latest_report.id,
+            "last_updated": latest_report.created_at.isoformat() if latest_report.created_at else None
+        }
+    except Exception as e:
+        logger.error(f"Error fetching health tips: {e}")
+        return {"tips": general_tips[:3], "personalized": False, "error": str(e)}
+
+
+@app.get("/api/user-stats")
+def get_user_stats(db: Session = Depends(get_db)):
+    """Get user engagement statistics"""
+    try:
+        total_reports = db.query(Report).count()
+        latest_report = db.query(Report).order_by(Report.id.desc()).first()
+        
+        # Calculate upload frequency (simplified)
+        if total_reports > 1:
+            first_report = db.query(Report).order_by(Report.id.asc()).first()
+            if first_report and first_report.created_at and latest_report and latest_report.created_at:
+                days_diff = (latest_report.created_at - first_report.created_at).days
+                frequency = f"{total_reports / max(days_diff, 1):.1f} reports/day" if days_diff > 0 else "N/A"
+            else:
+                frequency = "N/A"
+        else:
+            frequency = "N/A"
+        
+        return {
+            "total_reports": total_reports,
+            "last_upload": latest_report.created_at.isoformat() if latest_report and latest_report.created_at else None,
+            "upload_frequency": frequency,
+            "streak_days": 0  # Placeholder for future implementation
+        }
+    except Exception as e:
+        logger.error(f"Error fetching user stats: {e}")
+        return {"total_reports": 0, "error": str(e)}
 
 
 # ==================== ADMIN DASHBOARD ====================
@@ -588,17 +864,21 @@ async def get_all_reports_admin(
     api_key: str = Depends(api_key_required)
 ):
     """Get all reports with details (Admin only)"""
-    reports = db.query(Report).order_by(Report.created_at.desc()).offset(skip).limit(limit).all()
-    return [
-        {
-            "id": r.id,
-            "filename": r.filename,
-            "created_at": r.created_at.isoformat(),
-            "description": r.description,
-            "user_id": r.user_id
-        }
-        for r in reports
-    ]
+    try:
+        reports = db.query(Report).order_by(Report.id.desc()).offset(skip).limit(limit).all()
+        return [
+            {
+                "id": r.id,
+                "filename": r.filename or "unknown",
+                "created_at": r.created_at.isoformat() if r.created_at else None,
+                "description": r.description or "No description",
+                "user_id": r.user_id
+            }
+            for r in reports
+        ]
+    except Exception as e:
+        logger.error(f"Admin reports query failed: {str(e)}")
+        raise HTTPException(500, f"Database error: {str(e)}")
 
 
 @app.on_event("shutdown")

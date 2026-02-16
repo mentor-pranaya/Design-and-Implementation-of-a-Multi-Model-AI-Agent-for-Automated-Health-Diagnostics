@@ -52,6 +52,9 @@ def extract_text_from_image(upload_file: UploadFile) -> str:
         # Convert to RGB if necessary
         if image.mode != 'RGB':
             image = image.convert('RGB')
+            
+        # Optimization: Resize if too large
+        image = resize_image_if_needed(image)
 
         # Apply preprocessing for better OCR results
         image = image.filter(ImageFilter.SHARPEN)
@@ -216,71 +219,56 @@ def extract_text_automated(upload_file: UploadFile) -> str:
 
 def extract_text_with_fallback(upload_file: UploadFile) -> str:
     """
-    Extract text from image using EasyOCR with multiple preprocessing fallbacks.
-    Provides robust OCR processing with error handling.
+    Extract text from image using EasyOCR with smart fallbacks for maximum speed.
+    Strategy: Fast path (Basic) -> Robust path (OpenCV) -> Brute force (Automated)
     """
     if reader is None:
-        logger.error("EasyOCR reader not initialized due to SSL certificate issues")
-        raise HTTPException(
-            status_code=500,
-            detail="OCR service unavailable due to SSL certificate verification issues. Please contact administrator."
-        )
-
-    # Reset file pointer in case it was read before
-    upload_file.file.seek(0)
-
-    try:
-        # Try automated processing with multiple preprocessing techniques
-        logger.info("Attempting automated EasyOCR processing with multiple preprocessing...")
-        text = extract_text_automated(upload_file)
-
-        if text.strip():
-            logger.info("Automated EasyOCR processing successful")
-            return text
-
-    except Exception as e:
-        logger.warning(f"Automated processing failed: {str(e)}, trying basic methods...")
+        logger.error("EasyOCR reader not initialized")
+        raise HTTPException(500, "OCR service unavailable")
 
     # Reset file pointer
     upload_file.file.seek(0)
 
+    # 1. FAST PATH: Basic Extraction
     try:
-        # Try OpenCV preprocessing + EasyOCR
-        logger.info("Attempting OCR with OpenCV preprocessing...")
-        text = extract_text_with_opencv(upload_file)
-
-        if text.strip():
-            logger.info("OpenCV + EasyOCR successful")
-            return text
-        else:
-            logger.warning("OpenCV preprocessing returned empty text, trying basic EasyOCR...")
-
-    except Exception as e:
-        logger.warning(f"OpenCV preprocessing failed: {str(e)}, trying basic EasyOCR...")
-
-    try:
-        # Reset file pointer for basic attempt
-        upload_file.file.seek(0)
-
-        # Try basic EasyOCR
-        logger.info("Attempting basic EasyOCR...")
+        logger.info("OCR Stage 1: Attempting basic high-speed extraction...")
         text = extract_text_from_image(upload_file)
-
-        if text.strip():
-            logger.info("Basic EasyOCR successful")
+        
+        # Simple validation: If we got a decent amount of text, return immediately
+        if len(text.strip()) > 50:
+            logger.info(f"OCR Fast Path successful ({len(text)} chars)")
             return text
-        else:
-            logger.error("All EasyOCR methods returned empty text")
-            raise HTTPException(
-                status_code=422,
-                detail="Could not extract text from image. Please ensure the image contains readable text."
-            )
-
-    except HTTPException:
-        raise
     except Exception as e:
-        logger.error(f"All OCR methods failed: {str(e)}")
-        raise HTTPException(
-            status_code=500,
-            detail=f"OCR processing failed: {str(e)}. Please try a clearer image."
-        )
+        logger.warning(f"OCR Fast Path failed: {e}")
+
+    # 2. ROBUST PATH: OpenCV Preprocessing
+    upload_file.file.seek(0)
+    try:
+        logger.info("OCR Stage 2: Attempting OpenCV preprocessing...")
+        text = extract_text_with_opencv(upload_file)
+        if len(text.strip()) > 50:
+             logger.info(f"OCR Robust Path successful ({len(text)} chars)")
+             return text
+    except Exception as e:
+         logger.warning(f"OCR Robust Path failed: {e}")
+
+    # 3. BRUTE FORCE: Automated Multi-pass
+    upload_file.file.seek(0)
+    try:
+        logger.info("OCR Stage 3: Attempting automated multi-pass processing...")
+        text = extract_text_automated(upload_file)
+        if text.strip():
+            return text
+    except Exception as e:
+        logger.error(f"OCR Automated Path failed: {e}")
+
+    return ""
+
+def resize_image_if_needed(image: Image.Image, max_dimension: int = 1800) -> Image.Image:
+    """Resize image if it's too large to improve OCR speed"""
+    width, height = image.size
+    if max(width, height) > max_dimension:
+        ratio = max_dimension / max(width, height)
+        new_size = (int(width * ratio), int(height * ratio))
+        return image.resize(new_size, Image.Resampling.LANCZOS)
+    return image

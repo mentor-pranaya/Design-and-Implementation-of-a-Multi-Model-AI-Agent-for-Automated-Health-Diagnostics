@@ -1,0 +1,11 @@
+﻿--- Starting Verbose Multi-Format Test ---
+
+Processing diabetic.txt...
+Success! Report ID: 92
+Summary: Analysis of 2 clinical parameters completed. Health status appears stable based on provided data.
+
+Attempting PDF download for ID 92...
+PDF Download FAILED (500)
+ERROR DETAIL: {
+  "detail": "Could not generate PDF: Character \"\u2022\" at index 0 in text is outside the range of characters supported by the font used: \"helveticaB\". Please consider using a Unicode font."
+}

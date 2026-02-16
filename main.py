@@ -26,7 +26,7 @@ except ImportError as e:
 
 if __name__ == "__main__":
     host = os.getenv("HOST", "0.0.0.0")
-    port = int(os.getenv("PORT", "10000"))
+    port = int(os.getenv("PORT", "10005"))
     
     print("\n" + "="*70)
     print("BLOOD REPORT AI - SERVER STARTING")

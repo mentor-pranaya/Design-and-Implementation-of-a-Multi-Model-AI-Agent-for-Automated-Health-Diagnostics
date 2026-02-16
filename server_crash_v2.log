@@ -1,0 +1,20 @@
+2026-02-16 18:02:17,398 - easyocr.easyocr - WARNING - Using CPU. Note: This module is much faster with a GPU.
+2026-02-16 18:02:19,042 - src.auth - INFO - API Key: evc4VNVQ8Oz3K_870pJ5jSEMYfFvbqsLI7VgFVAXgQ4
+2026-02-16 18:02:21,834 - __main__ - INFO - Optimized API with LLM loaded successfully
+2026-02-16 18:02:21,861 - main - INFO - Optimized API with LLM loaded successfully
+INFO:     Started server process [23040]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 10003): [winerror 10048] only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+2026-02-16 18:02:21,862 - src.api_optimized - INFO - Application shutdown complete
+INFO:     Application shutdown complete.
+
+======================================================================
+BLOOD REPORT AI - SERVER STARTING
+======================================================================
+Server:    http://0.0.0.0:10003
+API Docs:  http://localhost:10003/docs
+Health:    http://localhost:10003/health
+======================================================================
+

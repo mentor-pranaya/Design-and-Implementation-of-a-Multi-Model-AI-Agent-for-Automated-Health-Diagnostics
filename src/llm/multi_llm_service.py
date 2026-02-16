@@ -272,6 +272,25 @@ Be thorough but concise. If the intent is unclear, prefer to ask for clarificati
         logger.warning("All LLM providers failed")
         return ""
     
+    def extract_parameters_from_llm(self, text: str) -> Dict[str, Any]:
+        """
+        Extract parameters using LLM when regex fails.
+        """
+        # Try primary provider
+        if self.primary_provider:
+            _, provider = self.primary_provider
+            if hasattr(provider, 'extract_parameters'):
+                logger.info(f"Using {provider.name} for parameter extraction")
+                return provider.extract_parameters(text)
+        
+        # Try fallback providers
+        for _, provider in self.available_providers:
+            if hasattr(provider, 'extract_parameters'):
+                logger.info(f"Using {provider.name} for parameter extraction (fallback)")
+                return provider.extract_parameters(text)
+                
+        return {}
+
     def get_provider_info(self) -> Dict[str, Any]:
         """Get information about configured LLM providers."""
         return {

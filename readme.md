@@ -11,6 +11,7 @@ Advanced AI-powered analysis of blood reports with instant recommendations and n
 - **Instant Recommendations**: Personalized health advice and natural remedies
 - **Ambiguity Handling**: Automatically asks clarifying questions when needed
 - **Beautiful Web Interface**: Modern, responsive design with real-time animations
+- **📄 Professional PDF Reports**: Automatically generate comprehensive medical-grade reports for download
 - **Secure API**: Protected endpoints with API key authentication
 - **Production Ready**: Optimized for deployment on cloud platforms
 

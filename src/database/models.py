@@ -73,6 +73,7 @@ class Report(Base):
     parameters = Column(Text)  # JSON string
     precautions = Column(Text)  # JSON string
     description = Column(Text)
+    full_results = Column(Text) # Store full analysis payload as JSON
     created_at = Column(DateTime, default=datetime.utcnow)
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
     
