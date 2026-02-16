@@ -1,5 +1,5 @@
-import pdfplumber
 def read_pdf(filepath):
+    import pdfplumber
     text = ""
     with pdfplumber.open(filepath) as pdf:
         for page in pdf.pages:

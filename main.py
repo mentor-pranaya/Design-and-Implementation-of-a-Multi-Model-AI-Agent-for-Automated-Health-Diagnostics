@@ -12,7 +12,7 @@ from src.synthesis.recommendation_generator import generate_recommendations
 #Read Input
 
 # file_path = "data/json/Blood_report_json_2.json"
-file_path = "data/images/blood_report_img_1.jpg"
+file_path = "data/images/blood_report_img_3.png"
 # file_path = "data/pdf/Blood_report_pdf_3.pdf"
 
 data = read_input(file_path)
@@ -176,8 +176,6 @@ for param_name, param_data in results.items():
         
         value_str = f"{value} {unit}".strip()
         print(f"  {param_name:<15} {value_str:<12} {display_range:<15} {status:<10}")
-    else:
-        print(f"  {param_name:<15} {'--':<12} {'--':<15} {'NOT FOUND':<10}")
 
 # --- Detected Patterns ---
 if patterns:

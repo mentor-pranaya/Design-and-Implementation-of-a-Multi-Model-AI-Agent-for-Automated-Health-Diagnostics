@@ -1,4 +1,5 @@
 from src.config.reference_loader import get_range, get_age_group
+from src.model_1.interpretation import parse_reference_range
 
 def get_contextual_range(param_name, age=None, gender=None):
     """
@@ -9,7 +10,7 @@ def get_contextual_range(param_name, age=None, gender=None):
     return ref_range  # Already returns tuple (min, max)
 
 
-def interpret_with_context(value, param_name, age=None, gender=None):
+def interpret_with_context(value, param_name, age=None, gender=None, reference_range=None):
    
     result = {
         "status": "UNKNOWN",
@@ -30,7 +31,14 @@ def interpret_with_context(value, param_name, age=None, gender=None):
         return result
     
     # Get contextual range from external file
-    contextual_range = get_contextual_range(param_name, age, gender)
+    contextual_range = None
+    if reference_range:
+        parsed_lower, parsed_upper = parse_reference_range(reference_range)
+        if parsed_lower is not None and parsed_upper is not None:
+            contextual_range = (parsed_lower, parsed_upper)
+
+    if contextual_range is None:
+        contextual_range = get_contextual_range(param_name, age, gender)
     
     if contextual_range:
         min_val, max_val = contextual_range
@@ -86,7 +94,13 @@ def analyze_with_context(results, age=None, gender=None):
         original_status = param_data.get("status", "UNKNOWN")
         
         # Get contextual interpretation
-        context_result = interpret_with_context(value, param_name, age, gender)
+        context_result = interpret_with_context(
+            value,
+            param_name,
+            age,
+            gender,
+            reference_range=param_data.get("reference_range")
+        )
         
         # Store detailed results
         contextual_results[param_name] = {

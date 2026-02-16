@@ -1,23 +1,19 @@
 REQUIRED_PARAMETERS = {
-    # Patient Demographics
-    "Age": ["age"],
-    "Gender": ["sex", "gender"],
+    "Age": ["age", "years", "yrs", "y/o"],
+    "Gender": ["gender", "sex", "male", "female", "m/f"],
     
-    # ---- CBC (Complete Blood Count) ----
-    "Hemoglobin": ["hemoglobin", "hb"],
-    "RBC": ["rbc", "rec"],
-    "WBC": ["wbc", "total wbc", "total leukocyte", "tlc"],
-    "Platelet": ["platelet", "platelets", "plt"],
-    "HCT": ["hct", "uct", "pcv", "packed cell volume"],
-    "MCV": ["mcv"],
-    "MCH": ["mch"],
-    "MCHC": ["mchc"],
-    "RDW-CV": ["rdw-cv", "rdw cv"],
-    "RDW-SD": ["rdw-sd", "rdw sd", "rdow-sd", "rdow sd"],
-
-    # ---- KFT (Kidney Function Test) ----
-   "Creatinine": ["creatinine", "serum creatinine", "eatinine"],
-    "Urea": ["urea", "blood urea", "rea uv", "urea uv"],
-    "Uric Acid": ["uric acid", "ic acid"],
+    # Add alternate spellings and names
+    "Hemoglobin": ["hemoglobin", "haemoglobin", "hgb", "hb"],
+    "RBC": ["rbc", "red blood cell", "red blood cells", "rbc count", "erythrocytes"],
+    "WBC": ["wbc", "white blood cell", "white blood cells", "total leucocyte count", "total leukocyte count", "tlc", "leucocyte", "leukocyte"],
+    "Platelet": ["platelet", "platelets", "plt", "platelet count"],
+    "HCT": ["hct", "hematocrit", "haematocrit", "pcv", "packed cell volume"],
+    "MCV": ["mcv", "mean corpuscular volume", "mean cell volume"],
+    "MCH": ["mch", "mean corpuscular hemoglobin", "mean corpuscular haemoglobin", "mean cell hemoglobin"],
+    "MCHC": ["mchc", "mean corpuscular hemoglobin concentration", "mean corpuscular haemoglobin concentration"],
+    "RDW-CV": ["rdw-cv", "rdw cv", "rdw", "red cell distribution width"],
+    "RDW-SD": ["rdw-sd", "rdw sd"],
+    "Creatinine": ["creatinine", "creat"],
+    "Urea": ["urea", "blood urea", "bun", "blood urea nitrogen"],
+    "Uric Acid": ["uric acid", "uric", "serum uric acid"],
 }
-

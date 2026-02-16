@@ -69,99 +69,101 @@ DEFAULT_UNITS = {
 
 
 def extract_age(text):
- 
+    """
+    Extract age from text
+    Handles formats like:
+        - "age 25y 10m 26d"
+        - "Age: 25 years"
+        - "Age/Gender: 20/Male"
+        - "Age/Gender : 54 Y 6 M 27 D/F"
+        - "age 54 y"
+        - "20/Male" (age/gender combined)
+    
+    Returns:
+        int: Age in years, or None if not found
+    """
     text_lower = text.lower()
     
-    # Pattern 1: "age/gender : 54 y 6 m 27 d/f" or "age/gender : 24 y 0 m 0 d /m"
-    pattern1 = r'age\s*/\s*gender\s*:?\s*(\d+)\s*y'
+    # Pattern 1: "age/gender: 20/male" or "age/gender : 20/male"
+    pattern1 = r'age\s*/\s*gender\s*:?\s*(\d+)\s*/\s*(?:male|female|m|f)'
     match = re.search(pattern1, text_lower)
     if match:
-        age = int(match.group(1))
-        if 1 <= age <= 120:
-            return age
+        return int(match.group(1))
     
-    # Pattern 2: "age / gender : 39 year(s) / male"
-    pattern2 = r'age\s*/\s*gender\s*:?\s*(\d+)\s*year'
+    # Pattern 2: "age/gender : 54 y 6 m 27 d/f"
+    pattern2 = r'age\s*/\s*gender\s*:?\s*(\d+)\s*y'
     match = re.search(pattern2, text_lower)
     if match:
-        age = int(match.group(1))
-        if 1 <= age <= 120:
-            return age
+        return int(match.group(1))
     
-    # Pattern 3: "sex/age male / 41 y" or "sex/age : male / 41 y"
-    pattern3 = r'sex\s*/\s*age\s*:?\s*(?:male|female|m|f)\s*/?\s*(\d+)\s*y?'
+    # Pattern 3: "age 25y 10m 26d" or "age 25 y"
+    pattern3 = r'age\s*:?\s*(\d+)\s*y'
     match = re.search(pattern3, text_lower)
     if match:
-        age = int(match.group(1))
-        if 1 <= age <= 120:
-            return age
+        return int(match.group(1))
     
-    # Pattern 4: "age/sex 25/f" or "age/sex: 30/m"
-    pattern4 = r'age\s*/\s*sex\s*:?\s*(\d+)\s*/?\s*(?:male|female|m|f)'
+    # Pattern 4: "age: 25 years" or "age : 25 year"
+    pattern4 = r'age\s*:?\s*(\d+)\s*year'
     match = re.search(pattern4, text_lower)
     if match:
-        age = int(match.group(1))
-        if 1 <= age <= 120:
-            return age
+        return int(match.group(1))
     
-    # Pattern 5: "age 25y" or "age 25y 10m 26d" or "age: 25y"
-    # Also handles OCR errors like "aae", "aqe"
-    pattern5 = r'(?:age|aae|aqe)\s*:?\s*(\d+)\s*y(?:ears?|rs|r)?'
+    # Pattern 5: "age: 25" or "age 25"
+    pattern5 = r'age\s*:?\s*(\d+)'
     match = re.search(pattern5, text_lower)
     if match:
         age = int(match.group(1))
-        if 1 <= age <= 120:
+        if 0 < age < 120:  # Reasonable age range
             return age
     
-    # Pattern 6: "age: 25 years" or "age 25 years" or "aae: 21 year"
-    pattern6 = r'(?:age|aae|aqe)\s*:?\s*(\d+)\s+(?:years?|yrs|yr)'
+    # Pattern 6: Standalone "20/male" or "25/female" pattern near age context
+    pattern6 = r'(\d{1,3})\s*/\s*(?:male|female)'
     match = re.search(pattern6, text_lower)
     if match:
         age = int(match.group(1))
-        if 1 <= age <= 120:
-            return age
-    
-    # Pattern 7: "age: 25" or "age 25" (standalone)
-    pattern7 = r'(?:age|aae|aqe)\s*:?\s*(\d+)(?!\s*/)'
-    match = re.search(pattern7, text_lower)
-    if match:
-        age = int(match.group(1))
-        if 1 <= age <= 120:
+        if 0 < age < 120:
             return age
     
     return None
 
 def extract_gender(text):
-    
+    """
+    Extract gender from text
+    Handles formats like:
+        - "sex female" or "sex: male"
+        - "Age/Gender: 20/Male"
+        - "age/gender : 54 y 6 m 27 d/f"
+        - "20/Male" pattern
+    """
     text_lower = text.lower()
     
-    # Pattern 1: "age/gender : 54 y 6 m 27 d/f" or "age/gender : 24 y 0 m 0 d /m"
-    pattern1 = r'age\s*/\s*gender\s*:?\s*\d+\s*y.*?d\s*/?\s*([mf])\b'
+    # Pattern 1: "age/gender: 20/male" or "age/gender : 20/female"
+    pattern1 = r'age\s*/\s*gender\s*:?\s*\d+\s*/\s*(male|female)'
     match = re.search(pattern1, text_lower)
     if match:
-        gender_char = match.group(1)
-        return "male" if gender_char == "m" else "female"
+        return match.group(1)
     
-    # Pattern 2: "age/gender : 54 y ... /female" or "age/gender : 39 year(s) / male"
-    pattern2 = r'age\s*/\s*gender\s*:?\s*\d+.*?/\s*(male|female)\b'
+    # Pattern 2: "age/gender: 20/m" or "age/gender : 20/f"
+    pattern2 = r'age\s*/\s*gender\s*:?\s*\d+\s*/\s*([mf])\b'
     match = re.search(pattern2, text_lower)
     if match:
-        return match.group(1)
+        gender_char = match.group(1)
+        return "male" if gender_char == "m" else "female"
     
-    # Pattern 3: "sex/age male / 41" or "sex/age : male / 41"
-    pattern3 = r'sex\s*/\s*age\s*:?\s*(male|female)\s*/?\s*\d+'
+    # Pattern 3: "age/gender : 54 y 6 m 27 d/f" or "age/gender : 24 y 0 m 0 d /m"
+    pattern3 = r'age\s*/\s*gender\s*:?\s*\d+\s*y.*?/\s*([mf])\b'
     match = re.search(pattern3, text_lower)
-    if match:
-        return match.group(1)
-    
-    # Pattern 4: "sex/age m / 41" (short form)
-    pattern4 = r'sex\s*/\s*age\s*:?\s*([mf])\s*/?\s*\d+'
-    match = re.search(pattern4, text_lower)
     if match:
         gender_char = match.group(1)
         return "male" if gender_char == "m" else "female"
     
-    # Pattern 5: "sex female" or "sex male" (NO colon - FIXED!)
+    # Pattern 4: "age/gender : 54 y ... /female" or "age/gender : 39 year(s) / male"
+    pattern4 = r'age\s*/\s*gender\s*:?\s*\d+.*?/\s*(male|female)\b'
+    match = re.search(pattern4, text_lower)
+    if match:
+        return match.group(1)
+    
+    # Pattern 5: "sex female" or "sex male" (NO colon)
     pattern5 = r'\bsex\s+(male|female)\b'
     match = re.search(pattern5, text_lower)
     if match:
@@ -179,18 +181,25 @@ def extract_gender(text):
     if match:
         return match.group(1)
     
-    # Pattern 8: "sex m" or "sex f" or "sex: m" (short form)
+    # Pattern 8: "sex m" or "sex f" or "sex: m"
     pattern8 = r'\bsex\s*:?\s*([mf])\b'
     match = re.search(pattern8, text_lower)
     if match:
         gender_char = match.group(1)
         return "male" if gender_char == "m" else "female"
     
-    # Pattern 9: Standalone "male" or "female" near age info
-    pattern9 = r'age\s*.*?\d+.*?(male|female)'
+    # Pattern 9: Standalone number/gender like "20/male"
+    pattern9 = r'\b\d{1,3}\s*/\s*(male|female)\b'
     match = re.search(pattern9, text_lower)
     if match:
         return match.group(1)
+    
+    # Pattern 10: Standalone number/m or number/f like "20/m"
+    pattern10 = r'\b\d{1,3}\s*/\s*([mf])\b'
+    match = re.search(pattern10, text_lower)
+    if match:
+        gender_char = match.group(1)
+        return "male" if gender_char == "m" else "female"
     
     return None
 
@@ -209,6 +218,86 @@ def extract_numbers_from_text(text):
         except ValueError:
             pass
     return numbers
+
+
+def normalize_ocr_range(low_str, high_str):
+    if "." not in low_str and "." in high_str:
+        try:
+            low_val = float(low_str)
+            high_val = float(high_str)
+        except ValueError:
+            return low_str, high_str
+
+        if low_val > high_val and len(low_str) == 2:
+            low_str = f"{low_str[0]}.{low_str[1]}"
+
+    return low_str, high_str
+
+
+def normalize_count_value(param_key, value):
+    if value is None:
+        return value
+
+    if param_key == "wbc" and value >= 1000:
+        return value / 1000.0
+    if param_key in ["platelet", "plt"] and value >= 10000:
+        return value / 1000.0
+
+    return value
+
+
+def normalize_count_range(param_key, low, high):
+    if low is None or high is None:
+        return low, high
+
+    if param_key == "wbc" and low >= 1000 and high >= 1000:
+        return low / 1000.0, high / 1000.0
+    if param_key in ["platelet", "plt"] and low >= 10000 and high >= 10000:
+        return low / 1000.0, high / 1000.0
+
+    return low, high
+
+
+def parse_value_range_from_context(context, param_key=None):
+    value_match = re.search(r"(-?\d+(?:\.\d+)?)", context)
+    if not value_match:
+        return None
+
+    value_str = value_match.group(1)
+    try:
+        value = float(value_str)
+    except ValueError:
+        return None
+
+    if param_key:
+        value = normalize_count_value(param_key, value)
+
+    remainder = context[value_match.end():]
+
+    range_match = re.search(r"(\d+(?:\.\d+)?)\s*[-–]\s*(\d+(?:\.\d+)?)", remainder)
+    if not range_match:
+        return {
+            "value": value,
+            "range": None
+        }
+
+    low_str, high_str = normalize_ocr_range(range_match.group(1), range_match.group(2))
+    try:
+        low_val = float(low_str)
+        high_val = float(high_str)
+    except ValueError:
+        return {
+            "value": value,
+            "range": None
+        }
+
+    if param_key:
+        low_val, high_val = normalize_count_range(param_key, low_val, high_val)
+
+    return {
+        "value": value,
+        "range": f"{low_val}-{high_val}"
+    }
 
 
 def find_local_context(text, keyword, max_chars=150):
@@ -273,13 +362,27 @@ def extract_parameter(text, param_name, keywords):
         if not context:
             continue
 
-        numbers = extract_numbers_from_text(context)
-        if not numbers:
-            continue
-
         expected_min, expected_max = EXPECTED_RANGES.get(
             param_key, (0, float("inf"))
         )
+
+        parsed = parse_value_range_from_context(context, param_key)
+        if parsed:
+            value = parsed["value"]
+
+            if value is not None and (parsed["range"] or expected_min <= value <= expected_max):
+                unit = DEFAULT_UNITS.get(param_key)
+                return {
+                    param_name: {
+                        "value": value,
+                        "unit": unit,
+                        "reference_range": parsed["range"]
+                    }
+                }
+
+        numbers = extract_numbers_from_text(context)
+        if not numbers:
+            continue
 
         value = None
         idx = -1

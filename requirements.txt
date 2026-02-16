@@ -3,3 +3,9 @@ pytesseract
 pillow
 pdf2image
 opencv-python
+streamlit>=1.28.0
+pillow>=9.0.0
+pytesseract>=0.3.10
+PyMuPDF>=1.23.0
+pandas>=1.5.0
+weasyprint>=61.0

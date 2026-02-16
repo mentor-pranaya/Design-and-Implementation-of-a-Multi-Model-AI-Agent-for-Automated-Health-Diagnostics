@@ -73,16 +73,14 @@ def interpret_value(value, reference_range=None, param_name=None, gender=None, a
     upper = None
     
     
-    if param_name:
+    parsed_lower, parsed_upper = parse_reference_range(reference_range)
+    if parsed_lower is not None and parsed_upper is not None:
+        lower, upper = parsed_lower, parsed_upper
+
+    if (lower is None or upper is None) and param_name:
         dynamic_range = get_range(param_name, gender=gender, age=age)
         if dynamic_range:
             lower, upper = dynamic_range
-    
-    
-    if lower is None or upper is None:
-        parsed_lower, parsed_upper = parse_reference_range(reference_range)
-        if parsed_lower is not None and parsed_upper is not None:
-            lower, upper = parsed_lower, parsed_upper
     
     
     if lower is None or upper is None:
