@@ -1,4 +1,3 @@
-open web
 import easyocr
 from PIL import Image, ImageFilter, ImageEnhance
 import tempfile

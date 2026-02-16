@@ -323,8 +323,10 @@ class SynthesisAgent:
     
     def execute(
         self,
+        extracted_parameters: Dict[str, Any],
         interpretations: List[str],
-        risks: List[str]
+        risks: List[str],
+        recommendations: List[str]
     ) -> AgentResult:
         """Synthesize all findings into a summary."""
         import time
@@ -332,7 +334,7 @@ class SynthesisAgent:
         
         try:
             self.logger.info("Starting findings synthesis")
-            synthesis = synthesize_findings(interpretations, risks)
+            synthesis = synthesize_findings(extracted_parameters, interpretations, risks, recommendations)
             
             execution_time = time.time() - start_time
             self.logger.info(f"Generated synthesis in {execution_time:.2f}s")
@@ -496,7 +498,7 @@ class MultiAgentOrchestrator:
         prescriptions = prescription_result.data or []
         
         # Stage 7: Synthesize findings
-        synthesis_result = self.synthesis_agent.execute(interpretations, risks)
+        synthesis_result = self.synthesis_agent.execute(cleaned_params, interpretations, risks, recommendations)
         self.agent_results.append(synthesis_result)
         synthesis = synthesis_result.data or ""
         

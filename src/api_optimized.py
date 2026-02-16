@@ -471,7 +471,6 @@ async def process_medical_data_optimized(params: dict, filename: str, db: Sessio
 async def analyze_json_report(
     data: dict,
     db: Session = Depends(get_db),
-    api_key: str = Depends(api_key_required),
 ):
     """Instant JSON analysis with caching"""
     start_time = time.time()

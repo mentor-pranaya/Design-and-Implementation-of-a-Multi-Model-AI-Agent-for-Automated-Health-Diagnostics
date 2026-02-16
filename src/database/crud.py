@@ -3,12 +3,13 @@ from .models import Report
 import json
 from typing import Optional, Dict, List
 
-def create_report(db: Session, filename: str, params: dict, precautions: list, description: str):
+def create_report(db: Session, filename: str, params: dict, precautions: list, description: str, user_id: int = None):
     db_report = Report(
         filename=filename,
         parameters=json.dumps(params),
         precautions=json.dumps(precautions),
-        description=description
+        description=description,
+        user_id=user_id
     )
     db.add(db_report)
     db.commit()
