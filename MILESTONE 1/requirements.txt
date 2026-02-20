@@ -1,6 +1,16 @@
 streamlit
-pymupdf
-pandas
-pdfplumber
 pytesseract
 Pillow
+PyMuPDF
+pandas
+numpy
+regex
+
+# AI / LLM
+groq
+
+# PDF Report Generation
+reportlab
+
+# Optional but recommended
+python-dotenv
