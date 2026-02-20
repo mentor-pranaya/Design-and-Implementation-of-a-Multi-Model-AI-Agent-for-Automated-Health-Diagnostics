@@ -1,60 +1,126 @@
 def pattern_recognition_agent(interpreted_data):
+    """
+    Detects clinical biomarker patterns using robust name matching and safe ratios.
+    """
+
     insights = []
-    # Convert list to a searchable dictionary for easy access
-    d = {item['parameter'].lower(): item for item in interpreted_data}
-    
-    # --- PATTERN 1: ANEMIA TYPING ---
-    hb = d.get('hemoglobin')
-    mcv = d.get('mcv')
-    if hb and mcv:
-        if hb['status'] == "Low" and mcv['value'] < 80:
+
+    # ---- Flexible Parameter Alias Mapping ----
+    ALIAS = {
+        "hemoglobin": ["hemoglobin", "hb", "hgb"],
+        "mcv": ["mcv", "mean corpuscular volume"],
+        "ast": ["ast", "sgot"],
+        "alt": ["alt", "sgpt"],
+        "bun": ["bun", "urea"],
+        "creatinine": ["creatinine", "creat"],
+        "albumin": ["albumin"],
+        "triglycerides": ["triglycerides", "tg"],
+        "hdl": ["hdl", "hdl cholesterol"],
+        "glucose": ["glucose", "fasting glucose", "fbs"]
+    }
+
+    # Build lookup dict
+    d = {}
+    for item in interpreted_data:
+        name = item.get("parameter", "").lower()
+        for key, aliases in ALIAS.items():
+            if any(a in name for a in aliases):
+                d[key] = item
+
+    # Safe ratio function
+    def get_ratio(a, b):
+        if a in d and b in d:
+            x = d[a].get("value", 0)
+            y = d[b].get("value", 0)
+            return x / y if y > 0 else None
+        return None
+
+    # ---------- ANEMIA PATTERN ----------
+    hb = d.get("hemoglobin")
+    mcv = d.get("mcv")
+
+    if hb and mcv and hb.get("status") == "Low":
+        mcv_val = mcv.get("value", 0)
+
+        if mcv_val < 80:
             insights.append({
                 "pattern": "Microcytic Anemia",
-                "finding": "Low Hemoglobin combined with low MCV strongly suggests Iron Deficiency.",
+                "finding": "Suggests iron deficiency or chronic blood loss.",
                 "severity": "High"
             })
-        elif hb['status'] == "Low" and mcv['value'] > 100:
+        elif mcv_val > 100:
             insights.append({
                 "pattern": "Macrocytic Anemia",
-                "finding": "Low Hemoglobin with high MCV suggests Vitamin B12 or Folate deficiency.",
+                "finding": "Suggests Vitamin B12 or folate deficiency.",
                 "severity": "High"
             })
-
-    # --- PATTERN 2: LIVER HEALTH (De Ritis Ratio) ---
-    ast = d.get('ast')
-    alt = d.get('alt')
-    if ast and alt:
-        ratio = ast['value'] / alt['value']
-        if ratio > 2.0 and ast['status'] == "High":
+        else:
             insights.append({
-                "pattern": "Liver Stress Pattern",
-                "finding": f"AST/ALT Ratio is {ratio:.2f}. Values > 2.0 may indicate specific liver stress.",
-                "severity": "Critical"
-            })
-
-    # --- PATTERN 3: KIDNEY & HYDRATION ---
-    bun = d.get('bun')
-    creatinine = d.get('creatinine')
-    albumin = d.get('albumin')
-    if bun and creatinine and albumin:
-        ratio = bun['value'] / creatinine['value']
-        if ratio > 20 and albumin['status'] == "High":
-            insights.append({
-                "pattern": "Dehydration Marker",
-                "finding": "Elevated BUN/Creatinine ratio and High Albumin suggest significant dehydration.",
+                "pattern": "Normocytic Anemia",
+                "finding": "May indicate chronic disease or acute blood loss.",
                 "severity": "Moderate"
             })
 
-    # --- PATTERN 4: LIPID RATIO (Cardio Risk) ---
-    tg = d.get('triglycerides')
-    hdl = d.get('hdl cholesterol')
-    if tg and hdl:
-        risk_ratio = tg['value'] / hdl['value']
-        if risk_ratio > 3.0:
+    # ---------- LIVER STRESS ----------
+    ratio = get_ratio("ast", "alt")
+    if ratio and ratio > 2 and d["ast"]["status"] == "High" and d["alt"]["status"] == "High":
+        insights.append({
+            "pattern": "Liver Injury Pattern",
+            "finding": f"AST/ALT ratio = {ratio:.2f}, consistent with hepatic injury risk.",
+            "severity": "Critical"
+        })
+
+    # ---------- KIDNEY / DEHYDRATION ----------
+    bun_cre = get_ratio("bun", "creatinine")
+    if bun_cre and bun_cre > 20:
+        insights.append({
+            "pattern": "Dehydration or Renal Stress",
+            "finding": f"BUN/Creatinine ratio = {bun_cre:.1f}. May indicate dehydration or renal hypoperfusion.",
+            "severity": "Moderate"
+        })
+
+    # ---------- CARDIOVASCULAR RISK ----------
+    if "triglycerides" in d and "hdl" in d:
+        tg = d["triglycerides"]["value"]
+        hdl = d["hdl"]["value"]
+        if hdl > 0:
+            ratio = tg / hdl
+            if ratio > 4:
+                sev = "High"
+            elif ratio > 2:
+                sev = "Moderate"
+            else:
+                sev = "Low"
+
             insights.append({
-                "pattern": "Atherogenic Index",
-                "finding": f"TG/HDL ratio is {risk_ratio:.2f}. High ratios correlate with small dense LDL particles.",
-                "severity": "High"
+                "pattern": "Atherogenic Index (TG/HDL)",
+                "finding": f"TG/HDL ratio = {ratio:.2f}",
+                "severity": sev
             })
+
+    # ---------- DIABETES RISK ----------
+    glu = d.get("glucose")
+    if glu:
+        g = glu["value"]
+        if g >= 126:
+            insights.append({
+                "pattern": "Diabetes Range Glucose",
+                "finding": f"Glucose = {g} mg/dL (diabetic range).",
+                "severity": "Critical"
+            })
+        elif g >= 100:
+            insights.append({
+                "pattern": "Prediabetes Range Glucose",
+                "finding": f"Glucose = {g} mg/dL (impaired fasting glucose).",
+                "severity": "Moderate"
+            })
+    # ✅ If no patterns detected → add disclaimer
+
+    if len(insights) == 0:
+        insights.append({
+            "pattern": "No Significant Clinical Pattern Detected",
+            "finding": "All extracted biomarkers appear within normal reference ranges or insufficient data was available for pattern detection.",
+            "severity": "Low"
+        })
 
     return insights
