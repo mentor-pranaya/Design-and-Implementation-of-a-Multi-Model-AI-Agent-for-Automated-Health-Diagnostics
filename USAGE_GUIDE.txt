@@ -1,0 +1,281 @@
+"""
+HEALTH REPORT AI - QUICKFIRE USAGE GUIDE
+
+═══════════════════════════════════════════════════════════════════════════════
+
+                        1️⃣ START THE SERVER
+                        
+    Open PowerShell and run:
+    
+    uvicorn api.main:app --reload
+    
+    You should see:
+    INFO:     Uvicorn running on http://127.0.0.1:8000
+    INFO:     Application startup complete
+
+═══════════════════════════════════════════════════════════════════════════════
+
+                        2️⃣ OPEN SWAGGER UI
+                        
+    Go to: http://127.0.0.1:8000/docs
+    
+    This opens an interactive API explorer where you can:
+    ✓ Test all endpoints
+    ✓ Upload files
+    ✓ Fill forms
+    ✓ See responses live
+
+═══════════════════════════════════════════════════════════════════════════════
+
+                        3️⃣ UPLOAD A MEDICAL REPORT
+                        
+    In Swagger UI:
+    
+    1. Click "POST /analyze"
+    2. Click "Try it out"
+    3. Select File: [Choose your PDF/JPG/PNG/JSON]
+    4. (Optional) Fill in:
+       - age: 45
+       - gender: Male
+       - medical_history: Hypertension
+       - lifestyle: Sedentary
+    5. Click "Execute"
+
+═══════════════════════════════════════════════════════════════════════════════
+
+                        4️⃣ GET YOUR REPORT
+                        
+    Response (success example):
+    
+    {
+      "status": "success",
+      "message": "Report analyzed successfully",
+      "data": {
+        "summary": "Elevated risk signals in 2 domain(s), led by cardiac.",
+        "key_findings": [
+          {
+            "parameter": "ldl",
+            "status": "high",
+            "value": 180,
+            "unit": "mg/dL",
+            "explanation": "..."
+          }
+        ],
+        "risks": [
+          {
+            "domain": "cardiac",
+            "risk_level": "high",
+            "severity_score": 0.9,
+            "confidence": 0.8
+          }
+        ],
+        "recommendations": [
+          "Consult a cardiologist for further evaluation.",
+          "Adopt a heart-healthy diet and regular aerobic exercise.",
+          "Enroll in a smoking cessation program."
+        ],
+        "urgency_level": "high",
+        "confidence_summary": "Top risk: cardiac (high, confidence 0.8).",
+        "disclaimer": "This AI-generated report is for informational purposes only..."
+      }
+    }
+
+═══════════════════════════════════════════════════════════════════════════════
+
+                        WHAT EACH PART MEANS
+                        
+    ✓ summary
+      → Clinical overview of abnormalities and risks
+      
+    ✓ key_findings
+      → List of abnormal lab parameters with explanations
+      
+    ✓ risks
+      → Domain-level risk assessment (cardiac, diabetes, etc.)
+        with severity scores and confidence
+        
+    ✓ recommendations
+      → Personalized actionable advice based on:
+        - Detected abnormalities
+        - Identified risks
+        - User context (age, gender, lifestyle)
+        
+    ✓ urgency_level
+      → "low", "moderate", or "high"
+        Determines response priority
+        
+    ✓ confidence_summary
+      → Quick confidence metric for top risk
+      
+    ✓ disclaimer
+      → Legal notice (required for medical reports)
+
+═══════════════════════════════════════════════════════════════════════════════
+
+                        USING WITH CURL
+                        
+    curl -X POST "http://127.0.0.1:8000/analyze" \\
+      -F "file=@your_report.pdf" \\
+      -F "age=45" \\
+      -F "gender=Male" \\
+      -F "medical_history=Hypertension" \\
+      -F "lifestyle=Sedentary"
+
+═══════════════════════════════════════════════════════════════════════════════
+
+                        USING WITH PYTHON
+                        
+    import requests
+    
+    with open("report.pdf", "rb") as f:
+        response = requests.post(
+            "http://127.0.0.1:8000/analyze",
+            files={"file": f},
+            data={
+                "age": 45,
+                "gender": "Male",
+                "medical_history": "Hypertension"
+            }
+        )
+    
+    report = response.json()
+    print(f"Status: {report['status']}")
+    print(f"Summary: {report['data']['summary']}")
+    print(f"Urgency: {report['data']['urgency_level']}")
+
+═══════════════════════════════════════════════════════════════════════════════
+
+                        TESTING EVERYTHING
+                        
+    pytest tests/ -v
+    
+    Expected: 17 tests pass
+
+═══════════════════════════════════════════════════════════════════════════════
+
+                        API ENDPOINTS OVERVIEW
+                        
+    GET /health
+    → Quick status check
+    
+    GET /
+    → API information and available endpoints
+    
+    POST /analyze ⭐ MAIN ENDPOINT
+    → Analyze a single medical report
+    
+    POST /analyze/batch
+    → Analyze multiple reports at once
+    
+    GET /docs
+    → Interactive Swagger UI
+    
+    GET /redoc
+    → Alternative ReDoc documentation
+
+═══════════════════════════════════════════════════════════════════════════════
+
+                        SYSTEM ARCHITECTURE
+                        
+    Your File
+       ↓
+    Phase 1: Extract Text (OCR/PDF/JSON)
+       ↓
+    Phase 2: Structure Data (Normalize Parameters)
+       ↓
+    Model 1: Identify Abnormalities
+       ↓
+    Model 2: Pattern-Based Risk Analysis
+       ↓
+    Model 3: Apply User Context
+       ↓
+    Reporting Layer:
+      - Synthesize Findings
+      - Generate Recommendations
+      - Format Report
+       ↓
+    JSON Response ← This is your report!
+
+═══════════════════════════════════════════════════════════════════════════════
+
+                        FILE FORMATS SUPPORTED
+                        
+    ✓ PDF (Medical reports, lab summaries)
+    ✓ JPG (Scanned reports, photos)
+    ✓ PNG (Scanned reports, screenshots)
+    ✓ JSON (Structured data)
+
+═══════════════════════════════════════════════════════════════════════════════
+
+                        KEY FEATURES
+                        
+    ✅ No ML required for recommendations (rule-based)
+    ✅ Explainable AI (see why decisions are made)
+    ✅ Personalized (adapts to user context)
+    ✅ Error-safe (graceful fallbacks)
+    ✅ Production-ready (tested & documented)
+    ✅ Fast (sub-second for structured data)
+
+═══════════════════════════════════════════════════════════════════════════════
+
+                        STOP THE SERVER
+                        
+    Press Ctrl+C in the terminal where you started uvicorn
+    
+    Output:
+    Shutting down
+    Waiting for shutdown
+    Shutdown complete
+
+═══════════════════════════════════════════════════════════════════════════════
+
+                        TROUBLESHOOTING
+                        
+    Port in use?
+    → Kill process: taskkill /PID <PID> /F
+    → Or use different port: uvicorn api.main:app --port 9000
+    
+    Can't upload file?
+    → Check format (must be PDF, JPG, PNG, or JSON)
+    → Check file size
+    → Try in Swagger UI first (http://127.0.0.1:8000/docs)
+    
+    Slow response?
+    → First request is slow (OCR model loads)
+    → Subsequent requests are fast
+    
+    Tests fail?
+    → Run: pytest tests/ -v
+    → Check Python version: python --version (need 3.8+)
+    → Reinstall deps: pip install -r requirements.txt (if exists)
+
+═══════════════════════════════════════════════════════════════════════════════
+
+                        NEXT STEPS
+                        
+    1. ✅ Start the API
+    2. ✅ Test with Swagger UI
+    3. ✅ Upload a sample report
+    4. → Integrate with frontend
+    5. → Deploy to production
+    6. → Monitor and improve
+
+═══════════════════════════════════════════════════════════════════════════════
+
+                        DOCUMENTATION
+                        
+    📖 Quick Setup:      QUICKSTART.md
+    📖 API Docs:         API_README.md
+    📖 Full System:      SYSTEM_SUMMARY.md
+    ✅ Completion:       COMPLETION_CHECKLIST.md
+
+═══════════════════════════════════════════════════════════════════════════════
+
+                        READY TO GO! 🚀
+
+    Your Health Report AI system is complete and production-ready.
+    
+    Questions? Check the documentation or code comments.
+    
+═══════════════════════════════════════════════════════════════════════════════
+"""
