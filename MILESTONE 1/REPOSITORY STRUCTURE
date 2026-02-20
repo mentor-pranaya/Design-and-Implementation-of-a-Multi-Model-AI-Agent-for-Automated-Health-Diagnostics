@@ -2,7 +2,7 @@ HealthAI/
 ├── app.py                # Main Orchestrator & UI
 ├── requirements.txt      # Project Dependencies
 ├── README.md             # Project Documentation
-├── .env                  # API Keys
+├── .streamlit                  # API Keys
 └── src/
     ├── parser.py         # Milestone 1
     ├── extractor.py      # Milestone 1
@@ -14,3 +14,4 @@ HealthAI/
     │   └── recommendation_engine.py  # Milestone 3
     └── utils/
         ├── guardrails.py      # Milestone 3
+        └── reporter.py        # Milestone 4
