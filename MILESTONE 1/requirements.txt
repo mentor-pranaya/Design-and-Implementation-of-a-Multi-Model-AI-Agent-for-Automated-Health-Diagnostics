@@ -11,6 +11,3 @@ groq
 
 # PDF Report Generation
 reportlab
-
-# Optional but recommended
-python-dotenv
