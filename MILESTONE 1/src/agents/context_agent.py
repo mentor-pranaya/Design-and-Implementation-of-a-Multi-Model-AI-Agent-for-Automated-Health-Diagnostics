@@ -1,37 +1,74 @@
-import os
+import streamlit as st
 from groq import Groq
 
-client = Groq(api_key="groq api")
+# --- SECURITY: Use Streamlit Secrets --
+# Never hardcode API keys. In Streamlit, use st.secrets.
+api_key = st.secrets.get("GROQ_API_KEY")
+client = Groq(api_key=api_key)
 
-def contextual_analysis_agent(interpreted_data, patterns, user_context):
+def contextual_analysis_agent(interpreted_data=None, patterns=None, user_context=None):
     """
-    Synthesizes blood data with user history and goals.
+    Uses Groq LLM to analyze lab results with user context.
     """
-    prompt = f"""
-    SYSTEM ROLE: You are a Senior Clinical Health Analyst. 
-    TASK: Provide a contextual interpretation of blood results.
-    
-    USER PROFILE:
-    - Age: {user_context['age']}
-    - Gender: {user_context['gender']}
-    - Primary Health Goal: {user_context['goal']}
-    - Relevant History: {user_context['history']}
-    
-    DATA FINDINGS:
-    {interpreted_data}
-    
-    DETECTED PATTERNS:
-    {patterns}
-    
-    INSTRUCTIONS:
-    1. Focus on the user's primary goal.
-    2. Explain how the abnormal values impact a person of their specific age/gender.
-    3. Do NOT provide a generic summary; be specific to their context.
-    """
-    
-    response = client.chat.completions.create(
-        messages=[{"role": "system", "content": prompt}],
-        model="llama-3.3-70b-versatile", # Updated to a current high-performance model
-        temperature=0.2 
+
+    if not api_key:
+        return "⚠️ GROQ API Key missing. Add it to Streamlit secrets or environment variables."
+
+    interpreted_data = interpreted_data or []
+    patterns = patterns or []
+    user_context = user_context or {}
+
+    # -------- Format Lab Data --------
+    data_bullets = "\n".join([
+        f"- {i.get('parameter','Unknown')}: {i.get('value','?')} {i.get('unit','')} (Status: {i.get('status','Unknown')})"
+        for i in interpreted_data
+    ]) or "No lab data extracted."
+
+    # -------- Format Pattern Data --------
+    pattern_bullets = "\n".join([
+        f"- {p.get('pattern','Unknown')}: {p.get('finding','')} (Severity: {p.get('severity','Normal')})"
+        for p in patterns
+    ]) or "No clinical patterns detected."
+
+    # -------- System Role --------
+    system_role = (
+        "You are a clinical decision support assistant. "
+        "Provide concise, factual, non-diagnostic medical insights."
     )
-    return response.choices[0].message.content
+
+    # -------- User Prompt --------
+    user_prompt = f"""
+USER PROFILE:
+Age: {user_context.get('age','Unknown')}
+Gender: {user_context.get('gender','Unknown')}
+Goal: {user_context.get('goal','General Wellness')}
+History: {user_context.get('history','None')}
+
+LAB RESULTS:
+{data_bullets}
+
+CLINICAL PATTERNS:
+{pattern_bullets}
+
+TASK:
+- Explain clinical significance.
+- Relate findings to user goal.
+- Avoid disclaimers and generic intros.
+- Be concise and clinical.
+"""
+
+    try:
+        response = client.chat.completions.create(
+            model="llama-3.1-8b-instant",   # safer model
+            messages=[
+                {"role": "system", "content": system_role},
+                {"role": "user", "content": user_prompt}
+            ],
+            temperature=0.2,
+            max_tokens=500
+        )
+
+        return response.choices[0].message.content
+
+    except Exception as e:
+        return f"❌ AI Error: {str(e)}"
