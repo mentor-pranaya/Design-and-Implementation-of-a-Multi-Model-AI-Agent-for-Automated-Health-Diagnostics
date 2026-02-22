@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Health Diagnostic Report</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; line-height: 1.6; }
+        .header { background-color: #2c3e50; color: white; padding: 20px; border-radius: 5px; }
+        h1 { color: #2c3e50; border-bottom: 3px solid #3498db; padding-bottom: 10px; }
+        h2 { color: #34495e; margin-top: 30px; }
+        .status-healthy { color: #27ae60; font-weight: bold; }
+        .status-warning { color: #f39c12; font-weight: bold; }
+        .status-critical { color: #e74c3c; font-weight: bold; }
+        .finding { background-color: #ecf0f1; padding: 10px; margin: 10px 0; border-left: 4px solid #3498db; }
+        .critical-finding { border-left-color: #e74c3c; }
+        .recommendation { background-color: #e8f8f5; padding: 15px; margin: 10px 0; border-radius: 5px; }
+        .disclaimer { background-color: #fff3cd; padding: 15px; margin: 20px 0; border-radius: 5px; border-left: 4px solid #ff9800; }
+        table { width: 100%; border-collapse: collapse; margin: 15px 0; }
+        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+        th { background-color: #3498db; color: white; }
+        tr:nth-child(even) { background-color: #f2f2f2; }
+    </style>
+</head>
+<body>
+<div class='header'>
+    <h1>Health Diagnostic Report</h1>
+    <p>Generated: 2026-02-13 19:02:35</p>
+    <p>Age: 40 years | Gender: female</p>
+</div>
+<h2>Executive Summary</h2>
+<p>Your blood report shows 3 parameter(s) outside normal range(s) with 2 high-risk area(s). Immediate consultation with a healthcare professional is strongly advised. Critical findings identified: Hemoglobin is significantly DECREASED (11.5); Glucose is significantly ELEVATED (118.0); Cholesterol is significantly ELEVATED (245.0). Given your age 40, gender female, certain risk profiles have been adjusted accordingly. Next steps: Schedule an appointment with your healthcare provider for professional evaluation and guidance.</p>
+<p class='status-critical'>Status: CONCERNING - Multiple abnormalities detected</p>
+<h2>Key Findings</h2>
+<h3>Critical Findings</h3>
+<div class='finding critical-finding'>Hemoglobin is significantly DECREASED (11.5)</div>
+<div class='finding critical-finding'>Glucose is significantly ELEVATED (118.0)</div>
+<div class='finding critical-finding'>Cholesterol is significantly ELEVATED (245.0)</div>
+<h3>Abnormal Parameters</h3>
+<table>
+<tr><th>Parameter</th><th>Value</th><th>Status</th><th>Reference Range</th></tr>
+<tr>
+<td>Hemoglobin</td>
+<td>11.5</td>
+<td>LOW</td>
+<td>(12-17 g/dL)</td>
+</tr>
+<tr>
+<td>Glucose</td>
+<td>118.0</td>
+<td>HIGH</td>
+<td>(70-110 mg/dL)</td>
+</tr>
+<tr>
+<td>Cholesterol</td>
+<td>245.0</td>
+<td>HIGH</td>
+<td>(0-200 mg/dL)</td>
+</tr>
+</table>
+<h2>Personalized Recommendations</h2>
+<h3>Dietary Recommendations</h3>
+<div class='recommendation'>
+<h4>Glucose Management</h4>
+<p><strong>Priority:</strong> MODERATE</p>
+<ul>
+<li>Reduce refined carbohydrates and sugary foods</li>
+<li>Increase fiber intake through whole grains, vegetables, and legumes</li>
+<li>Eat regular, balanced meals to maintain steady blood sugar</li>
+<li>Limit alcohol consumption, especially sweet drinks</li>
+<li>Consider meal planning with complex carbohydrates</li>
+<li>Monitor portion sizes and eat smaller, frequent meals</li>
+</ul>
+</div>
+<div class='recommendation'>
+<h4>Cholesterol Management</h4>
+<p><strong>Priority:</strong> HIGH</p>
+<ul>
+<li>Reduce saturated fat intake (aim for <7% of daily calories)</li>
+<li>Eliminate or limit trans fats (found in processed foods)</li>
+<li>Increase fiber intake (soluble fiber helps lower cholesterol)</li>
+<li>Include heart-healthy fats (omega-3, olive oil)</li>
+<li>Consume lean proteins and plant-based proteins</li>
+<li>Reduce sodium intake to <2,300mg per day</li>
+</ul>
+</div>
+<div class='recommendation'>
+<h4>Anemia Management</h4>
+<p><strong>Priority:</strong> HIGH</p>
+<ul>
+<li>Increase iron-rich foods in your diet</li>
+<li>Pair iron sources with vitamin C for better absorption</li>
+<li>Avoid excessive tea and coffee which inhibit iron absorption</li>
+<li>Include lean red meat, poultry, or seafood</li>
+<li>Consider plant-based iron sources (legumes, spinach)</li>
+<li>Consult doctor about iron supplementation</li>
+</ul>
+</div>
+<div class='disclaimer'>
+<h3>⚠️ Important Medical Disclaimer</h3>
+<ul>
+<li>This AI-generated report is NOT a substitute for professional medical advice, diagnosis, or treatment.</li>
+<li>Always consult with a qualified healthcare provider before making any health decisions.</li>
+<li>The interpretations and recommendations provided are based on available data and general medical guidelines.</li>
+<li>Individual health situations may vary significantly, and only a qualified physician can provide personalized medical advice.</li>
+<li>Any abnormal results should be discussed with your healthcare provider before taking action.</li>
+<li>This system is designed to provide informational guidance only, not medical diagnosis.</li>
+</ul>
+</div>
+</body>
+</html>

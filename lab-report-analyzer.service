@@ -1,0 +1,20 @@
+[Unit]
+Description=Lab Report Analyzer Service
+After=network.target
+
+[Service]
+Type=simple
+User=www-data
+WorkingDirectory=/opt/lab-report-analyzer
+ExecStart=/opt/lab-report-analyzer/.venv/bin/python run_service.py
+Restart=on-failure
+RestartSec=10
+
+# Environment variables for integrations
+Environment="SUPABASE_URL=https://your-project.supabase.co"
+Environment="SUPABASE_KEY=your_key"
+Environment="PORT=8501"
+Environment="HOST=0.0.0.0"
+
+[Install]
+WantedBy=multi-user.target

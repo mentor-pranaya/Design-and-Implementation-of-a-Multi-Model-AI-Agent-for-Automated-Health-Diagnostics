@@ -1,0 +1,27 @@
+
+======================================================================
+MILESTONE 3 COMPREHENSIVE TEST SUITE
+======================================================================
+
+======================================================================
+TEST 1: FINDINGS SYNTHESIS ENGINE
+======================================================================
+Traceback (most recent call last):
+  File "C:\Users\subis\OneDrive\Documents\infosys\test_milestone3.py", line 112, in test_synthesis_engine
+    print("\u2713 Synthesis structure validated")
+  File "C:\Users\subis\AppData\Local\Programs\Python\Python310\lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2713' in position 0: character maps to <undefined>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\subis\OneDrive\Documents\infosys\test_milestone3.py", line 469, in <module>
+    success = run_all_tests()
+  File "C:\Users\subis\OneDrive\Documents\infosys\test_milestone3.py", line 416, in run_all_tests
+    synthesis = test_synthesis_engine()
+  File "C:\Users\subis\OneDrive\Documents\infosys\test_milestone3.py", line 121, in test_synthesis_engine
+    print(f"\u2717 Synthesis Engine Test FAILED: {str(e)}")
+  File "C:\Users\subis\AppData\Local\Programs\Python\Python310\lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2717' in position 0: character maps to <undefined>
