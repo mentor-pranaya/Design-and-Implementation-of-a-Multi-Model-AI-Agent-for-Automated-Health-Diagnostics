@@ -12,8 +12,8 @@ from src.synthesis.recommendation_generator import generate_recommendations
 #Read Input
 
 # file_path = "data/json/Blood_report_json_2.json"
-file_path = "data/images/blood_report_img_3.png"
-# file_path = "data/pdf/Blood_report_pdf_3.pdf"
+# file_path = "data/images/blood_report_img_3.png"
+file_path = "data/pdf/Blood_report_pdf_1.pdf"
 
 data = read_input(file_path)
 

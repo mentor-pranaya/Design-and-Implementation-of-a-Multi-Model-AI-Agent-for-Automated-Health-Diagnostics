@@ -19,7 +19,7 @@ from src.reporting.report_generator import ReportGenerator
 
 st.set_page_config(
     page_title="Health Diagnostics System",
-    page_icon="🏥",
+    page_icon="🩸",
     layout="wide",
     initial_sidebar_state="collapsed"
 )
@@ -742,7 +742,7 @@ def render_header():
     """Render the main header"""
     st.markdown("""
         <div class="main-header">
-            <div class="title-icon">🏥</div>
+            <div class="title-icon">⚕️</div>
             <div class="main-title">Health Diagnostics System</div>
             <div class="main-subtitle">AI-Powered Blood Report Analysis</div>
         </div>
@@ -957,7 +957,7 @@ def render_ai_insights(synthesis):
     st.markdown(f"""
         <div class="insights-card">
             <div class="insights-header">
-                <span>🤖</span>
+                <span>👩🏻‍⚕️</span>
                 <span>Clinical Summary</span>
             </div>
             <ul class="insights-list">
@@ -1034,7 +1034,7 @@ def render_recommendations(recommendations):
                 # Lifestyle
                 lifestyle = rec.get("lifestyle", [])
                 if lifestyle:
-                    st.markdown("**�� Lifestyle Modifications**")
+                    st.markdown("**🧘🏻‍♀️ Lifestyle Modifications**")
                     for item in lifestyle:
                         st.markdown(f"- {item}")
                 
@@ -1059,19 +1059,19 @@ def render_recommendations(recommendations):
             if gender_advice.get("notes"):
                 st.info(f"**Gender-related:** {gender_advice['notes']}")
     
-    # Age and gender specific notes
-    age_advice = recommendations.get("age_specific_advice", {})
-    gender_advice = recommendations.get("gender_specific_advice", {})
+    # # Age and gender specific notes
+    # age_advice = recommendations.get("age_specific_advice", {})
+    # gender_advice = recommendations.get("gender_specific_advice", {})
     
-    if age_advice.get("notes") or gender_advice.get("notes"):
-        with st.expander("📌 Patient-Specific Notes"):
-            if age_advice.get("notes"):
-                st.info(f"**Age-related:** {age_advice['notes']}")
-                if age_advice.get("diet_modifier"):
-                    st.markdown(f"*Dietary note: {age_advice['diet_modifier']}*")
+    # if age_advice.get("notes") or gender_advice.get("notes"):
+    #     with st.expander("📌 Patient-Specific Notes"):
+    #         if age_advice.get("notes"):
+    #             st.info(f"**Age-related:** {age_advice['notes']}")
+    #             if age_advice.get("diet_modifier"):
+    #                 st.markdown(f"*Dietary note: {age_advice['diet_modifier']}*")
             
-            if gender_advice.get("notes"):
-                st.info(f"**Gender-related:** {gender_advice['notes']}")
+    #         if gender_advice.get("notes"):
+    #             st.info(f"**Gender-related:** {gender_advice['notes']}")
 
 
 def render_download_section(results):
