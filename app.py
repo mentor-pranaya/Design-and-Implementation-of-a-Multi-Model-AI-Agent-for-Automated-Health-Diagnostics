@@ -13,9 +13,7 @@ from src.orchestrator.workflow import HealthDiagnosticsOrchestrator
 from src.reporting.report_generator import ReportGenerator
 
 
-# ============================================
 # PAGE CONFIGURATION
-# ============================================
 
 st.set_page_config(
     page_title="Health Diagnostics System",
@@ -734,9 +732,7 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-# ============================================
 # HELPER FUNCTIONS
-# ============================================
 
 def render_header():
     """Render the main header"""
@@ -1279,9 +1275,7 @@ def render_results(results):
     render_disclaimer()
 
 
-# ============================================
 # MAIN APPLICATION
-# ============================================
 
 def main():
     """Main application entry point"""
