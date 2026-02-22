@@ -1,5 +1,3 @@
-# Daily Work Progress Report
-
 ## Project Title
 
 **Design and Implementation of a Multi-Model AI Agent for Automated Health Diagnostics**
@@ -7,13 +5,16 @@
 This document records the day-by-day technical progress made during the internship project. The work covers Phase 1 (OCR-based ingestion), Phase 2 (structured extraction and pattern recognition), Phase 3 (reference-based evaluation and recommendation generation), and Phase 4 (NHANES integration, zero-hardcoding refactoring, and evaluation framework).
 
 **Project Duration:** January 6, 2026 - February 17, 2026  
-**Current Status:** Infrastructure Complete - Awaiting Test Dataset  
-**Compliance Score:** 95/100 [COMPLETE]
+
+## Project Documents
+
+- **Report:** [View Project Report](https://github.com/mentor-pranaya/Design-and-Implementation-of-a-Multi-Model-AI-Agent-for-Automated-Health-Diagnostics/blob/Nima_Fathima/REPORT.pdf)
+- **Presentation:** [View Project Presentation](https://github.com/mentor-pranaya/Design-and-Implementation-of-a-Multi-Model-AI-Agent-for-Automated-Health-Diagnostics/blob/Nima_Fathima/presentation.pdf)
 
 ---
+# Daily Work Progress Report
 
 ## Phase 1: OCR Pipeline Development
-
 ### January 6 – Project Understanding and Environment Setup
 
 - Reviewed the project problem statement and evaluation plan  
