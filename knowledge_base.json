@@ -1,0 +1,173 @@
+{
+    "Metabolic Syndrome": {
+        "rules": [
+            {
+                "param": "Glucose",
+                "op": ">",
+                "val": 100
+            },
+            {
+                "param": "Cholesterol",
+                "op": ">",
+                "val": 200
+            }
+        ],
+        "advice": {
+            "Diet": "Focus on a plant-based, Mediterranean-style diet. Prioritize soluble fiber (oats, beans, lentils) which binds to cholesterol, and low-Glycemic Index (GI) foods to stabilize blood sugar. Completely avoid trans fats and heavily processed sugars. Opt for healthy unsaturated fats like avocados and olive oil.",
+            "Lifestyle": "Implement 150 minutes of moderate cardiovascular aerobic exercise weekly. Focus on weight management as even a 5% body weight reduction significantly improves metabolic markers. Prioritize 7-8 hours of sleep to regulate cortisol and insulin sensitivity."
+        },
+        "significance": "Cluster of conditions increasing heart disease/diabetes risk."
+    },
+    "Diabetes Type 2 Risk": {
+        "rules": [
+            {
+                "param": "Glucose",
+                "op": ">",
+                "val": 140
+            }
+        ],
+        "advice": {
+            "Diet": "Strict carbohydrate management is essential. Fill half your plate with non-starchy vegetables (spinach, broccoli), 1/4 with lean proteins (fish, chicken, tofu), and 1/4 with whole grains. Eliminate all sugar-sweetened beverages entirely space out meals to stabilize glucose.",
+            "Lifestyle": "Engage in light physical activity (like a 15-minute walk) immediately after meals to help muscles absorb glucose from the bloodstream, mimicking insulin. Regular at-home blood sugar monitoring is highly advised."
+        },
+        "significance": "High blood sugar levels indicative of insulin resistance."
+    },
+    "Hypoglycemia": {
+        "rules": [
+            {
+                "param": "Glucose",
+                "op": "<",
+                "val": 70
+            }
+        ],
+        "advice": {
+            "Diet": "Immediate fast-acting sugar (fruit juice). Balanced meals.",
+            "Lifestyle": "Monitor blood sugar. Carry emergency snacks."
+        },
+        "significance": "Dangerously low blood sugar."
+    },
+    "Microcytic Anemia (Iron Deficiency)": {
+        "rules": [
+            {
+                "param": "Haemoglobin",
+                "op": "<",
+                "val": 12
+            },
+            {
+                "param": "Mean Corpuscular Volume",
+                "op": "<",
+                "val": 80
+            }
+        ],
+        "advice": {
+            "Diet": "Dramatically increase Heme Iron (red meat, salmon, poultry) and Non-Heme Iron (lentils, spinach, pumpkin seeds). CRITICAL: Always pair iron-rich foods with Vitamin C (citrus fruits, bell peppers, tomatoes) to multiply absorption. AVOID drinking coffee, tea, or milk within 2 hours of meals as they severely block iron absorption.",
+            "Lifestyle": "Pace yourself to manage chronic fatigue. Consult a doctor for clinical iron supplements, ensuring you take them on an empty stomach with a glass of orange juice."
+        },
+        "significance": "Small red blood cells often due to low iron."
+    },
+    "Macrocytic Anemia (Vit B12/Folate)": {
+        "rules": [
+            {
+                "param": "Haemoglobin",
+                "op": "<",
+                "val": 12
+            },
+            {
+                "param": "Mean Corpuscular Volume",
+                "op": ">",
+                "val": 100
+            }
+        ],
+        "advice": {
+            "Diet": "Vitamin B12 sources: Meat, eggs, dairy. Folate: Leafy greens.",
+            "Lifestyle": "Consider supplements if vegetarian."
+        },
+        "significance": "Large red blood cells often due to Vit B12/Folate deficiency."
+    },
+    "Thrombocytopenia": {
+        "rules": [
+            {
+                "param": "Platelets",
+                "op": "<",
+                "val": 150000
+            }
+        ],
+        "advice": {
+            "Diet": "Papaya leaf extract. Vitamin B12/Folate rich foods.",
+            "Lifestyle": "Avoid injury/contact sports. Soft toothbrush. Monitor bleeding."
+        },
+        "significance": "Low platelet count; risk of bleeding. (Dengue risk)."
+    },
+    "Thrombocytosis": {
+        "rules": [
+            {
+                "param": "Platelets",
+                "op": ">",
+                "val": 450000
+            }
+        ],
+        "advice": {
+            "Diet": "Anti-inflammatory diet: Omega-3s, turmeric.",
+            "Lifestyle": "Hydrate. Stop smoking. Regular check-ups."
+        },
+        "significance": "High platelet count; inflammation risk."
+    },
+    "Leukocytosis (Infection Risk)": {
+        "rules": [
+            {
+                "param": "White Blood Cells",
+                "op": ">",
+                "val": 11000
+            }
+        ],
+        "advice": {
+            "Diet": "High-protein, calorie-rich. Probiotics.",
+            "Lifestyle": "Rest. Hydrate. Monitor fever."
+        },
+        "significance": "High WBC often indicates bacterial infection."
+    },
+    "Leukopenia (Viral Risk)": {
+        "rules": [
+            {
+                "param": "White Blood Cells",
+                "op": "<",
+                "val": 4000
+            }
+        ],
+        "advice": {
+            "Diet": "Cooked, hygienic meals. Antioxidants.",
+            "Lifestyle": "Strict hygiene. Avoid crowds. Rest."
+        },
+        "significance": "Low WBC often seen in viral infections."
+    },
+    "Hypercholesterolemia": {
+        "rules": [
+            {
+                "param": "Cholesterol",
+                "op": ">",
+                "val": 200
+            }
+        ],
+        "advice": {
+            "Diet": "Aggressively reduce saturated fats (found in red meat and full-fat dairy) and eliminate artificially created trans fats. Increase your intake of soluble fiber (found heavily in oatmeal, kidney beans, and apples) to actively block cholesterol absorption in the digestive tract. Incorporate Omega-3 fatty acids from walnuts, flaxseeds, and fatty fish.",
+            "Lifestyle": "Incorporate rigorous cardiovascular exercise to elevate 'good' HDL cholesterol while lowering 'bad' LDL. Stop smoking, as smoking lowers HDL and damages arterial walls."
+        },
+        "significance": "High cholesterol increasing cardiac risk."
+    },
+    "Rare Tropical Fever": {
+        "rules": [],
+        "advice": {
+            "Diet": "Condition 'Rare Tropical Fever' detected from report. Consult specific dietary guidelines.",
+            "Lifestyle": "Follow medical advice provided in the report."
+        },
+        "significance": "Automatically learned from report: Rare Tropical Fever"
+    },
+    "Patient is stable": {
+        "rules": [],
+        "advice": {
+            "Diet": "Condition 'Patient is stable' detected from report. Consult specific dietary guidelines.",
+            "Lifestyle": "Follow medical advice provided in the report."
+        },
+        "significance": "Automatically learned from report: Patient is stable"
+    }
+}
