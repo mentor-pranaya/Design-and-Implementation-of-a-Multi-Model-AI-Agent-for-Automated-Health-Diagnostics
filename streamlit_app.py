@@ -1,3 +1,4 @@
+
 import streamlit as st
 from PIL import Image
 import pytesseract
@@ -178,7 +179,7 @@ st.write("Python executable:", sys.executable)
 pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
 os.environ["TESSDATA_PREFIX"] = r"C:\Program Files\Tesseract-OCR\tessdata"
 
-st.title("🩺 AI Health Diagnostic – OCR, Model-1 & Model-2")
+st.title(" AI Agent for Automated Health Diagnostics")
 
 st.subheader("👤 Patient Information")
 
@@ -225,7 +226,7 @@ if uploaded_file is not None:
         )[1]
 
         text = pytesseract.image_to_string(gray, lang="eng", config="--oem 3 --psm 6")
-
+    
         st.subheader("📝 Extracted Text (OCR Output)")
         st.text_area("Raw OCR Text", text, height=300)
 
@@ -236,14 +237,14 @@ if uploaded_file is not None:
             st.stop()
 
     # ---------- MODEL-1 ----------
-    st.subheader("🧪 Parameter Interpretation (Model-1)")
+    st.subheader("🧪 Parameter Interpretation")
     model1_results = interpret_parameters(params)
 
     for p, r in model1_results.items():
         st.write(f"{p.upper()} : {r['value']} → {r['status']}")
 
     # ---------- MODEL-2 ----------
-    st.subheader("🧠 Health Pattern Analysis (Model-2)")
+    st.subheader(" Health Pattern Analysis")
     
     patterns = detect_health_patterns(model1_results)
     patterns = apply_contextual_adjustment(patterns, age, gender)
@@ -285,7 +286,7 @@ if uploaded_file is not None:
     
 
     # ---------- BORDERLINE ----------
-    st.subheader("🟡 Borderline Observations")
+    st.subheader(" Borderline Observations")
     borderline_notes = detect_borderline_parameters(model1_results)
 
     if borderline_notes:
@@ -295,20 +296,20 @@ if uploaded_file is not None:
         st.write("No borderline observations detected.")
 
 # ---------- FINDINGS SYNTHESIS ----------
-    st.subheader("📋 Summary of Findings")
+    st.subheader("Summary of Findings")
     summary = synthesize_findings(
     model1_results, patterns, risk_score, age, gender)
     st.write(summary)
 
 # ---------- RECOMMENDATIONS ----------
     from models.recommendation_generator import generate_recommendations
-    st.subheader("✅ Personalized Recommendations")
+    st.subheader("Personalized Recommendations")
     recommendations = generate_recommendations(patterns, model1_results, risk_score)
     for rec in recommendations:
         st.write("•", rec)
 
         # ---------- SAVE TO SUPABASE ----------
-if st.button("💾 Save Report to Database"):
+if st.button("Save Report to Database"):
     record = {
         "age": age,
         "gender": gender,
@@ -358,5 +359,7 @@ if st.button("Load Report History"):
 
     else:
         st.info("No saved reports found.")
+
+
 
 
