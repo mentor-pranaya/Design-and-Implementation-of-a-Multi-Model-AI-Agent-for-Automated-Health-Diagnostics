@@ -1,0 +1,45 @@
+{
+  "report_id": "report_014",
+  "report_metadata": {
+    "laboratory": "Hoa",
+    "format": "PDF",
+    "date": "1/8/2017",
+    "completeness": "Complete",
+    "abnormality_type": "Unknown",
+    "verified": false,
+    "verified_by": "",
+    "verified_date": ""
+  },
+  "parameters": {
+    "potassium": {
+      "value": 2.0,
+      "unit": "unknown",
+      "reference_range": {
+        "min": 3.5,
+        "max": 4.7
+      }
+    },
+    "wbc": {
+      "value": 4.2,
+      "unit": "thou/mm",
+      "reference_range": {
+        "min": 4.4,
+        "max": 11.4
+      }
+    },
+    "hematocrit": {
+      "value": 37.7,
+      "unit": "unknown",
+      "reference_range": {
+        "min": null,
+        "max": null
+      }
+    }
+  },
+  "classifications": {
+    "potassium": "Low",
+    "wbc": "Low",
+    "hematocrit": "Unknown"
+  },
+  "notes": "Auto-generated template - requires manual verification"
+}

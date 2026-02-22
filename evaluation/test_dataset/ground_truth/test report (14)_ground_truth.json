@@ -1,0 +1,30 @@
+{
+  "filename": "test report (14).pdf",
+  "timestamp": "2026-02-18T19:23:43.541584",
+  "parameters": {
+    "potassium": {
+      "extracted_value": 2.0,
+      "extracted_unit": "unknown",
+      "correct_value": 2.0,
+      "correct_unit": "unknown",
+      "expected_classification": "unknown",
+      "notes": ""
+    },
+    "wbc": {
+      "extracted_value": 4.2,
+      "extracted_unit": "thou/mm",
+      "correct_value": 4.2,
+      "correct_unit": "thou/mm",
+      "expected_classification": "unknown",
+      "notes": ""
+    },
+    "hematocrit": {
+      "extracted_value": 37.7,
+      "extracted_unit": "unknown",
+      "correct_value": 37.7,
+      "correct_unit": "unknown",
+      "expected_classification": "unknown",
+      "notes": ""
+    }
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "report_id": "report_011",
+  "report_metadata": {
+    "laboratory": "within",
+    "format": "PDF",
+    "date": "04/08/2025",
+    "completeness": "Complete",
+    "abnormality_type": "Unknown",
+    "verified": false,
+    "verified_by": "",
+    "verified_date": ""
+  },
+  "parameters": {
+    "potassium": {
+      "value": 4.0,
+      "unit": "/",
+      "reference_range": {
+        "min": 3.5,
+        "max": 4.7
+      }
+    },
+    "t3": {
+      "value": 151.9,
+      "unit": "adult",
+      "reference_range": {
+        "min": null,
+        "max": null
+      }
+    },
+    "t4": {
+      "value": 10.14,
+      "unit": "adults",
+      "reference_range": {
+        "min": null,
+        "max": null
+      }
+    },
+    "tsh": {
+      "value": 3.0,
+      "unit": "rd",
+      "reference_range": {
+        "min": 0.5,
+        "max": 4.0
+      }
+    }
+  },
+  "classifications": {
+    "potassium": "Normal",
+    "t3": "Unknown",
+    "t4": "Unknown",
+    "tsh": "Normal"
+  },
+  "notes": "Auto-generated template - requires manual verification"
+}

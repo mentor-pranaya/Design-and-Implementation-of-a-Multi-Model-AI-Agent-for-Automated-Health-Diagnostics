@@ -1,0 +1,54 @@
+{
+  "report_id": "report_002_png",
+  "report_metadata": {
+    "laboratory": "Unknown",
+    "format": "PNG",
+    "date": "2026-02-19",
+    "completeness": "Complete",
+    "abnormality_type": "Unknown",
+    "verified": false,
+    "verified_by": "",
+    "verified_date": ""
+  },
+  "parameters": {
+    "cholesterol": {
+      "value": 450.0,
+      "unit": "m",
+      "reference_range": {
+        "min": 128.0,
+        "max": 258.0
+      }
+    },
+    "triglycerides": {
+      "value": 200.0,
+      "unit": "mg%",
+      "reference_range": {
+        "min": 38.0,
+        "max": 269.8499999999999
+      }
+    },
+    "hdl": {
+      "value": 85.0,
+      "unit": "s",
+      "reference_range": {
+        "min": 32.0,
+        "max": 82.0
+      }
+    },
+    "ldl": {
+      "value": 35.0,
+      "unit": "unknown",
+      "reference_range": {
+        "min": 59.0,
+        "max": 172.0
+      }
+    }
+  },
+  "classifications": {
+    "cholesterol": "High",
+    "triglycerides": "Normal",
+    "hdl": "High",
+    "ldl": "Low"
+  },
+  "notes": "Auto-generated template - requires manual verification"
+}

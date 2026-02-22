@@ -1,0 +1,68 @@
+{
+  "_instructions": "This is a template for ground truth annotations. Copy this file and rename it to match your report ID (e.g., report_001.json)",
+  
+  "report_id": "report_001",
+  "report_metadata": {
+    "laboratory": "Lab Name",
+    "format": "PDF/Scanned/Digital",
+    "date": "2026-01-15",
+    "completeness": "Complete/Partial",
+    "abnormality_type": "Normal/Single/Multiple/Edge Case"
+  },
+  
+  "parameters": {
+    "Hemoglobin": {
+      "value": 14.5,
+      "unit": "g/dL",
+      "reference_range": {
+        "min": 13.0,
+        "max": 17.5
+      }
+    },
+    "WBC": {
+      "value": 8500,
+      "unit": "cells/µL",
+      "reference_range": {
+        "min": 4000,
+        "max": 11000
+      }
+    },
+    "Glucose": {
+      "value": 110,
+      "unit": "mg/dL",
+      "reference_range": {
+        "min": 70,
+        "max": 99
+      }
+    },
+    "Creatinine": {
+      "value": 1.1,
+      "unit": "mg/dL",
+      "reference_range": {
+        "min": 0.7,
+        "max": 1.3
+      }
+    }
+  },
+  
+  "classifications": {
+    "Hemoglobin": "Normal",
+    "WBC": "Normal",
+    "Glucose": "High",
+    "Creatinine": "Normal"
+  },
+  
+  "expected_patterns": [
+    {
+      "pattern": "Prediabetes Risk",
+      "severity": "Mild",
+      "triggered_by": ["Glucose"]
+    }
+  ],
+  
+  "expected_recommendations": [
+    "Diabetes Risk"
+  ],
+  
+  "notes": "Any additional notes about this report"
+}

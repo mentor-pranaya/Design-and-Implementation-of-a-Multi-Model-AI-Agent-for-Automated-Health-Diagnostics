@@ -3,20 +3,30 @@ Phase 3: Recommendation Engine Main Module
 Orchestrates the complete Phase 3 pipeline with evidence-based evaluation.
 
 Architecture (Multi-Model AI Agent):
-1. Phase 3A: Reference-Based Evaluation (Evidence Foundation)
+1. Phase 3A: Reference-Based Evaluation (Model 1 - Evidence Foundation)
    - Input: Extracted parameters from Phase 2
    - Process: Classify against authoritative reference ranges
    - Output: Clinical status (Low/Normal/High/Critical) with severity
 
-2. Phase 3B: Pattern Recognition (Contextual Risk Assessment)
+2. Phase 3B: Pattern Recognition (Model 2 - Contextual Risk Assessment)
    - Input: Evaluation results + extracted parameters
    - Process: Detect multi-parameter risk patterns
    - Output: Risk patterns (e.g., Anemia Indicator, Diabetes Risk)
 
-3. Phase 3C: Recommendation Generation (Synthesized Guidance)
-   - Input: Evaluations + Patterns
-   - Process: Multi-model reasoning combining both signals
-   - Output: Evidence-based lifestyle recommendations
+3. Phase 3D: Contextual Refinement (Model 3 - Personalization Layer)
+   - Input: Evaluations + Patterns + Patient Context
+   - Process: Refine interpretations based on age, gender, history, lifestyle
+   - Output: Personalized risk scores with contextual modifiers
+
+4. Phase 3E: Quantified Risk Scoring (NEW - Clinical Decision Support)
+   - Input: Evaluations + Patient Context
+   - Process: Calculate structured, quantified risk scores (CV, diabetes, CKD)
+   - Output: 10-year risk percentages, risk categories, criteria triggers
+
+5. Phase 3C: Recommendation Generation (Synthesized Guidance)
+   - Input: Contextually-refined evaluations + patterns + risk scores
+   - Process: Multi-model reasoning combining all signals
+   - Output: Personalized evidence-based lifestyle recommendations
 
 Design Philosophy:
 - Evidence-based: All evaluations grounded in reference ranges
@@ -34,6 +44,8 @@ from typing import List, Dict, Any
 sys.path.insert(0, str(Path(__file__).parent))
 
 from evaluation.evaluator import ParameterEvaluator
+from contextual_model import ContextualRefiner
+from health_risk_engine import ComprehensiveHealthRiskEngine
 from recommendations.recommender import (
     RecommendationEngine,
     SafetyValidator,
@@ -118,13 +130,51 @@ class Phase3RecommendationPipeline:
         patterns = self._convert_flags_to_patterns(pattern_flags)
         print(f"✓ Detected {len(patterns)} clinical patterns")
         
+        # PHASE 3D: Contextual Refinement (Model 3 - Personalization)
+        print("\n[Phase 3D] Applying Contextual Refinements...")
+        if patient_info:
+            refiner = ContextualRefiner(patient_info)
+            refined_results = refiner.refine(
+                evaluated_parameters=evaluation_results,
+                detected_patterns={'patterns': patterns}
+            )
+            # Extract refined patterns
+            refined_patterns = refined_results['detected_patterns'].get('patterns', patterns)
+            contextual_modifiers = refined_results.get('contextual_modifiers', [])
+            personalization_summary = refined_results.get('personalization_summary', {})
+            print(f"✓ Applied contextual refinements")
+        else:
+            refined_patterns = patterns
+            contextual_modifiers = []
+            personalization_summary = {}
+            print("⚠ No patient context provided - skipping personalization")
+        
+        # PHASE 3E: Quantified Risk Scoring (NEW LAYER)
+        print("\n[Phase 3E] Calculating Quantified Risk Scores...")
+        health_risk = None
+        if patient_info:
+            try:
+                risk_engine = ComprehensiveHealthRiskEngine(
+                    patient_info=patient_info,
+                    parameter_evaluations=evaluation_results.get("evaluations", []),
+                    detected_patterns=patterns
+                )
+                health_risk = risk_engine.calculate()
+                print(f"✓ Health Risk Score: {health_risk['total_score']} ({health_risk['risk_category']})")
+            except Exception as e:
+                print(f"⚠ Could not calculate health risk: {e}")
+                health_risk = {"error": str(e)}
+        else:
+            print("⚠ No patient context - skipping risk scoring")
+        
         # PHASE 3C: Multi-Model Recommendation Synthesis
         print("\n[Phase 3C] Generating Evidence-Based Recommendations...")
         base_recommendations = self.engine.generate_recommendations(
-            patterns=patterns,
+            patterns=refined_patterns,
             evaluations=evaluation_results
         )
-        print(f"✓ Generated recommendations for {base_recommendations['detected_patterns_count']} conditions")
+        pattern_count = base_recommendations.get('detected_patterns_count', len(refined_patterns))
+        print(f"✓ Generated recommendations for {pattern_count} conditions")
         
         # Enhance with specialized modules
         enhanced_recommendations = self._enhance_recommendations(
@@ -146,6 +196,16 @@ class Phase3RecommendationPipeline:
             
             # Phase 3B Output
             "phase_3b_patterns": patterns,
+            
+            # Phase 3D Output (Contextual Refinement)
+            "phase_3d_contextual_refinement": {
+                "refined_patterns": refined_patterns,
+                "contextual_modifiers": contextual_modifiers,
+                "personalization_summary": personalization_summary
+            },
+            
+            # Phase 3E Output (Quantified Risk Scoring) - Comprehensive Health Risk
+            "phase_3e_risk_scoring": health_risk,
             
             # Phase 3C Output
             "phase_3c_recommendations": enhanced_recommendations,

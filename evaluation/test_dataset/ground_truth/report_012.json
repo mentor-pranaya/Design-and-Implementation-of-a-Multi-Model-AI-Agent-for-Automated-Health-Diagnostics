@@ -1,0 +1,36 @@
+{
+  "report_id": "report_012",
+  "report_metadata": {
+    "laboratory": "Or Lal PathiLahs bed",
+    "format": "PDF",
+    "date": "10/08/2023",
+    "completeness": "Complete",
+    "abnormality_type": "Unknown",
+    "verified": false,
+    "verified_by": "",
+    "verified_date": ""
+  },
+  "parameters": {
+    "bilirubin_total": {
+      "value": 2.0,
+      "unit": "mg/dl",
+      "reference_range": {
+        "min": null,
+        "max": null
+      }
+    },
+    "magnesium": {
+      "value": 2.0,
+      "unit": "mg/dL",
+      "reference_range": {
+        "min": null,
+        "max": null
+      }
+    }
+  },
+  "classifications": {
+    "bilirubin_total": "Unknown",
+    "magnesium": "Unknown"
+  },
+  "notes": "Auto-generated template - requires manual verification"
+}

@@ -1,0 +1,57 @@
+{
+  "case_id": "case_02",
+  "description": "Young female with mild anemia, vegetarian diet",
+  "source_report": "../../data/sample_reports/sample_blood_report_2.json",
+  
+  "patient_info": {
+    "age": 32,
+    "sex": "female",
+    "known_conditions": [],
+    "lifestyle": {
+      "smoker": false,
+      "exercise_level": "moderate",
+      "diet_type": "vegetarian",
+      "alcohol_use": "none"
+    }
+  },
+  
+  "true_parameters": {
+    "Hemoglobin": 11.5,
+    "RBC": 4.0,
+    "WBC": 6200,
+    "Platelets": 220000,
+    "Glucose": 88,
+    "Total Cholesterol": 185,
+    "HDL": 62,
+    "LDL": 98,
+    "Triglycerides": 125,
+    "TSH": 3.2
+  },
+  
+  "true_classification": {
+    "Hemoglobin": "Low",
+    "RBC": "Low",
+    "WBC": "Normal",
+    "Platelets": "Normal",
+    "Glucose": "Normal",
+    "Total Cholesterol": "Normal",
+    "HDL": "Normal",
+    "LDL": "Normal",
+    "Triglycerides": "Normal",
+    "TSH": "Normal"
+  },
+  
+  "true_severity": {
+    "Hemoglobin": "Mild",
+    "RBC": "Mild"
+  },
+  
+  "true_patterns": [
+    "Anemia"
+  ],
+  
+  "true_risk_category": "Low",
+  "true_risk_range": {"min": 2, "max": 5},
+  
+  "rationale": "32-year-old female with mild microcytic anemia (Hgb 11.2, MCV 78), likely iron deficiency from vegetarian diet. No cardiovascular risk factors. Low risk category appropriate."
+}

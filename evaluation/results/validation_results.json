@@ -1,0 +1,186 @@
+{
+  "timestamp": "2026-02-19T20:14:05.108799",
+  "reports_processed": 17,
+  "reports_with_errors": 0,
+  "accuracy_metrics": {
+    "total_parameters": 203,
+    "correct_classifications": 199,
+    "incorrect_classifications": 4,
+    "accuracy_percentage": 98.03,
+    "all_mismatches": [
+      {
+        "parameter": "cholesterol",
+        "system_name": "cholesterol",
+        "system_classification": "Low",
+        "ground_truth_classification": "Unknown",
+        "system_value": 110.0,
+        "ground_truth_value": 110.0,
+        "reference_range": {
+          "min": null,
+          "max": null
+        }
+      },
+      {
+        "parameter": "platelet",
+        "system_name": "platelet",
+        "system_classification": "High",
+        "ground_truth_classification": "Unknown",
+        "system_value": 370.0,
+        "ground_truth_value": 370.0,
+        "reference_range": {
+          "min": null,
+          "max": null
+        }
+      },
+      {
+        "parameter": "platelet",
+        "system_name": "platelet",
+        "system_classification": "Normal",
+        "ground_truth_classification": "Unknown",
+        "system_value": 207.0,
+        "ground_truth_value": 207.0,
+        "reference_range": {
+          "min": null,
+          "max": null
+        }
+      },
+      {
+        "parameter": "cholesterol",
+        "system_name": "cholesterol",
+        "system_classification": "Normal",
+        "ground_truth_classification": "Unknown",
+        "system_value": 163.0,
+        "ground_truth_value": 163.0,
+        "reference_range": {
+          "min": null,
+          "max": null
+        }
+      }
+    ],
+    "all_missing": [],
+    "all_extra": []
+  },
+  "per_report_results": [
+    {
+      "report_id": "report_001",
+      "total_parameters": 17,
+      "correct": 17,
+      "incorrect": 0,
+      "accuracy": 100.0
+    },
+    {
+      "report_id": "report_001_png",
+      "total_parameters": 0,
+      "correct": 0,
+      "incorrect": 0,
+      "accuracy": 0.0
+    },
+    {
+      "report_id": "report_002",
+      "total_parameters": 10,
+      "correct": 10,
+      "incorrect": 0,
+      "accuracy": 100.0
+    },
+    {
+      "report_id": "report_002_png",
+      "total_parameters": 4,
+      "correct": 4,
+      "incorrect": 0,
+      "accuracy": 100.0
+    },
+    {
+      "report_id": "report_003",
+      "total_parameters": 37,
+      "correct": 37,
+      "incorrect": 0,
+      "accuracy": 100.0
+    },
+    {
+      "report_id": "report_003_png",
+      "total_parameters": 5,
+      "correct": 5,
+      "incorrect": 0,
+      "accuracy": 100.0
+    },
+    {
+      "report_id": "report_004_png",
+      "total_parameters": 3,
+      "correct": 3,
+      "incorrect": 0,
+      "accuracy": 100.0
+    },
+    {
+      "report_id": "report_005",
+      "total_parameters": 22,
+      "correct": 22,
+      "incorrect": 0,
+      "accuracy": 100.0
+    },
+    {
+      "report_id": "report_006",
+      "total_parameters": 4,
+      "correct": 3,
+      "incorrect": 1,
+      "accuracy": 75.0
+    },
+    {
+      "report_id": "report_008",
+      "total_parameters": 26,
+      "correct": 25,
+      "incorrect": 1,
+      "accuracy": 96.15
+    },
+    {
+      "report_id": "report_009",
+      "total_parameters": 29,
+      "correct": 27,
+      "incorrect": 2,
+      "accuracy": 93.1
+    },
+    {
+      "report_id": "report_010",
+      "total_parameters": 29,
+      "correct": 29,
+      "incorrect": 0,
+      "accuracy": 100.0
+    },
+    {
+      "report_id": "report_011",
+      "total_parameters": 4,
+      "correct": 4,
+      "incorrect": 0,
+      "accuracy": 100.0
+    },
+    {
+      "report_id": "report_012",
+      "total_parameters": 2,
+      "correct": 2,
+      "incorrect": 0,
+      "accuracy": 100.0
+    },
+    {
+      "report_id": "report_013",
+      "total_parameters": 2,
+      "correct": 2,
+      "incorrect": 0,
+      "accuracy": 100.0
+    },
+    {
+      "report_id": "report_014",
+      "total_parameters": 3,
+      "correct": 3,
+      "incorrect": 0,
+      "accuracy": 100.0
+    },
+    {
+      "report_id": "report_015",
+      "total_parameters": 6,
+      "correct": 6,
+      "incorrect": 0,
+      "accuracy": 100.0
+    }
+  ],
+  "errors": [],
+  "target_met": true
+}

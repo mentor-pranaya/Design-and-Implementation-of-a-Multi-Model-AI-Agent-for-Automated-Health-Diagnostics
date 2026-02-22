@@ -1,0 +1,545 @@
+{
+  "timestamp": "2026-02-18T15:07:28.740893",
+  "dataset": {
+    "total_files": 19,
+    "pdf_files": 15,
+    "png_files": 4
+  },
+  "metrics": {
+    "ocr_success_rate": 94.73684210526315,
+    "extraction_success_rate": 52.63157894736842,
+    "workflow_success_rate": 94.73684210526315,
+    "total_parameters_extracted": 42,
+    "avg_parameters_per_file": 2.3333333333333335,
+    "milestone_1_passed": false,
+    "milestone_4_passed": false
+  },
+  "format_support": {
+    "pdf_success_rate": 46.666666666666664,
+    "png_success_rate": 75.0,
+    "multi_format_support": true
+  },
+  "detailed_results": {
+    "test report (1).pdf": {
+      "status": "success",
+      "format": "PDF",
+      "text_length": 13015,
+      "parameters_found": 4,
+      "parameters": {
+        "hemoglobin": {
+          "value": 11.7,
+          "unit": "unknown",
+          "raw_match": [
+            "11.7",
+            ""
+          ],
+          "classification": "low"
+        },
+        "platelet": {
+          "value": 170.0,
+          "unit": "unknown",
+          "raw_match": [
+            "170",
+            ""
+          ],
+          "classification": "normal"
+        },
+        "hematocrit": {
+          "value": 35.3,
+          "unit": "unknown",
+          "raw_match": [
+            "35.3",
+            ""
+          ],
+          "classification": "low"
+        },
+        "mch": {
+          "value": 33.1,
+          "unit": "unknown",
+          "raw_match": [
+            "33.1",
+            ""
+          ],
+          "classification": "unknown"
+        }
+      }
+    },
+    "test report (1).png": {
+      "status": "success",
+      "format": "IMAGE",
+      "text_length": 657,
+      "parameters_found": 1,
+      "parameters": {
+        "creatinine": {
+          "value": 87.0,
+          "unit": "unknown",
+          "raw_match": [
+            "087",
+            ""
+          ],
+          "classification": "high"
+        }
+      }
+    },
+    "test report (10).pdf": {
+      "status": "success",
+      "format": "PDF",
+      "text_length": 14175,
+      "parameters_found": 9,
+      "parameters": {
+        "hemoglobin": {
+          "value": 17.0,
+          "unit": "unknown",
+          "raw_match": [
+            "17.0",
+            ""
+          ],
+          "classification": "normal"
+        },
+        "glucose": {
+          "value": 116.9,
+          "unit": "high",
+          "raw_match": [
+            "116.9",
+            "high"
+          ],
+          "classification": "high"
+        },
+        "creatinine": {
+          "value": 0.95,
+          "unit": "adult",
+          "raw_match": [
+            "0.95",
+            "adult"
+          ],
+          "classification": "normal"
+        },
+        "cholesterol": {
+          "value": 163.0,
+          "unit": "desirable",
+          "raw_match": [
+            "163",
+            "desirable"
+          ],
+          "classification": "normal"
+        },
+        "triglycerides": {
+          "value": 206.0,
+          "unit": "high",
+          "raw_match": [
+            "206",
+            "high"
+          ],
+          "classification": "unknown"
+        },
+        "wbc": {
+          "value": 5.6,
+          "unit": "unknown",
+          "raw_match": [
+            "5.60",
+            ""
+          ],
+          "classification": "normal"
+        },
+        "rbc": {
+          "value": 6.05,
+          "unit": "high",
+          "raw_match": [
+            "6.05",
+            "high"
+          ],
+          "classification": "normal"
+        },
+        "platelet": {
+          "value": 207.0,
+          "unit": "unknown",
+          "raw_match": [
+            "207",
+            ""
+          ],
+          "classification": "normal"
+        },
+        "hematocrit": {
+          "value": 49.0,
+          "unit": "unknown",
+          "raw_match": [
+            "49.0",
+            ""
+          ],
+          "classification": "normal"
+        }
+      }
+    },
+    "test report (11).pdf": {
+      "status": "no_parameters",
+      "format": "PDF",
+      "text_length": 6541,
+      "parameters_found": 0,
+      "parameters": {}
+    },
+    "test report (12).pdf": {
+      "status": "no_parameters",
+      "format": "PDF",
+      "text_length": 2281,
+      "parameters_found": 0,
+      "parameters": {}
+    },
+    "test report (13).pdf": {
+      "status": "success",
+      "format": "PDF",
+      "text_length": 2204,
+      "parameters_found": 1,
+      "parameters": {
+        "creatinine": {
+          "value": 0.56,
+          "unit": "unknown",
+          "raw_match": [
+            "0.56",
+            ""
+          ],
+          "classification": "low"
+        }
+      }
+    },
+    "test report (14).pdf": {
+      "status": "no_parameters",
+      "format": "PDF",
+      "text_length": 4024,
+      "parameters_found": 0,
+      "parameters": {}
+    },
+    "test report (15).pdf": {
+      "status": "no_parameters",
+      "format": "PDF",
+      "text_length": 3978,
+      "parameters_found": 0,
+      "parameters": {}
+    },
+    "test report (2).pdf": {
+      "status": "success",
+      "format": "PDF",
+      "text_length": 31594,
+      "parameters_found": 1,
+      "parameters": {
+        "platelet": {
+          "value": 237.0,
+          "unit": "nabl",
+          "raw_match": [
+            "237",
+            "nabl"
+          ],
+          "classification": "normal"
+        }
+      }
+    },
+    "test report (2).png": {
+      "status": "success",
+      "format": "IMAGE",
+      "text_length": 1262,
+      "parameters_found": 1,
+      "parameters": {
+        "triglycerides": {
+          "value": 200.0,
+          "unit": "mg",
+          "raw_match": [
+            "200",
+            "mg"
+          ],
+          "classification": "unknown"
+        }
+      }
+    },
+    "test report (3).pdf": {
+      "status": "success",
+      "format": "PDF",
+      "text_length": 32542,
+      "parameters_found": 9,
+      "parameters": {
+        "hemoglobin": {
+          "value": 15.0,
+          "unit": "gm/dl",
+          "raw_match": [
+            "15.0",
+            "gm/dl"
+          ],
+          "classification": "normal"
+        },
+        "glucose": {
+          "value": 102.54,
+          "unit": "mg/dl",
+          "raw_match": [
+            "102.54",
+            "mg/dl"
+          ],
+          "classification": "high"
+        },
+        "creatinine": {
+          "value": 0.73,
+          "unit": "mg/dl",
+          "raw_match": [
+            "0.73",
+            "mg/dl"
+          ],
+          "classification": "normal"
+        },
+        "cholesterol": {
+          "value": 192.6,
+          "unit": "mg/dl",
+          "raw_match": [
+            "192.6",
+            "mg/dl"
+          ],
+          "classification": "normal"
+        },
+        "triglycerides": {
+          "value": 106.76,
+          "unit": "mg/dl",
+          "raw_match": [
+            "106.76",
+            "mg/dl"
+          ],
+          "classification": "unknown"
+        },
+        "ldl": {
+          "value": 21.35,
+          "unit": "mg/dl",
+          "raw_match": [
+            "21.35",
+            "mg/dl"
+          ],
+          "classification": "unknown"
+        },
+        "mcv": {
+          "value": 93.2,
+          "unit": "fl",
+          "raw_match": [
+            "93.2",
+            "fl"
+          ],
+          "classification": "unknown"
+        },
+        "mch": {
+          "value": 30.8,
+          "unit": "pg",
+          "raw_match": [
+            "30.8",
+            "pg"
+          ],
+          "classification": "unknown"
+        },
+        "mchc": {
+          "value": 33.0,
+          "unit": "g/dl",
+          "raw_match": [
+            "33.0",
+            "g/dl"
+          ],
+          "classification": "unknown"
+        }
+      }
+    },
+    "test report (3).png": {
+      "status": "success",
+      "format": "IMAGE",
+      "text_length": 1200,
+      "parameters_found": 1,
+      "parameters": {
+        "hemoglobin": {
+          "value": 4.0,
+          "unit": "gns/l",
+          "raw_match": [
+            "4",
+            "gns/l"
+          ],
+          "classification": "low"
+        }
+      }
+    },
+    "test report (4).pdf": {
+      "status": "ocr_failed",
+      "format": "UNKNOWN",
+      "text_length": 0,
+      "parameters_found": 0,
+      "parameters": {}
+    },
+    "test report (4).png": {
+      "status": "no_parameters",
+      "format": "IMAGE",
+      "text_length": 774,
+      "parameters_found": 0,
+      "parameters": {}
+    },
+    "test report (5).pdf": {
+      "status": "no_parameters",
+      "format": "PDF",
+      "text_length": 17796,
+      "parameters_found": 0,
+      "parameters": {}
+    },
+    "test report (6).pdf": {
+      "status": "no_parameters",
+      "format": "PDF",
+      "text_length": 2138,
+      "parameters_found": 0,
+      "parameters": {}
+    },
+    "test report (7).pdf": {
+      "status": "no_parameters",
+      "format": "PDF",
+      "text_length": 2306,
+      "parameters_found": 0,
+      "parameters": {}
+    },
+    "test report (8).pdf": {
+      "status": "success",
+      "format": "PDF",
+      "text_length": 27643,
+      "parameters_found": 6,
+      "parameters": {
+        "hemoglobin": {
+          "value": 13.0,
+          "unit": "unknown",
+          "raw_match": [
+            "13.0",
+            ""
+          ],
+          "classification": "normal"
+        },
+        "wbc": {
+          "value": 8.1,
+          "unit": "unknown",
+          "raw_match": [
+            "8.10",
+            ""
+          ],
+          "classification": "normal"
+        },
+        "rbc": {
+          "value": 4.7,
+          "unit": "unknown",
+          "raw_match": [
+            "4.70",
+            ""
+          ],
+          "classification": "normal"
+        },
+        "platelet": {
+          "value": 370.0,
+          "unit": "unknown",
+          "raw_match": [
+            "370",
+            ""
+          ],
+          "classification": "normal"
+        },
+        "hematocrit": {
+          "value": 40.1,
+          "unit": "unknown",
+          "raw_match": [
+            "40.1",
+            ""
+          ],
+          "classification": "normal"
+        },
+        "mch": {
+          "value": 32.4,
+          "unit": "unknown",
+          "raw_match": [
+            "32.4",
+            ""
+          ],
+          "classification": "unknown"
+        }
+      }
+    },
+    "test report (9).pdf": {
+      "status": "success",
+      "format": "PDF",
+      "text_length": 14175,
+      "parameters_found": 9,
+      "parameters": {
+        "hemoglobin": {
+          "value": 17.0,
+          "unit": "unknown",
+          "raw_match": [
+            "17.0",
+            ""
+          ],
+          "classification": "normal"
+        },
+        "glucose": {
+          "value": 116.9,
+          "unit": "high",
+          "raw_match": [
+            "116.9",
+            "high"
+          ],
+          "classification": "high"
+        },
+        "creatinine": {
+          "value": 0.95,
+          "unit": "adult",
+          "raw_match": [
+            "0.95",
+            "adult"
+          ],
+          "classification": "normal"
+        },
+        "cholesterol": {
+          "value": 163.0,
+          "unit": "desirable",
+          "raw_match": [
+            "163",
+            "desirable"
+          ],
+          "classification": "normal"
+        },
+        "triglycerides": {
+          "value": 206.0,
+          "unit": "high",
+          "raw_match": [
+            "206",
+            "high"
+          ],
+          "classification": "unknown"
+        },
+        "wbc": {
+          "value": 5.6,
+          "unit": "unknown",
+          "raw_match": [
+            "5.60",
+            ""
+          ],
+          "classification": "normal"
+        },
+        "rbc": {
+          "value": 6.05,
+          "unit": "high",
+          "raw_match": [
+            "6.05",
+            "high"
+          ],
+          "classification": "normal"
+        },
+        "platelet": {
+          "value": 207.0,
+          "unit": "unknown",
+          "raw_match": [
+            "207",
+            ""
+          ],
+          "classification": "normal"
+        },
+        "hematocrit": {
+          "value": 49.0,
+          "unit": "unknown",
+          "raw_match": [
+            "49.0",
+            ""
+          ],
+          "classification": "normal"
+        }
+      }
+    }
+  }
+}

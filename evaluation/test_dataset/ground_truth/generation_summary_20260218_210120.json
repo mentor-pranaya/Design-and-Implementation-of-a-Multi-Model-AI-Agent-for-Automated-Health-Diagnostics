@@ -1,0 +1,127 @@
+{
+  "total_reports": 17,
+  "successful": 17,
+  "failed": 0,
+  "reports": [
+    {
+      "report_id": "report_001",
+      "source_file": "test report (1).pdf",
+      "output_file": "report_001.json",
+      "parameter_count": 17,
+      "status": "success"
+    },
+    {
+      "report_id": "report_001_png",
+      "source_file": "test report (1).png",
+      "output_file": "report_001_png.json",
+      "parameter_count": 0,
+      "status": "success"
+    },
+    {
+      "report_id": "report_010",
+      "source_file": "test report (10).pdf",
+      "output_file": "report_010.json",
+      "parameter_count": 29,
+      "status": "success"
+    },
+    {
+      "report_id": "report_011",
+      "source_file": "test report (11).pdf",
+      "output_file": "report_011.json",
+      "parameter_count": 4,
+      "status": "success"
+    },
+    {
+      "report_id": "report_012",
+      "source_file": "test report (12).pdf",
+      "output_file": "report_012.json",
+      "parameter_count": 2,
+      "status": "success"
+    },
+    {
+      "report_id": "report_013",
+      "source_file": "test report (13).pdf",
+      "output_file": "report_013.json",
+      "parameter_count": 2,
+      "status": "success"
+    },
+    {
+      "report_id": "report_014",
+      "source_file": "test report (14).pdf",
+      "output_file": "report_014.json",
+      "parameter_count": 3,
+      "status": "success"
+    },
+    {
+      "report_id": "report_015",
+      "source_file": "test report (15).pdf",
+      "output_file": "report_015.json",
+      "parameter_count": 6,
+      "status": "success"
+    },
+    {
+      "report_id": "report_002",
+      "source_file": "test report (2).pdf",
+      "output_file": "report_002.json",
+      "parameter_count": 10,
+      "status": "success"
+    },
+    {
+      "report_id": "report_002_png",
+      "source_file": "test report (2).png",
+      "output_file": "report_002_png.json",
+      "parameter_count": 4,
+      "status": "success"
+    },
+    {
+      "report_id": "report_003",
+      "source_file": "test report (3).pdf",
+      "output_file": "report_003.json",
+      "parameter_count": 37,
+      "status": "success"
+    },
+    {
+      "report_id": "report_003_png",
+      "source_file": "test report (3).png",
+      "output_file": "report_003_png.json",
+      "parameter_count": 5,
+      "status": "success"
+    },
+    {
+      "report_id": "report_004_png",
+      "source_file": "test report (4).png",
+      "output_file": "report_004_png.json",
+      "parameter_count": 3,
+      "status": "success"
+    },
+    {
+      "report_id": "report_005",
+      "source_file": "test report (5).pdf",
+      "output_file": "report_005.json",
+      "parameter_count": 22,
+      "status": "success"
+    },
+    {
+      "report_id": "report_006",
+      "source_file": "test report (6).pdf",
+      "output_file": "report_006.json",
+      "parameter_count": 4,
+      "status": "success"
+    },
+    {
+      "report_id": "report_008",
+      "source_file": "test report (8).pdf",
+      "output_file": "report_008.json",
+      "parameter_count": 26,
+      "status": "success"
+    },
+    {
+      "report_id": "report_009",
+      "source_file": "test report (9).pdf",
+      "output_file": "report_009.json",
+      "parameter_count": 29,
+      "status": "success"
+    }
+  ],
+  "errors": []
+}

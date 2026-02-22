@@ -1,0 +1,218 @@
+
+======================================================================
+Initializing Phase 3: Evaluation & Recommendation Pipeline
+======================================================================
+Ô£ô Loaded 23 ABIM authoritative reference ranges
+  Source: ABIM Laboratory Reference Ranges 2026
+Ô£ô Loaded reference ranges
+  Source: American Board of Internal Medicine - Laboratory Tests Reference Ranges
+Ô£ô 28 parameters available for evaluation
+Ô£ô Parameter Evaluator initialized
+Ô£ô Loaded 11 medical condition guidelines
+Ô£ô All Phase 3 modules initialized successfully
+
+
+================================================================================
+PHASE 4: FORMAL VALIDATION & BENCHMARKING
+================================================================================
+
+­ƒôè Loading 4 test cases...
+
+[case_01] High-risk male patient with diabetes, hypertension, smoking
+Starting Phase 3 Pipeline...
+----------------------------------------------------------------------
+
+[Phase 3A] Reference-Based Evaluation...
+Ô£ô Evaluated 12 parameters
+  Abnormal findings: 4
+  Critical findings: 0
+
+[Phase 3B] Pattern Recognition...
+Ô£ô Detected 2 clinical patterns
+
+[Phase 3D] Applying Contextual Refinements...
+Ô£ô Contextual Refiner initialized for male patient, age 45
+  - Known conditions: diabetes, hypertension
+  - Lifestyle factors: smoker, exercise: low, diet: mixed, alcohol: moderate
+
+======================================================================
+Phase 3D: Applying Contextual Refinements (Model 3)
+======================================================================
+
+Ô£ô No contextual adjustments needed (insufficient context or no risk patterns)
+======================================================================
+Ô£ô Applied contextual refinements
+
+[Phase 3E] Calculating Quantified Risk Scores...
+  Calculating CV risk for male patient, age 45
+Ô£ô Cardiovascular 10-year risk: 25.0% (High)
+
+[Phase 3C] Generating Evidence-Based Recommendations...
+Ô£ô Generated recommendations for 2 conditions
+
+======================================================================
+Ô£ô Phase 3 Pipeline Complete
+======================================================================
+
+
+[case_02] Young female with mild anemia, vegetarian diet
+Starting Phase 3 Pipeline...
+----------------------------------------------------------------------
+
+[Phase 3A] Reference-Based Evaluation...
+Ô£ô Evaluated 10 parameters
+  Abnormal findings: 2
+  Critical findings: 0
+
+[Phase 3B] Pattern Recognition...
+Ô£ô Detected 1 clinical patterns
+
+[Phase 3D] Applying Contextual Refinements...
+Ô£ô Contextual Refiner initialized for female patient, age 32
+  - Lifestyle factors: exercise: moderate, diet: vegetarian, alcohol: none
+
+======================================================================
+Phase 3D: Applying Contextual Refinements (Model 3)
+======================================================================
+
+Ô£ô No contextual adjustments needed (insufficient context or no risk patterns)
+======================================================================
+Ô£ô Applied contextual refinements
+
+[Phase 3E] Calculating Quantified Risk Scores...
+  Calculating CV risk for female patient, age 32
+Ô£ô Cardiovascular 10-year risk: 4.0% (Low)
+
+[Phase 3C] Generating Evidence-Based Recommendations...
+Ô£ô Generated recommendations for 1 conditions
+
+======================================================================
+Ô£ô Phase 3 Pipeline Complete
+======================================================================
+
+
+[case_03] Borderline values - metabolic syndrome with subclinical markers
+Starting Phase 3 Pipeline...
+----------------------------------------------------------------------
+
+[Phase 3A] Reference-Based Evaluation...
+Ô£ô Evaluated 9 parameters
+  Abnormal findings: 7
+  Critical findings: 0
+
+[Phase 3B] Pattern Recognition...
+Ô£ô Detected 3 clinical patterns
+
+[Phase 3D] Applying Contextual Refinements...
+Ô£ô Contextual Refiner initialized for Male patient, age 58
+  - Known conditions: prediabetes, obesity
+  - Lifestyle factors: exercise: sedentary, diet: high_carb, alcohol: moderate
+
+======================================================================
+Phase 3D: Applying Contextual Refinements (Model 3)
+======================================================================
+
+Ô£ô No contextual adjustments needed (insufficient context or no risk patterns)
+======================================================================
+Ô£ô Applied contextual refinements
+
+[Phase 3E] Calculating Quantified Risk Scores...
+  Calculating CV risk for male patient, age 58
+Ô£ô Cardiovascular 10-year risk: 25.0% (High)
+
+[Phase 3C] Generating Evidence-Based Recommendations...
+Ô£ô Generated recommendations for 3 conditions
+
+======================================================================
+Ô£ô Phase 3 Pipeline Complete
+======================================================================
+
+
+[case_04] Critical values - severe kidney dysfunction with electrolyte imbalance
+Starting Phase 3 Pipeline...
+----------------------------------------------------------------------
+
+[Phase 3A] Reference-Based Evaluation...
+Ô£ô Evaluated 7 parameters
+  Abnormal findings: 7
+  Critical findings: 0
+
+[Phase 3B] Pattern Recognition...
+Ô£ô Detected 3 clinical patterns
+
+[Phase 3D] Applying Contextual Refinements...
+Ô£ô Contextual Refiner initialized for Female patient, age 72
+  - Known conditions: chronic_kidney_disease, hypertension, diabetes
+  - Lifestyle factors: exercise: limited, diet: low_sodium, alcohol: none
+
+======================================================================
+Phase 3D: Applying Contextual Refinements (Model 3)
+======================================================================
+
+Ô£ô No contextual adjustments needed (insufficient context or no risk patterns)
+======================================================================
+Ô£ô Applied contextual refinements
+
+[Phase 3E] Calculating Quantified Risk Scores...
+  Calculating CV risk for female patient, age 72
+ÔÜá Could not calculate CV risk: invalid literal for int() with base 10: ')'
+
+[Phase 3C] Generating Evidence-Based Recommendations...
+Ô£ô Generated recommendations for 3 conditions
+
+======================================================================
+Ô£ô Phase 3 Pipeline Complete
+======================================================================
+
+
+================================================================================
+CLASSIFICATION ERRORS (Model 1)
+================================================================================
+
+Total Errors: 7
+
+1. [case_01] HbA1c
+   Error Type: Missing prediction
+   Value: N/A
+   Expected: High
+   Predicted: MISSING
+
+2. [case_01] HDL
+   Error Type: Classification mismatch
+   Value: 45
+   Expected: low
+   Predicted: normal
+   Reference: Range varies by category
+
+3. [case_01] TSH
+   Error Type: Missing prediction
+   Value: N/A
+   Expected: Normal
+   Predicted: MISSING
+
+4. [case_02] Hematocrit
+   Error Type: Missing prediction
+   Value: N/A
+   Expected: Low
+   Predicted: MISSING
+
+5. [case_02] MCV
+   Error Type: Missing prediction
+   Value: N/A
+   Expected: Low
+   Predicted: MISSING
+
+6. [case_03] ALT
+   Error Type: Classification mismatch
+   Value: 48
+   Expected: high
+   Predicted: normal
+   Reference: Range varies by category
+
+7. [case_03] Total Bilirubin
+   Error Type: Classification mismatch
+   Value: 0.9
+   Expected: normal
+   Predicted: unknown
+   Reference: 
+

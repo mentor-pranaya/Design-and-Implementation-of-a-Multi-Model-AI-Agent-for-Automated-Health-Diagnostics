@@ -1,0 +1,54 @@
+{
+  "report_id": "report_006",
+  "report_metadata": {
+    "laboratory": "app on your mobile device by using QR Code",
+    "format": "PDF",
+    "date": "31-01-2025",
+    "completeness": "Complete",
+    "abnormality_type": "Unknown",
+    "verified": false,
+    "verified_by": "",
+    "verified_date": ""
+  },
+  "parameters": {
+    "glucose": {
+      "value": 40.0,
+      "unit": "H",
+      "reference_range": {
+        "min": null,
+        "max": null
+      }
+    },
+    "ast": {
+      "value": 40.0,
+      "unit": "H",
+      "reference_range": {
+        "min": 15.0,
+        "max": 41.0
+      }
+    },
+    "cholesterol": {
+      "value": 110.0,
+      "unit": "HD",
+      "reference_range": {
+        "min": 128.0,
+        "max": 258.0
+      }
+    },
+    "calcium": {
+      "value": 5.0,
+      "unit": "Log",
+      "reference_range": {
+        "min": 8.9,
+        "max": 10.0
+      }
+    }
+  },
+  "classifications": {
+    "glucose": "Unknown",
+    "ast": "Normal",
+    "cholesterol": "Low",
+    "calcium": "Low"
+  },
+  "notes": "Auto-generated template - requires manual verification"
+}

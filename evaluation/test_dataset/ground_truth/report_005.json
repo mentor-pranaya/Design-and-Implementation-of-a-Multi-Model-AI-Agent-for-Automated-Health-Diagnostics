@@ -1,0 +1,216 @@
+{
+  "report_id": "report_005",
+  "report_metadata": {
+    "laboratory": "No",
+    "format": "PDF",
+    "date": "25/4/2024",
+    "completeness": "Complete",
+    "abnormality_type": "Unknown",
+    "verified": false,
+    "verified_by": "",
+    "verified_date": ""
+  },
+  "parameters": {
+    "chloride": {
+      "value": 102.0,
+      "unit": "/B",
+      "reference_range": {
+        "min": 100.0,
+        "max": 108.0
+      }
+    },
+    "creatinine": {
+      "value": 0.51,
+      "unit": "unknown",
+      "reference_range": {
+        "min": 0.56,
+        "max": 1.33
+      }
+    },
+    "magnesium": {
+      "value": 0.51,
+      "unit": "unknown",
+      "reference_range": {
+        "min": null,
+        "max": null
+      }
+    },
+    "urea": {
+      "value": 17.0,
+      "unit": "unknown",
+      "reference_range": {
+        "min": null,
+        "max": null
+      }
+    },
+    "ast": {
+      "value": 3.0,
+      "unit": "months",
+      "reference_range": {
+        "min": 15.0,
+        "max": 41.0
+      }
+    },
+    "alt": {
+      "value": 35.0,
+      "unit": "unknown",
+      "reference_range": {
+        "min": 12.0,
+        "max": 51.0
+      }
+    },
+    "ggt": {
+      "value": 38.0,
+      "unit": "unknown",
+      "reference_range": {
+        "min": null,
+        "max": null
+      }
+    },
+    "alp": {
+      "value": 30.0,
+      "unit": "unknown",
+      "reference_range": {
+        "min": null,
+        "max": null
+      }
+    },
+    "bilirubin_total": {
+      "value": 0.2,
+      "unit": "unknown",
+      "reference_range": {
+        "min": null,
+        "max": null
+      }
+    },
+    "bilirubin_direct": {
+      "value": 0.2,
+      "unit": "unknown",
+      "reference_range": {
+        "min": null,
+        "max": null
+      }
+    },
+    "bilirubin_indirect": {
+      "value": 1.1,
+      "unit": "unknown",
+      "reference_range": {
+        "min": null,
+        "max": null
+      }
+    },
+    "protein_total": {
+      "value": 6.4,
+      "unit": "unknown",
+      "reference_range": {
+        "min": null,
+        "max": null
+      }
+    },
+    "albumin": {
+      "value": 3.2,
+      "unit": "unknown",
+      "reference_range": {
+        "min": 3.7,
+        "max": 4.8
+      }
+    },
+    "globulin": {
+      "value": 2.0,
+      "unit": "unknown",
+      "reference_range": {
+        "min": null,
+        "max": null
+      }
+    },
+    "calcium": {
+      "value": 9.15,
+      "unit": "mg/dL",
+      "reference_range": {
+        "min": 8.9,
+        "max": 10.0
+      }
+    },
+    "potassium": {
+      "value": 3.0,
+      "unit": "months",
+      "reference_range": {
+        "min": 3.5,
+        "max": 4.7
+      }
+    },
+    "glucose": {
+      "value": 70.0,
+      "unit": "unknown",
+      "reference_range": {
+        "min": null,
+        "max": null
+      }
+    },
+    "t4": {
+      "value": 5.74,
+      "unit": "unknown",
+      "reference_range": {
+        "min": null,
+        "max": null
+      }
+    },
+    "tsh": {
+      "value": 1.0,
+      "unit": "unknown",
+      "reference_range": {
+        "min": 0.5,
+        "max": 4.0
+      }
+    },
+    "t3": {
+      "value": 2.0,
+      "unit": "and/or",
+      "reference_range": {
+        "min": null,
+        "max": null
+      }
+    },
+    "hemoglobin": {
+      "value": 10.0,
+      "unit": "unknown",
+      "reference_range": {
+        "min": 11.4,
+        "max": 16.3
+      }
+    },
+    "wbc": {
+      "value": 3.0,
+      "unit": "WBC/HPF",
+      "reference_range": {
+        "min": 4.4,
+        "max": 11.4
+      }
+    }
+  },
+  "classifications": {
+    "chloride": "Normal",
+    "creatinine": "Low",
+    "magnesium": "Unknown",
+    "urea": "Unknown",
+    "ast": "Low",
+    "alt": "Normal",
+    "ggt": "Unknown",
+    "alp": "Unknown",
+    "bilirubin_total": "Unknown",
+    "bilirubin_direct": "Unknown",
+    "bilirubin_indirect": "Unknown",
+    "protein_total": "Unknown",
+    "albumin": "Low",
+    "globulin": "Unknown",
+    "calcium": "Normal",
+    "potassium": "Low",
+    "glucose": "Unknown",
+    "t4": "Unknown",
+    "tsh": "Normal",
+    "t3": "Unknown",
+    "hemoglobin": "Low",
+    "wbc": "Low"
+  },
+  "notes": "Auto-generated template - requires manual verification"
+}

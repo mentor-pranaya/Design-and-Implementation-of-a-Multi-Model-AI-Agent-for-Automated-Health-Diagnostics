@@ -1,0 +1,29 @@
+================================================================================
+VALIDATION PERFORMANCE REPORT
+================================================================================
+
+Dataset Statistics:
+  Test Cases: 2
+  Parameters: 22
+  Classifications: 22
+  Patterns: 3
+
+[ MODEL 1: Reference-Based Classification ]
+  Precision: 1.000
+  Recall: 1.000
+  F1 Score: 1.000
+  Errors: 0
+
+[ MODEL 2: Pattern Detection ]
+  Precision: 1.000
+  Recall (Sensitivity): 1.000
+  F1 Score: 1.000
+  True Positives: 3
+  False Positives: 0
+  False Negatives: 0
+
+[ RISK SCORING: Cardiovascular ]
+  Category Accuracy: 100.0%
+  Range Accuracy: 100.0%
+
+================================================================================

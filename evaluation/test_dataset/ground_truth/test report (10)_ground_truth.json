@@ -1,0 +1,238 @@
+{
+  "filename": "test report (10).pdf",
+  "timestamp": "2026-02-18T19:23:24.354825",
+  "parameters": {
+    "hemoglobin": {
+      "extracted_value": 17.0,
+      "extracted_unit": "unknown",
+      "correct_value": 17.0,
+      "correct_unit": "unknown",
+      "expected_classification": "unknown",
+      "notes": ""
+    },
+    "hba1c": {
+      "extracted_value": 5.7,
+      "extracted_unit": "non",
+      "correct_value": 5.7,
+      "correct_unit": "non",
+      "expected_classification": "unknown",
+      "notes": ""
+    },
+    "glucose": {
+      "extracted_value": 116.9,
+      "extracted_unit": "high",
+      "correct_value": 116.9,
+      "correct_unit": "high",
+      "expected_classification": "unknown",
+      "notes": ""
+    },
+    "rbc": {
+      "extracted_value": 6.05,
+      "extracted_unit": "High",
+      "correct_value": 6.05,
+      "correct_unit": "High",
+      "expected_classification": "unknown",
+      "notes": ""
+    },
+    "wbc": {
+      "extracted_value": 5.6,
+      "extracted_unit": "thou/puL",
+      "correct_value": 5.6,
+      "correct_unit": "thou/puL",
+      "expected_classification": "unknown",
+      "notes": ""
+    },
+    "platelet": {
+      "extracted_value": 207.0,
+      "extracted_unit": "unknown",
+      "correct_value": 207.0,
+      "correct_unit": "unknown",
+      "expected_classification": "unknown",
+      "notes": ""
+    },
+    "hematocrit": {
+      "extracted_value": 49.0,
+      "extracted_unit": "unknown",
+      "correct_value": 49.0,
+      "correct_unit": "unknown",
+      "expected_classification": "unknown",
+      "notes": ""
+    },
+    "neutrophils": {
+      "extracted_value": 38.0,
+      "extracted_unit": "low",
+      "correct_value": 38.0,
+      "correct_unit": "low",
+      "expected_classification": "unknown",
+      "notes": ""
+    },
+    "lymphocytes": {
+      "extracted_value": 56.0,
+      "extracted_unit": "high",
+      "correct_value": 56.0,
+      "correct_unit": "high",
+      "expected_classification": "unknown",
+      "notes": ""
+    },
+    "monocytes": {
+      "extracted_value": 1.0,
+      "extracted_unit": "low",
+      "correct_value": 1.0,
+      "correct_unit": "low",
+      "expected_classification": "unknown",
+      "notes": ""
+    },
+    "eosinophils": {
+      "extracted_value": 5.0,
+      "extracted_unit": "unknown",
+      "correct_value": 5.0,
+      "correct_unit": "unknown",
+      "expected_classification": "unknown",
+      "notes": ""
+    },
+    "basophils": {
+      "extracted_value": 0.0,
+      "extracted_unit": "unknown",
+      "correct_value": 0.0,
+      "correct_unit": "unknown",
+      "expected_classification": "unknown",
+      "notes": ""
+    },
+    "ast": {
+      "extracted_value": 34.0,
+      "extracted_unit": "adults",
+      "correct_value": 34.0,
+      "correct_unit": "adults",
+      "expected_classification": "unknown",
+      "notes": ""
+    },
+    "creatinine": {
+      "extracted_value": 0.95,
+      "extracted_unit": "adult",
+      "correct_value": 0.95,
+      "correct_unit": "adult",
+      "expected_classification": "unknown",
+      "notes": ""
+    },
+    "magnesium": {
+      "extracted_value": 0.95,
+      "extracted_unit": "Adult",
+      "correct_value": 0.95,
+      "correct_unit": "Adult",
+      "expected_classification": "unknown",
+      "notes": ""
+    },
+    "protein_total": {
+      "extracted_value": 6.8,
+      "extracted_unit": "ambulatory",
+      "correct_value": 6.8,
+      "correct_unit": "ambulatory",
+      "expected_classification": "unknown",
+      "notes": ""
+    },
+    "albumin": {
+      "extracted_value": 4.3,
+      "extracted_unit": "unknown",
+      "correct_value": 4.3,
+      "correct_unit": "unknown",
+      "expected_classification": "unknown",
+      "notes": ""
+    },
+    "globulin": {
+      "extracted_value": 2.5,
+      "extracted_unit": "unknown",
+      "correct_value": 2.5,
+      "correct_unit": "unknown",
+      "expected_classification": "unknown",
+      "notes": ""
+    },
+    "bilirubin_total": {
+      "extracted_value": 0.65,
+      "extracted_unit": "General",
+      "correct_value": 0.65,
+      "correct_unit": "General",
+      "expected_classification": "unknown",
+      "notes": ""
+    },
+    "ggt": {
+      "extracted_value": 36.0,
+      "extracted_unit": "unknown",
+      "correct_value": 36.0,
+      "correct_unit": "unknown",
+      "expected_classification": "unknown",
+      "notes": ""
+    },
+    "urea": {
+      "extracted_value": 21.7,
+      "extracted_unit": "unknown",
+      "correct_value": 21.7,
+      "correct_unit": "unknown",
+      "expected_classification": "unknown",
+      "notes": ""
+    },
+    "bun": {
+      "extracted_value": 10.1,
+      "extracted_unit": "mg/dl",
+      "correct_value": 10.1,
+      "correct_unit": "mg/dl",
+      "expected_classification": "unknown",
+      "notes": ""
+    },
+    "cholesterol": {
+      "extracted_value": 163.0,
+      "extracted_unit": "desirable",
+      "correct_value": 163.0,
+      "correct_unit": "desirable",
+      "expected_classification": "unknown",
+      "notes": ""
+    },
+    "triglycerides": {
+      "extracted_value": 206.0,
+      "extracted_unit": "high",
+      "correct_value": 206.0,
+      "correct_unit": "high",
+      "expected_classification": "unknown",
+      "notes": ""
+    },
+    "hdl": {
+      "extracted_value": 49.0,
+      "extracted_unit": "general",
+      "correct_value": 49.0,
+      "correct_unit": "general",
+      "expected_classification": "unknown",
+      "notes": ""
+    },
+    "ldl": {
+      "extracted_value": 81.0,
+      "extracted_unit": "Optimum",
+      "correct_value": 81.0,
+      "correct_unit": "Optimum",
+      "expected_classification": "unknown",
+      "notes": ""
+    },
+    "potassium": {
+      "extracted_value": 4.5,
+      "extracted_unit": "unknown",
+      "correct_value": 4.5,
+      "correct_unit": "unknown",
+      "expected_classification": "unknown",
+      "notes": ""
+    },
+    "tsh": {
+      "extracted_value": 3.19,
+      "extracted_unit": "unknown",
+      "correct_value": 3.19,
+      "correct_unit": "unknown",
+      "expected_classification": "unknown",
+      "notes": ""
+    },
+    "calcium": {
+      "extracted_value": 7.0,
+      "extracted_unit": "unknown",
+      "correct_value": 7.0,
+      "correct_unit": "unknown",
+      "expected_classification": "unknown",
+      "notes": ""
+    }
+  }
+}

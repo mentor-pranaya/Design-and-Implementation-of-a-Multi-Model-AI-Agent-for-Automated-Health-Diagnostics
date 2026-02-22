@@ -1,0 +1,16 @@
+{
+  "report_id": "report_001_png",
+  "report_metadata": {
+    "laboratory": "Sample Type",
+    "format": "PNG",
+    "date": "2026-02-19",
+    "completeness": "Complete",
+    "abnormality_type": "Unknown",
+    "verified": false,
+    "verified_by": "",
+    "verified_date": ""
+  },
+  "parameters": {},
+  "classifications": {},
+  "notes": "Auto-generated template - requires manual verification"
+}

@@ -1,7 +1,18 @@
 import json
 import csv
 from pathlib import Path
-from ocr.pdf_ocr import extract_text_from_pdf
+import sys
+import os
+
+# Add parent directory to path for imports
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+try:
+    from ocr.pdf_ocr import extract_text_from_pdf
+    from extraction.pdf_parser import parse_pdf_text, extract_patient_info
+    PDF_SUPPORT = True
+except ImportError:
+    PDF_SUPPORT = False
 
 
 
@@ -36,13 +47,35 @@ def load_input(file_path: str) -> dict:
         return _load_csv(path)
     
     elif path.suffix.lower() == ".pdf":
-    raw_text = extract_text_from_pdf(str(path))
-    return {"RAW_OCR_TEXT": raw_text}
-
+        if not PDF_SUPPORT:
+            raise DataIngestionError("PDF support not available. OCR module not found.")
+        raw_text = extract_text_from_pdf(str(path))
+        
+        # Parse the OCR text to extract structured parameters
+        parameters = parse_pdf_text(raw_text)
+        
+        print(f"\n{'='*70}")
+        print("DEBUG: Raw parameters from PDF parser:")
+        for param, val in parameters.items():
+            print(f"  {param}: '{val}'")
+        print(f"{'='*70}\n")
+        
+        # Also extract patient info
+        patient_info = extract_patient_info(raw_text)
+        
+        # Return both parameters and metadata
+        result = parameters.copy() if parameters else {}
+        result['_metadata'] = {
+            'raw_text': raw_text,
+            'patient_info': patient_info,
+            'source_type': 'pdf'
+        }
+        
+        return result
 
     else:
         raise DataIngestionError(
-            f"Unsupported file format: {path.suffix}. Use JSON or CSV."
+            f"Unsupported file format: {path.suffix}. Use JSON, CSV, or PDF."
         )
 
 

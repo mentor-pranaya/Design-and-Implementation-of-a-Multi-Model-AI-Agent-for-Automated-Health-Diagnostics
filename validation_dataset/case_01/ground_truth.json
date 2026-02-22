@@ -1,0 +1,64 @@
+{
+  "case_id": "case_01",
+  "description": "High-risk male patient with diabetes, hypertension, smoking",
+  "source_report": "../../data/sample_reports/sample_blood_report_1.json",
+  
+  "patient_info": {
+    "age": 45,
+    "sex": "male",
+    "known_conditions": ["diabetes", "hypertension"],
+    "lifestyle": {
+      "smoker": true,
+      "exercise_level": "low",
+      "diet_type": "mixed",
+      "alcohol_use": "moderate"
+    }
+  },
+  
+  "true_parameters": {
+    "Hemoglobin": 14.5,
+    "RBC": 5.2,
+    "WBC": 7500,
+    "Platelets": 250000,
+    "Glucose": 135,
+    "Creatinine": 1.1,
+    "Total Cholesterol": 220,
+    "HDL": 45,
+    "LDL": 145,
+    "Triglycerides": 180,
+    "ALT": 32,
+    "AST": 28
+  },
+  
+  "true_classification": {
+    "Hemoglobin": "Normal",
+    "RBC": "Normal",
+    "WBC": "Normal",
+    "Platelets": "Normal",
+    "Glucose": "High",
+    "Creatinine": "Normal",
+    "Total Cholesterol": "High",
+    "HDL": "Normal",
+    "LDL": "High",
+    "Triglycerides": "High",
+    "ALT": "Normal",
+    "AST": "Normal"
+  },
+  
+  "true_severity": {
+    "Glucose": "Mild",
+    "Total Cholesterol": "Mild",
+    "LDL": "Severe",
+    "Triglycerides": "Mild"
+  },
+  
+  "true_patterns": [
+    "Diabetes Risk",
+    "High Cholesterol"
+  ],
+  
+  "true_risk_category": "High",
+  "true_risk_range": {"min": 20, "max": 30},
+  
+  "rationale": "45-year-old smoker with diabetes (HbA1c 7.8%), hypertension, lipid abnormalities (LDL 145, HDL 38, Trig 180). Multiple cardiovascular risk factors warrant High risk category."
+}

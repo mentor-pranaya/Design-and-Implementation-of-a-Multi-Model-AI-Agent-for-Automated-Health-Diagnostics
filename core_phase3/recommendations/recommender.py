@@ -73,12 +73,14 @@ class RecommendationEngine:
         
         This method implements multi-model reasoning:
         - Evaluations provide reference-based clinical status (Low/Normal/High)
-        - Patterns provide contextual risk signals
+        - Patterns provide contextual risk signals (with contextual adjustments from Model 3)
         - Recommendations synthesize both for evidence-based guidance
         
         Args:
             patterns: List of detected patterns from Phase 3B (Pattern Recognition)
-                     Example: [{"pattern": "Anemia Indicator", "severity": "Mild"}]
+                     May include contextual_adjustments from Phase 3D (Model 3)
+                     Example: [{"pattern": "Anemia Indicator", "severity": "Mild", 
+                               "contextual_adjustments": ["Risk elevated due to age"]}]
             evaluations: Evaluation results from Phase 3A (Reference-Based Evaluation)
                         Contains evaluated parameters with status and severity
         
@@ -103,10 +105,15 @@ class RecommendationEngine:
         recommendations_list = []
         detected_conditions = []
         
-        # PART 1: Process patterns (existing pattern-based logic preserved)
+        # PART 1: Process patterns (with contextual adjustments from Model 3)
         for pattern in patterns:
             pattern_name = pattern.get("pattern")
             severity = pattern.get("severity", "Unknown")
+            
+            # Extract contextual adjustments from Phase 3D (Model 3)
+            contextual_adjustments = pattern.get("contextual_adjustments", [])
+            risk_score = pattern.get("risk_score")
+            original_risk_score = pattern.get("original_risk_score")
             
             if pattern_name in self.medical_guidelines:
                 guideline = self.medical_guidelines[pattern_name]
@@ -120,12 +127,33 @@ class RecommendationEngine:
                     "evidence_source": "pattern-based"
                 }
                 
-                # ENHANCEMENT: Add evaluation context if available
+                # ENHANCEMENT 1: Add evaluation context if available
                 if evaluations:
                     eval_context = self._get_evaluation_context(pattern_name, evaluations)
                     if eval_context:
                         recommendation["evaluation_context"] = eval_context
                         recommendation["evidence_source"] = "pattern + evaluation"
+                
+                # ENHANCEMENT 2: Add contextual refinements (Model 3)
+                if contextual_adjustments:
+                    recommendation["contextual_insights"] = contextual_adjustments
+                    recommendation["evidence_source"] = "pattern + evaluation + context"
+                    
+                    # Add personalized phrasing to recommendations
+                    recommendation = self._personalize_recommendation(
+                        recommendation, 
+                        contextual_adjustments
+                    )
+                
+                # Add risk score information if available
+                if risk_score is not None:
+                    recommendation["risk_score"] = round(risk_score, 3)
+                    if original_risk_score is not None and original_risk_score != risk_score:
+                        recommendation["risk_adjustment"] = {
+                            "original": round(original_risk_score, 3),
+                            "adjusted": round(risk_score, 3),
+                            "change_percent": round((risk_score - original_risk_score) / original_risk_score * 100, 1)
+                        }
                 
                 recommendations_list.append(recommendation)
                 detected_conditions.append(pattern_name)
@@ -337,6 +365,84 @@ class RecommendationEngine:
             "Gradually increase intensity under medical supervision",
             "Monitor symptoms and adjust activity accordingly"
         ]
+    
+    def _personalize_recommendation(
+        self, 
+        recommendation: Dict[str, Any], 
+        contextual_adjustments: List[str]
+    ) -> Dict[str, Any]:
+        """
+        Personalize recommendations based on contextual adjustments from Model 3.
+        
+        Adds risk-aware phrasing and emphasis based on patient context.
+        
+        Args:
+            recommendation: Base recommendation dictionary
+            contextual_adjustments: List of contextual modifiers from Phase 3D
+        
+        Returns:
+            Enhanced recommendation with personalized messaging
+        """
+        # Add personalized follow-up message
+        if contextual_adjustments:
+            context_summary = " ".join(contextual_adjustments)
+            
+            # Amplify urgency for high-risk contexts
+            if any(word in context_summary.lower() for word in ['elevated', 'amplified', 'significantly', 'major']):
+                # Strengthen follow-up message
+                original_followup = recommendation.get("follow_up", "")
+                recommendation["follow_up"] = f"PRIORITY: {original_followup} Given your risk factors, prompt medical consultation is strongly recommended."
+                
+                # Add emphasis to diet recommendations
+                if recommendation.get("diet"):
+                    recommendation["diet"].insert(0, "⚠️ Given your elevated risk profile, strict adherence to dietary guidelines is crucial:")
+            
+            # Add personalized note
+            recommendation["personalized_note"] = self._generate_personalized_note(
+                recommendation.get("condition"),
+                contextual_adjustments
+            )
+        
+        return recommendation
+    
+    def _generate_personalized_note(
+        self, 
+        condition: str, 
+        contextual_adjustments: List[str]
+    ) -> str:
+        """
+        Generate a personalized note explaining why the condition is especially relevant.
+        
+        Args:
+            condition: The condition name
+            contextual_adjustments: List of context modifiers
+        
+        Returns:
+            Personalized explanatory note
+        """
+        # Extract key risk factors
+        risk_factors = []
+        for adjustment in contextual_adjustments:
+            if "age" in adjustment.lower():
+                risk_factors.append("age")
+            if "smok" in adjustment.lower():
+                risk_factors.append("smoking")
+            if "sedentary" in adjustment.lower() or "exercise" in adjustment.lower():
+                risk_factors.append("activity level")
+            if "known" in adjustment.lower() or "history" in adjustment.lower():
+                risk_factors.append("medical history")
+            if "diet" in adjustment.lower():
+                risk_factors.append("dietary patterns")
+        
+        if risk_factors:
+            factors_text = ", ".join(risk_factors)
+            return (
+                f"Your {factors_text} {'increases' if len(risk_factors) == 1 else 'increase'} "
+                f"the clinical significance of this finding. Personalized attention to lifestyle "
+                f"modifications is particularly important in your case."
+            )
+        
+        return "Your personal health context has been considered in these recommendations."
     
     def _get_general_lifestyle_tips(self) -> Dict[str, List[str]]:
         """Get general lifestyle tips applicable to all."""

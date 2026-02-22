@@ -1,0 +1,160 @@
+{
+  "_metadata": {
+    "description": "Configuration for risk scoring engines",
+    "source": "ASCVD guidelines and clinical risk models",
+    "last_updated": "2026-02-17",
+    "purpose": "Eliminate hardcoded risk scoring parameters"
+  },
+  
+  "cardiovascular_risk": {
+    "age_stratification": {
+      "under_40": {
+        "points": 1,
+        "category": "<40"
+      },
+      "40_to_49": {
+        "points": 3,
+        "category": "40-49"
+      },
+      "50_to_59": {
+        "points": 6,
+        "category": "50-59"
+      },
+      "60_to_69": {
+        "points": 9,
+        "category": "60-69"
+      },
+      "70_plus": {
+        "points": 12,
+        "category": "70+"
+      }
+    },
+    
+    "sex_modifier": {
+      "male": 2,
+      "female": 0
+    },
+    
+    "lipid_thresholds": {
+      "total_cholesterol_high": 200,
+      "ldl_very_high": 160,
+      "ldl_high": 130,
+      "hdl_low": 40,
+      "unit": "mg/dL"
+    },
+    
+    "lipid_points": {
+      "total_cholesterol_high": 2,
+      "ldl_very_high": 5,
+      "ldl_high": 3,
+      "hdl_low": 2
+    },
+    
+    "clinical_factors": {
+      "smoking": 3,
+      "hypertension": 3,
+      "diabetes": 4
+    },
+    
+    "risk_categories": {
+      "low": {
+        "max_points": 4,
+        "risk_percent": 4.0,
+        "description": "Low 10-year CVD risk"
+      },
+      "borderline": {
+        "max_points": 8,
+        "risk_percent": 6.5,
+        "description": "Borderline 10-year CVD risk"
+      },
+      "intermediate": {
+        "max_points": 14,
+        "risk_percent": 15.0,
+        "description": "Intermediate 10-year CVD risk"
+      },
+      "high": {
+        "min_points": 15,
+        "risk_percent": 25.0,
+        "description": "High 10-year CVD risk"
+      }
+    }
+  },
+  
+  "comprehensive_health_risk": {
+    "demographic_age_points": {
+      "under_40": 2,
+      "40_to_49": 5,
+      "50_to_59": 8,
+      "60_to_69": 12,
+      "70_plus": 15
+    },
+    
+    "sex_modifier": {
+      "male": 3,
+      "female": 0
+    },
+    
+    "severity_points": {
+      "Mild": 2,
+      "Moderate": 5,
+      "Severe": 10,
+      "Critical": 15
+    },
+    
+    "organ_weights": {
+      "Creatinine": 1.5,
+      "BUN": 1.4,
+      "Potassium": 1.5,
+      "Sodium": 1.2,
+      "Hemoglobin": 1.2,
+      "HbA1c": 1.3,
+      "LDL": 1.2,
+      "Triglycerides": 1.1,
+      "Glucose": 1.2,
+      "Albumin": 1.3,
+      "ALT": 1.1,
+      "AST": 1.1
+    },
+    
+    "pattern_weights": {
+      "Kidney Disease": 18,
+      "Metabolic Syndrome": 12,
+      "Electrolyte Imbalance": 12,
+      "Diabetes Risk": 12,
+      "Prediabetes Risk": 8,
+      "Anemia of Chronic Disease": 10,
+      "Anemia Indicator": 6,
+      "Liver Health Alert": 8,
+      "High Cholesterol": 10
+    },
+    
+    "multi_organ_amplifier": {
+      "three_plus_organs": 15,
+      "two_organs": 10,
+      "one_organ": 0
+    },
+    
+    "risk_categories": {
+      "low": {
+        "max_score": 20,
+        "urgency": "Routine follow-up recommended"
+      },
+      "borderline": {
+        "max_score": 40,
+        "urgency": "Lifestyle modification advised"
+      },
+      "intermediate": {
+        "max_score": 60,
+        "urgency": "Medical review recommended"
+      },
+      "high": {
+        "max_score": 80,
+        "urgency": "Urgent specialist evaluation required"
+      },
+      "critical": {
+        "min_score": 81,
+        "urgency": "Immediate medical attention required"
+      }
+    }
+  }
+}

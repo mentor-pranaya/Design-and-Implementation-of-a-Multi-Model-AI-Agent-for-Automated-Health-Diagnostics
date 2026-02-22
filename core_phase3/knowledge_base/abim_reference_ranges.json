@@ -1,0 +1,489 @@
+{
+  "Hemoglobin": {
+    "unit": "g/dL",
+    "male": {
+      "low": 13.5,
+      "high": 17.5
+    },
+    "female": {
+      "low": 12.0,
+      "high": 15.5
+    },
+    "clinical_significance": "Oxygen-carrying capacity of blood",
+    "source": "ABIM Laboratory Reference Ranges 2026",
+    "confidence_level": "authoritative",
+    "category": "CBC"
+  },
+  "Hematocrit": {
+    "unit": "%",
+    "male": {
+      "low": 39.0,
+      "high": 49.0
+    },
+    "female": {
+      "low": 35.0,
+      "high": 45.0
+    },
+    "clinical_significance": "Proportion of blood volume occupied by RBCs",
+    "source": "ABIM Laboratory Reference Ranges 2026",
+    "confidence_level": "authoritative",
+    "category": "CBC"
+  },
+  "RBC": {
+    "unit": "million cells/μL",
+    "male": {
+      "low": 4.7,
+      "high": 6.1
+    },
+    "female": {
+      "low": 4.2,
+      "high": 5.4
+    },
+    "clinical_significance": "Red blood cell count",
+    "source": "ABIM Laboratory Reference Ranges 2026",
+    "confidence_level": "authoritative",
+    "category": "CBC"
+  },
+  "WBC": {
+    "unit": "cells/μL",
+    "male": {
+      "low": 4000,
+      "high": 11000
+    },
+    "female": {
+      "low": 4000,
+      "high": 11000
+    },
+    "clinical_significance": "White blood cell count, immune function",
+    "source": "ABIM Laboratory Reference Ranges 2026",
+    "confidence_level": "authoritative",
+    "category": "CBC"
+  },
+  "Platelets": {
+    "unit": "cells/μL",
+    "male": {
+      "low": 150000,
+      "high": 400000
+    },
+    "female": {
+      "low": 150000,
+      "high": 400000
+    },
+    "clinical_significance": "Blood clotting function",
+    "source": "ABIM Laboratory Reference Ranges 2026",
+    "confidence_level": "authoritative",
+    "category": "CBC"
+  },
+  "MCV": {
+    "unit": "fL",
+    "male": {
+      "low": 80,
+      "high": 100
+    },
+    "female": {
+      "low": 80,
+      "high": 100
+    },
+    "clinical_significance": "Mean corpuscular volume, RBC size",
+    "source": "ABIM Laboratory Reference Ranges 2026",
+    "confidence_level": "authoritative",
+    "category": "CBC"
+  },
+  "Glucose": {
+    "unit": "mg/dL",
+    "male": {
+      "low": 70,
+      "high": 100
+    },
+    "female": {
+      "low": 70,
+      "high": 100
+    },
+    "clinical_significance": "Fasting blood glucose, diabetes screening",
+    "source": "ABIM Laboratory Reference Ranges 2026",
+    "confidence_level": "authoritative",
+    "category": "Metabolic",
+    "fasting_required": true
+  },
+  "Creatinine": {
+    "unit": "mg/dL",
+    "male": {
+      "low": 0.7,
+      "high": 1.3
+    },
+    "female": {
+      "low": 0.6,
+      "high": 1.1
+    },
+    "clinical_significance": "Kidney function marker",
+    "source": "ABIM Laboratory Reference Ranges 2026",
+    "confidence_level": "authoritative",
+    "category": "Metabolic"
+  },
+  "BUN": {
+    "unit": "mg/dL",
+    "male": {
+      "low": 8,
+      "high": 20
+    },
+    "female": {
+      "low": 8,
+      "high": 20
+    },
+    "clinical_significance": "Blood urea nitrogen, kidney function",
+    "source": "ABIM Laboratory Reference Ranges 2026",
+    "confidence_level": "authoritative",
+    "category": "Metabolic"
+  },
+  "Sodium": {
+    "unit": "mEq/L",
+    "male": {
+      "low": 136,
+      "high": 145
+    },
+    "female": {
+      "low": 136,
+      "high": 145
+    },
+    "clinical_significance": "Electrolyte balance, fluid regulation",
+    "source": "ABIM Laboratory Reference Ranges 2026",
+    "confidence_level": "authoritative",
+    "category": "Metabolic"
+  },
+  "Potassium": {
+    "unit": "mEq/L",
+    "male": {
+      "low": 3.5,
+      "high": 5.0
+    },
+    "female": {
+      "low": 3.5,
+      "high": 5.0
+    },
+    "clinical_significance": "Cardiac function, muscle contraction",
+    "source": "ABIM Laboratory Reference Ranges 2026",
+    "confidence_level": "authoritative",
+    "category": "Metabolic"
+  },
+  "Calcium": {
+    "unit": "mg/dL",
+    "male": {
+      "low": 8.5,
+      "high": 10.5
+    },
+    "female": {
+      "low": 8.5,
+      "high": 10.5
+    },
+    "clinical_significance": "Bone health, neuromuscular function",
+    "source": "ABIM Laboratory Reference Ranges 2026",
+    "confidence_level": "authoritative",
+    "category": "Metabolic"
+  },
+  "Albumin": {
+    "unit": "g/dL",
+    "male": {
+      "low": 3.5,
+      "high": 5.5
+    },
+    "female": {
+      "low": 3.5,
+      "high": 5.5
+    },
+    "clinical_significance": "Protein synthesis, nutritional status",
+    "source": "ABIM Laboratory Reference Ranges 2026",
+    "confidence_level": "authoritative",
+    "category": "Metabolic"
+  },
+  "Total Cholesterol": {
+    "unit": "mg/dL",
+    "male": {
+      "low": 125,
+      "high": 200
+    },
+    "female": {
+      "low": 125,
+      "high": 200
+    },
+    "clinical_significance": "Cardiovascular risk assessment",
+    "source": "ABIM Laboratory Reference Ranges 2026",
+    "confidence_level": "authoritative",
+    "category": "Lipid",
+    "optimal": {
+      "low": 125,
+      "high": 200
+    },
+    "borderline_high": 200,
+    "high": 240
+  },
+  "LDL": {
+    "unit": "mg/dL",
+    "male": {
+      "low": 50,
+      "high": 100
+    },
+    "female": {
+      "low": 50,
+      "high": 100
+    },
+    "clinical_significance": "LDL cholesterol, 'bad' cholesterol",
+    "source": "ABIM Laboratory Reference Ranges 2026",
+    "confidence_level": "authoritative",
+    "category": "Lipid",
+    "optimal": {
+      "low": 50,
+      "high": 100
+    },
+    "borderline_high": 130,
+    "high": 160
+  },
+  "HDL": {
+    "unit": "mg/dL",
+    "male": {
+      "low": 40,
+      "high": 100
+    },
+    "female": {
+      "low": 50,
+      "high": 100
+    },
+    "clinical_significance": "HDL cholesterol, 'good' cholesterol",
+    "source": "ABIM Laboratory Reference Ranges 2026",
+    "confidence_level": "authoritative",
+    "category": "Lipid",
+    "optimal_minimum": {
+      "male": 40,
+      "female": 50
+    }
+  },
+  "Triglycerides": {
+    "unit": "mg/dL",
+    "male": {
+      "low": 50,
+      "high": 150
+    },
+    "female": {
+      "low": 50,
+      "high": 150
+    },
+    "clinical_significance": "Blood fat levels, cardiovascular risk",
+    "source": "ABIM Laboratory Reference Ranges 2026",
+    "confidence_level": "authoritative",
+    "category": "Lipid",
+    "fasting_required": true,
+    "borderline_high": 150,
+    "high": 200
+  },
+  "ALT": {
+    "unit": "U/L",
+    "male": {
+      "low": 7,
+      "high": 56
+    },
+    "female": {
+      "low": 7,
+      "high": 56
+    },
+    "clinical_significance": "Alanine aminotransferase, liver function",
+    "source": "ABIM Laboratory Reference Ranges 2026",
+    "confidence_level": "authoritative",
+    "category": "Liver"
+  },
+  "AST": {
+    "unit": "U/L",
+    "male": {
+      "low": 10,
+      "high": 40
+    },
+    "female": {
+      "low": 10,
+      "high": 40
+    },
+    "clinical_significance": "Aspartate aminotransferase, liver/cardiac function",
+    "source": "ABIM Laboratory Reference Ranges 2026",
+    "confidence_level": "authoritative",
+    "category": "Liver"
+  },
+  "Bilirubin Total": {
+    "unit": "mg/dL",
+    "male": {
+      "low": 0.3,
+      "high": 1.2
+    },
+    "female": {
+      "low": 0.3,
+      "high": 1.2
+    },
+    "clinical_significance": "Liver function, hemolysis indicator",
+    "source": "ABIM Laboratory Reference Ranges 2026",
+    "confidence_level": "authoritative",
+    "category": "Liver"
+  },
+  "TSH": {
+    "unit": "mIU/L",
+    "male": {
+      "low": 0.4,
+      "high": 4.0
+    },
+    "female": {
+      "low": 0.4,
+      "high": 4.0
+    },
+    "clinical_significance": "Thyroid stimulating hormone, thyroid function",
+    "source": "ABIM Laboratory Reference Ranges 2026",
+    "confidence_level": "authoritative",
+    "category": "Endocrine"
+  },
+  "HbA1c": {
+    "unit": "%",
+    "male": {
+      "low": 4.0,
+      "high": 5.6
+    },
+    "female": {
+      "low": 4.0,
+      "high": 5.6
+    },
+    "clinical_significance": "Glycated hemoglobin, long-term glucose control",
+    "source": "ABIM Laboratory Reference Ranges 2026",
+    "confidence_level": "authoritative",
+    "category": "Endocrine",
+    "prediabetes": {
+      "low": 5.7,
+      "high": 6.4
+    },
+    "diabetes": 6.5
+  },
+  "Vitamin D": {
+    "unit": "ng/mL",
+    "male": {
+      "low": 30,
+      "high": 100
+    },
+    "female": {
+      "low": 30,
+      "high": 100
+    },
+    "clinical_significance": "Vitamin D status, bone health",
+    "source": "ABIM Laboratory Reference Ranges 2026",
+    "confidence_level": "authoritative",
+    "category": "Endocrine",
+    "deficiency": 20,
+    "insufficiency": 30
+  },
+  "Free T4": {
+    "unit": "ng/dL",
+    "male": {
+      "low": 0.8,
+      "high": 2.0
+    },
+    "female": {
+      "low": 0.8,
+      "high": 2.0
+    },
+    "clinical_significance": "Free thyroxine, thyroid hormone levels",
+    "source": "ABIM Laboratory Reference Ranges 2026",
+    "confidence_level": "authoritative",
+    "category": "Endocrine"
+  },
+  "FSH": {
+    "unit": "mIU/mL",
+    "male": {
+      "low": 1.5,
+      "high": 12.4
+    },
+    "female": {
+      "low": 3.5,
+      "high": 12.5,
+      "follicular_phase": {
+        "low": 3.5,
+        "high": 12.5
+      },
+      "ovulation": {
+        "low": 4.7,
+        "high": 21.5
+      },
+      "luteal_phase": {
+        "low": 1.7,
+        "high": 7.7
+      },
+      "postmenopausal": {
+        "low": 25.8,
+        "high": 134.8
+      }
+    },
+    "clinical_significance": "Follicle stimulating hormone, reproductive function",
+    "source": "ABIM Laboratory Reference Ranges 2026",
+    "confidence_level": "authoritative",
+    "category": "Endocrine"
+  },
+  "LH": {
+    "unit": "mIU/mL",
+    "male": {
+      "low": 1.7,
+      "high": 8.6
+    },
+    "female": {
+      "low": 2.4,
+      "high": 12.6,
+      "follicular_phase": {
+        "low": 2.4,
+        "high": 12.6
+      },
+      "ovulation": {
+        "low": 14.0,
+        "high": 95.6
+      },
+      "luteal_phase": {
+        "low": 1.0,
+        "high": 11.4
+      },
+      "postmenopausal": {
+        "low": 7.7,
+        "high": 58.5
+      }
+    },
+    "clinical_significance": "Luteinizing hormone, reproductive function",
+    "source": "ABIM Laboratory Reference Ranges 2026",
+    "confidence_level": "authoritative",
+    "category": "Endocrine"
+  },
+  "Prolactin": {
+    "unit": "ng/mL",
+    "male": {
+      "low": 4.0,
+      "high": 15.2
+    },
+    "female": {
+      "low": 4.79,
+      "high": 23.3,
+      "non_pregnant": {
+        "low": 4.79,
+        "high": 23.3
+      },
+      "pregnant": {
+        "low": 34.0,
+        "high": 386.0
+      }
+    },
+    "clinical_significance": "Prolactin hormone, lactation and reproductive function",
+    "source": "ABIM Laboratory Reference Ranges 2026",
+    "confidence_level": "authoritative",
+    "category": "Endocrine"
+  },
+  "Testosterone Total": {
+    "unit": "ng/mL",
+    "male": {
+      "low": 2.64,
+      "high": 9.16
+    },
+    "female": {
+      "low": 0.084,
+      "high": 0.481
+    },
+    "clinical_significance": "Total testosterone, reproductive and metabolic function",
+    "source": "ABIM Laboratory Reference Ranges 2026",
+    "confidence_level": "authoritative",
+    "category": "Endocrine"
+  }
+}

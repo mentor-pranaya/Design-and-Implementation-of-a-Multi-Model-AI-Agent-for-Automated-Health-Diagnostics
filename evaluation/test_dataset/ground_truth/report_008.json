@@ -1,0 +1,252 @@
+{
+  "report_id": "report_008",
+  "report_metadata": {
+    "laboratory": "within",
+    "format": "PDF",
+    "date": "19/12/2024",
+    "completeness": "Complete",
+    "abnormality_type": "Unknown",
+    "verified": false,
+    "verified_by": "",
+    "verified_date": ""
+  },
+  "parameters": {
+    "hemoglobin": {
+      "value": 13.0,
+      "unit": "unknown",
+      "reference_range": {
+        "min": 11.4,
+        "max": 16.3
+      }
+    },
+    "rbc": {
+      "value": 4.7,
+      "unit": "mil/pL",
+      "reference_range": {
+        "min": null,
+        "max": null
+      }
+    },
+    "wbc": {
+      "value": 8.1,
+      "unit": "thou/pL",
+      "reference_range": {
+        "min": 4.4,
+        "max": 11.4
+      }
+    },
+    "platelet": {
+      "value": 370.0,
+      "unit": "unknown",
+      "reference_range": {
+        "min": 151.0,
+        "max": 342.0
+      }
+    },
+    "hematocrit": {
+      "value": 40.1,
+      "unit": "unknown",
+      "reference_range": {
+        "min": null,
+        "max": null
+      }
+    },
+    "mcv": {
+      "value": 85.3,
+      "unit": "unknown",
+      "reference_range": {
+        "min": null,
+        "max": null
+      }
+    },
+    "mch": {
+      "value": 27.7,
+      "unit": "unknown",
+      "reference_range": {
+        "min": null,
+        "max": null
+      }
+    },
+    "rdw": {
+      "value": 11.7,
+      "unit": "unknown",
+      "reference_range": {
+        "min": null,
+        "max": null
+      }
+    },
+    "neutrophils": {
+      "value": 54.0,
+      "unit": "unknown",
+      "reference_range": {
+        "min": null,
+        "max": null
+      }
+    },
+    "lymphocytes": {
+      "value": 41.0,
+      "unit": "high",
+      "reference_range": {
+        "min": null,
+        "max": null
+      }
+    },
+    "monocytes": {
+      "value": 4.0,
+      "unit": "unknown",
+      "reference_range": {
+        "min": null,
+        "max": null
+      }
+    },
+    "eosinophils": {
+      "value": 1.0,
+      "unit": "unknown",
+      "reference_range": {
+        "min": null,
+        "max": null
+      }
+    },
+    "basophils": {
+      "value": 0.0,
+      "unit": "unknown",
+      "reference_range": {
+        "min": null,
+        "max": null
+      }
+    },
+    "ast": {
+      "value": 8.0,
+      "unit": "hours",
+      "reference_range": {
+        "min": 15.0,
+        "max": 41.0
+      }
+    },
+    "calcium": {
+      "value": 13.0,
+      "unit": "unknown",
+      "reference_range": {
+        "min": 8.9,
+        "max": 10.0
+      }
+    },
+    "potassium": {
+      "value": 2.0,
+      "unit": "th",
+      "reference_range": {
+        "min": 3.5,
+        "max": 4.7
+      }
+    },
+    "hba1c": {
+      "value": 8.3,
+      "unit": "high",
+      "reference_range": {
+        "min": 4.8,
+        "max": 7.6
+      }
+    },
+    "glucose": {
+      "value": 191.5,
+      "unit": "high",
+      "reference_range": {
+        "min": null,
+        "max": null
+      }
+    },
+    "magnesium": {
+      "value": 3.0,
+      "unit": "unknown",
+      "reference_range": {
+        "min": null,
+        "max": null
+      }
+    },
+    "bilirubin_total": {
+      "value": 3.0,
+      "unit": "unknown",
+      "reference_range": {
+        "min": null,
+        "max": null
+      }
+    },
+    "alt": {
+      "value": 25.0,
+      "unit": "%",
+      "reference_range": {
+        "min": 12.0,
+        "max": 51.0
+      }
+    },
+    "sodium": {
+      "value": 122.0,
+      "unit": "set",
+      "reference_range": {
+        "min": 136.0,
+        "max": 143.0
+      }
+    },
+    "t3": {
+      "value": 89.8,
+      "unit": "non",
+      "reference_range": {
+        "min": null,
+        "max": null
+      }
+    },
+    "t4": {
+      "value": 8.45,
+      "unit": "adults",
+      "reference_range": {
+        "min": null,
+        "max": null
+      }
+    },
+    "tsh": {
+      "value": 3.0,
+      "unit": "rd",
+      "reference_range": {
+        "min": 0.5,
+        "max": 4.0
+      }
+    },
+    "alp": {
+      "value": 1.0,
+      "unit": "unknown",
+      "reference_range": {
+        "min": null,
+        "max": null
+      }
+    }
+  },
+  "classifications": {
+    "hemoglobin": "Normal",
+    "rbc": "Unknown",
+    "wbc": "Normal",
+    "platelet": "High",
+    "hematocrit": "Unknown",
+    "mcv": "Unknown",
+    "mch": "Unknown",
+    "rdw": "Unknown",
+    "neutrophils": "Unknown",
+    "lymphocytes": "Unknown",
+    "monocytes": "Unknown",
+    "eosinophils": "Unknown",
+    "basophils": "Unknown",
+    "ast": "Low",
+    "calcium": "High",
+    "potassium": "Low",
+    "hba1c": "High",
+    "glucose": "Unknown",
+    "magnesium": "Unknown",
+    "bilirubin_total": "Unknown",
+    "alt": "Normal",
+    "sodium": "Low",
+    "t3": "Unknown",
+    "t4": "Unknown",
+    "tsh": "Normal",
+    "alp": "Unknown"
+  },
+  "notes": "Auto-generated template - requires manual verification"
+}

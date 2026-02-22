@@ -1,0 +1,171 @@
+{
+  "report_id": "report_001",
+  "report_metadata": {
+    "laboratory": "MC",
+    "format": "PDF",
+    "date": "08/05/2023",
+    "completeness": "Complete",
+    "abnormality_type": "Unknown",
+    "verified": false,
+    "verified_by": "",
+    "verified_date": ""
+  },
+  "parameters": {
+    "hemoglobin": {
+      "value": 11.7,
+      "unit": "unknown",
+      "reference_range": {
+        "min": 11.4,
+        "max": 16.3
+      }
+    },
+    "rbc": {
+      "value": 4.84,
+      "unit": "mil/pL",
+      "reference_range": {
+        "min": null,
+        "max": null
+      }
+    },
+    "wbc": {
+      "value": 3.0,
+      "unit": "Low",
+      "reference_range": {
+        "min": 4.4,
+        "max": 11.4
+      }
+    },
+    "platelet": {
+      "value": 170.0,
+      "unit": "unknown",
+      "reference_range": {
+        "min": 151.0,
+        "max": 342.0
+      }
+    },
+    "hematocrit": {
+      "value": 35.3,
+      "unit": "unknown",
+      "reference_range": {
+        "min": null,
+        "max": null
+      }
+    },
+    "mcv": {
+      "value": 72.9,
+      "unit": "low",
+      "reference_range": {
+        "min": null,
+        "max": null
+      }
+    },
+    "mch": {
+      "value": 24.2,
+      "unit": "pg",
+      "reference_range": {
+        "min": null,
+        "max": null
+      }
+    },
+    "rdw": {
+      "value": 14.7,
+      "unit": "high",
+      "reference_range": {
+        "min": null,
+        "max": null
+      }
+    },
+    "basophils": {
+      "value": 0.0,
+      "unit": "unknown",
+      "reference_range": {
+        "min": null,
+        "max": null
+      }
+    },
+    "neutrophils": {
+      "value": 1.5,
+      "unit": "Low",
+      "reference_range": {
+        "min": null,
+        "max": null
+      }
+    },
+    "lymphocytes": {
+      "value": 1.32,
+      "unit": "thou/yL",
+      "reference_range": {
+        "min": null,
+        "max": null
+      }
+    },
+    "monocytes": {
+      "value": 0.12,
+      "unit": "Low",
+      "reference_range": {
+        "min": null,
+        "max": null
+      }
+    },
+    "eosinophils": {
+      "value": 0.06,
+      "unit": "Low",
+      "reference_range": {
+        "min": null,
+        "max": null
+      }
+    },
+    "calcium": {
+      "value": 13.0,
+      "unit": "unknown",
+      "reference_range": {
+        "min": 8.9,
+        "max": 10.0
+      }
+    },
+    "ast": {
+      "value": 49.5,
+      "unit": "years",
+      "reference_range": {
+        "min": 15.0,
+        "max": 41.0
+      }
+    },
+    "phosphorus": {
+      "value": 5.0,
+      "unit": "PHOSPHATE",
+      "reference_range": {
+        "min": null,
+        "max": null
+      }
+    },
+    "potassium": {
+      "value": 8.0,
+      "unit": "/",
+      "reference_range": {
+        "min": 3.5,
+        "max": 4.7
+      }
+    }
+  },
+  "classifications": {
+    "hemoglobin": "Normal",
+    "rbc": "Unknown",
+    "wbc": "Low",
+    "platelet": "Normal",
+    "hematocrit": "Unknown",
+    "mcv": "Unknown",
+    "mch": "Unknown",
+    "rdw": "Unknown",
+    "basophils": "Unknown",
+    "neutrophils": "Unknown",
+    "lymphocytes": "Unknown",
+    "monocytes": "Unknown",
+    "eosinophils": "Unknown",
+    "calcium": "High",
+    "ast": "High",
+    "phosphorus": "Unknown",
+    "potassium": "High"
+  },
+  "notes": "Auto-generated template - requires manual verification"
+}

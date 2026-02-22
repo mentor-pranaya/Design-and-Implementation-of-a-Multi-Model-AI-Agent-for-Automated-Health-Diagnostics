@@ -1,0 +1,351 @@
+{
+  "report_id": "report_003",
+  "report_metadata": {
+    "laboratory": "AHC PACKAGE",
+    "format": "PDF",
+    "date": "2026-02-19",
+    "completeness": "Complete",
+    "abnormality_type": "Unknown",
+    "verified": false,
+    "verified_by": "",
+    "verified_date": ""
+  },
+  "parameters": {
+    "potassium": {
+      "value": 4.52,
+      "unit": "mmol/l",
+      "reference_range": {
+        "min": 3.5,
+        "max": 4.7
+      }
+    },
+    "hemoglobin": {
+      "value": 15.0,
+      "unit": "gm/dl",
+      "reference_range": {
+        "min": 11.4,
+        "max": 16.3
+      }
+    },
+    "wbc": {
+      "value": 7.0,
+      "unit": "cell/cmm",
+      "reference_range": {
+        "min": 4.4,
+        "max": 11.4
+      }
+    },
+    "neutrophils": {
+      "value": 50.8,
+      "unit": "%",
+      "reference_range": {
+        "min": null,
+        "max": null
+      }
+    },
+    "lymphocytes": {
+      "value": 36.8,
+      "unit": "%",
+      "reference_range": {
+        "min": null,
+        "max": null
+      }
+    },
+    "basophils": {
+      "value": 0.3,
+      "unit": "%",
+      "reference_range": {
+        "min": null,
+        "max": null
+      }
+    },
+    "eosinophils": {
+      "value": 0.21,
+      "unit": "x",
+      "reference_range": {
+        "min": null,
+        "max": null
+      }
+    },
+    "monocytes": {
+      "value": 0.74,
+      "unit": "x",
+      "reference_range": {
+        "min": null,
+        "max": null
+      }
+    },
+    "rbc": {
+      "value": 4.86,
+      "unit": "million/cmm",
+      "reference_range": {
+        "min": null,
+        "max": null
+      }
+    },
+    "hematocrit": {
+      "value": 45.3,
+      "unit": "%",
+      "reference_range": {
+        "min": null,
+        "max": null
+      }
+    },
+    "mcv": {
+      "value": 93.2,
+      "unit": "fl",
+      "reference_range": {
+        "min": null,
+        "max": null
+      }
+    },
+    "mch": {
+      "value": 30.8,
+      "unit": "pg",
+      "reference_range": {
+        "min": null,
+        "max": null
+      }
+    },
+    "mchc": {
+      "value": 33.0,
+      "unit": "g/dl",
+      "reference_range": {
+        "min": null,
+        "max": null
+      }
+    },
+    "sodium": {
+      "value": 142.0,
+      "unit": "mmol/l",
+      "reference_range": {
+        "min": 136.0,
+        "max": 143.0
+      }
+    },
+    "hba1c": {
+      "value": 5.2,
+      "unit": "%",
+      "reference_range": {
+        "min": 4.8,
+        "max": 7.6
+      }
+    },
+    "glucose": {
+      "value": 102.54,
+      "unit": "mg/dl",
+      "reference_range": {
+        "min": null,
+        "max": null
+      }
+    },
+    "bilirubin_total": {
+      "value": 0.48,
+      "unit": "mg/dl",
+      "reference_range": {
+        "min": null,
+        "max": null
+      }
+    },
+    "ast": {
+      "value": 42.0,
+      "unit": "u/l",
+      "reference_range": {
+        "min": 15.0,
+        "max": 41.0
+      }
+    },
+    "alp": {
+      "value": 95.0,
+      "unit": "u/l",
+      "reference_range": {
+        "min": null,
+        "max": null
+      }
+    },
+    "protein_total": {
+      "value": 7.96,
+      "unit": "gm/dl",
+      "reference_range": {
+        "min": null,
+        "max": null
+      }
+    },
+    "albumin": {
+      "value": 4.35,
+      "unit": "gm/dl",
+      "reference_range": {
+        "min": 3.7,
+        "max": 4.8
+      }
+    },
+    "globulin": {
+      "value": 3.61,
+      "unit": "gm/dl",
+      "reference_range": {
+        "min": null,
+        "max": null
+      }
+    },
+    "ggt": {
+      "value": 76.0,
+      "unit": "u/l",
+      "reference_range": {
+        "min": null,
+        "max": null
+      }
+    },
+    "calcium": {
+      "value": 9.52,
+      "unit": "mg/dl",
+      "reference_range": {
+        "min": 8.9,
+        "max": 10.0
+      }
+    },
+    "cholesterol": {
+      "value": 192.6,
+      "unit": "mg/dl",
+      "reference_range": {
+        "min": 128.0,
+        "max": 258.0
+      }
+    },
+    "triglycerides": {
+      "value": 106.76,
+      "unit": "mg/dl",
+      "reference_range": {
+        "min": 38.0,
+        "max": 269.8499999999999
+      }
+    },
+    "ldl": {
+      "value": 21.35,
+      "unit": "mg/dl",
+      "reference_range": {
+        "min": 59.0,
+        "max": 172.0
+      }
+    },
+    "hdl": {
+      "value": 144.29,
+      "unit": "mg/dl",
+      "reference_range": {
+        "min": 32.0,
+        "max": 82.0
+      }
+    },
+    "urea": {
+      "value": 44.28,
+      "unit": "mg/dl",
+      "reference_range": {
+        "min": null,
+        "max": null
+      }
+    },
+    "bun": {
+      "value": 20.69,
+      "unit": "mg/dl",
+      "reference_range": {
+        "min": 6.0,
+        "max": 23.0
+      }
+    },
+    "creatinine": {
+      "value": 0.73,
+      "unit": "mg/dl",
+      "reference_range": {
+        "min": 0.56,
+        "max": 1.33
+      }
+    },
+    "magnesium": {
+      "value": 0.73,
+      "unit": "mg/dl",
+      "reference_range": {
+        "min": null,
+        "max": null
+      }
+    },
+    "chloride": {
+      "value": 105.3,
+      "unit": "mmol/l",
+      "reference_range": {
+        "min": 100.0,
+        "max": 108.0
+      }
+    },
+    "tsh": {
+      "value": 3.46,
+      "unit": "ulu/ml",
+      "reference_range": {
+        "min": 0.5,
+        "max": 4.0
+      }
+    },
+    "t3": {
+      "value": 1.0,
+      "unit": "and",
+      "reference_range": {
+        "min": null,
+        "max": null
+      }
+    },
+    "t4": {
+      "value": 1.0,
+      "unit": "and",
+      "reference_range": {
+        "min": null,
+        "max": null
+      }
+    },
+    "alt": {
+      "value": 5.0,
+      "unit": "unknown",
+      "reference_range": {
+        "min": 12.0,
+        "max": 51.0
+      }
+    }
+  },
+  "classifications": {
+    "potassium": "Normal",
+    "hemoglobin": "Normal",
+    "wbc": "Normal",
+    "neutrophils": "Unknown",
+    "lymphocytes": "Unknown",
+    "basophils": "Unknown",
+    "eosinophils": "Unknown",
+    "monocytes": "Unknown",
+    "rbc": "Unknown",
+    "hematocrit": "Unknown",
+    "mcv": "Unknown",
+    "mch": "Unknown",
+    "mchc": "Unknown",
+    "sodium": "Normal",
+    "hba1c": "Normal",
+    "glucose": "Unknown",
+    "bilirubin_total": "Unknown",
+    "ast": "High",
+    "alp": "Unknown",
+    "protein_total": "Unknown",
+    "albumin": "Normal",
+    "globulin": "Unknown",
+    "ggt": "Unknown",
+    "calcium": "Normal",
+    "cholesterol": "Normal",
+    "triglycerides": "Normal",
+    "ldl": "Low",
+    "hdl": "High",
+    "urea": "Unknown",
+    "bun": "Normal",
+    "creatinine": "Normal",
+    "magnesium": "Unknown",
+    "chloride": "Normal",
+    "tsh": "Normal",
+    "t3": "Unknown",
+    "t4": "Unknown",
+    "alt": "Low"
+  },
+  "notes": "Auto-generated template - requires manual verification"
+}

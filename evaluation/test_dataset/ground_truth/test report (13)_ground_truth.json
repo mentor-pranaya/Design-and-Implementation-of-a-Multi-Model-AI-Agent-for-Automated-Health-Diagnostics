@@ -1,0 +1,22 @@
+{
+  "filename": "test report (13).pdf",
+  "timestamp": "2026-02-18T19:23:37.323160",
+  "parameters": {
+    "urea": {
+      "extracted_value": 28.0,
+      "extracted_unit": "ae",
+      "correct_value": 28.0,
+      "correct_unit": "ae",
+      "expected_classification": "unknown",
+      "notes": ""
+    },
+    "creatinine": {
+      "extracted_value": 0.56,
+      "extracted_unit": "unknown",
+      "correct_value": 0.56,
+      "correct_unit": "unknown",
+      "expected_classification": "unknown",
+      "notes": ""
+    }
+  }
+}

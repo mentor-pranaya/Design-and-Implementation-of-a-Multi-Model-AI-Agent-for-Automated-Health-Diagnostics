@@ -1,0 +1,182 @@
+{
+  "filename": "test report (5).pdf",
+  "timestamp": "2026-02-18T19:25:42.904660",
+  "parameters": {
+    "chloride": {
+      "extracted_value": 102.0,
+      "extracted_unit": "/B",
+      "correct_value": 102.0,
+      "correct_unit": "/B",
+      "expected_classification": "unknown",
+      "notes": ""
+    },
+    "creatinine": {
+      "extracted_value": 0.51,
+      "extracted_unit": "unknown",
+      "correct_value": 0.51,
+      "correct_unit": "unknown",
+      "expected_classification": "unknown",
+      "notes": ""
+    },
+    "magnesium": {
+      "extracted_value": 0.51,
+      "extracted_unit": "unknown",
+      "correct_value": 0.51,
+      "correct_unit": "unknown",
+      "expected_classification": "unknown",
+      "notes": ""
+    },
+    "urea": {
+      "extracted_value": 17.0,
+      "extracted_unit": "unknown",
+      "correct_value": 17.0,
+      "correct_unit": "unknown",
+      "expected_classification": "unknown",
+      "notes": ""
+    },
+    "ast": {
+      "extracted_value": 3.0,
+      "extracted_unit": "months",
+      "correct_value": 3.0,
+      "correct_unit": "months",
+      "expected_classification": "unknown",
+      "notes": ""
+    },
+    "alt": {
+      "extracted_value": 35.0,
+      "extracted_unit": "unknown",
+      "correct_value": 35.0,
+      "correct_unit": "unknown",
+      "expected_classification": "unknown",
+      "notes": ""
+    },
+    "ggt": {
+      "extracted_value": 38.0,
+      "extracted_unit": "unknown",
+      "correct_value": 38.0,
+      "correct_unit": "unknown",
+      "expected_classification": "unknown",
+      "notes": ""
+    },
+    "alp": {
+      "extracted_value": 30.0,
+      "extracted_unit": "unknown",
+      "correct_value": 30.0,
+      "correct_unit": "unknown",
+      "expected_classification": "unknown",
+      "notes": ""
+    },
+    "bilirubin_total": {
+      "extracted_value": 0.2,
+      "extracted_unit": "unknown",
+      "correct_value": 0.2,
+      "correct_unit": "unknown",
+      "expected_classification": "unknown",
+      "notes": ""
+    },
+    "bilirubin_direct": {
+      "extracted_value": 0.2,
+      "extracted_unit": "unknown",
+      "correct_value": 0.2,
+      "correct_unit": "unknown",
+      "expected_classification": "unknown",
+      "notes": ""
+    },
+    "bilirubin_indirect": {
+      "extracted_value": 1.1,
+      "extracted_unit": "unknown",
+      "correct_value": 1.1,
+      "correct_unit": "unknown",
+      "expected_classification": "unknown",
+      "notes": ""
+    },
+    "protein_total": {
+      "extracted_value": 6.4,
+      "extracted_unit": "unknown",
+      "correct_value": 6.4,
+      "correct_unit": "unknown",
+      "expected_classification": "unknown",
+      "notes": ""
+    },
+    "albumin": {
+      "extracted_value": 3.2,
+      "extracted_unit": "unknown",
+      "correct_value": 3.2,
+      "correct_unit": "unknown",
+      "expected_classification": "unknown",
+      "notes": ""
+    },
+    "globulin": {
+      "extracted_value": 2.0,
+      "extracted_unit": "unknown",
+      "correct_value": 2.0,
+      "correct_unit": "unknown",
+      "expected_classification": "unknown",
+      "notes": ""
+    },
+    "calcium": {
+      "extracted_value": 9.15,
+      "extracted_unit": "mg/dL",
+      "correct_value": 9.15,
+      "correct_unit": "mg/dL",
+      "expected_classification": "unknown",
+      "notes": ""
+    },
+    "potassium": {
+      "extracted_value": 3.0,
+      "extracted_unit": "months",
+      "correct_value": 3.0,
+      "correct_unit": "months",
+      "expected_classification": "unknown",
+      "notes": ""
+    },
+    "glucose": {
+      "extracted_value": 70.0,
+      "extracted_unit": "unknown",
+      "correct_value": 70.0,
+      "correct_unit": "unknown",
+      "expected_classification": "unknown",
+      "notes": ""
+    },
+    "t4": {
+      "extracted_value": 5.74,
+      "extracted_unit": "unknown",
+      "correct_value": 5.74,
+      "correct_unit": "unknown",
+      "expected_classification": "unknown",
+      "notes": ""
+    },
+    "tsh": {
+      "extracted_value": 1.0,
+      "extracted_unit": "unknown",
+      "correct_value": 1.0,
+      "correct_unit": "unknown",
+      "expected_classification": "unknown",
+      "notes": ""
+    },
+    "t3": {
+      "extracted_value": 2.0,
+      "extracted_unit": "and/or",
+      "correct_value": 2.0,
+      "correct_unit": "and/or",
+      "expected_classification": "unknown",
+      "notes": ""
+    },
+    "hemoglobin": {
+      "extracted_value": 10.0,
+      "extracted_unit": "unknown",
+      "correct_value": 10.0,
+      "correct_unit": "unknown",
+      "expected_classification": "unknown",
+      "notes": ""
+    },
+    "wbc": {
+      "extracted_value": 3.0,
+      "extracted_unit": "WBC/HPF",
+      "correct_value": 3.0,
+      "correct_unit": "WBC/HPF",
+      "expected_classification": "unknown",
+      "notes": ""
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "report_id": "report_013",
+  "report_metadata": {
+    "laboratory": "MEDICINE\nBIOCHEMISTRY",
+    "format": "PDF",
+    "date": "26/10/2021",
+    "completeness": "Complete",
+    "abnormality_type": "Unknown",
+    "verified": false,
+    "verified_by": "",
+    "verified_date": ""
+  },
+  "parameters": {
+    "urea": {
+      "value": 28.0,
+      "unit": "ae",
+      "reference_range": {
+        "min": null,
+        "max": null
+      }
+    },
+    "creatinine": {
+      "value": 0.56,
+      "unit": "unknown",
+      "reference_range": {
+        "min": 0.56,
+        "max": 1.33
+      }
+    }
+  },
+  "classifications": {
+    "urea": "Unknown",
+    "creatinine": "Normal"
+  },
+  "notes": "Auto-generated template - requires manual verification"
+}

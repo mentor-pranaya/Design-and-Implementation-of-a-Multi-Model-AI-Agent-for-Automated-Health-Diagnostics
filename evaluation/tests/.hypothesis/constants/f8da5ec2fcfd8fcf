@@ -1,0 +1,4 @@
+# file: C:\Users\mi\Downloads\infosys project\core_phase3\knowledge_base\unified_reference_manager.py
+# hypothesis_version: 6.151.6
+
+[0.0, 13.5, 100, 120, '18-29', '30-39', '40-49', '50-59', '60-69', '70+', '=', 'Glucose', 'Hemoglobin', 'High', 'Low', 'Mild', 'Moderate', 'N/A', 'Normal', 'Severe', 'Source Summary', 'Unknown', '_', '__main__', '_metadata', 'abim', 'abim_guideline', 'age_specific', 'available', 'by_age_sex', 'by_sex', 'confidence', 'deviation_percent', 'error', 'fallback', 'female', 'high', 'lab_provided', 'low', 'male', 'max', 'median', 'medium', 'message', 'mg/dL', 'min', 'nhanes', 'nhanes_population', 'overall', 'p25', 'p5', 'p50', 'p75', 'p95', 'parameter', 'parameters', 'percentiles', 'r', 'reference_available', 'reference_range', 'sample_size', 'severity', 'sex_specific', 'source', 'source_detail', 'status', 'total_parameters', 'unit', 'value', 'very_high']

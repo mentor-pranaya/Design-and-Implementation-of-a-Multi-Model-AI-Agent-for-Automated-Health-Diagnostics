@@ -249,10 +249,74 @@
   
   "TSH": {
     "full_name": "Thyroid-Stimulating Hormone",
-    "unit": "mU/L",
-    "min": 0.5,
+    "unit": "mIU/L",
+    "min": 0.4,
     "max": 4.0,
     "clinical_significance": "Thyroid function regulator. Elevated in hypothyroidism; low in hyperthyroidism."
+  },
+  
+  "Free T4": {
+    "full_name": "Free Thyroxine",
+    "unit": "ng/dL",
+    "min": 0.8,
+    "max": 2.0,
+    "clinical_significance": "Free thyroid hormone levels. Indicates thyroid function status."
+  },
+  
+  "FSH": {
+    "full_name": "Follicle Stimulating Hormone",
+    "unit": "mIU/mL",
+    "female": {
+      "min": 3.5,
+      "max": 12.5
+    },
+    "male": {
+      "min": 1.5,
+      "max": 12.4
+    },
+    "clinical_significance": "Reproductive hormone. Regulates ovarian and testicular function."
+  },
+  
+  "LH": {
+    "full_name": "Luteinizing Hormone",
+    "unit": "mIU/mL",
+    "female": {
+      "min": 2.4,
+      "max": 12.6
+    },
+    "male": {
+      "min": 1.7,
+      "max": 8.6
+    },
+    "clinical_significance": "Reproductive hormone. Triggers ovulation and testosterone production."
+  },
+  
+  "Prolactin": {
+    "full_name": "Prolactin",
+    "unit": "ng/mL",
+    "female": {
+      "min": 4.79,
+      "max": 23.3
+    },
+    "male": {
+      "min": 4.0,
+      "max": 15.2
+    },
+    "clinical_significance": "Hormone regulating lactation and reproductive function. Elevated levels may indicate pituitary disorders."
+  },
+  
+  "Testosterone Total": {
+    "full_name": "Total Testosterone",
+    "unit": "ng/mL",
+    "female": {
+      "min": 0.084,
+      "max": 0.481
+    },
+    "male": {
+      "min": 2.64,
+      "max": 9.16
+    },
+    "clinical_significance": "Primary male sex hormone. Important for reproductive and metabolic function in both sexes."
   },
   
   "Vitamin D": {

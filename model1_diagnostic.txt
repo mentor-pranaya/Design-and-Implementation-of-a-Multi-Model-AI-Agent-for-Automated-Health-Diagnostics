@@ -1,0 +1,791 @@
+
+================================================================================
+HbA1c THRESHOLD VERIFICATION
+================================================================================
+
+Clinical Guidelines (ADA):
+  < 5.7%  ÔåÆ Normal
+  5.7-6.4% ÔåÆ Prediabetes (should be classified as High/Mild)
+  ÔëÑ 6.5%  ÔåÆ Diabetes (should be classified as High/Severe)
+
+Value    | Expected | Actual | Match
+---------------------------------------------
+
+======================================================================
+Initializing Phase 3: Evaluation & Recommendation Pipeline
+======================================================================
+Ô£ô Loaded 23 ABIM authoritative reference ranges
+  Source: ABIM Laboratory Reference Ranges 2026
+Ô£ô Loaded reference ranges
+  Source: American Board of Internal Medicine - Laboratory Tests Reference Ranges
+Ô£ô 28 parameters available for evaluation
+Ô£ô Parameter Evaluator initialized
+Ô£ô Loaded 11 medical condition guidelines
+Ô£ô All Phase 3 modules initialized successfully
+
+Starting Phase 3 Pipeline...
+----------------------------------------------------------------------
+
+[Phase 3A] Reference-Based Evaluation...
+Ô£ô Evaluated 1 parameters
+  Abnormal findings: 0
+  Critical findings: 0
+
+[Phase 3B] Pattern Recognition...
+Ô£ô Detected 0 clinical patterns
+
+[Phase 3D] Applying Contextual Refinements...
+Ô£ô Contextual Refiner initialized for male patient, age 45
+
+======================================================================
+Phase 3D: Applying Contextual Refinements (Model 3)
+======================================================================
+
+Ô£ô No contextual adjustments needed (insufficient context or no risk patterns)
+======================================================================
+Ô£ô Applied contextual refinements
+
+[Phase 3E] Calculating Quantified Risk Scores...
+  Calculating CV risk for male patient, age 45
+Ô£ô Cardiovascular 10-year risk: 6.5% (Borderline)
+
+[Phase 3C] Generating Evidence-Based Recommendations...
+Ô£ô Generated recommendations for 0 conditions
+
+======================================================================
+Ô£ô Phase 3 Pipeline Complete
+======================================================================
+
+   5.6% | Normal   | EvaluationStatus.NORMAL | Ô£ù
+
+======================================================================
+Initializing Phase 3: Evaluation & Recommendation Pipeline
+======================================================================
+Ô£ô Loaded 23 ABIM authoritative reference ranges
+  Source: ABIM Laboratory Reference Ranges 2026
+Ô£ô Loaded reference ranges
+  Source: American Board of Internal Medicine - Laboratory Tests Reference Ranges
+Ô£ô 28 parameters available for evaluation
+Ô£ô Parameter Evaluator initialized
+Ô£ô Loaded 11 medical condition guidelines
+Ô£ô All Phase 3 modules initialized successfully
+
+Starting Phase 3 Pipeline...
+----------------------------------------------------------------------
+
+[Phase 3A] Reference-Based Evaluation...
+Ô£ô Evaluated 1 parameters
+  Abnormal findings: 1
+  Critical findings: 0
+
+[Phase 3B] Pattern Recognition...
+Ô£ô Detected 1 clinical patterns
+
+[Phase 3D] Applying Contextual Refinements...
+Ô£ô Contextual Refiner initialized for male patient, age 45
+
+======================================================================
+Phase 3D: Applying Contextual Refinements (Model 3)
+======================================================================
+
+Ô£ô No contextual adjustments needed (insufficient context or no risk patterns)
+======================================================================
+Ô£ô Applied contextual refinements
+
+[Phase 3E] Calculating Quantified Risk Scores...
+  Calculating CV risk for male patient, age 45
+Ô£ô Cardiovascular 10-year risk: 6.5% (Borderline)
+
+[Phase 3C] Generating Evidence-Based Recommendations...
+Ô£ô Generated recommendations for 1 conditions
+
+======================================================================
+Ô£ô Phase 3 Pipeline Complete
+======================================================================
+
+   5.7% | High     | EvaluationStatus.HIGH | Ô£ù
+
+======================================================================
+Initializing Phase 3: Evaluation & Recommendation Pipeline
+======================================================================
+Ô£ô Loaded 23 ABIM authoritative reference ranges
+  Source: ABIM Laboratory Reference Ranges 2026
+Ô£ô Loaded reference ranges
+  Source: American Board of Internal Medicine - Laboratory Tests Reference Ranges
+Ô£ô 28 parameters available for evaluation
+Ô£ô Parameter Evaluator initialized
+Ô£ô Loaded 11 medical condition guidelines
+Ô£ô All Phase 3 modules initialized successfully
+
+Starting Phase 3 Pipeline...
+----------------------------------------------------------------------
+
+[Phase 3A] Reference-Based Evaluation...
+Ô£ô Evaluated 1 parameters
+  Abnormal findings: 1
+  Critical findings: 0
+
+[Phase 3B] Pattern Recognition...
+Ô£ô Detected 1 clinical patterns
+
+[Phase 3D] Applying Contextual Refinements...
+Ô£ô Contextual Refiner initialized for male patient, age 45
+
+======================================================================
+Phase 3D: Applying Contextual Refinements (Model 3)
+======================================================================
+
+Ô£ô No contextual adjustments needed (insufficient context or no risk patterns)
+======================================================================
+Ô£ô Applied contextual refinements
+
+[Phase 3E] Calculating Quantified Risk Scores...
+  Calculating CV risk for male patient, age 45
+Ô£ô Cardiovascular 10-year risk: 6.5% (Borderline)
+
+[Phase 3C] Generating Evidence-Based Recommendations...
+Ô£ô Generated recommendations for 1 conditions
+
+======================================================================
+Ô£ô Phase 3 Pipeline Complete
+======================================================================
+
+   6.2% | High     | EvaluationStatus.HIGH | Ô£ù
+
+======================================================================
+Initializing Phase 3: Evaluation & Recommendation Pipeline
+======================================================================
+Ô£ô Loaded 23 ABIM authoritative reference ranges
+  Source: ABIM Laboratory Reference Ranges 2026
+Ô£ô Loaded reference ranges
+  Source: American Board of Internal Medicine - Laboratory Tests Reference Ranges
+Ô£ô 28 parameters available for evaluation
+Ô£ô Parameter Evaluator initialized
+Ô£ô Loaded 11 medical condition guidelines
+Ô£ô All Phase 3 modules initialized successfully
+
+Starting Phase 3 Pipeline...
+----------------------------------------------------------------------
+
+[Phase 3A] Reference-Based Evaluation...
+Ô£ô Evaluated 1 parameters
+  Abnormal findings: 1
+  Critical findings: 0
+
+[Phase 3B] Pattern Recognition...
+Ô£ô Detected 1 clinical patterns
+
+[Phase 3D] Applying Contextual Refinements...
+Ô£ô Contextual Refiner initialized for male patient, age 45
+
+======================================================================
+Phase 3D: Applying Contextual Refinements (Model 3)
+======================================================================
+
+Ô£ô No contextual adjustments needed (insufficient context or no risk patterns)
+======================================================================
+Ô£ô Applied contextual refinements
+
+[Phase 3E] Calculating Quantified Risk Scores...
+  Calculating CV risk for male patient, age 45
+Ô£ô Cardiovascular 10-year risk: 6.5% (Borderline)
+
+[Phase 3C] Generating Evidence-Based Recommendations...
+Ô£ô Generated recommendations for 1 conditions
+
+======================================================================
+Ô£ô Phase 3 Pipeline Complete
+======================================================================
+
+   6.4% | High     | EvaluationStatus.HIGH | Ô£ù
+
+======================================================================
+Initializing Phase 3: Evaluation & Recommendation Pipeline
+======================================================================
+Ô£ô Loaded 23 ABIM authoritative reference ranges
+  Source: ABIM Laboratory Reference Ranges 2026
+Ô£ô Loaded reference ranges
+  Source: American Board of Internal Medicine - Laboratory Tests Reference Ranges
+Ô£ô 28 parameters available for evaluation
+Ô£ô Parameter Evaluator initialized
+Ô£ô Loaded 11 medical condition guidelines
+Ô£ô All Phase 3 modules initialized successfully
+
+Starting Phase 3 Pipeline...
+----------------------------------------------------------------------
+
+[Phase 3A] Reference-Based Evaluation...
+Ô£ô Evaluated 1 parameters
+  Abnormal findings: 1
+  Critical findings: 0
+
+[Phase 3B] Pattern Recognition...
+Ô£ô Detected 1 clinical patterns
+
+[Phase 3D] Applying Contextual Refinements...
+Ô£ô Contextual Refiner initialized for male patient, age 45
+
+======================================================================
+Phase 3D: Applying Contextual Refinements (Model 3)
+======================================================================
+
+Ô£ô No contextual adjustments needed (insufficient context or no risk patterns)
+======================================================================
+Ô£ô Applied contextual refinements
+
+[Phase 3E] Calculating Quantified Risk Scores...
+  Calculating CV risk for male patient, age 45
+Ô£ô Cardiovascular 10-year risk: 6.5% (Borderline)
+
+[Phase 3C] Generating Evidence-Based Recommendations...
+Ô£ô Generated recommendations for 1 conditions
+
+======================================================================
+Ô£ô Phase 3 Pipeline Complete
+======================================================================
+
+   6.5% | High     | EvaluationStatus.HIGH | Ô£ù
+
+======================================================================
+Initializing Phase 3: Evaluation & Recommendation Pipeline
+======================================================================
+Ô£ô Loaded 23 ABIM authoritative reference ranges
+  Source: ABIM Laboratory Reference Ranges 2026
+Ô£ô Loaded reference ranges
+  Source: American Board of Internal Medicine - Laboratory Tests Reference Ranges
+Ô£ô 28 parameters available for evaluation
+Ô£ô Parameter Evaluator initialized
+Ô£ô Loaded 11 medical condition guidelines
+Ô£ô All Phase 3 modules initialized successfully
+
+Starting Phase 3 Pipeline...
+----------------------------------------------------------------------
+
+[Phase 3A] Reference-Based Evaluation...
+Ô£ô Evaluated 1 parameters
+  Abnormal findings: 1
+  Critical findings: 0
+
+[Phase 3B] Pattern Recognition...
+Ô£ô Detected 1 clinical patterns
+
+[Phase 3D] Applying Contextual Refinements...
+Ô£ô Contextual Refiner initialized for male patient, age 45
+
+======================================================================
+Phase 3D: Applying Contextual Refinements (Model 3)
+======================================================================
+
+Ô£ô No contextual adjustments needed (insufficient context or no risk patterns)
+======================================================================
+Ô£ô Applied contextual refinements
+
+[Phase 3E] Calculating Quantified Risk Scores...
+  Calculating CV risk for male patient, age 45
+Ô£ô Cardiovascular 10-year risk: 6.5% (Borderline)
+
+[Phase 3C] Generating Evidence-Based Recommendations...
+Ô£ô Generated recommendations for 1 conditions
+
+======================================================================
+Ô£ô Phase 3 Pipeline Complete
+======================================================================
+
+   7.8% | High     | EvaluationStatus.HIGH | Ô£ù
+
+
+
+================================================================================
+MODEL 1 DIAGNOSTIC REPORT
+================================================================================
+
+################################################################################
+Case: case_01 - High-risk male patient with diabetes, hypertension, smoking
+################################################################################
+
+================================================================================
+DIAGNOSTIC: HbA1c
+================================================================================
+Value: 7.8 
+Patient: 45yo male
+Expected: High (Severe severity)
+
+======================================================================
+Initializing Phase 3: Evaluation & Recommendation Pipeline
+======================================================================
+Ô£ô Loaded 23 ABIM authoritative reference ranges
+  Source: ABIM Laboratory Reference Ranges 2026
+Ô£ô Loaded reference ranges
+  Source: American Board of Internal Medicine - Laboratory Tests Reference Ranges
+Ô£ô 28 parameters available for evaluation
+Ô£ô Parameter Evaluator initialized
+Ô£ô Loaded 11 medical condition guidelines
+Ô£ô All Phase 3 modules initialized successfully
+
+Starting Phase 3 Pipeline...
+----------------------------------------------------------------------
+
+[Phase 3A] Reference-Based Evaluation...
+Ô£ô Evaluated 1 parameters
+  Abnormal findings: 1
+  Critical findings: 0
+
+[Phase 3B] Pattern Recognition...
+Ô£ô Detected 1 clinical patterns
+
+[Phase 3D] Applying Contextual Refinements...
+Ô£ô Contextual Refiner initialized for male patient, age 45
+  - Known conditions: diabetes, hypertension
+  - Lifestyle factors: smoker, exercise: low, diet: mixed, alcohol: moderate
+
+======================================================================
+Phase 3D: Applying Contextual Refinements (Model 3)
+======================================================================
+
+Ô£ô No contextual adjustments needed (insufficient context or no risk patterns)
+======================================================================
+Ô£ô Applied contextual refinements
+
+[Phase 3E] Calculating Quantified Risk Scores...
+  Calculating CV risk for male patient, age 45
+Ô£ô Cardiovascular 10-year risk: 25.0% (High)
+
+[Phase 3C] Generating Evidence-Based Recommendations...
+Ô£ô Generated recommendations for 1 conditions
+
+======================================================================
+Ô£ô Phase 3 Pipeline Complete
+======================================================================
+
+
+Actual Classification:
+  Status: EvaluationStatus.HIGH
+  Severity: Severe
+  Reference Range: Range varies by category
+  Source: ABIM Laboratory Reference Ranges 2026
+  Confidence: authoritative
+
+Ô£ù MISMATCH
+  Expected: High
+  Got: EvaluationStatus.HIGH
+
+Diagnostic Analysis:
+\n  Boundary Check:
+
+================================================================================
+DIAGNOSTIC: Glucose
+================================================================================
+Value: 135 mg/dL
+Patient: 45yo male
+Expected: High (Mild severity)
+
+======================================================================
+Initializing Phase 3: Evaluation & Recommendation Pipeline
+======================================================================
+Ô£ô Loaded 23 ABIM authoritative reference ranges
+  Source: ABIM Laboratory Reference Ranges 2026
+Ô£ô Loaded reference ranges
+  Source: American Board of Internal Medicine - Laboratory Tests Reference Ranges
+Ô£ô 28 parameters available for evaluation
+Ô£ô Parameter Evaluator initialized
+Ô£ô Loaded 11 medical condition guidelines
+Ô£ô All Phase 3 modules initialized successfully
+
+Starting Phase 3 Pipeline...
+----------------------------------------------------------------------
+
+[Phase 3A] Reference-Based Evaluation...
+Ô£ô Evaluated 1 parameters
+  Abnormal findings: 1
+  Critical findings: 0
+
+[Phase 3B] Pattern Recognition...
+Ô£ô Detected 1 clinical patterns
+
+[Phase 3D] Applying Contextual Refinements...
+Ô£ô Contextual Refiner initialized for male patient, age 45
+  - Known conditions: diabetes, hypertension
+  - Lifestyle factors: smoker, exercise: low, diet: mixed, alcohol: moderate
+
+======================================================================
+Phase 3D: Applying Contextual Refinements (Model 3)
+======================================================================
+
+Ô£ô No contextual adjustments needed (insufficient context or no risk patterns)
+======================================================================
+Ô£ô Applied contextual refinements
+
+[Phase 3E] Calculating Quantified Risk Scores...
+  Calculating CV risk for male patient, age 45
+Ô£ô Cardiovascular 10-year risk: 25.0% (High)
+
+[Phase 3C] Generating Evidence-Based Recommendations...
+Ô£ô Generated recommendations for 1 conditions
+
+======================================================================
+Ô£ô Phase 3 Pipeline Complete
+======================================================================
+
+
+Actual Classification:
+  Status: EvaluationStatus.HIGH
+  Severity: Severe
+  Reference Range: Range varies by category
+  Source: ABIM Laboratory Reference Ranges 2026
+  Confidence: authoritative
+
+Ô£ù MISMATCH
+  Expected: High
+  Got: EvaluationStatus.HIGH
+
+Diagnostic Analysis:
+\n  Boundary Check:
+
+================================================================================
+DIAGNOSTIC: LDL
+================================================================================
+Value: 145 mg/dL
+Patient: 45yo male
+Expected: High (Severe severity)
+
+======================================================================
+Initializing Phase 3: Evaluation & Recommendation Pipeline
+======================================================================
+Ô£ô Loaded 23 ABIM authoritative reference ranges
+  Source: ABIM Laboratory Reference Ranges 2026
+Ô£ô Loaded reference ranges
+  Source: American Board of Internal Medicine - Laboratory Tests Reference Ranges
+Ô£ô 28 parameters available for evaluation
+Ô£ô Parameter Evaluator initialized
+Ô£ô Loaded 11 medical condition guidelines
+Ô£ô All Phase 3 modules initialized successfully
+
+Starting Phase 3 Pipeline...
+----------------------------------------------------------------------
+
+[Phase 3A] Reference-Based Evaluation...
+Ô£ô Evaluated 1 parameters
+  Abnormal findings: 1
+  Critical findings: 0
+
+[Phase 3B] Pattern Recognition...
+Ô£ô Detected 1 clinical patterns
+
+[Phase 3D] Applying Contextual Refinements...
+Ô£ô Contextual Refiner initialized for male patient, age 45
+  - Known conditions: diabetes, hypertension
+  - Lifestyle factors: smoker, exercise: low, diet: mixed, alcohol: moderate
+
+======================================================================
+Phase 3D: Applying Contextual Refinements (Model 3)
+======================================================================
+
+Ô£ô No contextual adjustments needed (insufficient context or no risk patterns)
+======================================================================
+Ô£ô Applied contextual refinements
+
+[Phase 3E] Calculating Quantified Risk Scores...
+  Calculating CV risk for male patient, age 45
+Ô£ô Cardiovascular 10-year risk: 25.0% (High)
+
+[Phase 3C] Generating Evidence-Based Recommendations...
+Ô£ô Generated recommendations for 1 conditions
+
+======================================================================
+Ô£ô Phase 3 Pipeline Complete
+======================================================================
+
+
+Actual Classification:
+  Status: EvaluationStatus.HIGH
+  Severity: Severe
+  Reference Range: Range varies by category
+  Source: ABIM Laboratory Reference Ranges 2026
+  Confidence: authoritative
+
+Ô£ù MISMATCH
+  Expected: High
+  Got: EvaluationStatus.HIGH
+
+Diagnostic Analysis:
+\n  Boundary Check:
+
+################################################################################
+Case: case_03 - Borderline values - metabolic syndrome with subclinical markers
+################################################################################
+
+================================================================================
+DIAGNOSTIC: HbA1c
+================================================================================
+Value: 6.2 %
+Patient: 58yo Male
+Expected: High (Mild severity)
+
+======================================================================
+Initializing Phase 3: Evaluation & Recommendation Pipeline
+======================================================================
+Ô£ô Loaded 23 ABIM authoritative reference ranges
+  Source: ABIM Laboratory Reference Ranges 2026
+Ô£ô Loaded reference ranges
+  Source: American Board of Internal Medicine - Laboratory Tests Reference Ranges
+Ô£ô 28 parameters available for evaluation
+Ô£ô Parameter Evaluator initialized
+Ô£ô Loaded 11 medical condition guidelines
+Ô£ô All Phase 3 modules initialized successfully
+
+Starting Phase 3 Pipeline...
+----------------------------------------------------------------------
+
+[Phase 3A] Reference-Based Evaluation...
+Ô£ô Evaluated 1 parameters
+  Abnormal findings: 1
+  Critical findings: 0
+
+[Phase 3B] Pattern Recognition...
+Ô£ô Detected 1 clinical patterns
+
+[Phase 3D] Applying Contextual Refinements...
+Ô£ô Contextual Refiner initialized for Male patient, age 58
+  - Known conditions: prediabetes, obesity
+  - Lifestyle factors: exercise: sedentary, diet: high_carb, alcohol: moderate
+
+======================================================================
+Phase 3D: Applying Contextual Refinements (Model 3)
+======================================================================
+
+Ô£ô No contextual adjustments needed (insufficient context or no risk patterns)
+======================================================================
+Ô£ô Applied contextual refinements
+
+[Phase 3E] Calculating Quantified Risk Scores...
+  Calculating CV risk for male patient, age 58
+Ô£ô Cardiovascular 10-year risk: 6.5% (Borderline)
+
+[Phase 3C] Generating Evidence-Based Recommendations...
+Ô£ô Generated recommendations for 1 conditions
+
+======================================================================
+Ô£ô Phase 3 Pipeline Complete
+======================================================================
+
+
+Actual Classification:
+  Status: EvaluationStatus.HIGH
+  Severity: Mild
+  Reference Range: Range varies by category
+  Source: ABIM Laboratory Reference Ranges 2026
+  Confidence: authoritative
+
+Ô£ù MISMATCH
+  Expected: High
+  Got: EvaluationStatus.HIGH
+
+Diagnostic Analysis:
+\n  Boundary Check:
+
+================================================================================
+DIAGNOSTIC: Glucose
+================================================================================
+Value: 105 mg/dL
+Patient: 58yo Male
+Expected: High (Mild severity)
+
+======================================================================
+Initializing Phase 3: Evaluation & Recommendation Pipeline
+======================================================================
+Ô£ô Loaded 23 ABIM authoritative reference ranges
+  Source: ABIM Laboratory Reference Ranges 2026
+Ô£ô Loaded reference ranges
+  Source: American Board of Internal Medicine - Laboratory Tests Reference Ranges
+Ô£ô 28 parameters available for evaluation
+Ô£ô Parameter Evaluator initialized
+Ô£ô Loaded 11 medical condition guidelines
+Ô£ô All Phase 3 modules initialized successfully
+
+Starting Phase 3 Pipeline...
+----------------------------------------------------------------------
+
+[Phase 3A] Reference-Based Evaluation...
+Ô£ô Evaluated 1 parameters
+  Abnormal findings: 1
+  Critical findings: 0
+
+[Phase 3B] Pattern Recognition...
+Ô£ô Detected 1 clinical patterns
+
+[Phase 3D] Applying Contextual Refinements...
+Ô£ô Contextual Refiner initialized for Male patient, age 58
+  - Known conditions: prediabetes, obesity
+  - Lifestyle factors: exercise: sedentary, diet: high_carb, alcohol: moderate
+
+======================================================================
+Phase 3D: Applying Contextual Refinements (Model 3)
+======================================================================
+
+Ô£ô No contextual adjustments needed (insufficient context or no risk patterns)
+======================================================================
+Ô£ô Applied contextual refinements
+
+[Phase 3E] Calculating Quantified Risk Scores...
+  Calculating CV risk for male patient, age 58
+Ô£ô Cardiovascular 10-year risk: 6.5% (Borderline)
+
+[Phase 3C] Generating Evidence-Based Recommendations...
+Ô£ô Generated recommendations for 1 conditions
+
+======================================================================
+Ô£ô Phase 3 Pipeline Complete
+======================================================================
+
+
+Actual Classification:
+  Status: EvaluationStatus.HIGH
+  Severity: Mild
+  Reference Range: Range varies by category
+  Source: ABIM Laboratory Reference Ranges 2026
+  Confidence: authoritative
+
+Ô£ù MISMATCH
+  Expected: High
+  Got: EvaluationStatus.HIGH
+
+Diagnostic Analysis:
+\n  Boundary Check:
+
+================================================================================
+DIAGNOSTIC: HDL
+================================================================================
+Value: 38 mg/dL
+Patient: 58yo Male
+Expected: Low (Moderate severity)
+
+======================================================================
+Initializing Phase 3: Evaluation & Recommendation Pipeline
+======================================================================
+Ô£ô Loaded 23 ABIM authoritative reference ranges
+  Source: ABIM Laboratory Reference Ranges 2026
+Ô£ô Loaded reference ranges
+  Source: American Board of Internal Medicine - Laboratory Tests Reference Ranges
+Ô£ô 28 parameters available for evaluation
+Ô£ô Parameter Evaluator initialized
+Ô£ô Loaded 11 medical condition guidelines
+Ô£ô All Phase 3 modules initialized successfully
+
+Starting Phase 3 Pipeline...
+----------------------------------------------------------------------
+
+[Phase 3A] Reference-Based Evaluation...
+Ô£ô Evaluated 1 parameters
+  Abnormal findings: 1
+  Critical findings: 0
+
+[Phase 3B] Pattern Recognition...
+Ô£ô Detected 1 clinical patterns
+
+[Phase 3D] Applying Contextual Refinements...
+Ô£ô Contextual Refiner initialized for Male patient, age 58
+  - Known conditions: prediabetes, obesity
+  - Lifestyle factors: exercise: sedentary, diet: high_carb, alcohol: moderate
+
+======================================================================
+Phase 3D: Applying Contextual Refinements (Model 3)
+======================================================================
+
+Ô£ô No contextual adjustments needed (insufficient context or no risk patterns)
+======================================================================
+Ô£ô Applied contextual refinements
+
+[Phase 3E] Calculating Quantified Risk Scores...
+  Calculating CV risk for male patient, age 58
+Ô£ô Cardiovascular 10-year risk: 15.0% (Intermediate)
+
+[Phase 3C] Generating Evidence-Based Recommendations...
+Ô£ô Generated recommendations for 1 conditions
+
+======================================================================
+Ô£ô Phase 3 Pipeline Complete
+======================================================================
+
+
+Actual Classification:
+  Status: EvaluationStatus.LOW
+  Severity: Mild
+  Reference Range: Range varies by category
+  Source: ABIM Laboratory Reference Ranges 2026
+  Confidence: authoritative
+
+Ô£ù MISMATCH
+  Expected: Low
+  Got: EvaluationStatus.LOW
+
+Diagnostic Analysis:
+\n  Boundary Check:
+
+================================================================================
+DIAGNOSTIC: AST
+================================================================================
+Value: 42 U/L
+Patient: 58yo Male
+Expected: High (Mild severity)
+
+======================================================================
+Initializing Phase 3: Evaluation & Recommendation Pipeline
+======================================================================
+Ô£ô Loaded 23 ABIM authoritative reference ranges
+  Source: ABIM Laboratory Reference Ranges 2026
+Ô£ô Loaded reference ranges
+  Source: American Board of Internal Medicine - Laboratory Tests Reference Ranges
+Ô£ô 28 parameters available for evaluation
+Ô£ô Parameter Evaluator initialized
+Ô£ô Loaded 11 medical condition guidelines
+Ô£ô All Phase 3 modules initialized successfully
+
+Starting Phase 3 Pipeline...
+----------------------------------------------------------------------
+
+[Phase 3A] Reference-Based Evaluation...
+Ô£ô Evaluated 1 parameters
+  Abnormal findings: 1
+  Critical findings: 0
+
+[Phase 3B] Pattern Recognition...
+Ô£ô Detected 1 clinical patterns
+
+[Phase 3D] Applying Contextual Refinements...
+Ô£ô Contextual Refiner initialized for Male patient, age 58
+  - Known conditions: prediabetes, obesity
+  - Lifestyle factors: exercise: sedentary, diet: high_carb, alcohol: moderate
+
+======================================================================
+Phase 3D: Applying Contextual Refinements (Model 3)
+======================================================================
+
+Ô£ô No contextual adjustments needed (insufficient context or no risk patterns)
+======================================================================
+Ô£ô Applied contextual refinements
+
+[Phase 3E] Calculating Quantified Risk Scores...
+  Calculating CV risk for male patient, age 58
+Ô£ô Cardiovascular 10-year risk: 6.5% (Borderline)
+
+[Phase 3C] Generating Evidence-Based Recommendations...
+Ô£ô Generated recommendations for 1 conditions
+
+======================================================================
+Ô£ô Phase 3 Pipeline Complete
+======================================================================
+
+
+Actual Classification:
+  Status: EvaluationStatus.HIGH
+  Severity: Mild
+  Reference Range: Range varies by category
+  Source: ABIM Laboratory Reference Ranges 2026
+  Confidence: authoritative
+
+Ô£ù MISMATCH
+  Expected: High
+  Got: EvaluationStatus.HIGH
+
+Diagnostic Analysis:
+\n  Boundary Check:

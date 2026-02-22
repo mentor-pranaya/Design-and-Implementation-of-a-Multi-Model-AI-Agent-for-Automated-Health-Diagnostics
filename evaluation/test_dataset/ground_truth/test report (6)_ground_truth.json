@@ -1,0 +1,38 @@
+{
+  "filename": "test report (6).pdf",
+  "timestamp": "2026-02-18T19:25:45.905336",
+  "parameters": {
+    "glucose": {
+      "extracted_value": 40.0,
+      "extracted_unit": "H",
+      "correct_value": 40.0,
+      "correct_unit": "H",
+      "expected_classification": "unknown",
+      "notes": ""
+    },
+    "ast": {
+      "extracted_value": 40.0,
+      "extracted_unit": "H",
+      "correct_value": 40.0,
+      "correct_unit": "H",
+      "expected_classification": "unknown",
+      "notes": ""
+    },
+    "cholesterol": {
+      "extracted_value": 110.0,
+      "extracted_unit": "HD",
+      "correct_value": 110.0,
+      "correct_unit": "HD",
+      "expected_classification": "unknown",
+      "notes": ""
+    },
+    "calcium": {
+      "extracted_value": 5.0,
+      "extracted_unit": "Log",
+      "correct_value": 5.0,
+      "correct_unit": "Log",
+      "expected_classification": "unknown",
+      "notes": ""
+    }
+  }
+}

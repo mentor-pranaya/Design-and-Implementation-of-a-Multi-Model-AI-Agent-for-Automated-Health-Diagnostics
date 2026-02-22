@@ -1,0 +1,38 @@
+{
+  "filename": "test report (11).pdf",
+  "timestamp": "2026-02-18T19:23:31.045966",
+  "parameters": {
+    "potassium": {
+      "extracted_value": 4.0,
+      "extracted_unit": "/",
+      "correct_value": 4.0,
+      "correct_unit": "/",
+      "expected_classification": "unknown",
+      "notes": ""
+    },
+    "t3": {
+      "extracted_value": 151.9,
+      "extracted_unit": "adult",
+      "correct_value": 151.9,
+      "correct_unit": "adult",
+      "expected_classification": "unknown",
+      "notes": ""
+    },
+    "t4": {
+      "extracted_value": 10.14,
+      "extracted_unit": "adults",
+      "correct_value": 10.14,
+      "correct_unit": "adults",
+      "expected_classification": "unknown",
+      "notes": ""
+    },
+    "tsh": {
+      "extracted_value": 3.0,
+      "extracted_unit": "rd",
+      "correct_value": 3.0,
+      "correct_unit": "rd",
+      "expected_classification": "unknown",
+      "notes": ""
+    }
+  }
+}

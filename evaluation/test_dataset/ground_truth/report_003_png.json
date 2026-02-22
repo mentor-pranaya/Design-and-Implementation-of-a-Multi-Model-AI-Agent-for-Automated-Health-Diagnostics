@@ -1,0 +1,63 @@
+{
+  "report_id": "report_003_png",
+  "report_metadata": {
+    "laboratory": "Unknown",
+    "format": "PNG",
+    "date": "2026-02-19",
+    "completeness": "Complete",
+    "abnormality_type": "Unknown",
+    "verified": false,
+    "verified_by": "",
+    "verified_date": ""
+  },
+  "parameters": {
+    "hemoglobin": {
+      "value": 4.0,
+      "unit": "gns/l",
+      "reference_range": {
+        "min": 11.4,
+        "max": 16.3
+      }
+    },
+    "rbc": {
+      "value": 4.0,
+      "unit": "rillfeamm",
+      "reference_range": {
+        "min": null,
+        "max": null
+      }
+    },
+    "neutrophils": {
+      "value": 56.0,
+      "unit": "%",
+      "reference_range": {
+        "min": null,
+        "max": null
+      }
+    },
+    "eosinophils": {
+      "value": 4.0,
+      "unit": "%",
+      "reference_range": {
+        "min": null,
+        "max": null
+      }
+    },
+    "monocytes": {
+      "value": 5.0,
+      "unit": "%",
+      "reference_range": {
+        "min": null,
+        "max": null
+      }
+    }
+  },
+  "classifications": {
+    "hemoglobin": "Low",
+    "rbc": "Unknown",
+    "neutrophils": "Unknown",
+    "eosinophils": "Unknown",
+    "monocytes": "Unknown"
+  },
+  "notes": "Auto-generated template - requires manual verification"
+}

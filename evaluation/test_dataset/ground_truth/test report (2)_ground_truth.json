@@ -1,0 +1,38 @@
+{
+  "filename": "test report (2).png",
+  "timestamp": "2026-02-18T19:24:32.459058",
+  "parameters": {
+    "cholesterol": {
+      "extracted_value": 450.0,
+      "extracted_unit": "m",
+      "correct_value": 450.0,
+      "correct_unit": "m",
+      "expected_classification": "unknown",
+      "notes": ""
+    },
+    "triglycerides": {
+      "extracted_value": 200.0,
+      "extracted_unit": "mg%",
+      "correct_value": 200.0,
+      "correct_unit": "mg%",
+      "expected_classification": "unknown",
+      "notes": ""
+    },
+    "hdl": {
+      "extracted_value": 85.0,
+      "extracted_unit": "s",
+      "correct_value": 85.0,
+      "correct_unit": "s",
+      "expected_classification": "unknown",
+      "notes": ""
+    },
+    "ldl": {
+      "extracted_value": 35.0,
+      "extracted_unit": "unknown",
+      "correct_value": 35.0,
+      "correct_unit": "unknown",
+      "expected_classification": "unknown",
+      "notes": ""
+    }
+  }
+}

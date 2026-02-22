@@ -1,0 +1,333 @@
+DIAGNOSTIC REPORT ii
+
+SS eN
+Ze SRL
+feos | & 3
+<Q? Diagnostics
+MC-2558 -
+PATIENT NAME : BHAVISHKA REF. DOCTOR : DR. MUNISH KAKKAR
+CODE/NAME & ADDRESS :C000140271 JACCESSION NO : 00O26WE004032 |AGE/SEX :7 Years Female
+AISHWARYA DIAGNOSTIC [PATIENT ID : BHAVF231220150A {DRAWN :08/05/2023 13:23:06
+Mae SECTOR-11, PRATAP NAGAR, KUMBHA iCLIENT PATIENT ID: 1 RECEIVED : 08/05/2023 13:52:03
+JAIPUR 302033 [ABHA NO : { REPORTED :08/05/2023 16:22:45
+9672721777
+Test Report Status Final Results Biological Reference Interval Units
+HAEMATOLOGY - CBC
+— a
+BLOOD COUNTS, EDTA WHOLE BLOOD
+HEMOGLOBIN (HB) 11.7 11.5- 15.5 g/dL
+METHOD : PHOTOMETRIC MEASUREMENT
+RED BLOOD CELL (RBC) COUNT 4.84 4.0-5.2 mil/pL
+METHOD : COULTER PRINCIPLE
+WHITE BLOOD CELL (WBC) COUNT 3.00 Low 5.0 - 13.0 thou/pL
+METHOD : COULTER PRINCIPLE
+PLATELET COUNT 170 170 - 450 thou/yL
+METHOD : COULTER PRINCIPLE
+RBC AND PLATELET INDICES
+HEMATOCRIT (PCV) 35.3 35.0 - 45.0 %
+METHOD : CALCULATED
+MEAN CORPUSCULAR VOLUME (MCV) 72.9 Low 77.0 - 95.0 fL
+METHOD : DERIVED PARAMETER FROM RBC HISTOGRAM
+MEAN CORPUSCULAR HEMOGLOBIN (MCH) 24.2 pg
+METHOD : CALCULATED
+MEAN CORPUSCULAR HEMOGLOBIN 33.1 31.0 - 37.0 g/dL
+CONCENTRATION(MCHC)
+METHOD : CALCULATED
+RED CELL DISTRIBUTION WIDTH (RDW) 14.7 High 11.6 - 14.0 %
+METHOD : DERIVED PARAMETER FROM RBC HISTOGRAM
+MENTZER INDEX 15.1
+
+We and our 41 IAB TCF partners store and access information on your device for the following purposes: store and/or access information on a device, advertising and content x
+measurement, audience research, and services development, personalised advertising, and personalised content.
+
+Personal data may be processed to do the following: use precise geolocation data and actively scan device characteristics for identification.
+
+Our third party IAB TCF partners may store and access information on your device such as IP address and device characteristics. Our |AB TCF Partners may process this
+
+personal data on the basis of legitimate interest, or with your consent. You may change or withdraw your preferences for this website at any time by clicking on the cookie
+
+icon or link; however, as a consequence, you may not see relevant ads or personalized content. You may change your settings at any time or accept the default settings. You
+
+may close this banner to continue with only essential cookies. Privacy Policy
+
+Your Privacy Choices
+
+Third Parties
+
+Storage
+
+Targeted Advertising
+
+Personalization
+
+Performance Cookies
+
+DIAGNOSTIC REPORT
+
+Ae
+ri
+
+-
+
+Qe SRL
+
+»)
+
+AS
+
+“a Diagnostics
+MC-2558 -
+PATIENT NAME : BHAVISHKA REF. DOCTOR : DR. MUNISH KAKKAR
+CODE/NAME & ADDRESS :C000140271 JACCESSION NO : 00O26WE004032 |AGE/SEX :7 Years Female
+AISHWARYA DIAGNOSTIC [PATIENTID : BHAVF231220150A DRAWN :08/05/2023 13:23:06
+Mae SECTOR-11, PRATAP NAGAR, KUMBHA iCLIENT PATIENT ID: {RECEIVED : 08/05/2023 13:52:03
+JAIPUR 302033 [ABHA NO : { REPORTED :08/05/2023 16:22:45
+9672721777
+Test Report Status Final Results Biological Reference Interval Units
+BASOPHILS 00 0-1 %
+METHOD : VCS TECHNOLOGY
+ABSOLUTE NEUTROPHIL COUNT 1.5 Low 2.0 - 8.0 thou/yL
+METHOD : CALCULATED
+ABSOLUTE LYMPHOCYTE COUNT 1.32 1.0 - 5.0 thou/yL
+METHOD : CALCULATED
+ABSOLUTE MONOCYTE COUNT 0.12 Low 0.2 -1.0 thou/yL
+METHOD : CALCULATED
+ABSOLUTE EOSINOPHIL COUNT 0.06 Low 0.1 - 1.0 thou/yL
+METHOD : CALCULATED
+ABSOLUTE BASOPHIL COUNT 0 0.0 - 0.1 thou/yL
+METHOD : CALCULATED
+NEUTROPHIL LYMPHOCYTE RATIO (NLR) 1.1
+METHOD : CALCULATED
+BAND (STAB) CELLS 00 0.0 - 5.0 %
+
+METHOD : MICROSCOPY
+
+Interpretation(s)
+
+RBC AND PLATELET INDICES-Mentzer index (MCV/RBC) is an automated cell-counter based calculated screen tool to differentiate cases of Iron deficiency anaemia(>13)
+from Beta thalassaemia trait
+
+(<13) in patients with microcytic anaemia. This needs to be interpreted in line with clinical correlation and suspidon. Estimation of HbA2 remains the gold standard for
+diagnosing a case of beta thalassaemia trait.
+
+WBC DIFFERENTIAL COUNT-The optimal threshold of 3.3 for NLR showed a prognostic possibility of clinical symptoms to change from mild to severe in COVID positive
+patients. When age = 49.5 years old and NLR = 3.3, 46.1% COVID-19 patients with mild disease might become severe. By contrast, when age < 49.5 years old and NLR <
+3.3, COVID-19 patients tend to show mild disease.
+
+(Reference to - The diagnostic and predictive role of NLR, d-NLR and PLR in COVID-19 patients A.-P. Yang, etal. International Immunopharmacology 84 (2020) 106504
+This ratio element is a calculated parameter and out of NABL scope.
+
+We and our 41 IAB TCF partners store and access information on your device for the following purposes: store and/or access information on a device, advertising and content x
+measurement, audience research, and services development, personalised advertising, and personalised content.
+
+Personal data may be processed to do the following: use precise geolocation data and actively scan device characteristics for identification.
+
+Our third party IAB TCF partners may store and access information on your device such as IP address and device characteristics. Our |AB TCF Partners may process this
+
+personal data on the basis of legitimate interest, or with your consent. You may change or withdraw your preferences for this website at any time by clicking on the cookie
+
+icon or link; however, as a consequence, you may not see relevant ads or personalized content. You may change your settings at any time or accept the default settings. You
+
+may close this banner to continue with only essential cookies. Privacy Policy
+Your Privacy Choices
+Third Parties
+
+Storage
+Targeted Advertising
+Personalization
+
+Performance Cookies
+
+DIAGNOSTIC REPORT
+
+SRL
+
+Diagnostics
+
+PATIENT NAME: BHAVISHKA
+
+REF. DOCTOR : DR. MUNISH KAKKAR
+
+CODE/NAME & ADDRESS :C000140271 JACCESSION NO : 00O26WE004032 TAGE/SEX :7 Years Female
+AISHWARYA DIAGNOSTIC [PATIENTID : BHAVF231220150A DRAWN :08/05/2023 13:23:06
+vane 11, SECTOR-11, PRATAP NAGAR, KUMBHA jcurent PATIENT ID: jrecerveo 08/05/2023 13:52:03
+JAIPUR 302033 JABHA NO ; REPORTED :08/05/2023 16:22:45
+9672721777
+
+Test Report Status Final Results Biological Reference Interval Units
+
+LIVER FUNCTION PROFILE, SERUM
+BILIRUBIN, TOTAL
+
+METHOD : DIAZONIUM ION, BLANKED (ROCHE)
+BILIRUBIN, DIRECT
+
+METHOD : DIAZOTIZATION
+BILIRUBIN, INDIRECT
+
+METHOD : CALCULATED PARAMETER
+TOTAL PROTEIN
+
+METHOD : BIURET,SERUM BLANK,ENDPOINT
+
+ALBUMIN
+METHOD : BROMOCRESOL GREEN
+
+GLOBULIN
+
+METHOD : CALCULATED PARAMETER
+ALBUMIN/GLOBULIN RATIO
+METHOD : CALCULATED PARAMETER
+ASPARTATE AMINOTRANSFERASE(AST/SGOT)
+METHOD : UV WITHOUT PYRIDOXAL-5 PHOSPHATE
+ALANINE AMINOTRANSFERASE (ALT/SGPT)
+METHOD : UV WITHOUT PYRIDOXAL-5 PHOSPHATE
+
+ALKALINE PHOSPHATASE
+
+METUAR . nAInn Anan oriercen
+
+We and our 41 IAB TCF partners store and access information on your device for the following purposes: store and/or access information on a device, advertising and content
+measurement, audience research, and services development, personalised advertising, and personalised content.
+
+Personal data may be processed to do the following: use precise geolocation data and actively scan device characteristics for identification.
+
+BIOCHEMISTRY
+
+3.89 High
+3.47 High
+0.42
+
+6.1
+
+3.6 Low
+
+2.5
+
+1.4
+2764 High
+2565 High
+
+259
+
+UPTO 1.0
+0.00 - 0.30
+0.00 - 0.60
+6.0 - 8.0
+
+3.8 -5.4
+
+Roonatds -
+
+Pre Mature:
+
+0.29 - 1.04
+
+1.0 - 2.0
+
+0 - 300
+
+RATIO
+
+U/L
+
+U/L
+
+U/L
+
+Our third party IAB TCF partners may store and access information on your device such as IP address and device characteristics. Our |AB TCF Partners may process this
+
+personal data on the basis of legitimate interest, or with your consent. You may change or withdraw your preferences for this website at any time by clicking on the cookie
+
+icon or link; however, as a consequence, you may not see relevant ads or personalized content. You may change your settings at any time or accept the default settings. You
+
+may close this banner to continue with only essential cookies. Privacy Policy
+Your Privacy Choices
+Third Parties
+
+Storage
+
+Targeted Advertising
+
+Personalization
+
+Performance Cookies
+
+x
+
+SRL
+
+Diagnostics
+
+MC-2558
+PATIENT NAME : BHAVISHKA REF. DOCTOR : DR. MUNISH KAKKAR
+CODE/NAME & ADDRESS :C000140271 TACCESSION NO : OO26WE004032 TAGE/SEX :7 Years Female
+I 1
+AISHWARYA DIAGNOSTIC }PATIENTID ==: BHAVF231220150A {DRAWN —_:08/05/2023 13:23:06
+-48/111, SE R-11, PRATAP NAGAR,KUMBHA F
+MARC.  SECTO ‘ GAR KU {CLIENT PATIENT ID: JRECEIVED : 08/05/2023 13:52:03
+JAIPUR 302033 [ABHA NO : { REPORTED :08/05/2023 16:22:45
+9672721777 H i
+I 1
+Test Report Status Final Results Biological Reference Interval Units
+
+anemia, pancreatitis,|hemochromatosis. AST levels may also increase after a heart attack or strenuous activity. ALT test measures the amount of this enzyme in the blood.ALT
+is found mainly in the liver, but also in smaller amounts in the kidneys,heart,muscles, and pancreas. It is commonly measured as a part of a diagnostic evaluation of
+hepatocellular injury, to determine liver health.AST levels increase during acute hepatitis,sometimes due to a viral infection,ischemia to the liver,chronic
+
+hepatitis, obstruction of bile ducts, cirrhosis.
+
+ALP is a protein found in almost all body tissues. Tissues with higher amounts of ALP indude the liver, bile ducts and bone. Hevated ALP levels are seen in Biliary obstruction,
+Osteoblastic bone tumors, osteomalacia, hepatitis, Hyperparathyroidism, Leukemia, Lymphoma, Pagets disease Rickets,Sarcoidosis etc. Lower-than-normal ALP levels seen
+in Hypophosphatasia, Malnutrition,Protein deficiency,Wilsons disease.
+
+GGT is an enzyme found in cell membranes of many tissues mainly in the liver,kidney and pancreas.It is also found in other tissues induding intestine,spleen, heart, brain
+and seminal vesicles.The highest concentration is in the kidney, but the liver is considered the source of normal enzyme activity.Serum GGT has been widely used as an
+index of liver dysfunction.Elevated serum GGT activity can be found in diseases of the liver,biliary system and pancreas.Conditions that increase serum GGT are obstructive
+liver disease high alcohol consumption and use of enzyme-indudng drugs etc.
+
+Total Protein also known as total protein,is a biochemical test for measuring the total amount of protein in serum.Protein in the plasma is made up of albumin and
+globulin.Higher-than-normal levels may be due to:Chronic inflammation or infection,including HIV and hepatitis B or C,Multiple myeloma,Waldenstroms
+disease.Lower-than-normal levels may be due to: Agammaglobulinemia,Bleeding (hemorrhage), Burns, Glomerulonephnitis, Liver disease, Malabsorption, Malnutrition, Nephrotic
+syndrome,Protein-losing enteropathy etc.
+
+Albumin is the most abundant protein in human blood plasma.It is produced in the liver.Albumin constitutes about half of the blood serum protein.Low blood albumin levels
+(hypoalbuminemia) can be caused by: Liver disease like cirrhosis of the liver, nephrotic syndrome,protein-osing enteropathy, Burns, hemodilution,inaeased vascular
+permeability or decreased lymphatic clearance, malnutrition and wasting etc
+
+**End Of Report**
+Please visit www.srlworld.com for related Test Information for this accession
+
+CONDITIONS OF LABORATORY TESTING & REPORTING
+
+1. It is presumed that the test sample belongs to the patient 5. SRL confirms that all tests have been performed or
+
+named or identified in the test requisition form. assayed with highest quality standards, clinical safety &
+
+2. All tests are performed and reported as per the technical integrity.
+
+turnaround time stated in the SRL Directory of Services. 6. Laboratory results should not be interpreted in isolation;
+3. Result delays could occur due to unforeseen it must be correlated with clinical information and be
+circumstances such as non-availability of kits / equipment interpreted by registered medical practitioners only to
+breakdown / natural calamities / technical downtime or any determine final diagnosis.
+
+We and our 41 IAB TCF partners store and access information on your device for the following purposes: store and/or access information on a device, advertising and content x
+measurement, audience research, and services development, personalised advertising, and personalised content.
+
+Personal data may be processed to do the following: use precise geolocation data and actively scan device characteristics for identification.
+
+Our third party IAB TCF partners may store and access information on your device such as IP address and device characteristics. Our |AB TCF Partners may process this
+
+personal data on the basis of legitimate interest, or with your consent. You may change or withdraw your preferences for this website at any time by clicking on the cookie
+
+icon or link; however, as a consequence, you may not see relevant ads or personalized content. You may change your settings at any time or accept the default settings. You
+
+may close this banner to continue with only essential cookies. Privacy Policy
+Your Privacy Choices
+Third Parties
+
+Storage
+Targeted Advertising
+Personalization
+
+Performance Cookies

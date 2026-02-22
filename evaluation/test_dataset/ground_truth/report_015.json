@@ -1,0 +1,72 @@
+{
+  "report_id": "report_015",
+  "report_metadata": {
+    "laboratory": "Sample Collected At",
+    "format": "PDF",
+    "date": "2026-02-19",
+    "completeness": "Complete",
+    "abnormality_type": "Unknown",
+    "verified": false,
+    "verified_by": "",
+    "verified_date": ""
+  },
+  "parameters": {
+    "bilirubin_total": {
+      "value": 3.83,
+      "unit": "mg/dL",
+      "reference_range": {
+        "min": null,
+        "max": null
+      }
+    },
+    "magnesium": {
+      "value": 3.83,
+      "unit": "mg/dL",
+      "reference_range": {
+        "min": null,
+        "max": null
+      }
+    },
+    "bilirubin_direct": {
+      "value": 1.414,
+      "unit": "mg/dL",
+      "reference_range": {
+        "min": null,
+        "max": null
+      }
+    },
+    "bilirubin_indirect": {
+      "value": 2.42,
+      "unit": "mg/dL",
+      "reference_range": {
+        "min": null,
+        "max": null
+      }
+    },
+    "ast": {
+      "value": 109.0,
+      "unit": "unknown",
+      "reference_range": {
+        "min": 15.0,
+        "max": 41.0
+      }
+    },
+    "hemoglobin": {
+      "value": 3.0,
+      "unit": "Vitamin",
+      "reference_range": {
+        "min": 11.4,
+        "max": 16.3
+      }
+    }
+  },
+  "classifications": {
+    "bilirubin_total": "Unknown",
+    "magnesium": "Unknown",
+    "bilirubin_direct": "Unknown",
+    "bilirubin_indirect": "Unknown",
+    "ast": "High",
+    "hemoglobin": "Low"
+  },
+  "notes": "Auto-generated template - requires manual verification"
+}

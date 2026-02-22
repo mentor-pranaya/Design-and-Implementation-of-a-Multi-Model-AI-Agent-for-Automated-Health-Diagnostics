@@ -1,0 +1,30 @@
+{
+  "filename": "test report (4).png",
+  "timestamp": "2026-02-18T19:25:08.009324",
+  "parameters": {
+    "ast": {
+      "extracted_value": 0.0,
+      "extracted_unit": "mg/l",
+      "correct_value": 0.0,
+      "correct_unit": "mg/l",
+      "expected_classification": "unknown",
+      "notes": ""
+    },
+    "glucose": {
+      "extracted_value": 150.0,
+      "extracted_unit": "unknown",
+      "correct_value": 150.0,
+      "correct_unit": "unknown",
+      "expected_classification": "unknown",
+      "notes": ""
+    },
+    "hemoglobin": {
+      "extracted_value": 6.0,
+      "extracted_unit": "%",
+      "correct_value": 6.0,
+      "correct_unit": "%",
+      "expected_classification": "unknown",
+      "notes": ""
+    }
+  }
+}

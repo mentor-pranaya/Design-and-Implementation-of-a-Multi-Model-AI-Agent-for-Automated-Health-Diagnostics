@@ -1,0 +1,42 @@
+{
+  "status": "success",
+  "report": {
+    "findings": {
+      "summary": "Analysis complete",
+      "abnormal_parameters": [],
+      "detected_patterns": [],
+      "risk_assessment": {}
+    },
+    "recommendations": {}
+  },
+  "metadata": {
+    "models_used": [
+      "Model 1 (Parameter Interpretation)",
+      "Model 2 (Pattern Recognition)",
+      "Model 3 (Contextual Analysis)",
+      "Risk Scoring Engine"
+    ],
+    "execution_log": [
+      "Starting multi-model pipeline",
+      "Stage 1: Data Extraction",
+      "  Extracting parameters from report",
+      "Stage 2: Data Validation",
+      "  Validating extracted parameters",
+      "Stage 3: Model 1 - Parameter Interpretation",
+      "  Classifying parameters against reference ranges",
+      "Stage 4: Model 2 - Pattern Recognition",
+      "  Detecting clinical patterns",
+      "Stage 5: Model 3 - Skipped (disabled or no context)",
+      "Stage 6: Risk Scoring",
+      "  Calculating risk scores",
+      "Stage 7: Synthesize Findings",
+      "  Synthesizing findings",
+      "Stage 8: Generate Recommendations",
+      "  Generating recommendations",
+      "Stage 9: Format Report",
+      "  Formatting report as json",
+      "\u2713 Pipeline completed successfully"
+    ],
+    "patient_context_provided": false
+  }
+}

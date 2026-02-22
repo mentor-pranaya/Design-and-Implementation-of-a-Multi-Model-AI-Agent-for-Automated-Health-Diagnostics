@@ -56,4 +56,15 @@ def extract_parameters(raw_data: dict) -> dict:
     Returns:
         dict: {parameter_name: {"value": float, "unit": str}}
     """
-    extracted =
+    extracted = {}
+    
+    for param_name, raw_value in raw_data.items():
+        try:
+            parsed = parse_value_unit(raw_value)
+            extracted[param_name] = parsed
+        except ExtractionError:
+            # Skip parameters that can't be parsed
+            continue
+    
+    return extracted
+

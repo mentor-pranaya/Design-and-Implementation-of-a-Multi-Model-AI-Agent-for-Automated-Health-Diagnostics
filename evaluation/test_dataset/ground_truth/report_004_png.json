@@ -1,0 +1,45 @@
+{
+  "report_id": "report_004_png",
+  "report_metadata": {
+    "laboratory": "Unknown",
+    "format": "PNG",
+    "date": "2026-02-19",
+    "completeness": "Complete",
+    "abnormality_type": "Unknown",
+    "verified": false,
+    "verified_by": "",
+    "verified_date": ""
+  },
+  "parameters": {
+    "ast": {
+      "value": 0.0,
+      "unit": "mg/l",
+      "reference_range": {
+        "min": 15.0,
+        "max": 41.0
+      }
+    },
+    "glucose": {
+      "value": 150.0,
+      "unit": "unknown",
+      "reference_range": {
+        "min": null,
+        "max": null
+      }
+    },
+    "hemoglobin": {
+      "value": 6.0,
+      "unit": "%",
+      "reference_range": {
+        "min": 11.4,
+        "max": 16.3
+      }
+    }
+  },
+  "classifications": {
+    "ast": "Low",
+    "glucose": "Unknown",
+    "hemoglobin": "Low"
+  },
+  "notes": "Auto-generated template - requires manual verification"
+}

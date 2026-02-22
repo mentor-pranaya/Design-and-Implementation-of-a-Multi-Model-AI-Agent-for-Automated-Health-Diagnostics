@@ -1,0 +1,251 @@
+
+======================================================================
+Initializing Phase 3: Evaluation & Recommendation Pipeline
+======================================================================
+Ô£ô Loaded 23 ABIM authoritative reference ranges
+  Source: ABIM Laboratory Reference Ranges 2026
+Ô£ô Loaded reference ranges
+  Source: American Board of Internal Medicine - Laboratory Tests Reference Ranges
+Ô£ô 28 parameters available for evaluation
+Ô£ô Parameter Evaluator initialized
+Ô£ô Loaded 11 medical condition guidelines
+Ô£ô All Phase 3 modules initialized successfully
+
+
+================================================================================
+PHASE 4: FORMAL VALIDATION & BENCHMARKING
+================================================================================
+
+­ƒôè Loading 4 test cases...
+
+[case_01] High-risk male patient with diabetes, hypertension, smoking
+Starting Phase 3 Pipeline...
+----------------------------------------------------------------------
+
+[Phase 3A] Reference-Based Evaluation...
+Ô£ô Evaluated 12 parameters
+  Abnormal findings: 4
+  Critical findings: 0
+
+[Phase 3B] Pattern Recognition...
+Ô£ô Detected 2 clinical patterns
+
+[Phase 3D] Applying Contextual Refinements...
+Ô£ô Contextual Refiner initialized for male patient, age 45
+  - Known conditions: diabetes, hypertension
+  - Lifestyle factors: smoker, exercise: low, diet: mixed, alcohol: moderate
+
+======================================================================
+Phase 3D: Applying Contextual Refinements (Model 3)
+======================================================================
+
+Ô£ô No contextual adjustments needed (insufficient context or no risk patterns)
+======================================================================
+Ô£ô Applied contextual refinements
+
+[Phase 3E] Calculating Quantified Risk Scores...
+  Calculating CV risk for male patient, age 45
+Ô£ô Cardiovascular 10-year risk: 25.0% (High)
+
+[Phase 3C] Generating Evidence-Based Recommendations...
+Ô£ô Generated recommendations for 2 conditions
+
+======================================================================
+Ô£ô Phase 3 Pipeline Complete
+======================================================================
+
+
+[case_02] Young female with mild anemia, vegetarian diet
+Starting Phase 3 Pipeline...
+----------------------------------------------------------------------
+
+[Phase 3A] Reference-Based Evaluation...
+Ô£ô Evaluated 10 parameters
+  Abnormal findings: 2
+  Critical findings: 0
+
+[Phase 3B] Pattern Recognition...
+Ô£ô Detected 1 clinical patterns
+
+[Phase 3D] Applying Contextual Refinements...
+Ô£ô Contextual Refiner initialized for female patient, age 32
+  - Lifestyle factors: exercise: moderate, diet: vegetarian, alcohol: none
+
+======================================================================
+Phase 3D: Applying Contextual Refinements (Model 3)
+======================================================================
+
+Ô£ô No contextual adjustments needed (insufficient context or no risk patterns)
+======================================================================
+Ô£ô Applied contextual refinements
+
+[Phase 3E] Calculating Quantified Risk Scores...
+  Calculating CV risk for female patient, age 32
+Ô£ô Cardiovascular 10-year risk: 4.0% (Low)
+
+[Phase 3C] Generating Evidence-Based Recommendations...
+Ô£ô Generated recommendations for 1 conditions
+
+======================================================================
+Ô£ô Phase 3 Pipeline Complete
+======================================================================
+
+
+[case_03] Borderline values - metabolic syndrome with subclinical markers
+Starting Phase 3 Pipeline...
+----------------------------------------------------------------------
+
+[Phase 3A] Reference-Based Evaluation...
+Ô£ô Evaluated 9 parameters
+  Abnormal findings: 7
+  Critical findings: 0
+
+[Phase 3B] Pattern Recognition...
+Ô£ô Detected 3 clinical patterns
+
+[Phase 3D] Applying Contextual Refinements...
+Ô£ô Contextual Refiner initialized for Male patient, age 58
+  - Known conditions: prediabetes, obesity
+  - Lifestyle factors: exercise: sedentary, diet: high_carb, alcohol: moderate
+
+======================================================================
+Phase 3D: Applying Contextual Refinements (Model 3)
+======================================================================
+
+Ô£ô No contextual adjustments needed (insufficient context or no risk patterns)
+======================================================================
+Ô£ô Applied contextual refinements
+
+[Phase 3E] Calculating Quantified Risk Scores...
+  Calculating CV risk for male patient, age 58
+Ô£ô Cardiovascular 10-year risk: 25.0% (High)
+
+[Phase 3C] Generating Evidence-Based Recommendations...
+Ô£ô Generated recommendations for 3 conditions
+
+======================================================================
+Ô£ô Phase 3 Pipeline Complete
+======================================================================
+
+
+[case_04] Critical values - severe kidney dysfunction with electrolyte imbalance
+Starting Phase 3 Pipeline...
+----------------------------------------------------------------------
+
+[Phase 3A] Reference-Based Evaluation...
+Ô£ô Evaluated 7 parameters
+  Abnormal findings: 7
+  Critical findings: 0
+
+[Phase 3B] Pattern Recognition...
+Ô£ô Detected 3 clinical patterns
+python : Traceback (most recent call last):
+At line:1 char:78
++ ... v:PYTHONIOENCODING='utf-8' ; python evaluation_runner.py 2>&1 | Out-F ...
++                                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Traceback (most recent call last) 
+   ::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  File "C:\Users\mi\Downloads\infosys project\evaluation_runner.py", line 647, 
+in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mi\Downloads\infosys project\evaluation_runner.py", line 613, 
+in main
+    runner.generate_report(metrics, output_file)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mi\Downloads\infosys project\evaluation_runner.py", line 595, 
+in generate_report
+    output_file.write_text(report_text)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Python313\Lib\pathlib\_local.py", line 555, in write_text
+    return PathBase.write_text(self, data, encoding, errors, newline)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python313\Lib\pathlib\_abc.py", line 652, in write_text
+    return f.write(data)
+           ~~~~~~~^^^^^^
+  File "C:\Python313\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\U0001f4ca' in 
+position 196: character maps to <undefined>
+
+[Phase 3D] Applying Contextual Refinements...
+Ô£ô Contextual Refiner initialized for Female patient, age 72
+  - Known conditions: chronic_kidney_disease, hypertension, diabetes
+  - Lifestyle factors: exercise: limited, diet: low_sodium, alcohol: none
+
+======================================================================
+Phase 3D: Applying Contextual Refinements (Model 3)
+======================================================================
+
+Ô£ô No contextual adjustments needed (insufficient context or no risk patterns)
+======================================================================
+Ô£ô Applied contextual refinements
+
+[Phase 3E] Calculating Quantified Risk Scores...
+  Calculating CV risk for female patient, age 72
+ÔÜá Could not calculate CV risk: invalid literal for int() with base 10: ')'
+
+[Phase 3C] Generating Evidence-Based Recommendations...
+Ô£ô Generated recommendations for 3 conditions
+
+======================================================================
+Ô£ô Phase 3 Pipeline Complete
+======================================================================
+
+
+================================================================================
+=== VALIDATION RESULTS ===
+================================================================================
+
+­ƒôè MODEL 1: Parameter Classification
+   Accuracy: 81.6%
+   Precision: 0.952
+   Recall: 0.769
+   F1 Score: 0.851
+
+   Confusion Matrix (True \ Predicted):
+            | Normal | High | Low
+   -----------------------------------
+   Normal   |   11   |   0  |   0
+   High     |    1   |  14  |   0
+   Low      |    1   |   0  |   6
+
+   Per-Parameter Accuracy:
+   Total Bilirubin        0.0% (0/1)
+   ALT                   50.0% (1/2)
+   HDL                   66.7% (2/3)
+   Hemoglobin           100.0% (3/3)
+   WBC                  100.0% (2/2)
+   Platelets            100.0% (2/2)
+   Glucose              100.0% (4/4)
+   Total Cholesterol    100.0% (3/3)
+   LDL                  100.0% (3/3)
+   Triglycerides        100.0% (2/2)
+   Creatinine           100.0% (2/2)
+   RBC                  100.0% (1/1)
+   HbA1c                100.0% (1/1)
+   AST                  100.0% (1/1)
+   BUN                  100.0% (1/1)
+   Potassium            100.0% (1/1)
+   Sodium               100.0% (1/1)
+   Albumin              100.0% (1/1)
+
+­ƒöì MODEL 2: Pattern Recognition
+   Pattern Detection Accuracy: 22.2%
+   False Positive Rate: 77.8%
+
+ÔØñ´©Å  RISK SCORING ENGINE
+   Risk Category Match: 50.0%
+   Directional Correctness: 50.0%
+
+­ƒôê ERROR ANALYSIS
+   Most Misclassified Parameter: HbA1c
+   Most Confused Pattern: Anemia Indicator
+   Risk Overestimation Bias: 2.88%
+   Risk Underestimation Bias: 0.00%
+
+­ƒÄ» OVERALL SYSTEM RELIABILITY SCORE: 54.3%
+================================================================================

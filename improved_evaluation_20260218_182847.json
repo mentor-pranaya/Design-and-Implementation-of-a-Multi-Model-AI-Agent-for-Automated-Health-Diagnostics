@@ -1,0 +1,367 @@
+{
+  "timestamp": "2026-02-18T18:24:44.304265",
+  "dataset": {
+    "total_files": 19,
+    "pdf_files": 15,
+    "png_files": 4
+  },
+  "detailed_results": {
+    "test report (1).pdf": {
+      "status": "success",
+      "format": "PDF",
+      "text_length": 13015,
+      "parameters_found": 17,
+      "parameters": [
+        "hemoglobin",
+        "rbc",
+        "wbc",
+        "platelet",
+        "hematocrit",
+        "mcv",
+        "mch",
+        "rdw",
+        "basophils",
+        "neutrophils",
+        "lymphocytes",
+        "monocytes",
+        "eosinophils",
+        "calcium",
+        "ast",
+        "phosphorus",
+        "potassium"
+      ]
+    },
+    "test report (10).pdf": {
+      "status": "success",
+      "format": "PDF",
+      "text_length": 14175,
+      "parameters_found": 29,
+      "parameters": [
+        "hemoglobin",
+        "hba1c",
+        "glucose",
+        "rbc",
+        "wbc",
+        "platelet",
+        "hematocrit",
+        "neutrophils",
+        "lymphocytes",
+        "monocytes",
+        "eosinophils",
+        "basophils",
+        "ast",
+        "creatinine",
+        "magnesium",
+        "protein_total",
+        "albumin",
+        "globulin",
+        "bilirubin_total",
+        "ggt",
+        "urea",
+        "bun",
+        "cholesterol",
+        "triglycerides",
+        "hdl",
+        "ldl",
+        "potassium",
+        "tsh",
+        "calcium"
+      ]
+    },
+    "test report (11).pdf": {
+      "status": "success",
+      "format": "PDF",
+      "text_length": 6541,
+      "parameters_found": 4,
+      "parameters": [
+        "potassium",
+        "t3",
+        "t4",
+        "tsh"
+      ]
+    },
+    "test report (12).pdf": {
+      "status": "success",
+      "format": "PDF",
+      "text_length": 2281,
+      "parameters_found": 2,
+      "parameters": [
+        "bilirubin_total",
+        "magnesium"
+      ]
+    },
+    "test report (13).pdf": {
+      "status": "success",
+      "format": "PDF",
+      "text_length": 2204,
+      "parameters_found": 2,
+      "parameters": [
+        "urea",
+        "creatinine"
+      ]
+    },
+    "test report (14).pdf": {
+      "status": "success",
+      "format": "PDF",
+      "text_length": 4024,
+      "parameters_found": 3,
+      "parameters": [
+        "potassium",
+        "wbc",
+        "hematocrit"
+      ]
+    },
+    "test report (15).pdf": {
+      "status": "success",
+      "format": "PDF",
+      "text_length": 3978,
+      "parameters_found": 6,
+      "parameters": [
+        "bilirubin_total",
+        "magnesium",
+        "bilirubin_direct",
+        "bilirubin_indirect",
+        "ast",
+        "hemoglobin"
+      ]
+    },
+    "test report (2).pdf": {
+      "status": "success",
+      "format": "PDF",
+      "text_length": 31594,
+      "parameters_found": 10,
+      "parameters": [
+        "monocytes",
+        "eosinophils",
+        "basophils",
+        "neutrophils",
+        "lymphocytes",
+        "platelet",
+        "potassium",
+        "magnesium",
+        "ast",
+        "calcium"
+      ]
+    },
+    "test report (3).pdf": {
+      "status": "success",
+      "format": "PDF",
+      "text_length": 32542,
+      "parameters_found": 37,
+      "parameters": [
+        "potassium",
+        "hemoglobin",
+        "wbc",
+        "neutrophils",
+        "lymphocytes",
+        "basophils",
+        "eosinophils",
+        "monocytes",
+        "rbc",
+        "hematocrit",
+        "mcv",
+        "mch",
+        "mchc",
+        "sodium",
+        "hba1c",
+        "glucose",
+        "bilirubin_total",
+        "ast",
+        "alp",
+        "protein_total",
+        "albumin",
+        "globulin",
+        "ggt",
+        "calcium",
+        "cholesterol",
+        "triglycerides",
+        "ldl",
+        "hdl",
+        "urea",
+        "bun",
+        "creatinine",
+        "magnesium",
+        "chloride",
+        "tsh",
+        "t3",
+        "t4",
+        "alt"
+      ]
+    },
+    "test report (4).pdf": {
+      "status": "ocr_failed",
+      "format": "UNKNOWN",
+      "text_length": 0,
+      "parameters_found": 0
+    },
+    "test report (5).pdf": {
+      "status": "success",
+      "format": "PDF",
+      "text_length": 17796,
+      "parameters_found": 22,
+      "parameters": [
+        "chloride",
+        "creatinine",
+        "magnesium",
+        "urea",
+        "ast",
+        "alt",
+        "ggt",
+        "alp",
+        "bilirubin_total",
+        "bilirubin_direct",
+        "bilirubin_indirect",
+        "protein_total",
+        "albumin",
+        "globulin",
+        "calcium",
+        "potassium",
+        "glucose",
+        "t4",
+        "tsh",
+        "t3",
+        "hemoglobin",
+        "wbc"
+      ]
+    },
+    "test report (6).pdf": {
+      "status": "success",
+      "format": "PDF",
+      "text_length": 2138,
+      "parameters_found": 4,
+      "parameters": [
+        "glucose",
+        "ast",
+        "cholesterol",
+        "calcium"
+      ]
+    },
+    "test report (7).pdf": {
+      "status": "no_parameters",
+      "format": "PDF",
+      "text_length": 2306,
+      "parameters_found": 0
+    },
+    "test report (8).pdf": {
+      "status": "success",
+      "format": "PDF",
+      "text_length": 27643,
+      "parameters_found": 26,
+      "parameters": [
+        "hemoglobin",
+        "rbc",
+        "wbc",
+        "platelet",
+        "hematocrit",
+        "mcv",
+        "mch",
+        "rdw",
+        "neutrophils",
+        "lymphocytes",
+        "monocytes",
+        "eosinophils",
+        "basophils",
+        "ast",
+        "calcium",
+        "potassium",
+        "hba1c",
+        "glucose",
+        "magnesium",
+        "bilirubin_total",
+        "alt",
+        "sodium",
+        "t3",
+        "t4",
+        "tsh",
+        "alp"
+      ]
+    },
+    "test report (9).pdf": {
+      "status": "success",
+      "format": "PDF",
+      "text_length": 14175,
+      "parameters_found": 29,
+      "parameters": [
+        "hemoglobin",
+        "hba1c",
+        "glucose",
+        "rbc",
+        "wbc",
+        "platelet",
+        "hematocrit",
+        "neutrophils",
+        "lymphocytes",
+        "monocytes",
+        "eosinophils",
+        "basophils",
+        "ast",
+        "creatinine",
+        "magnesium",
+        "protein_total",
+        "albumin",
+        "globulin",
+        "bilirubin_total",
+        "ggt",
+        "urea",
+        "bun",
+        "cholesterol",
+        "triglycerides",
+        "hdl",
+        "ldl",
+        "potassium",
+        "tsh",
+        "calcium"
+      ]
+    },
+    "test report (1).png": {
+      "status": "no_parameters",
+      "format": "IMAGE",
+      "text_length": 657,
+      "parameters_found": 0
+    },
+    "test report (2).png": {
+      "status": "success",
+      "format": "IMAGE",
+      "text_length": 1262,
+      "parameters_found": 4,
+      "parameters": [
+        "cholesterol",
+        "triglycerides",
+        "hdl",
+        "ldl"
+      ]
+    },
+    "test report (3).png": {
+      "status": "success",
+      "format": "IMAGE",
+      "text_length": 1200,
+      "parameters_found": 5,
+      "parameters": [
+        "hemoglobin",
+        "rbc",
+        "neutrophils",
+        "eosinophils",
+        "monocytes"
+      ]
+    },
+    "test report (4).png": {
+      "status": "success",
+      "format": "IMAGE",
+      "text_length": 774,
+      "parameters_found": 3,
+      "parameters": [
+        "ast",
+        "glucose",
+        "hemoglobin"
+      ]
+    }
+  },
+  "metrics": {
+    "ocr_success_rate": 94.73684210526315,
+    "extraction_success_rate": 84.21052631578947,
+    "workflow_success_rate": 94.73684210526315,
+    "total_parameters_extracted": 203,
+    "avg_parameters_per_file": 12.6875,
+    "milestone_1_passed": false
+  }
+}

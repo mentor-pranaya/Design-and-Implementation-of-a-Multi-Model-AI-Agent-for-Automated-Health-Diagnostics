@@ -1,0 +1,108 @@
+{
+  "report_id": "report_002",
+  "report_metadata": {
+    "laboratory": "Medicine",
+    "format": "PDF",
+    "date": "2026-02-19",
+    "completeness": "Complete",
+    "abnormality_type": "Unknown",
+    "verified": false,
+    "verified_by": "",
+    "verified_date": ""
+  },
+  "parameters": {
+    "monocytes": {
+      "value": 8.7,
+      "unit": "eosinophils",
+      "reference_range": {
+        "min": null,
+        "max": null
+      }
+    },
+    "eosinophils": {
+      "value": 0.2,
+      "unit": "basophils",
+      "reference_range": {
+        "min": null,
+        "max": null
+      }
+    },
+    "basophils": {
+      "value": 0.0,
+      "unit": "absolute",
+      "reference_range": {
+        "min": null,
+        "max": null
+      }
+    },
+    "neutrophils": {
+      "value": 14.73,
+      "unit": "unknown",
+      "reference_range": {
+        "min": null,
+        "max": null
+      }
+    },
+    "lymphocytes": {
+      "value": 1.59,
+      "unit": "unknown",
+      "reference_range": {
+        "min": null,
+        "max": null
+      }
+    },
+    "platelet": {
+      "value": 237.0,
+      "unit": "nabl",
+      "reference_range": {
+        "min": 151.0,
+        "max": 342.0
+      }
+    },
+    "potassium": {
+      "value": 3.0,
+      "unit": "Vasant",
+      "reference_range": {
+        "min": 3.5,
+        "max": 4.7
+      }
+    },
+    "magnesium": {
+      "value": 1.0,
+      "unit": "DL",
+      "reference_range": {
+        "min": null,
+        "max": null
+      }
+    },
+    "ast": {
+      "value": 3.0,
+      "unit": "unknown",
+      "reference_range": {
+        "min": 15.0,
+        "max": 41.0
+      }
+    },
+    "calcium": {
+      "value": 9.0,
+      "unit": "to",
+      "reference_range": {
+        "min": 8.9,
+        "max": 10.0
+      }
+    }
+  },
+  "classifications": {
+    "monocytes": "Unknown",
+    "eosinophils": "Unknown",
+    "basophils": "Unknown",
+    "neutrophils": "Unknown",
+    "lymphocytes": "Unknown",
+    "platelet": "Normal",
+    "potassium": "Low",
+    "magnesium": "Unknown",
+    "ast": "Low",
+    "calcium": "Normal"
+  },
+  "notes": "Auto-generated template - requires manual verification"
+}

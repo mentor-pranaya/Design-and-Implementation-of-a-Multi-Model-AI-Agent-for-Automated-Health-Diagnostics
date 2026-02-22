@@ -1,0 +1,62 @@
+{
+  "case_id": "case_03",
+  "description": "Borderline values - metabolic syndrome with subclinical markers",
+  "source_report": "../../data/sample_reports/sample_blood_report_3.json",
+  
+  "patient_info": {
+    "age": 58,
+    "sex": "male",
+    "known_conditions": ["prediabetes", "obesity"],
+    "lifestyle": {
+      "smoker": false,
+      "exercise_level": "sedentary",
+      "diet_type": "high_carb",
+      "alcohol_use": "moderate"
+    }
+  },
+  
+  "true_parameters": {
+    "Glucose": 105,
+    "HbA1c": 6.2,
+    "Total Cholesterol": 205,
+    "LDL": 135,
+    "HDL": 38,
+    "Triglycerides": 175,
+    "ALT": 48,
+    "AST": 42,
+    "Total Bilirubin": 0.9
+  },
+  
+  "true_classification": {
+    "Glucose": "High",
+    "HbA1c": "High",
+    "Total Cholesterol": "High",
+    "LDL": "High",
+    "HDL": "Low",
+    "Triglycerides": "High",
+    "ALT": "Normal",
+    "AST": "High",
+    "Total Bilirubin": "Normal"
+  },
+  
+  "true_severity": {
+    "Glucose": "Mild",
+    "HbA1c": "Mild",
+    "Total Cholesterol": "Mild",
+    "LDL": "Moderate",
+    "HDL": "Moderate",
+    "Triglycerides": "Mild",
+    "AST": "Mild"
+  },
+  
+  "true_patterns": [
+    "Metabolic Syndrome",
+    "Prediabetes Risk",
+    "Liver Health Alert"
+  ],
+  
+  "true_risk_category": "Intermediate",
+  "true_risk_range": {"min": 10, "max": 18},
+  
+  "rationale": "58-year-old obese male with multiple borderline abnormalities: prediabetes (glucose 105, HbA1c 6.2%), dyslipidemia (low HDL, high triglycerides), elevated liver enzymes. Classic metabolic syndrome presentation. Intermediate risk due to age and cluster of risk factors."
+}

@@ -1,0 +1,54 @@
+{
+  "filename": "test report (15).pdf",
+  "timestamp": "2026-02-18T19:23:50.731660",
+  "parameters": {
+    "bilirubin_total": {
+      "extracted_value": 3.83,
+      "extracted_unit": "mg/dL",
+      "correct_value": 3.83,
+      "correct_unit": "mg/dL",
+      "expected_classification": "unknown",
+      "notes": ""
+    },
+    "magnesium": {
+      "extracted_value": 3.83,
+      "extracted_unit": "mg/dL",
+      "correct_value": 3.83,
+      "correct_unit": "mg/dL",
+      "expected_classification": "unknown",
+      "notes": ""
+    },
+    "bilirubin_direct": {
+      "extracted_value": 1.414,
+      "extracted_unit": "mg/dL",
+      "correct_value": 1.414,
+      "correct_unit": "mg/dL",
+      "expected_classification": "unknown",
+      "notes": ""
+    },
+    "bilirubin_indirect": {
+      "extracted_value": 2.42,
+      "extracted_unit": "mg/dL",
+      "correct_value": 2.42,
+      "correct_unit": "mg/dL",
+      "expected_classification": "unknown",
+      "notes": ""
+    },
+    "ast": {
+      "extracted_value": 109.0,
+      "extracted_unit": "unknown",
+      "correct_value": 109.0,
+      "correct_unit": "unknown",
+      "expected_classification": "unknown",
+      "notes": ""
+    },
+    "hemoglobin": {
+      "extracted_value": 3.0,
+      "extracted_unit": "Vitamin",
+      "correct_value": 3.0,
+      "correct_unit": "Vitamin",
+      "expected_classification": "unknown",
+      "notes": ""
+    }
+  }
+}

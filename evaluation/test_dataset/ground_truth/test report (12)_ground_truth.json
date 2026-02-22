@@ -1,0 +1,22 @@
+{
+  "filename": "test report (12).pdf",
+  "timestamp": "2026-02-18T19:23:34.394576",
+  "parameters": {
+    "bilirubin_total": {
+      "extracted_value": 2.0,
+      "extracted_unit": "mg/dl",
+      "correct_value": 2.0,
+      "correct_unit": "mg/dl",
+      "expected_classification": "unknown",
+      "notes": ""
+    },
+    "magnesium": {
+      "extracted_value": 2.0,
+      "extracted_unit": "mg/dL",
+      "correct_value": 2.0,
+      "correct_unit": "mg/dL",
+      "expected_classification": "unknown",
+      "notes": ""
+    }
+  }
+}

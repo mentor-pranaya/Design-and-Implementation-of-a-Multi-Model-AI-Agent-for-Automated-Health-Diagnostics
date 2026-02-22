@@ -1,0 +1,139 @@
+{
+  "dataset_stats": {
+    "total_test_cases": 2,
+    "total_parameters": 22,
+    "total_classifications": 22,
+    "total_patterns": 3,
+    "avg_parameters_per_case": 11.0,
+    "coverage": {
+      "high_risk_cases": 1,
+      "low_risk_cases": 1,
+      "anemia_cases": 1,
+      "diabetes_cases": 1,
+      "cardiovascular_cases": 1
+    }
+  },
+  "model1_classification": {
+    "confusion_matrix": {
+      "true_positives": 22,
+      "true_negatives": 0,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0
+    },
+    "total_errors": 0,
+    "error_details": []
+  },
+  "model2_pattern_detection": {
+    "true_positives": 3,
+    "false_positives": 0,
+    "false_negatives": 0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1_score": 1.0,
+    "error_details": []
+  },
+  "risk_scoring": {
+    "category_accuracy": 100.0,
+    "range_accuracy": 100.0,
+    "total_cases": 2,
+    "results": [
+      {
+        "category_match": true,
+        "predicted_category": "High",
+        "expected_category": "High",
+        "risk_in_range": true,
+        "predicted_risk_percent": 25.0,
+        "expected_range": {
+          "min": 20,
+          "max": 30
+        },
+        "trigger_overlap_percent": 0.0,
+        "rationale": "Age 45, male, diabetes, HTN, smoking, elevated LDL"
+      },
+      {
+        "category_match": true,
+        "predicted_category": "Low",
+        "expected_category": "Low",
+        "risk_in_range": true,
+        "predicted_risk_percent": 4.0,
+        "expected_range": {
+          "min": 2,
+          "max": 5
+        },
+        "trigger_overlap_percent": 0.0,
+        "rationale": "Young age (32), female, no risk factors, healthy lipid profile"
+      }
+    ]
+  },
+  "test_case_results": [
+    {
+      "case_id": "test_case_1",
+      "classification": {
+        "accuracy_percent": 100.0,
+        "correct": 12,
+        "total": 12,
+        "errors": []
+      },
+      "pattern_detection": {
+        "detected": 2,
+        "expected": 2,
+        "true_positives": 2,
+        "false_negatives": 0,
+        "false_positives": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1_score": 1.0,
+        "errors": []
+      },
+      "risk_scoring": {
+        "category_match": true,
+        "predicted_category": "High",
+        "expected_category": "High",
+        "risk_in_range": true,
+        "predicted_risk_percent": 25.0,
+        "expected_range": {
+          "min": 20,
+          "max": 30
+        },
+        "trigger_overlap_percent": 0.0,
+        "rationale": "Age 45, male, diabetes, HTN, smoking, elevated LDL"
+      }
+    },
+    {
+      "case_id": "test_case_2",
+      "classification": {
+        "accuracy_percent": 100.0,
+        "correct": 10,
+        "total": 10,
+        "errors": []
+      },
+      "pattern_detection": {
+        "detected": 1,
+        "expected": 1,
+        "true_positives": 1,
+        "false_negatives": 0,
+        "false_positives": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1_score": 1.0,
+        "errors": []
+      },
+      "risk_scoring": {
+        "category_match": true,
+        "predicted_category": "Low",
+        "expected_category": "Low",
+        "risk_in_range": true,
+        "predicted_risk_percent": 4.0,
+        "expected_range": {
+          "min": 2,
+          "max": 5
+        },
+        "trigger_overlap_percent": 0.0,
+        "rationale": "Young age (32), female, no risk factors, healthy lipid profile"
+      }
+    }
+  ]
+}

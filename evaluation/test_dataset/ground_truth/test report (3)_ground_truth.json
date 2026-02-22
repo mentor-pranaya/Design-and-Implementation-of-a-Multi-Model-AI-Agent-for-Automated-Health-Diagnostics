@@ -1,0 +1,46 @@
+{
+  "filename": "test report (3).png",
+  "timestamp": "2026-02-18T19:25:07.665968",
+  "parameters": {
+    "hemoglobin": {
+      "extracted_value": 4.0,
+      "extracted_unit": "gns/l",
+      "correct_value": 4.0,
+      "correct_unit": "gns/l",
+      "expected_classification": "unknown",
+      "notes": ""
+    },
+    "rbc": {
+      "extracted_value": 4.0,
+      "extracted_unit": "rillfeamm",
+      "correct_value": 4.0,
+      "correct_unit": "rillfeamm",
+      "expected_classification": "unknown",
+      "notes": ""
+    },
+    "neutrophils": {
+      "extracted_value": 56.0,
+      "extracted_unit": "%",
+      "correct_value": 56.0,
+      "correct_unit": "%",
+      "expected_classification": "unknown",
+      "notes": ""
+    },
+    "eosinophils": {
+      "extracted_value": 4.0,
+      "extracted_unit": "%",
+      "correct_value": 4.0,
+      "correct_unit": "%",
+      "expected_classification": "unknown",
+      "notes": ""
+    },
+    "monocytes": {
+      "extracted_value": 5.0,
+      "extracted_unit": "%",
+      "correct_value": 5.0,
+      "correct_unit": "%",
+      "expected_classification": "unknown",
+      "notes": ""
+    }
+  }
+}

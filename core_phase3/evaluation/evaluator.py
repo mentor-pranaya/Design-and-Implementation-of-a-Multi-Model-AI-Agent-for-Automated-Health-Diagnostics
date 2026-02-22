@@ -335,9 +335,9 @@ class ParameterEvaluator:
         
         if kidney_markers:
             flags.append({
-                'pattern_type': 'Kidney Function Alert',
+                'pattern_type': 'Kidney Disease',
                 'triggered_by': kidney_markers,
-                'confidence': 'moderate'
+                'confidence': 'high' if len(kidney_markers) >= 2 else 'moderate'
             })
         
         # Flag 5: Liver function concerns
@@ -350,12 +350,107 @@ class ParameterEvaluator:
         if 'Bilirubin Total' in eval_dict and eval_dict['Bilirubin Total']['status'] == EvaluationStatus.HIGH:
             liver_markers.append('Bilirubin Total')
         
-        if liver_markers:
+        # Only flag if >= 2 liver markers (tightened rule)
+        if len(liver_markers) >= 2:
             flags.append({
-                'pattern_type': 'Liver Function Alert',
+                'pattern_type': 'Liver Health Alert',
                 'triggered_by': liver_markers,
-                'confidence': 'moderate' if len(liver_markers) >= 2 else 'low'
+                'confidence': 'moderate'
             })
+        
+        # Flag 6: Metabolic Syndrome (requires 2+ risk factors)
+        metabolic_factors = []
+        
+        if 'Triglycerides' in eval_dict and eval_dict['Triglycerides']['status'] == EvaluationStatus.HIGH:
+            metabolic_factors.append('Triglycerides')
+        if 'HDL' in eval_dict and eval_dict['HDL']['status'] == EvaluationStatus.LOW:
+            metabolic_factors.append('HDL')
+        if 'Glucose' in eval_dict and eval_dict['Glucose']['status'] in [EvaluationStatus.HIGH, EvaluationStatus.BORDERLINE_HIGH]:
+            metabolic_factors.append('Glucose')
+        if 'HbA1c' in eval_dict and eval_dict['HbA1c']['status'] in [EvaluationStatus.HIGH, EvaluationStatus.BORDERLINE_HIGH]:
+            metabolic_factors.append('HbA1c')
+        
+        if len(metabolic_factors) >= 2:
+            flags.append({
+                'pattern_type': 'Metabolic Syndrome',
+                'triggered_by': metabolic_factors,
+                'confidence': 'high' if len(metabolic_factors) >= 3 else 'moderate'
+            })
+        
+        # Flag 7: Prediabetes Risk (borderline glucose/HbA1c without diabetes diagnosis)
+        prediabetes_markers = []
+        
+        if 'Glucose' in eval_dict:
+            glucose_val = eval_dict['Glucose']['value']
+            # Prediabetes range: 100-125 mg/dL
+            if 100 <= glucose_val < 126:
+                prediabetes_markers.append('Glucose')
+        
+        if 'HbA1c' in eval_dict:
+            hba1c_val = eval_dict['HbA1c']['value']
+            # Prediabetes range: 5.7-6.4%
+            if 5.7 <= hba1c_val < 6.5:
+                prediabetes_markers.append('HbA1c')
+        
+        if prediabetes_markers:
+            flags.append({
+                'pattern_type': 'Prediabetes Risk',
+                'triggered_by': prediabetes_markers,
+                'confidence': 'high' if len(prediabetes_markers) >= 2 else 'moderate'
+            })
+        
+        # Flag 8: Electrolyte Imbalance (any electrolyte abnormality)
+        electrolyte_issues = []
+        
+        if 'Potassium' in eval_dict:
+            k_status = eval_dict['Potassium']['status']
+            if k_status in [EvaluationStatus.HIGH, EvaluationStatus.LOW, EvaluationStatus.CRITICAL_HIGH, EvaluationStatus.CRITICAL_LOW]:
+                electrolyte_issues.append('Potassium')
+        
+        if 'Sodium' in eval_dict:
+            na_status = eval_dict['Sodium']['status']
+            if na_status in [EvaluationStatus.HIGH, EvaluationStatus.LOW, EvaluationStatus.CRITICAL_HIGH, EvaluationStatus.CRITICAL_LOW]:
+                electrolyte_issues.append('Sodium')
+        
+        if 'Chloride' in eval_dict:
+            cl_status = eval_dict['Chloride']['status']
+            if cl_status in [EvaluationStatus.HIGH, EvaluationStatus.LOW]:
+                electrolyte_issues.append('Chloride')
+        
+        if electrolyte_issues:
+            flags.append({
+                'pattern_type': 'Electrolyte Imbalance',
+                'triggered_by': electrolyte_issues,
+                'confidence': 'high' if len(electrolyte_issues) >= 2 else 'moderate'
+            })
+        
+        # Flag 9: Anemia of Chronic Disease (anemia with kidney disease or other chronic conditions)
+        # Only flag if Hemoglobin is low AND there's kidney dysfunction or other chronic markers
+        if 'Hemoglobin' in eval_dict:
+            hgb_status = eval_dict['Hemoglobin']['status']
+            if hgb_status in [EvaluationStatus.LOW, EvaluationStatus.CRITICAL_LOW]:
+                # Check for chronic disease markers
+                chronic_markers = []
+                
+                if 'Creatinine' in eval_dict and eval_dict['Creatinine']['status'] == EvaluationStatus.HIGH:
+                    chronic_markers.append('Creatinine')
+                if 'BUN' in eval_dict and eval_dict['BUN']['status'] == EvaluationStatus.HIGH:
+                    chronic_markers.append('BUN')
+                if 'Albumin' in eval_dict and eval_dict['Albumin']['status'] == EvaluationStatus.LOW:
+                    chronic_markers.append('Albumin')
+                
+                # Only flag as "Anemia of Chronic Disease" if chronic markers present
+                # Otherwise, basic "Anemia Indicator" flag (already added above) is sufficient
+                if chronic_markers:
+                    # Remove the basic "Anemia Indicator" flag if present
+                    flags = [f for f in flags if f['pattern_type'] != 'Anemia Indicator']
+                    
+                    flags.append({
+                        'pattern_type': 'Anemia of Chronic Disease',
+                        'triggered_by': ['Hemoglobin'] + chronic_markers,
+                        'severity': eval_dict['Hemoglobin']['severity'],
+                        'confidence': 'high'
+                    })
         
         return flags
     

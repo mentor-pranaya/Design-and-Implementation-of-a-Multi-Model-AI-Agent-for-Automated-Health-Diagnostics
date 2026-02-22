@@ -38,28 +38,83 @@ class ReferenceRangeManager:
     """
     Manages laboratory reference ranges for evidence-based evaluation.
     
+    Intelligent Fallback Architecture:
+    1. Lab-provided ranges (when available from report) - PRIORITY
+    2. ABIM authoritative ranges (standardized clinical references)
+    3. Legacy reference ranges (backward compatibility)
+    
+    This approach ensures:
+    - Clinical accuracy (lab ranges are population-specific)
+    - Standardization (ABIM provides authoritative baselines)
+    - Robustness (always has a fallback)
+    - Explainability (source attribution for each evaluation)
+    
     Responsibilities:
-    1. Load reference ranges from JSON
-    2. Provide parameter lookup by name
-    3. Select appropriate ranges based on sex/age
-    4. Classify values against reference ranges
-    5. Return clinical significance information
+    1. Load ABIM authoritative reference ranges
+    2. Load legacy reference ranges (backward compatibility)
+    3. Provide parameter lookup by name with intelligent fallback
+    4. Select appropriate ranges based on sex/age
+    5. Classify values against reference ranges
+    6. Return clinical significance and source attribution
     """
     
-    def __init__(self, reference_path: str = None):
+    def __init__(self, reference_path: str = None, abim_path: str = None):
         """
-        Initialize the reference range manager.
+        Initialize the reference range manager with intelligent fallback.
         
         Args:
-            reference_path: Path to reference_ranges.json
+            reference_path: Path to legacy reference_ranges.json
                           If None, uses default path relative to this module
+            abim_path: Path to abim_reference_ranges.json
+                     If None, uses default path relative to this module
         """
+        script_dir = Path(__file__).parent
+        
+        # Load ABIM authoritative ranges (primary source)
+        if abim_path is None:
+            abim_path = os.path.join(script_dir, 'abim_reference_ranges.json')
+        
+        self.abim_path = abim_path
+        self.abim_ranges = self._load_abim_ranges()
+        
+        # Load legacy ranges (fallback)
         if reference_path is None:
-            script_dir = Path(__file__).parent
             reference_path = os.path.join(script_dir, 'reference_ranges.json')
         
         self.reference_path = reference_path
         self.reference_ranges = self._load_reference_ranges()
+        
+        # Parameter name aliases for common variations
+        self.parameter_aliases = {
+            'Total Bilirubin': 'Bilirubin Total',
+            'Hemoglobin A1c': 'HbA1c',
+            'Fasting Glucose': 'Glucose',
+            'White Blood Cell Count': 'WBC',
+            'Red Blood Cell Count': 'RBC'
+        }
+    
+    def _load_abim_ranges(self) -> Dict[str, Any]:
+        """
+        Load ABIM authoritative reference ranges.
+        
+        Returns:
+            Dictionary of ABIM reference ranges with source attribution
+        """
+        try:
+            with open(self.abim_path, 'r', encoding='utf-8') as f:
+                ranges = json.load(f)
+            
+            print(f"✓ Loaded {len(ranges)} ABIM authoritative reference ranges")
+            print(f"  Source: ABIM Laboratory Reference Ranges 2026")
+            return ranges
+            
+        except FileNotFoundError:
+            print(f"⚠ ABIM reference ranges not found: {self.abim_path}")
+            print("  Will use legacy ranges only")
+            return {}
+        except json.JSONDecodeError as e:
+            print(f"⚠ Invalid JSON in ABIM ranges: {e}")
+            return {}
     
     def _load_reference_ranges(self) -> Dict[str, Any]:
         """
@@ -109,37 +164,85 @@ class ReferenceRangeManager:
         self, 
         parameter: str, 
         sex: Optional[str] = None,
-        age: Optional[int] = None
+        age: Optional[int] = None,
+        lab_provided_range: Optional[Dict[str, float]] = None
     ) -> Optional[Dict[str, Any]]:
         """
-        Get reference range for a specific parameter.
+        Get reference range for a specific parameter with intelligent fallback.
+        
+        Fallback Priority:
+        1. Lab-provided range (if available) - Most accurate for specific population
+        2. ABIM authoritative range - Standardized clinical reference
+        3. Legacy reference range - Backward compatibility
         
         Args:
             parameter: Parameter name (e.g., "Hemoglobin", "Glucose")
             sex: Optional sex specification ("male" or "female")
             age: Optional age (for age-specific ranges in future)
+            lab_provided_range: Optional lab-provided range from report
+                              Format: {"low": 13.5, "high": 17.5, "unit": "g/dL"}
         
         Returns:
-            Dictionary containing reference range information
-            None if parameter not found
+            Dictionary containing reference range information with source attribution
+            None if parameter not found in any source
         """
-        # Normalize parameter name (handle case variations)
-        param_normalized = self._normalize_parameter_name(parameter)
+        # Resolve parameter aliases (e.g., "Total Bilirubin" → "Bilirubin Total")
+        canonical_parameter = self.parameter_aliases.get(parameter, parameter)
         
-        if param_normalized not in self.reference_ranges:
-            return None
+        # PRIORITY 1: Lab-provided range (most accurate)
+        if lab_provided_range and 'low' in lab_provided_range and 'high' in lab_provided_range:
+            return {
+                'low': lab_provided_range['low'],
+                'high': lab_provided_range['high'],
+                'unit': lab_provided_range.get('unit', ''),
+                'source': 'Lab-provided (Report)',
+                'confidence_level': 'laboratory_specific',
+                'parameter': parameter
+            }
         
-        ref_range = self.reference_ranges[param_normalized].copy()
+        # PRIORITY 2: ABIM authoritative range  
+        # Normalize and check both original and canonical forms
+        param_normalized = self._normalize_parameter_name(canonical_parameter)
         
-        # Select sex-specific range if available
-        if sex and sex.lower() in ['male', 'female']:
-            sex_key = sex.lower()
-            if sex_key in ref_range:
-                # Merge sex-specific range with general info
-                sex_specific = ref_range[sex_key]
-                ref_range.update(sex_specific)
+        if param_normalized in self.abim_ranges:
+            ref_range = self.abim_ranges[param_normalized].copy()
+            
+            # Select sex-specific range if available
+            if sex and sex.lower() in ['male', 'female']:
+                sex_key = sex.lower()
+                if sex_key in ref_range:
+                    sex_specific = ref_range[sex_key]
+                    # Merge sex-specific values with metadata
+                    ref_range['low'] = sex_specific['low']
+                    ref_range['high'] = sex_specific['high']
+            elif 'male' in ref_range:
+                # Default to male if no sex specified
+                ref_range['low'] = ref_range['male']['low']
+                ref_range['high'] = ref_range['male']['high']
+            
+            ref_range['parameter'] = parameter
+            return ref_range
         
-        return ref_range
+        # PRIORITY 3: Legacy reference range (fallback)
+        if param_normalized in self.reference_ranges:
+            ref_range = self.reference_ranges[param_normalized].copy()
+            
+            # Select sex-specific range if available
+            if sex and sex.lower() in ['male', 'female']:
+                sex_key = sex.lower()
+                if sex_key in ref_range:
+                    sex_specific = ref_range[sex_key]
+                    ref_range.update(sex_specific)
+            
+            # Add metadata if not present
+            if 'source' not in ref_range:
+                ref_range['source'] = 'Legacy reference ranges'
+                ref_range['confidence_level'] = 'literature_based'
+            
+            ref_range['parameter'] = parameter
+            return ref_range
+        
+        return None
     
     def _normalize_parameter_name(self, parameter: str) -> str:
         """
@@ -150,6 +253,8 @@ class ReferenceRangeManager:
         - Common abbreviations
         - Whitespace variations
         
+        Checks both ABIM and legacy ranges for matches.
+        
         Args:
             parameter: Raw parameter name
         
@@ -159,17 +264,26 @@ class ReferenceRangeManager:
         # Remove extra whitespace
         param = parameter.strip()
         
-        # Check exact match first (case-sensitive)
+        # Check exact match first in ABIM ranges (priority)
+        if param in self.abim_ranges:
+            return param
+        
+        # Check exact match in legacy ranges
         if param in self.reference_ranges:
             return param
         
-        # Case-insensitive lookup
+        # Case-insensitive lookup in ABIM
         param_lower = param.lower()
+        for ref_param in self.abim_ranges:
+            if ref_param.lower() == param_lower:
+                return ref_param
+        
+        # Case-insensitive lookup in legacy
         for ref_param in self.reference_ranges:
             if ref_param.lower() == param_lower:
                 return ref_param
         
-        # Check full_name field for abbreviations
+        # Check full_name field for abbreviations in legacy ranges
         for ref_param, ref_data in self.reference_ranges.items():
             if 'full_name' in ref_data:
                 if ref_data['full_name'].lower() == param_lower:
@@ -183,16 +297,19 @@ class ReferenceRangeManager:
         parameter: str,
         value: float,
         sex: Optional[str] = None,
-        age: Optional[int] = None
+        age: Optional[int] = None,
+        lab_provided_range: Optional[Dict[str, float]] = None
     ) -> Dict[str, Any]:
         """
-        Evaluate a laboratory value against reference ranges.
+        Evaluate a laboratory value against reference ranges with intelligent fallback.
         
         Args:
             parameter: Parameter name
             value: Measured value
             sex: Optional sex ("male" or "female")
             age: Optional age
+            lab_provided_range: Optional lab-provided range from report
+                              Format: {"low": 13.5, "high": 17.5, "unit": "g/dL"}
         
         Returns:
             Evaluation result containing:
@@ -201,8 +318,10 @@ class ReferenceRangeManager:
             - reference_range: The reference range used
             - deviation: How far from normal (percentage)
             - clinical_significance: Medical interpretation
+            - source: Attribution for reference range used
+            - confidence_level: Confidence in the reference range
         """
-        ref_range = self.get_reference_range(parameter, sex, age)
+        ref_range = self.get_reference_range(parameter, sex, age, lab_provided_range)
         
         if ref_range is None:
             return {
@@ -228,6 +347,8 @@ class ReferenceRangeManager:
             'reference_range': self._format_reference_range(ref_range),
             'deviation_percent': deviation,
             'clinical_significance': ref_range.get('clinical_significance', 'Not available'),
+            'source': ref_range.get('source', 'Unknown'),
+            'confidence_level': ref_range.get('confidence_level', 'unknown'),
             'reference_available': True
         }
     
@@ -238,6 +359,8 @@ class ReferenceRangeManager:
     ) -> Tuple[EvaluationStatus, Optional[str]]:
         """
         Classify a value into status categories.
+        
+        Handles both legacy format (min/max) and ABIM format (low/high).
         
         Args:
             value: Measured value
@@ -274,27 +397,30 @@ class ReferenceRangeManager:
                 if value >= diabetes.get('min', float('inf')):
                     return EvaluationStatus.HIGH, "Moderate"
         
-        # Standard min/max range
-        if 'min' in ref_range and 'max' in ref_range:
-            min_val, max_val = ref_range['min'], ref_range['max']
-            
+        # Standard range - handle both ABIM format (low/high) and legacy format (min/max)
+        min_val = ref_range.get('min') or ref_range.get('low')
+        max_val = ref_range.get('max') or ref_range.get('high')
+        
+        if min_val is not None and max_val is not None:
             if min_val <= value <= max_val:
                 return EvaluationStatus.NORMAL, None
             elif value < min_val:
                 # Determine severity based on how far below normal
+                # More conservative thresholds: >50% = Severe, >25% = Moderate
                 deviation = ((min_val - value) / min_val) * 100
-                if deviation > 30:
+                if deviation > 50:
                     return EvaluationStatus.LOW, "Severe"
-                elif deviation > 15:
+                elif deviation > 25:
                     return EvaluationStatus.LOW, "Moderate"
                 else:
                     return EvaluationStatus.LOW, "Mild"
             else:  # value > max_val
                 # Determine severity based on how far above normal
+                # More conservative thresholds: >50% = Severe, >25% = Moderate
                 deviation = ((value - max_val) / max_val) * 100
-                if deviation > 30:
+                if deviation > 50:
                     return EvaluationStatus.HIGH, "Severe"
-                elif deviation > 15:
+                elif deviation > 25:
                     return EvaluationStatus.HIGH, "Moderate"
                 else:
                     return EvaluationStatus.HIGH, "Mild"

@@ -1,0 +1,58 @@
+{
+  "case_id": "case_04",
+  "description": "Critical values - severe kidney dysfunction with electrolyte imbalance",
+  "source_report": "../../data/sample_reports/sample_blood_report_4.json",
+  
+  "patient_info": {
+    "age": 72,
+    "sex": "female",
+    "known_conditions": ["chronic_kidney_disease", "hypertension", "diabetes"],
+    "lifestyle": {
+      "smoker": false,
+      "exercise_level": "limited",
+      "diet_type": "low_sodium",
+      "alcohol_use": "none"
+    }
+  },
+  
+  "true_parameters": {
+    "Creatinine": 3.8,
+    "BUN": 68,
+    "Potassium": 5.9,
+    "Sodium": 132,
+    "Hemoglobin": 9.2,
+    "Glucose": 185,
+    "Albumin": 2.9
+  },
+  
+  "true_classification": {
+    "Creatinine": "High",
+    "BUN": "High",
+    "Potassium": "High",
+    "Sodium": "Low",
+    "Hemoglobin": "Low",
+    "Glucose": "High",
+    "Albumin": "Low"
+  },
+  
+  "true_severity": {
+    "Creatinine": "Critical",
+    "BUN": "Severe",
+    "Potassium": "Critical",
+    "Sodium": "Moderate",
+    "Hemoglobin": "Severe",
+    "Glucose": "Severe",
+    "Albumin": "Moderate"
+  },
+  
+  "true_patterns": [
+    "Kidney Disease",
+    "Anemia of Chronic Disease",
+    "Electrolyte Imbalance"
+  ],
+  
+  "true_risk_category": "High",
+  "true_risk_range": {"min": 25, "max": 40},
+  
+  "rationale": "72-year-old female with stage 4 CKD (creatinine 3.8, BUN 68), critical hyperkalemia (5.9), severe anemia (Hgb 9.2), uncontrolled diabetes, hyponatremia. Multiple critical values requiring urgent intervention. Very high cardiovascular risk due to advanced CKD and comorbidities."
+}
