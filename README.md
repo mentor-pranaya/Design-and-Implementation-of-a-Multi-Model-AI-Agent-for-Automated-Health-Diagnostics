@@ -1,6 +1,4 @@
-## Project Title
-
-**Design and Implementation of a Multi-Model AI Agent for Automated Health Diagnostics**
+## Multi-Model AI Agent for Automated Health Diagnostics
 
 This document records the day-by-day technical progress made during the internship project. The work covers Phase 1 (OCR-based ingestion), Phase 2 (structured extraction and pattern recognition), Phase 3 (reference-based evaluation and recommendation generation), and Phase 4 (NHANES integration, zero-hardcoding refactoring, and evaluation framework).
 
