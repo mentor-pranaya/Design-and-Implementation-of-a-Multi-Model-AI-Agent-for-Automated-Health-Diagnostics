@@ -1,154 +1,405 @@
 import streamlit as st
 import pytesseract
 import pdfplumber
-import json
+import os
 import re
 from PIL import Image
-import io
+from openai import OpenAI
+import pandas as pd
+import plotly.express as px
+from database import *
 
-# Set Tesseract path
-pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
+init_db()
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+client = OpenAI(api_key=OPENAI_API_KEY) if OPENAI_API_KEY else None
 
-# Standard reference ranges for blood parameters (example values, adjust as needed)
-HEALTH_REFERENCE_RANGES = {
-    'hemoglobin': {'female': (12.0, 16.0), 'male': (13.5, 17.5), 'unit': 'g/dL'},
-    'glucose': (70, 100, 'mg/dL'),
-    'cholesterol': (0, 200, 'mg/dL'),
-    'triglycerides': (0, 150, 'mg/dL'),
-    'hdl': (40, 60, 'mg/dL'),  # for females
-    'ldl': (0, 100, 'mg/dL'),
-    'creatinine': {'female': (0.6, 1.1), 'male': (0.7, 1.2), 'unit': 'mg/dL'},
-    'bun': (7, 20, 'mg/dL'),
-    'sodium': (135, 145, 'mEq/L'),
-    'potassium': (3.5, 5.0, 'mEq/L'),
-}
+tesseract_path = os.getenv("TESSERACT_CMD", r"C:\Program Files\Tesseract-OCR\tesseract.exe")
+if os.path.exists(tesseract_path):
+    pytesseract.pytesseract.tesseract_cmd = tesseract_path
 
-def extract_text_from_pdf(file):
-    with pdfplumber.open(file) as pdf:
+
+
+class HealthReferenceRanges:
+
+    def __init__(self):
+
+        self.reference_ranges = {
+
+        'hemoglobin': {'female': (12, 16), 'male': (13.5, 17.5)},
+        'rbc': {'female': (4.2, 5.4), 'male': (4.7, 6.1)},
+        'wbc': {'normal': (4, 11)},
+        'platelets': {'normal': (150, 450)},
+        'hematocrit': {'male': (40, 52), 'female': (36, 48)},
+
+        'creatinine': {'male': (0.7, 1.3), 'female': (0.6, 1.1)},
+        'uric_acid': {'male': (3.4, 7.0), 'female': (2.4, 6.0)},
+        'crp': {'normal': (0, 5)},
+        'egfr': {'normal': (90, 200)},
+
+        'fasting_blood_glucose': {'normal': (70, 99)}
+    }
+
+    def get_range(self, parameter, value, gender=None):
+
+        ref = self.reference_ranges.get(parameter)
+
+        if not ref:
+            return "Unknown"
+
+        if gender and gender in ref:
+            low, high = ref[gender]
+        elif 'normal' in ref:
+            low, high = ref['normal']
+        else:
+            return "Unknown"
+
+        if value < low:
+            return "Low"
+        elif value > high:
+            return "High"
+        else:
+            return "Normal"
+
+
+
+class DataExtractor:
+
+    def __init__(self):
+
+        self.patterns = {
+            "hemoglobin": r"ha?emoglobin\s*[:\-]?\s*(\d+\.?\d*)",
+            "rbc": r"\brbc\b\s*[:\-]?\s*(\d+\.?\d*)",
+            "wbc": r"(total\s*wbc\s*count|wbc)\s*[:\-]?\s*(\d+\.?\d*)",
+            "platelets": r"platelet\s*[:\-]?\s*(\d+\.?\d*)",
+            "hematocrit": r"hematocrit\s*[:\-]?\s*(\d+\.?\d*)",
+            "total_cholesterol": r"(total\s*cholesterol|cholesterol)\s*[:\-]?\s*(\d+\.?\d*)",
+            "ldl": r"\bldl\b\s*[:\-]?\s*(\d+\.?\d*)",
+            "hdl": r"\bhdl\b\s*[:\-]?\s*(\d+\.?\d*)",
+
+            "creatinine": r"creatinine\s*[:\-]?\s*(\d+\.?\d*)",
+            "uric_acid": r"uric\s*acid\s*[:\-]?\s*(\d+\.?\d*)",
+            "crp": r"(c[-\s]*reactive\s*protein|crp)[^\d]*(\d+\.?\d*)",
+            "egfr": r"egfr\s*[:\-]?\s*(\d+\.?\d*)",
+
+            "fasting_blood_glucose": r"glucose\s*[:\-]?\s*(\d+\.?\d*)"
+        }
+
+    def extract_text_from_pdf(self, file):
+
         text = ""
-        for page in pdf.pages:
-            text += page.extract_text() + "\n"
-    return text
 
-def extract_text_from_image(file):
-    img = Image.open(file)
-    text = pytesseract.image_to_string(img)
-    return text
+        with pdfplumber.open(file) as pdf:
+            for page in pdf.pages:
+                t = page.extract_text()
+                if t:
+                    text += t + "\n"
 
-def extract_blood_parameters(text):
-    extracted_parameters = {}
-    # Regex patterns for common blood test parameters
-    BLOOD_TEST_PATTERNS = {
-        'hemoglobin': r'hemoglobin[:\s]*(\d+\.?\d*)\s*(g/dL|g/L)',
-        'glucose': r'glucose[:\s]*(\d+\.?\d*)\s*(mg/dL|mmol/L)',
-        'cholesterol': r'cholesterol[:\s]*(\d+\.?\d*)\s*(mg/dL|mmol/L)',
-        'triglycerides': r'triglycerides[:\s]*(\d+\.?\d*)\s*(mg/dL|mmol/L)',
-        'hdl': r'hdl[:\s]*(\d+\.?\d*)\s*(mg/dL|mmol/L)',
-        'ldl': r'ldl[:\s]*(\d+\.?\d*)\s*(mg/dL|mmol/L)',
-        'creatinine': r'creatinine[:\s]*(\d+\.?\d*)\s*(mg/dL|µmol/L)',
-        'bun': r'bun[:\s]*(\d+\.?\d*)\s*(mg/dL|mmol/L)',
-        'sodium': r'sodium[:\s]*(\d+\.?\d*)\s*(mEq/L|mmol/L)',
-        'potassium': r'potassium[:\s]*(\d+\.?\d*)\s*(mEq/L|mmol/L)',
-    }
-    
-    for param, pattern in BLOOD_TEST_PATTERNS.items():
-        match = re.search(pattern, text, re.IGNORECASE)
-        if match:
-            value = float(match.group(1))
-            unit = match.group(2) if len(match.groups()) > 1 else ''
-            extracted_parameters[param] = {'value': value, 'unit': unit}
-    
-    return extracted_parameters
+        return text.lower()
 
-def normalize_measurement_units(extracted_parameters):
-    # Simple unit conversions (add more as needed)
-    UNIT_CONVERSIONS = {
-        'glucose': {'mmol/L': lambda x: x * 18, 'mg/dL': lambda x: x},
-        'cholesterol': {'mmol/L': lambda x: x * 38.67, 'mg/dL': lambda x: x},
-    }
-    
-    for param, data in extracted_parameters.items():
-        if param in UNIT_CONVERSIONS and data['unit'] in UNIT_CONVERSIONS[param]:
-            data['value'] = UNIT_CONVERSIONS[param][data['unit']](data['value'])
-            data['unit'] = 'mg/dL'  # standardize to mg/dL
-    
-    return extracted_parameters
+    def extract_text_from_image(self, file):
 
-def classify_parameter_status(param, value, gender='female'):
-    if param not in HEALTH_REFERENCE_RANGES:
-        return 'Unknown'
-    
-    ref = HEALTH_REFERENCE_RANGES[param]
-    if isinstance(ref, dict):
-        low, high = ref[gender]
-    else:
-        low, high = ref[0], ref[1]
-    
-    if value < low:
-        return 'Low'
-    elif value > high:
-        return 'High'
-    else:
-        return 'Normal'
+        img = Image.open(file)
+        return pytesseract.image_to_string(img).lower()
+
+    def extract(self, text):
+
+        data = {}
+
+        for param, pattern in self.patterns.items():
+
+            match = re.search(pattern, text)
+
+            if match:
+                try:
+                    value = float(match.groups()[-1])
+                    data[param] = {"value": value}
+                except:
+                    pass
+
+        # gender
+        g = re.search(r"(male|female)", text)
+        if g:
+            data["gender"] = {"value": g.group(1)}
+
+        return data
+
+
+class ParameterClassifier:
+
+    def __init__(self, ref):
+        self.ref = ref
+
+    def classify(self, param, value, gender=None):
+
+        if isinstance(gender, dict):
+            gender = gender.get("value")
+
+        if param not in self.ref.reference_ranges:
+            return "Unknown"
+
+        return self.ref.get_range(param, value, gender)
+
+
+
+class RiskAssessor:
+
+    def assess(self, data):
+
+        score = 0
+        factors = []
+
+        if 'total_cholesterol' in data:
+            if data['total_cholesterol']['value'] > 200:
+                score += 1
+                factors.append("High Cholesterol")
+
+        if 'ldl' in data:
+            if data['ldl']['value'] > 130:
+                score += 1
+                factors.append("High LDL")
+
+        if 'hdl' in data:
+            if data['hdl']['value'] < 40:
+                score += 1
+                factors.append("Low HDL")
+
+        level = "Low"
+        if score >= 3:
+            level = "High"
+        elif score >= 1:
+            level = "Moderate"
+
+        return {
+            "score": score,
+            "level": level,
+            "factors": factors
+        }
+
+
+
+class FindingsSynthesizer:
+
+    def synthesize(self, classifications, risk):
+
+        conditions = []
+
+        if 'hemoglobin' in classifications:
+            if classifications['hemoglobin'] == "Low":
+                conditions.append("Possible Anemia")
+
+        if 'ldl' in classifications or 'total_cholesterol' in classifications:
+            if risk["level"] != "Low":
+                conditions.append("Possible Dyslipidemia")
+
+        return {
+            "conditions": conditions,
+            "risk_level": risk["level"]
+        }
+
+
+
+class RecommendationEngine:
+
+    def generate(self, classifications):
+
+        recs = []
+
+        if classifications.get("ldl") == "High":
+            recs.append("Reduce saturated fat and increase exercise.")
+
+        if classifications.get("hemoglobin") == "Low":
+            recs.append("Consider iron-rich foods and consult doctor.")
+
+        if classifications.get("fasting_blood_glucose") == "High":
+            recs.append("Monitor blood sugar and reduce sugar intake.")
+
+        return recs
+
+
+
+class HealthAgent:
+
+    def __init__(self):
+
+        self.ref = HealthReferenceRanges()
+        self.extractor = DataExtractor()
+        self.classifier = ParameterClassifier(self.ref)
+        self.risk = RiskAssessor()
+        self.synth = FindingsSynthesizer()
+        self.recommender = RecommendationEngine()
+
+    def run(self, text):
+
+        extracted = self.extractor.extract(text)
+
+        gender = extracted.get("gender")
+
+        classifications = {}
+
+        for p, d in extracted.items():
+
+            if p == "gender":
+                continue
+
+            classifications[p] = self.classifier.classify(
+                p, d["value"], gender
+            )
+
+        risk = self.risk.assess(extracted)
+
+        findings = self.synth.synthesize(classifications, risk)
+
+        recs = self.recommender.generate(classifications)
+
+        return extracted, classifications, risk, findings, recs
+
+
+
+def generate_llm_report(classifications, risk, findings, recs):
+    if client is None:
+        return "LLM report unavailable. Set OPENAI_API_KEY to enable AI report generation."
+
+    prompt = f"""
+You are a medical AI assistant.
+
+Classifications:
+{classifications}
+
+Risk:
+{risk}
+
+Findings:
+{findings}
+
+Recommendations:
+{recs}
+
+Generate a professional health report.
+Include disclaimer: not medical diagnosis.
+"""
+
+    try:
+        response = client.chat.completions.create(
+            model="gpt-4o-mini",
+            messages=[
+                {"role": "system", "content": "You are a helpful medical AI assistant."},
+                {"role": "user", "content": prompt}
+            ],
+            temperature=0.3
+        )
+        return response.choices[0].message.content
+    except Exception:
+        return "LLM report generation failed. Please verify API key and network access."
+
+
+def visualize(classifications):
+    if not classifications:
+        st.info("No parameters were extracted from the uploaded report.")
+        return
+
+    df = pd.DataFrame(
+        [{"Parameter": k, "Status": v} for k, v in classifications.items()]
+    )
+
+    st.dataframe(df)
+
+    counts = df["Status"].value_counts()
+
+    fig = px.pie(
+        values=counts.values,
+        names=counts.index,
+        title="Parameter Status Distribution"
+    )
+
+    st.plotly_chart(fig)
+
+
+if "user" not in st.session_state:
+
+    st.title("Login / Signup")
+
+    menu = ["Login", "Signup"]
+    choice = st.selectbox("Select", menu)
+
+    username = st.text_input("Username")
+    password = st.text_input("Password", type="password")
+
+    if choice == "Signup":
+
+        if st.button("Create Account"):
+            if create_user(username, password):
+                st.success("Account created")
+            else:
+                st.error("User exists")
+
+    if choice == "Login":
+
+        if st.button("Login"):
+            user = login_user(username, password)
+
+            if user:
+                st.session_state.user = username
+                st.success("Logged in")
+                st.rerun()
+            else:
+                st.error("Invalid credentials")
+
+    st.stop()
+
 
 def main():
-    st.title("Blood Parameter Analysis System")
-    
-    st.header("Input Interface & Parser")
-    uploaded_file = st.file_uploader("Upload a file (PDF, Image, or JSON)", type=['pdf', 'png', 'jpg', 'jpeg', 'json'])
-    
-    if uploaded_file is not None:
-        file_type = uploaded_file.type
-        
-        st.header("Data Extraction Engine")
-        if file_type == 'application/pdf':
-            text = extract_text_from_pdf(uploaded_file)
-            st.subheader("Extracted Text from PDF:")
-        elif file_type.startswith('image/'):
-            text = extract_text_from_image(uploaded_file)
-            st.subheader("Extracted Text from Image:")
-            st.image(uploaded_file, caption='Uploaded Image')
-        elif file_type == 'application/json':
-            data = json.load(uploaded_file)
-            text = json.dumps(data)  # For parsing, treat as text
-            st.subheader("JSON Data:")
-            st.json(data)
+
+    st.title("🩸 Multi-Model AI Health Diagnostics Agent")
+
+    agent = HealthAgent()
+
+    file = st.file_uploader(
+        "Upload Blood Report",
+        type=["pdf", "png", "jpg", "jpeg"]
+    )
+
+    if file:
+
+        if file.type == "application/pdf":
+            text = agent.extractor.extract_text_from_pdf(file)
         else:
-            st.error("Unsupported file type")
-            return
-        
-        st.text_area("Raw Text", text, height=200)
-        
-        st.header("Data Validation & Standardization Module")
-        extracted_parameters = extract_blood_parameters(text)
-        if extracted_parameters:
-            st.subheader("Extracted Parameters:")
-            st.json(extracted_parameters)
-            
-            standardized_parameters = normalize_measurement_units(extracted_parameters)
-            st.subheader("Standardized Parameters:")
-            st.json(standardized_parameters)
-            
-            st.header("Model 1: Parameter Interpretation")
-            gender = st.selectbox("Select Gender", ['female', 'male'])
-            
-            parameter_classifications = {}
-            for param, data in standardized_parameters.items():
-                classification = classify_parameter_status(param, data['value'], gender)
-                parameter_classifications[param] = {
-                    'value': data['value'],
-                    'unit': data['unit'],
-                    'classification': classification
+            text = agent.extractor.extract_text_from_image(file)
+
+        with st.spinner("Analyzing..."):
+
+            extracted, classifications, risk, findings, recs = agent.run(text)
+
+            st.subheader("Classifications")
+            visualize(classifications)
+
+            st.subheader("Risk Level")
+            st.write(risk)
+
+            st.subheader("Findings")
+            st.write(findings)
+
+            st.subheader("Recommendations")
+            st.write(recs)
+
+            report = generate_llm_report(
+                classifications, risk, findings, recs
+            )
+
+            st.subheader("AI Medical Report")
+            st.write(report)
+
+            save_report(st.session_state.user, {
+                "classifications": classifications,
+                "risk": risk
                 }
-            
-            st.subheader("Classifications:")
-            st.json(parameter_classifications)
-            
-            # Display in a table
-            st.table(pd.DataFrame.from_dict(parameter_classifications, orient='index'))
-        else:
-            st.warning("No blood parameters detected in the text.")
+            )
+
+            if st.button("View My Reports"):
+
+                reports = get_reports(st.session_state.user)
+
+                for r in reports:
+                    st.write(r)
 
 if __name__ == "__main__":
-    import pandas as pd
     main()
