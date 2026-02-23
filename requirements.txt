@@ -1,0 +1,8 @@
+gradio
+pandas
+pdfplumber
+pytesseract
+pillow
+requests
+google-generativeai
+reportlab

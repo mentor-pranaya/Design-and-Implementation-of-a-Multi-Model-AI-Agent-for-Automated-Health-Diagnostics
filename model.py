@@ -1,24 +1,17 @@
-def compare_report_with_normals(report_data, normal_data):
+def analyze_report(report_data):
     """
-    Compares test values with normal ranges
-    normal_data format:
+    report_data format:
     {
-      "Glucose": [70, 99],
-      "Hemoglobin": [13, 17]
+      "Glucose": {"value":145, "low":70, "high":99}
     }
     """
 
     analysis = {}
 
-    for param, value in report_data.items():
-        if param not in normal_data:
-            analysis[param] = {
-                "value": value,
-                "status": "No reference range"
-            }
-            continue
-
-        low, high = normal_data[param]
+    for param, info in report_data.items():
+        value = info["value"]
+        low = info["low"]
+        high = info["high"]
 
         if value < low:
             status = "Low"
@@ -29,7 +22,7 @@ def compare_report_with_normals(report_data, normal_data):
 
         analysis[param] = {
             "value": value,
-            "normal_range": f"{low} - {high}",
+            "reference": f"{low} - {high}",
             "status": status
         }
 
@@ -37,13 +30,16 @@ def compare_report_with_normals(report_data, normal_data):
 
 
 def generate_summary(analysis):
-    issues = []
+    if not analysis:
+        return "⚠️ No parameters were extracted from the uploaded report."
 
-    for param, info in analysis.items():
-        if info["status"] in ["High", "Low"]:
-            issues.append(f"{param} is {info['status']}")
+    problems = [
+        f"{p} is {v['status']}"
+        for p, v in analysis.items()
+        if v["status"] != "Normal"
+    ]
 
-    if not issues:
+    if not problems:
         return "All parameters are within normal range."
 
-    return " | ".join(issues)
+    return " | ".join(problems)
