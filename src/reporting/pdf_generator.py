@@ -1,9 +1,50 @@
 from fpdf import FPDF
 import os
 from datetime import datetime
+import re
+import unicodedata
 
 class PDFReportGenerator:
     """Generates a professional PDF report from analysis data."""
+
+    @staticmethod
+    def sanitize_text(text: str) -> str:
+        """
+        Remove or replace Unicode characters that FPDF's default fonts don't support.
+        This handles emojis, special symbols, and other non-Latin characters.
+        """
+        if not text:
+            return ""
+        
+        # Remove emoji and special Unicode characters, keeping only ASCII and common Latin
+        # This regex keeps ASCII printable characters and common Latin extended
+        sanitized = ""
+        for char in text:
+            try:
+                # Try to encode as latin-1 (which FPDF's default fonts support)
+                char.encode('latin-1')
+                sanitized += char
+            except UnicodeEncodeError:
+                # Replace unsupported characters with space or placeholder
+                # Try to get ASCII representation of the character
+                try:
+                    # Remove diacritical marks
+                    decomposed = unicodedata.normalize('NFKD', char)
+                    normalized = decomposed.encode('ASCII', 'ignore').decode('ASCII')
+                    if normalized:
+                        sanitized += normalized
+                    else:
+                        # If no ASCII equivalent, use a generic symbol
+                        if unicodedata.category(char).startswith('S'):  # Symbol
+                            sanitized += '*'
+                        elif unicodedata.category(char).startswith('P'):  # Punctuation
+                            sanitized += ' '
+                        else:
+                            sanitized += ' '
+                except:
+                    sanitized += ' '
+        
+        return sanitized.strip()
 
     def generate_pdf_report(self, analysis_report: dict, filename: str = "report.pdf") -> str:
         """
@@ -44,12 +85,12 @@ class PDFReportGenerator:
         
         synthesis = analysis_report.get("synthesis", "")
         if synthesis and synthesis != "Analysis failed.":
-            pdf.multi_cell(0, 6, synthesis)
+            pdf.multi_cell(190, 6, self.sanitize_text(synthesis))
         elif params:
             # Generate fallback summary from parameters
-            pdf.multi_cell(0, 6, self._generate_fallback_summary(params))
+            pdf.multi_cell(190, 6, self._generate_fallback_summary(params))
         else:
-            pdf.multi_cell(0, 6, "Analysis is in progress. Please ensure all blood test parameters are clearly visible in the uploaded document.")
+            pdf.multi_cell(190, 6, "Analysis is in progress. Please ensure all blood test parameters are clearly visible in the uploaded document.")
         pdf.ln(5)
         
         # --- 2. Risk Assessment ---
@@ -61,14 +102,14 @@ class PDFReportGenerator:
         else: pdf.set_text_color(0, 150, 0)
         
         pdf.set_font("Arial", 'B', 12)
-        pdf.cell(0, 8, f"Overall Risk Level: {risk_level}", ln=True)
+        pdf.cell(0, 8, f"Overall Risk Level: {self.sanitize_text(risk_level)}", ln=True)
         pdf.set_text_color(0, 0, 0)
         
         risks = analysis_report.get("risks", [])
         if risks:
             pdf.set_font("Arial", '', 10)
             for r in risks:
-                pdf.cell(0, 6, f"- {r}", ln=True)
+                pdf.cell(0, 6, f"- {self.sanitize_text(r)}", ln=True)
         elif params:
             # Generate fallback risks
             pdf.set_font("Arial", '', 10)
@@ -129,7 +170,7 @@ class PDFReportGenerator:
                 pdf.set_font("Arial", '', 10)
         else:
             pdf.set_font("Arial", 'I', 10)
-            pdf.multi_cell(0, 6, "No parameters were extracted from the uploaded document. Please ensure the blood report contains clear parameter values.")
+            pdf.multi_cell(190, 6, "No parameters were extracted from the uploaded document. Please ensure the blood report contains clear parameter values.")
         
         pdf.ln(5)
 
@@ -139,7 +180,7 @@ class PDFReportGenerator:
         
         suggestions = self._generate_detailed_suggestions(params, risks)
         for suggestion in suggestions:
-            pdf.multi_cell(0, 6, f"- {suggestion}")
+            pdf.multi_cell(190, 6, f"* {self.sanitize_text(suggestion)}")
             pdf.ln(1)
         pdf.ln(3)
 
@@ -155,10 +196,10 @@ class PDFReportGenerator:
                 
                 pdf.set_font("Arial", 'B', 10)
                 pdf.write(6, "- ")
-                pdf.write(6, f"{rec}")
+                pdf.write(6, self.sanitize_text(rec))
                 pdf.set_font("Arial", 'I', 9)
                 pdf.set_text_color(100, 100, 100)
-                pdf.cell(0, 6, f" (Based on: {reason})", ln=True)
+                pdf.cell(0, 6, f" (Based on: {self.sanitize_text(reason)})", ln=True)
                 pdf.set_text_color(0, 0, 0)
                 pdf.ln(1)
             pdf.ln(5)
@@ -171,11 +212,11 @@ class PDFReportGenerator:
         if prescriptions:
             for p in prescriptions:
                 if "PRESCRIPTION SUGGESTIONS" in p: continue
-                pdf.multi_cell(0, 6, f"- {p}")
+                pdf.multi_cell(190, 6, f"- {self.sanitize_text(p)}")
         else:
             # Generate fallback prescriptions
             for rx in self._generate_fallback_prescriptions(params):
-                pdf.multi_cell(0, 6, f"- {rx}")
+                pdf.multi_cell(190, 6, f"- {rx}")
         pdf.ln(5)
 
         # --- 7. General Health Tips ---
@@ -191,7 +232,7 @@ class PDFReportGenerator:
             "Schedule regular health check-ups and follow-up blood tests as recommended"
         ]
         for tip in health_tips:
-            pdf.multi_cell(0, 6, f"- {tip}")
+            pdf.multi_cell(190, 6, f"- {tip}")
         pdf.ln(5)
 
         # --- Footer & Disclaimer ---
@@ -201,7 +242,7 @@ class PDFReportGenerator:
         pdf.set_font("Arial", 'I', 8)
         pdf.set_text_color(120, 120, 120)
         disclaimer = "DISCLAIMER: This report is generated by an AI Agent and is for informational purposes only. It does not constitute medical diagnosis or advice. Always consult a qualified healthcare provider before making any medical decisions."
-        pdf.multi_cell(0, 4, disclaimer, 0, 'C')
+        pdf.multi_cell(190, 4, disclaimer, 0, 'C')
         
         pdf.set_y(-15)
         pdf.cell(0, 10, f"Page {pdf.page_no()}", 0, 0, 'C')
